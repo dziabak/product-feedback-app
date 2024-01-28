@@ -1,7 +1,12 @@
-const Suggestions = () => {
-  return (
-    <div>Suggestions</div>
-  )
-}
+// INTERNAL IMPORTS
+import SuggestionsNavigation from "../components/suggestions/SuggestionsNavigation";
 
-export default Suggestions
+const Suggestions = () => {
+	return (
+		<section className="container lg:grid lg:grid-cols-4 lg:gap-4">
+			<SuggestionsNavigation />
+		</section>
+	);
+};
+
+export default Suggestions;
