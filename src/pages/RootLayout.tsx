@@ -1,7 +1,12 @@
-const RootLayout = () => {
-  return (
-    <div>RootLayout</div>
-  )
-}
+// BUILT-IN IMPORTS
+import { Outlet } from "react-router-dom";
 
-export default RootLayout
+const RootLayout = () => {
+	return (
+		<main className="min-h-screen p-4 bg-c-gray font-main">
+			<Outlet />
+		</main>
+	);
+};
+
+export default RootLayout;
