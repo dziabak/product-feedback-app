@@ -1,49 +1,47 @@
+// EXTERNAL IMPORTS
+import { useQuery } from "@tanstack/react-query";
 // INTERNAL IMPORTS
+import { fetchOnlySuggestionsData } from "../../lib/http";
 import FeedbackTile from "../feeedback-tile/FeedbackTile";
+import LoadingSpinner from "../ui/LoadingSpinner";
+import ErrorBlock from "../ui/ErrorBlock";
 
 const SuggestionsGrid = () => {
-	const FEEDBACK_DATA = [
-		{
-			id: 1,
-			upvotes: 112,
-			category: "Enhancement",
-			title: "Add tags for solutions",
-			description: "Easier to search for solutions based on a specific stack.",
-			comments: 2,
-		},
-		{
-			id: 2,
-			upvotes: 99,
-			category: "Feature",
-			title: "Add a dark theme option",
-			description:
-				"It would help people with light sensitivities and who prefer dark mode.",
-			comments: 4,
-		},
-		{
-			id: 3,
-			upvotes: 65,
-			category: "Feature",
-			title: "Q&A within the challenge hubs",
-			description: "Challenge-specific Q&A would make for easy reference.",
-			comments: 1,
-		},
-	];
+	let content!: JSX.Element | JSX.Element[];
 
-	return (
-		<div className="space-y-4">
-			{FEEDBACK_DATA.map((item) => (
-				<FeedbackTile
-					key={item.id}
-					category={item.category}
-					comments={item.comments}
-					description={item.description}
-					title={item.title}
-					upvotes={item.upvotes}
-				/>
-			))}
-		</div>
-	);
+	const { data, isFetching, isError } = useQuery({
+		queryKey: ["feedback"],
+		queryFn: fetchOnlySuggestionsData,
+	});
+
+	if (isFetching) {
+		content = <LoadingSpinner />;
+	}
+
+	if (isError) {
+		content = (
+			<ErrorBlock
+				errorHeader="There was an error"
+				errorMessage="Please try again later"
+			/>
+		);
+	}
+
+	if (data) {
+		// console.log(data.productRequests);
+		content = data.map((feedback) => (
+			<FeedbackTile
+				key={feedback.id}
+				category={feedback.category}
+				comments={feedback.comments?.length}
+				description={feedback.description}
+				title={feedback.title}
+				upvotes={feedback.upvotes}
+			/>
+		));
+	}
+
+	return <div className="space-y-4">{content}</div>;
 };
 
 export default SuggestionsGrid;

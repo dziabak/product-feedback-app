@@ -14,6 +14,12 @@ const FeedbackTile = ({
 	description: string;
 	comments: number;
 }) => {
+	function capitalizeFirstLetter(str: string) {
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	}
+
+	const categoryCapitalized = capitalizeFirstLetter(category)
+
 	return (
 		<Link
 			to="/feedback-details"
@@ -35,7 +41,7 @@ const FeedbackTile = ({
 					<p className="text-lg font-bold">{title}</p>
 					<p className="text-c-dark-gray">{description}</p>
 					<p className="inline-block px-3 py-2 m-1 text-sm font-semibold transition-colors rounded-xl bg-c-gray text-c-light-blue">
-						{category}
+						{categoryCapitalized}
 					</p>
 				</div>
 			</div>
@@ -47,7 +53,11 @@ const FeedbackTile = ({
 						fillRule="nonzero"
 					/>
 				</svg>
-				<p className="font-bold text-c-dark-blue">{comments}</p>
+				{comments === undefined ? (
+					<p className="font-bold text-c-dark-blue">0</p>
+				) : (
+					<p className="font-bold text-c-dark-blue">{comments}</p>
+				)}
 			</div>
 		</Link>
 	);
