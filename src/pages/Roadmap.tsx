@@ -1,5 +1,12 @@
+// INTERNAL IMPORTS
+import RoadmapHeader from "../components/roadmap/RoadmapHeader";
+
 const Roadmap = () => {
-	return <div>Roadmap</div>;
+	return (
+		<section className="container">
+			<RoadmapHeader />
+		</section>
+	);
 };
 
 export default Roadmap;
