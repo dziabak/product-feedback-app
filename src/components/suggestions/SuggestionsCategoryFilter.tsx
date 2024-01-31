@@ -2,7 +2,7 @@
 import CategoryLabel from "../ui/CategoryLabel";
 
 const SuggestionsCategoryFilter = () => {
-	const CATEGORY_DATA = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
+	const CATEGORY_DATA = ["all", "ui", "ux", "enhancement", "bug", "feature"];
 
 	return (
 		<div className="p-4 bg-white rounded-xl">

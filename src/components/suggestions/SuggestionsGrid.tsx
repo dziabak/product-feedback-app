@@ -11,6 +11,9 @@ import ErrorBlock from "../ui/ErrorBlock";
 const SuggestionsGrid = () => {
 	let content!: JSX.Element | JSX.Element[];
 
+	const CATEGORY_DATA = ["ui", "ux", "enhancement", "bug", "feature"];
+	const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+
 	const [sortingOption, setSortingOption] = useState("");
 
 	const { data, isFetching, isError } = useQuery({
@@ -82,7 +85,21 @@ const SuggestionsGrid = () => {
 				) => 0; // Default to no change in order
 		}
 
-		const sortedData = [...data].sort(sortingFunction);
+		// const filteredData = data.filter((item) => {
+		// 	return selectedFilters.some((filter) => item.category.includes(filter));
+		// });
+
+		const filteredData = data.filter((item) => {
+			// If no filters are selected, show all categories
+			if (selectedFilters.length === 0) {
+				return true;
+			}
+
+			// Return filtered categories
+			return selectedFilters.some((filter) => item.category.includes(filter));
+		});
+
+		const sortedData = [...filteredData].sort(sortingFunction);
 
 		content = sortedData.map((feedback) => (
 			<FeedbackTile
@@ -119,8 +136,41 @@ const SuggestionsGrid = () => {
 		</form>
 	);
 
+	const filterHandler: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+		const clickedFilter = (e.target as HTMLButtonElement).innerHTML;
+
+		if (selectedFilters.includes(clickedFilter)) {
+			// Remove items
+			setSelectedFilters((prevFilters) =>
+				prevFilters.filter((filter) => filter !== clickedFilter)
+			);
+		} else {
+			// Add items
+			setSelectedFilters((prevFilters) => [...prevFilters, clickedFilter]);
+		}
+	};
+
+	let filter = (
+		<div className="p-4 bg-white rounded-xl">
+			{["all", ...CATEGORY_DATA].map((item) => (
+				<button
+					onClick={filterHandler}
+					key={item}
+					className={`px-3 py-2 m-1 text-xs font-semibold transition-colors rounded-xl ${
+						selectedFilters.includes(item) ||
+						(selectedFilters.length === 0 && item === "all")
+							? "bg-c-light-blue text-white"
+							: "bg-c-gray text-c-light-blue hover:bg-c-light-blue hover:text-white"
+					}`}>
+					{item}
+				</button>
+			))}
+		</div>
+	);
+
 	return (
 		<div className="space-y-4">
+			{filter}
 			{sort}
 			{content}
 		</div>
