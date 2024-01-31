@@ -92,6 +92,7 @@ const SuggestionsGrid = () => {
 				description={feedback.description}
 				title={feedback.title}
 				upvotes={feedback.upvotes}
+				status={feedback.status}
 			/>
 		));
 	}

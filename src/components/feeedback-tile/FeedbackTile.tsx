@@ -1,5 +1,7 @@
 // BUILT-IN IMPORTS
 import { Link } from "react-router-dom";
+// INTERNAL IMPORTS
+import { capitalizeString } from "../../utils/helpers";
 
 const FeedbackTile = ({
 	upvotes,
@@ -7,23 +9,36 @@ const FeedbackTile = ({
 	title,
 	description,
 	comments,
-}: {
+}: // status,
+{
 	upvotes: number;
 	category: string;
 	title: string;
 	description: string;
 	comments: number;
+	status: string;
 }) => {
-	function capitalizeFirstLetter(str: string) {
-		return str.charAt(0).toUpperCase() + str.slice(1);
-	}
-
-	const categoryCapitalized = capitalizeFirstLetter(category)
+	const categoryCapitalized = capitalizeString(category);
+	// const statusCapitalized = capitalizeString(status);
 
 	return (
 		<Link
 			to="/feedback-details"
 			className="flex items-center justify-between px-8 py-4 rounded-lg bg-white">
+			{/* {status !== "suggestion" && (
+				<div>
+					{status === "" && <div className="w-full h-2 rounded-tl-lg rounded-tr-lg bg-c-orange"></div>}
+					{status === "" && <div className="w-full h-2 rounded-tl-lg rounded-tr-lg bg-c-orange"></div>}
+					{status === "" && <div className="w-full h-2 rounded-tl-lg rounded-tr-lg bg-c-orange"></div>}
+					<div className="flex items-center">
+						{status === "" && <div className="w-1 p-1 mr-3 rounded-full bg-c-orange"></div>}
+						{status === "" && <div className="w-1 p-1 mr-3 rounded-full bg-c-orange"></div>}
+						{status === "" && <div className="w-1 p-1 mr-3 rounded-full bg-c-orange"></div>}
+						<p className="text-c-dark-gray">{statusCapitalized}</p>
+					</div>
+				</div>
+			)} */}
+
 			<div className="flex items-start space-x-12">
 				<button className="flex flex-col items-center p-2 space-y-2 text-xs font-bold rounded-lg bg-c-gray text-c-light-blue">
 					<svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
