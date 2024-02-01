@@ -8,22 +8,24 @@ const FeedbackTile = ({
 	category,
 	title,
 	description,
-	comments,
+	commentsNumber,
+	id,
 }: // status,
 {
 	upvotes: number;
 	category: string;
 	title: string;
 	description: string;
-	comments: number;
+	commentsNumber: number;
 	status: string;
+	id: number;
 }) => {
 	const categoryCapitalized = capitalizeString(category);
 	// const statusCapitalized = capitalizeString(status);
 
 	return (
 		<Link
-			to="/feedback-details"
+			to={`/feedback/${id}`}
 			className="flex items-center justify-between px-8 py-4 rounded-lg bg-white">
 			{/* {status !== "suggestion" && (
 				<div>
@@ -68,10 +70,10 @@ const FeedbackTile = ({
 						fillRule="nonzero"
 					/>
 				</svg>
-				{comments === undefined ? (
+				{commentsNumber === undefined ? (
 					<p className="font-bold text-c-dark-blue">0</p>
 				) : (
-					<p className="font-bold text-c-dark-blue">{comments}</p>
+					<p className="font-bold text-c-dark-blue">{commentsNumber}</p>
 				)}
 			</div>
 		</Link>

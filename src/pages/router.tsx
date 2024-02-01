@@ -12,7 +12,7 @@ export const router = createBrowserRouter([
 		element: <RootLayout />,
 		children: [
 			{ path: "/", element: <Suggestions /> },
-			{ path: "/:feedbackId", element: <FeedbackDetail /> },
+			{ path: "/feedback/:feedbackId", element: <FeedbackDetail /> },
 			{ path: "/roadmap", element: <Roadmap /> },
 		],
 	},

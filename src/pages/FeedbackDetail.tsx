@@ -1,7 +1,12 @@
-const FeedbackDetail = () => {
-  return (
-    <div>FeedbackDetail</div>
-  )
-}
+// INTERNAL IMPORTS
+import FeedbackDetailView from "../components/feedback-detail/FeedbackDetailView";
 
-export default FeedbackDetail
+const FeedbackDetail = () => {
+	return (
+		<div>
+			<FeedbackDetailView />
+		</div>
+	);
+};
+
+export default FeedbackDetail;

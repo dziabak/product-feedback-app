@@ -67,3 +67,27 @@ export const fetchWithoutSuggestionsData = async () => {
 
 	return withoutSuggestionsData;
 };
+
+export const fetchFeedbackItemData = async ({
+	id,
+}: {
+	id: string | undefined;
+}) => {
+	const response = await fetch("../data.json");
+
+	if (!response.ok) {
+		const error = new Error("Data could not be fetched!");
+		throw error;
+	}
+
+	const allFeedbackData: FeedbackData = await response.json();
+
+	const feedbackItemData = allFeedbackData.productRequests.filter(
+		(feedback) => {
+			// const niceUrl = makeNiceUrl(item.title);
+			return feedback.id.toString() === id;
+		}
+	);
+
+	return feedbackItemData;
+};

@@ -105,8 +105,9 @@ const SuggestionsGrid = () => {
 		content = sortedData.map((feedback) => (
 			<FeedbackTile
 				key={feedback.id}
+				id={feedback.id}
 				category={feedback.category}
-				comments={feedback.comments?.length}
+				commentsNumber={feedback.comments?.length}
 				description={feedback.description}
 				title={feedback.title}
 				upvotes={feedback.upvotes}
