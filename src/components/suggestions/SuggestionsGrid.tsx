@@ -7,6 +7,7 @@ import { fetchOnlySuggestionsData } from "../../lib/http";
 import FeedbackTile from "../feeedback-tile/FeedbackTile";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
+import SuggestionsNoFeedbackData from "./SuggestionsNoFeedbackData";
 
 const SuggestionsGrid = () => {
 	let content!: JSX.Element | JSX.Element[];
@@ -112,6 +113,10 @@ const SuggestionsGrid = () => {
 				status={feedback.status}
 			/>
 		));
+
+		if (sortedData.length === 0) {
+			content = <SuggestionsNoFeedbackData />;
+		}
 	}
 
 	const handleSortingForm: React.FormEventHandler<HTMLFormElement> = (e) => {
