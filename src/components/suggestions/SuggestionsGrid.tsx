@@ -90,7 +90,7 @@ const SuggestionsGrid = () => {
 		// });
 
 		const filteredData = data.filter((item) => {
-			// If no filters are selected, show all categories
+			// Show all categories if no filters are selected
 			if (selectedFilters.length === 0) {
 				return true;
 			}
@@ -139,14 +139,20 @@ const SuggestionsGrid = () => {
 	const filterHandler: React.MouseEventHandler<HTMLButtonElement> = (e) => {
 		const clickedFilter = (e.target as HTMLButtonElement).innerHTML;
 
-		if (selectedFilters.includes(clickedFilter)) {
-			// Remove items
-			setSelectedFilters((prevFilters) =>
-				prevFilters.filter((filter) => filter !== clickedFilter)
-			);
+		if (clickedFilter === "all") {
+			// Clear all filters
+			setSelectedFilters([]);
 		} else {
-			// Add items
-			setSelectedFilters((prevFilters) => [...prevFilters, clickedFilter]);
+			// Toggle the clicked filter
+			setSelectedFilters((prevFilters) => {
+				if (prevFilters.includes(clickedFilter)) {
+					// Remove the clicked filter
+					return prevFilters.filter((filter) => filter !== clickedFilter);
+				} else {
+					// Add the clicked filter
+					return [...prevFilters, clickedFilter];
+				}
+			});
 		}
 	};
 
@@ -157,7 +163,7 @@ const SuggestionsGrid = () => {
 					onClick={filterHandler}
 					key={item}
 					className={`px-3 py-2 m-1 text-xs font-semibold transition-colors rounded-xl ${
-						selectedFilters.includes(item) ||
+						(selectedFilters.includes(item) && item !== "all") ||
 						(selectedFilters.length === 0 && item === "all")
 							? "bg-c-light-blue text-white"
 							: "bg-c-gray text-c-light-blue hover:bg-c-light-blue hover:text-white"
