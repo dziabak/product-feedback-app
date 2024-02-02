@@ -43,28 +43,16 @@ const SuggestionsGrid = () => {
 
 		switch (sortingOption) {
 			case "most-upvotes":
-				sortingFunction = (
-					a: SingleProductRequestsData,
-					b: SingleProductRequestsData
-				) => b.upvotes - a.upvotes;
+				sortingFunction = (a, b) => b.upvotes - a.upvotes;
 				break;
 			case "least-upvotes":
-				sortingFunction = (
-					a: SingleProductRequestsData,
-					b: SingleProductRequestsData
-				) => a.upvotes - b.upvotes;
+				sortingFunction = (a, b) => a.upvotes - b.upvotes;
 				break;
 			case "most-comments":
-				sortingFunction = (
-					a: SingleProductRequestsData,
-					b: SingleProductRequestsData
-				) => b.comments?.length - a.comments?.length;
+				sortingFunction = (a, b) => b.comments?.length - a.comments?.length;
 				break;
 			case "least-comments":
-				sortingFunction = (
-					a: SingleProductRequestsData,
-					b: SingleProductRequestsData
-				) => {
+				sortingFunction = (a, b) => {
 					const aCommentsLength = a.comments ? a.comments.length : undefined;
 					const bCommentsLength = b.comments ? b.comments.length : undefined;
 
@@ -80,10 +68,7 @@ const SuggestionsGrid = () => {
 				};
 				break;
 			default:
-				sortingFunction = (
-					_a: SingleProductRequestsData,
-					_b: SingleProductRequestsData
-				) => 0; // Default to no change in order
+				sortingFunction = (_a, _b) => 0; // Default to no change in order
 		}
 
 		// const filteredData = data.filter((item) => {

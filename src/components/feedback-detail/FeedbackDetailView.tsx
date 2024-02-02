@@ -10,6 +10,7 @@ import FeedbackDetailsHeader from "./FeedbackDetailsHeader";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
 import FeedbackDetailsComment from "./FeedbackDetailsComment";
+import AddComment from "./AddComment";
 
 const FeedbackDetailView = () => {
 	const params = useParams();
@@ -87,7 +88,9 @@ const FeedbackDetailView = () => {
 						{lengths[0].commentsLength} Comments and {lengths[0].repliesLength}{" "}
 						Replies
 					</p>
-                    { data[0].comments === undefined && <p className="mb-8 text-lg font-bold">Be the first to comment!</p>}
+					{data[0].comments === undefined && (
+						<p className="mb-8 text-lg font-bold">Be the first to comment!</p>
+					)}
 					{data[0].comments !== undefined &&
 						data[0].comments.map((item) => (
 							<FeedbackDetailsComment
@@ -104,32 +107,35 @@ const FeedbackDetailView = () => {
 		);
 	}
 
-	let newComments = (
-		<div className="mt-4 pb-12">
-			<div className="flex flex-col px-8 py-4 rounded-lg bg-white">
-				<p className="mb-8 text-lg font-bold">Add Comment</p>
-				<textarea
-					name="details"
-					id="details"
-					className="p-6 rounded-md bg-c-light-gray"
-					placeholder="Type your comment here"
-				/>
-				<div className="flex items-center justify-between py-8">
-					<p className="text-c-dark-gray">250 characters left</p>
-					<button className="px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-magenta text-white hover:bg-c-magenta/75">
-						Post Comment
-					</button>
-				</div>
-			</div>
-		</div>
-	);
+	// let newComments = (
+	// 	<div className="mt-4 pb-12">
+	// 		<div className="flex flex-col px-8 py-4 rounded-lg bg-white">
+	// 			<p className="mb-8 text-lg font-bold">Add Comment</p>
+	// 			<textarea
+	// 				name="details"
+	// 				id="details"
+	// 				minLength={50}
+	// 				maxLength={250}
+	// 				className="p-6 rounded-md bg-c-light-gray max-h-32"
+	// 				placeholder="Type your comment here"
+	// 			/>
+	// 			<div className="flex items-center justify-between py-8">
+	// 				<p className="text-c-dark-gray">250 characters left</p>
+	// 				<button className="px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-magenta text-white hover:bg-c-magenta/75">
+	// 					Post Comment
+	// 				</button>
+	// 			</div>
+	// 		</div>
+	// 	</div>
+	// );
 
 	return (
 		<div className="container">
 			<FeedbackDetailsHeader />
 			{content}
 			{comments}
-			{newComments}
+			{/* {newComments} */}
+			<AddComment />
 		</div>
 	);
 };
