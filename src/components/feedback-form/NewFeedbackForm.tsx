@@ -1,7 +1,14 @@
+// BUILT-IN IMPORTS
+import { Link } from "react-router-dom";
+
 const NewFeedbackForm = () => {
+	const submitFormHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
+		e.preventDefault();
+	};
+
 	return (
 		<div className="p-8 rounded-lg bg-white w-[540px]">
-			<form className="space-y-4">
+			<form onSubmit={submitFormHandler} className="space-y-4">
 				<div className="flex flex-col space-y-2">
 					<label htmlFor="title">
 						<p className="text-sm font-bold text-c-dark-blue">Feedback Title</p>
@@ -49,14 +56,16 @@ const NewFeedbackForm = () => {
 					<textarea
 						name="details"
 						id="details"
-						className="rounded-md bg-c-light-gray"
+						className="p-3 rounded-md bg-c-light-gray"
 					/>
 				</div>
 
 				<div className="flex justify-end pt-8 space-x-4">
-					<button className="px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-dark-blue text-white hover:bg-c-dark-blue/75">
+					<Link
+						to=".."
+						className="px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-dark-blue text-white hover:bg-c-dark-blue/75">
 						Cancel
-					</button>
+					</Link>
 					<button className="px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-magenta text-white hover:bg-c-magenta/75">
 						Add Feedback
 					</button>
