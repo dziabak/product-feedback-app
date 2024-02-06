@@ -1,5 +1,6 @@
-// BUILT-IN IMPORTS
-import { Link } from "react-router-dom";
+// INTERNAL IMPORTS
+import LinkButton from "../ui/LinkButton";
+import GenericButton from "../ui/GenericButton";
 
 const NewFeedbackForm = () => {
 	const submitFormHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
@@ -61,14 +62,8 @@ const NewFeedbackForm = () => {
 				</div>
 
 				<div className="flex justify-end pt-8 space-x-4">
-					<Link
-						to=".."
-						className="px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-dark-blue text-white hover:bg-c-dark-blue/75">
-						Cancel
-					</Link>
-					<button className="px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-magenta text-white hover:bg-c-magenta/75">
-						Add Feedback
-					</button>
+					<LinkButton linkTo=".." color="dark-blue" text="Cancel" />
+					<GenericButton text="Add Feedback" color="magenta" />
 				</div>
 			</form>
 		</div>

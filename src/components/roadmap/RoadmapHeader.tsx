@@ -1,13 +1,13 @@
 // BUILT-IN IMPORTS
 import { Link } from "react-router-dom";
+// INTENRAL IMPORTS
+import LinkButton from "../ui/LinkButton";
 
 const RoadmapHeader = () => {
 	return (
-		<div className="flex justify-between p-4 rounded-lg bg-c-dark-blue">
+		<div className="flex justify-between items-center p-4 rounded-lg bg-c-dark-blue">
 			<div className="flex flex-col space-y-2">
-				<Link
-					to="/"
-					className="flex items-center text-sm font-bold text-white">
+				<Link to="/" className="flex items-center text-sm font-bold text-white">
 					<svg
 						className="mr-2"
 						width="7"
@@ -25,9 +25,11 @@ const RoadmapHeader = () => {
 				</Link>
 				<p className="mr-8 text-2xl font-bold text-white">Roadmap</p>
 			</div>
-			<button className="px-6 py-3 text-sm font-bold rounded-lg bg-c-magenta text-white">
-				<Link to="/new-feedback">+ Add Feedback</Link>
-			</button>
+			<LinkButton
+				linkTo="/new-feedback"
+				color="magenta"
+				text="+ Add Feedback"
+			/>
 		</div>
 	);
 };
