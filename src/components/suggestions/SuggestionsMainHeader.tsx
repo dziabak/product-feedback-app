@@ -6,7 +6,7 @@ const SuggestionsMainHeader = () => {
 	return (
 		<div className="flex justify-between p-4 rounded-lg bg-c-dark-blue">
 			<div className="flex items-center">
-				<img src={headerIcon} alt="" className="mr-4"/>
+				<img src={headerIcon} alt="Icon of a lightbulb" className="mr-4"/>
 				<p className="mr-8 text-lg font-bold text-white">6 Suggestion</p>
 				<p className="text-sm text-white">
 					Sort by: <span className="font-bold">Most Upvotes</span>
