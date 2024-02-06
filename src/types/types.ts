@@ -40,3 +40,14 @@ export type ProductRequestsData = {
 }[];
 
 export type SingleProductRequestsData = ProductRequestsData[number];
+
+export type Comment = {
+	id: number;
+	content: string;
+	user: { image: string; name: string; username: string };
+	replies?: {
+		content: string;
+		replyingTo: string;
+		user: { image: string; name: string; username: string };
+	}[];
+};

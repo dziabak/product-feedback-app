@@ -1,7 +1,11 @@
 // BUILT-IN IMPORTS
 import { Link } from "react-router-dom";
 // INTERNAL IMPORTS
-import { capitalizeString } from "../../utils/helpers";
+import { Comment } from "../../types/types";
+import {
+	capitalizeString,
+	getTotalCommentsAndRepliesNumberFromReplyData,
+} from "../../utils/helpers";
 import commentIcon from "../../assets/icons/icon-comments.svg";
 
 const FeedbackTile = ({
@@ -11,6 +15,7 @@ const FeedbackTile = ({
 	description,
 	commentsNumber,
 	id,
+	replyData,
 }: {
 	upvotes: number;
 	category: string;
@@ -19,8 +24,11 @@ const FeedbackTile = ({
 	commentsNumber: number;
 	status: string;
 	id: number;
+	replyData?: Comment[];
 }) => {
 	const categoryCapitalized = capitalizeString(category);
+	const totalComments =
+		getTotalCommentsAndRepliesNumberFromReplyData(replyData);
 
 	return (
 		<div className="flex justify-between px-8 py-6 rounded-lg bg-white">
@@ -60,7 +68,7 @@ const FeedbackTile = ({
 					{commentsNumber === undefined ? (
 						<p className="font-bold text-c-dark-blue">0</p>
 					) : (
-						<p className="font-bold text-c-dark-blue">{commentsNumber}</p>
+						<p className="font-bold text-c-dark-blue">{totalComments}</p>
 					)}
 				</div>
 			</Link>
