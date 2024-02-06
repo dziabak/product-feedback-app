@@ -1,5 +1,7 @@
 // BUILT-IN IMPORTS
 import { Link } from "react-router-dom";
+// INTERNAL IMPORTS
+import GenericButton from "../ui/GenericButton";
 
 const FeedbackDetailsHeader = () => {
 	return (
@@ -22,9 +24,7 @@ const FeedbackDetailsHeader = () => {
 				</svg>
 				Go Back
 			</Link>
-			<button className="px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-light-blue text-white hover:bg-c-light-blue/75">
-				Edit Feedback
-			</button>
+			<GenericButton text="Edit Feedback" color="light-blue" />
 		</div>
 	);
 };

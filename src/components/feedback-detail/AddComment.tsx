@@ -1,5 +1,7 @@
 // BUILT-IN IMPORTS
 import { useRef, useState } from "react";
+// INTERNAL IMPORTS
+import GenericButton from "../ui/GenericButton";
 
 const AddComment = () => {
 	const characterCountBaseValue = 250;
@@ -18,10 +20,15 @@ const AddComment = () => {
 		}
 	};
 
+	const postCommentHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
+		e.preventDefault();
+	};
+
 	return (
 		<div className="mt-4 pb-12">
 			<form
 				id="details"
+				onSubmit={postCommentHandler}
 				className="flex flex-col px-8 py-4 rounded-lg bg-white">
 				<p className="mb-8 text-lg font-bold">Add Comment</p>
 				<textarea
@@ -36,9 +43,7 @@ const AddComment = () => {
 				/>
 				<div className="flex items-center justify-between py-8">
 					<p className="text-c-dark-gray">{characterCount} characters left</p>
-					<button className="px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-magenta text-white hover:bg-c-magenta/75">
-						Post Comment
-					</button>
+					<GenericButton text="Post Comment" color="magenta" />
 				</div>
 			</form>
 		</div>
