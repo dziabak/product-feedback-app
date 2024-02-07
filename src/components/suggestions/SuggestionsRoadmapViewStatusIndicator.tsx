@@ -20,9 +20,9 @@ const SuggestionsRoadmapViewStatusIndicator = ({
 				{color === "aqua" && (
 					<div className="w-1 p-1 mr-3 rounded-full bg-c-aqua"></div>
 				)}
-				<p className="text-c-light-blue">{status}</p>
+				<p className="text-c-light-blue dark:text-c-light-gray">{status}</p>
 			</div>
-			<p className="font-bold text-c-light-blue">{value}</p>
+			<p className="font-bold text-c-light-blue dark:text-c-light-gray">{value}</p>
 		</div>
 	);
 };

@@ -1,6 +1,7 @@
 // INTERNAL IMPORTS
 import SuggestionsRoadmapViewHeader from "./SuggestionsRoadmapViewHeader";
 import SuggestionsRoadmapViewStatusIndicator from "./SuggestionsRoadmapViewStatusIndicator";
+import BackgroundFrame from "../ui/BackgroundFrame";
 
 const SuggestionsRoadmapView = () => {
 	const STATUS_DATA = [
@@ -10,19 +11,21 @@ const SuggestionsRoadmapView = () => {
 	];
 
 	return (
-		<div className="flex flex-col justify-between p-4 bg-white rounded-xl">
-			<SuggestionsRoadmapViewHeader />
-			<div className="space-y-1">
-				{STATUS_DATA.map((item) => (
-					<SuggestionsRoadmapViewStatusIndicator
-						status={item.status}
-						value={item.value}
-						color={item.color}
-						key={item.status}
-					/>
-				))}
+		<BackgroundFrame>
+			<div className="flex flex-col justify-between">
+				<SuggestionsRoadmapViewHeader />
+				<div className="space-y-1">
+					{STATUS_DATA.map((item) => (
+						<SuggestionsRoadmapViewStatusIndicator
+							status={item.status}
+							value={item.value}
+							color={item.color}
+							key={item.status}
+						/>
+					))}
+				</div>
 			</div>
-		</div>
+		</BackgroundFrame>
 	);
 };
 
