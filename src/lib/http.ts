@@ -1,16 +1,16 @@
 // EXTERNAL IMPORTS
 import { QueryClient } from "@tanstack/react-query";
 // INTERNAL IMPORTS
-import { FeedbackData } from "../types/types";
+import { FeedbackData, ProductRequestsData } from "../types/types";
 
 export const queryClient = new QueryClient();
 
 export const fetchAllFeedbackData = async () => {
-	const response = await fetch("../data.json");
-	// const response = await fetch(
-	// 	"https://data.json",
-	// 	{ method: "GET", headers: { "Content-Type": "application.json" } }
-	// );
+	// const response = await fetch("../data.json");
+	const response = await fetch(
+		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
+		{ method: "GET", headers: { "Content-Type": "application.json" } }
+	);
 
 	if (!response.ok) {
 		const error = new Error("Data could not be fetched!");
@@ -23,47 +23,43 @@ export const fetchAllFeedbackData = async () => {
 };
 
 export const fetchOnlySuggestionsData = async () => {
-	const response = await fetch("../data.json");
-	// const response = await fetch(
-	// 	"https://data.json",
-	// 	{ method: "GET", headers: { "Content-Type": "application.json" } }
-	// );
+	// const response = await fetch("../data.json");
+	const response = await fetch(
+		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
+		{ method: "GET", headers: { "Content-Type": "application.json" } }
+	);
 
 	if (!response.ok) {
 		const error = new Error("Data could not be fetched!");
 		throw error;
 	}
 
-	const allFeedbackData: FeedbackData = await response.json();
+	const allFeedbackData: ProductRequestsData = await response.json();
 
-	const onlySuggestionsData = allFeedbackData.productRequests.filter(
-		(feedback) => {
-			return feedback.status.includes("suggestion");
-		}
-	);
+	const onlySuggestionsData = allFeedbackData.filter((feedback) => {
+		return feedback.status.includes("suggestion");
+	});
 
 	return onlySuggestionsData;
 };
 
 export const fetchWithoutSuggestionsData = async () => {
-	const response = await fetch("../data.json");
-	// const response = await fetch(
-	// 	"https://data.json",
-	// 	{ method: "GET", headers: { "Content-Type": "application.json" } }
-	// );
+	// const response = await fetch("../data.json");
+	const response = await fetch(
+		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
+		{ method: "GET", headers: { "Content-Type": "application.json" } }
+	);
 
 	if (!response.ok) {
 		const error = new Error("Data could not be fetched!");
 		throw error;
 	}
 
-	const allFeedbackData: FeedbackData = await response.json();
+	const allFeedbackData: ProductRequestsData = await response.json();
 
-	const withoutSuggestionsData = allFeedbackData.productRequests.filter(
-		(feedback) => {
-			return !feedback.status.includes("suggestion");
-		}
-	);
+	const withoutSuggestionsData = allFeedbackData.filter((feedback) => {
+		return !feedback.status.includes("suggestion");
+	});
 
 	return withoutSuggestionsData;
 };
@@ -73,21 +69,23 @@ export const fetchFeedbackItemData = async ({
 }: {
 	id: string | undefined;
 }) => {
-	const response = await fetch("../data.json");
+	// const response = await fetch("../data.json");
+	const response = await fetch(
+		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
+		{ method: "GET", headers: { "Content-Type": "application.json" } }
+	);
 
 	if (!response.ok) {
 		const error = new Error("Data could not be fetched!");
 		throw error;
 	}
 
-	const allFeedbackData: FeedbackData = await response.json();
+	const allFeedbackData: ProductRequestsData = await response.json();
 
-	const feedbackItemData = allFeedbackData.productRequests.filter(
-		(feedback) => {
-			// const niceUrl = makeNiceUrl(item.title);
-			return feedback.id.toString() === id;
-		}
-	);
+	const feedbackItemData = allFeedbackData.filter((feedback) => {
+		// const niceUrl = makeNiceUrl(item.title);
+		return feedback.id.toString() === id;
+	});
 
 	return feedbackItemData;
 };
@@ -95,7 +93,7 @@ export const fetchFeedbackItemData = async ({
 export const createNewFeedback = async (feedbackData: any) => {
 	// Fetch existing data to determine the next index
 	const existingDataResponse = await fetch(
-		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/data.json"
+		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json"
 	);
 
 	if (!existingDataResponse.ok) {
@@ -107,7 +105,7 @@ export const createNewFeedback = async (feedbackData: any) => {
 	const lastIndex = Object.keys(existingData).length;
 
 	// Construct URL with the next index as the key
-	const url = `https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/data/${lastIndex}.json`;
+	const url = `https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests/${lastIndex}.json`;
 
 	// Send data to the constructed URL
 	const response = await fetch(url, {
