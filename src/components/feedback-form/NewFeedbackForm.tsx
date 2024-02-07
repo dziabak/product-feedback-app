@@ -1,10 +1,48 @@
+// EXTERNAL IMPORTS
+import { useMutation } from "@tanstack/react-query";
 // INTERNAL IMPORTS
+import { createNewFeedback } from "../../lib/http";
+import { generateRandomId } from "../../utils/helpers";
 import LinkButton from "../ui/LinkButton";
 import GenericButton from "../ui/GenericButton";
+import LoadingSpinner from "../ui/LoadingSpinner";
+import ErrorBlock from "../ui/ErrorBlock";
 
 const NewFeedbackForm = () => {
-	const submitFormHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
+	let utilityContent!: JSX.Element;
+
+	const { mutate, isPending, isError } = useMutation({
+		mutationFn: createNewFeedback,
+	});
+
+	if (isPending) {
+		utilityContent = <LoadingSpinner />;
+	}
+
+	if (isError) {
+		utilityContent = (
+			<ErrorBlock
+				errorHeader="There was an error"
+				errorMessage="Please try again later"
+			/>
+		);
+	}
+
+	const randomId = generateRandomId();
+
+	const submitFormHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		const formData = new FormData(e.currentTarget);
+		const data = Object.fromEntries(formData);
+		const feedbackData = {
+			...data,
+			id: randomId,
+			upvotes: 0,
+			comments: [],
+			status: "suggestion",
+		};
+
+		mutate(feedbackData);
 	};
 
 	return (
@@ -45,7 +83,7 @@ const NewFeedbackForm = () => {
 				</div>
 
 				<div className="flex flex-col space-y-2">
-					<label htmlFor="details">
+					<label htmlFor="description">
 						<p className="text-sm font-bold text-c-dark-blue">
 							Feedback Details
 						</p>
@@ -55,16 +93,18 @@ const NewFeedbackForm = () => {
 						</p>
 					</label>
 					<textarea
-						name="details"
-						id="details"
+						name="description"
+						id="description"
 						className="p-3 rounded-md bg-c-light-gray"
 					/>
 				</div>
-
-				<div className="flex justify-end pt-8 space-x-4">
-					<LinkButton linkTo=".." color="dark-blue" text="Cancel" />
-					<GenericButton text="Add Feedback" color="magenta" />
-				</div>
+				{utilityContent}
+				{!isPending && (
+					<div className="flex justify-end pt-8 space-x-4">
+						<LinkButton linkTo=".." color="dark-blue" text="Cancel" />
+						<GenericButton text="Add Feedback" color="magenta" />
+					</div>
+				)}
 			</form>
 		</div>
 	);

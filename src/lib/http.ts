@@ -91,3 +91,36 @@ export const fetchFeedbackItemData = async ({
 
 	return feedbackItemData;
 };
+
+export const createNewFeedback = async (feedbackData: any) => {
+	// Fetch existing data to determine the next index
+	const existingDataResponse = await fetch(
+		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/data.json"
+	);
+
+	if (!existingDataResponse.ok) {
+		const error = new Error("An error occurred while fetching existing data!");
+		throw error;
+	}
+
+	const existingData = await existingDataResponse.json();
+	const lastIndex = Object.keys(existingData).length;
+
+	// Construct URL with the next index as the key
+	const url = `https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/data/${lastIndex}.json`;
+
+	// Send data to the constructed URL
+	const response = await fetch(url, {
+		method: "PUT",
+		body: JSON.stringify(feedbackData),
+		headers: { "Content-Type": "application/json" },
+	});
+
+	if (!response.ok) {
+		const error = new Error("An error occurred while sending the data!");
+		throw error;
+	}
+
+	const feedback = await response.json();
+	return feedback;
+};
