@@ -75,8 +75,8 @@ const NewFeedbackForm = () => {
 						id="category"
 						className="p-3 rounded-md bg-c-light-gray">
 						<option value="feature">Feature</option>
-						<option value="UI">UI</option>
-						<option value="UX">UX</option>
+						<option value="ui">UI</option>
+						<option value="ux">UX</option>
 						<option value="enhancement">Enhancement</option>
 						<option value="bug">Bug</option>
 					</select>
