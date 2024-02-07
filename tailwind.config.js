@@ -13,6 +13,7 @@ export default {
 				"c-orange": "#F49F85",
 				"c-aqua": "#62BCFA",
 				"c-magenta": "#AD1FEA",
+				"c-red": "#D73737",
 				"c-dark-background": "#181D35",
 				"c-dark-frame": "#232A4D",
 				"c-dark-header": "#13172A",

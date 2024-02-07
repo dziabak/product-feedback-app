@@ -1,8 +1,10 @@
 // EXTERNAL IMPORTS
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 // INTERNAL IMPORTS
 import { createNewFeedback } from "../../lib/http";
 import { generateRandomId } from "../../utils/helpers";
+import { queryClient } from "../../lib/http";
 import LinkButton from "../ui/LinkButton";
 import GenericButton from "../ui/GenericButton";
 import LoadingSpinner from "../ui/LoadingSpinner";
@@ -11,8 +13,14 @@ import ErrorBlock from "../ui/ErrorBlock";
 const NewFeedbackForm = () => {
 	let utilityContent!: JSX.Element;
 
+	const navigate = useNavigate();
+
 	const { mutate, isPending, isError } = useMutation({
 		mutationFn: createNewFeedback,
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ["feedback"] });
+			navigate("/");
+		},
 	});
 
 	if (isPending) {

@@ -1,6 +1,6 @@
 // EXTERNAL IMPORTS
 import { QueryClient } from "@tanstack/react-query";
-// INTERNAL IMPORTS
+// TYPES
 import { FeedbackData, ProductRequestsData } from "../types/types";
 
 export const queryClient = new QueryClient();
@@ -121,4 +121,39 @@ export const createNewFeedback = async (feedbackData: any) => {
 
 	const feedback = await response.json();
 	return feedback;
+};
+
+export const deleteFeedback = async ({ id }: { id: any }) => {
+	// Fetch all feedback data
+	const existingDataResponse = await fetch(
+		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
+		{ method: "GET", headers: { "Content-Type": "application.json" } }
+	);
+
+	if (!existingDataResponse.ok) {
+		throw new Error("Data could not be fetched!");
+	}
+
+	let allFeedbackData: ProductRequestsData = await existingDataResponse.json();
+
+	// Filter out the item with the provided ID
+	const updatedFeedbackData = allFeedbackData.filter(
+		(feedback) => feedback.id.toString() !== id
+	);
+
+	// Update the data in Firebase
+	const updateResponse = await fetch(
+		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
+		{
+			method: "PUT",
+			body: JSON.stringify(updatedFeedbackData),
+			headers: { "Content-Type": "application/json" },
+		}
+	);
+
+	if (!updateResponse.ok) {
+		throw new Error("An error occurred while updating the data!");
+	}
+
+	return updateResponse.json();
 };

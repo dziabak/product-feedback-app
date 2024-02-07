@@ -14,6 +14,7 @@ export const router = createBrowserRouter([
 		children: [
 			{ path: "/", element: <Suggestions /> },
 			{ path: "/feedback/:feedbackId", element: <FeedbackDetail /> },
+			{ path: "/feedback/:feedbackId/edit", element: <NewFeedback /> },
 			{ path: "/roadmap", element: <Roadmap /> },
 			{ path: "/new-feedback", element: <NewFeedback /> },
 		],
