@@ -1,7 +1,7 @@
-const EditFeedback = () => {
-  return (
-    <div>EditFeedback</div>
-  )
-}
+import EditFeedbackForm from "../components/feedback-form/EditFeedbackForm";
 
-export default EditFeedback
+const EditFeedback = () => {
+	return <EditFeedbackForm />;
+};
+
+export default EditFeedback;

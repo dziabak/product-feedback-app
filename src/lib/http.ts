@@ -152,6 +152,44 @@ export const deleteFeedback = async ({ id }: { id: any }) => {
 	);
 
 	if (!updateResponse.ok) {
+		throw new Error("An error occurred while deleting the data!");
+	}
+
+	return updateResponse.json();
+};
+
+export const editFeedback = async ({ id, event }: { id: any; event: any }) => {
+	// Fetch all feedback data
+	const existingDataResponse = await fetch(
+		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
+		{ method: "GET", headers: { "Content-Type": "application.json" } }
+	);
+
+	if (!existingDataResponse.ok) {
+		throw new Error("Data could not be fetched!");
+	}
+
+	let allFeedbackData: ProductRequestsData = await existingDataResponse.json();
+
+	// Filter out the item with the provided ID
+	const updatedFeedbackData = allFeedbackData.filter(
+		(feedback) => feedback.id.toString() === id
+	);
+
+	const currentFeedbackItemIndex = allFeedbackData.indexOf(updatedFeedbackData[0]);
+	const editedFeedback = {...updatedFeedbackData[0], ...event}
+
+	// Update the data in Firebase
+	const updateResponse = await fetch(
+		`https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests/${currentFeedbackItemIndex}.json`,
+		{
+			method: "PUT",
+			body: JSON.stringify(editedFeedback),
+			headers: { "Content-Type": "application/json" },
+		}
+	);
+
+	if (!updateResponse.ok) {
 		throw new Error("An error occurred while updating the data!");
 	}
 

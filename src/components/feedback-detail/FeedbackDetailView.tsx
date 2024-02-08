@@ -1,6 +1,6 @@
 // BUILT-IN IMPORTS
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 // EXTERNAL IMPORTS
 import { useQuery, useMutation } from "@tanstack/react-query";
 // INTERNAL IMPORTS
@@ -139,6 +139,11 @@ const FeedbackDetailView = () => {
 				className="p-2 bg-c-red text-white rounded-lg">
 				Delete
 			</button>
+			<Link
+				to={`/feedback/${params.feedbackId}/edit`}
+				className="p-2 bg-c-light-blue text-white rounded-lg">
+				Edit
+			</Link>
 			{isDeleting && deletingModal}
 			{content}
 			{comments}
