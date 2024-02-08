@@ -97,7 +97,7 @@ const FeedbackDetailView = () => {
 					{data[0].comments !== undefined &&
 						data[0].comments.map((item) => (
 							<FeedbackDetailsComment
-								key={item.content}
+								key={item.id}
 								content={item.content}
 								image={item.user.image}
 								name={item.user.name}
@@ -147,7 +147,7 @@ const FeedbackDetailView = () => {
 			{isDeleting && deletingModal}
 			{content}
 			{comments}
-			<AddComment />
+			<AddComment id={params.feedbackId} />
 		</div>
 	);
 };

@@ -176,8 +176,10 @@ export const editFeedback = async ({ id, event }: { id: any; event: any }) => {
 		(feedback) => feedback.id.toString() === id
 	);
 
-	const currentFeedbackItemIndex = allFeedbackData.indexOf(updatedFeedbackData[0]);
-	const editedFeedback = {...updatedFeedbackData[0], ...event}
+	const currentFeedbackItemIndex = allFeedbackData.indexOf(
+		updatedFeedbackData[0]
+	);
+	const editedFeedback = { ...updatedFeedbackData[0], ...event };
 
 	// Update the data in Firebase
 	const updateResponse = await fetch(
@@ -194,4 +196,61 @@ export const editFeedback = async ({ id, event }: { id: any; event: any }) => {
 	}
 
 	return updateResponse.json();
+};
+
+export const addNewComment = async ({
+	id,
+	comment,
+}: {
+	id: any;
+	comment: any;
+}) => {
+	// Fetch all feedback data
+	const existingDataResponse = await fetch(
+		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
+		{ method: "GET", headers: { "Content-Type": "application.json" } }
+	);
+
+	if (!existingDataResponse.ok) {
+		throw new Error("Data could not be fetched!");
+	}
+
+	let allFeedbackData: ProductRequestsData = await existingDataResponse.json();
+
+	// Filter out the item with the provided ID
+	const updatedFeedbackData = allFeedbackData.filter(
+		(feedback) => feedback.id.toString() === id
+	);
+	const currentFeedbackItemIndex = allFeedbackData.indexOf(
+		updatedFeedbackData[0]
+	);
+
+	const addCommentToData = (currentData: any, commentToAdd: any) => {
+		if (!Array.isArray(currentData.comments)) {
+			currentData.comments = [commentToAdd];
+		} else {
+			currentData.comments.push(commentToAdd);
+		}
+		return currentData;
+	};
+
+	const newDataWithComment = addCommentToData(updatedFeedbackData[0], comment);
+
+	// Construct URL with the next index as the key
+	const url = `https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests/${currentFeedbackItemIndex}.json`;
+
+	// Send data to the constructed URL
+	const response = await fetch(url, {
+		method: "PUT",
+		body: JSON.stringify(newDataWithComment),
+		headers: { "Content-Type": "application/json" },
+	});
+
+	if (!response.ok) {
+		const error = new Error("An error occurred while sending the data!");
+		throw error;
+	}
+
+	const feedbackComment = await response.json();
+	return feedbackComment;
 };
