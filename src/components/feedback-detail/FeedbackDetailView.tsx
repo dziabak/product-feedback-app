@@ -1,10 +1,12 @@
 // BUILT-IN IMPORTS
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 // EXTERNAL IMPORTS
 import { useQuery, useMutation } from "@tanstack/react-query";
 // INTERNAL IMPORTS
 import { fetchFeedbackItemData, deleteFeedback } from "../../lib/http";
 import { getTotalCommentsAndRepliesNumberFromFullDataSet } from "../../utils/helpers";
+import { queryClient } from "../../lib/http";
 import FeedbackTile from "../feeedback-tile/FeedbackTile";
 import FeedbackDetailsHeader from "./FeedbackDetailsHeader";
 import LoadingSpinner from "../ui/LoadingSpinner";
@@ -14,18 +16,40 @@ import AddComment from "./AddComment";
 
 const FeedbackDetailView = () => {
 	const params = useParams();
+	const navigate = useNavigate();
 
 	let content!: JSX.Element | JSX.Element[];
 	let comments!: JSX.Element | JSX.Element[];
+
+	const [isDeleting, setIsDeleting] = useState(false);
 
 	const { data, isFetching, isError } = useQuery({
 		queryKey: ["feedbackItem", params.feedbackId],
 		queryFn: () => fetchFeedbackItemData({ id: params.feedbackId }),
 	});
 
-	const { mutate } = useMutation({
+	const {
+		mutate,
+		isPending,
+		isError: isErrorDeleting,
+	} = useMutation({
 		mutationFn: deleteFeedback,
+		onSuccess: () => {
+			queryClient.invalidateQueries({
+				queryKey: ["feedback"],
+				refetchType: "none",
+			});
+			navigate("/");
+		},
 	});
+
+	const handleStartDelete = () => {
+		setIsDeleting(true);
+	};
+
+	const handleStopDelete = () => {
+		setIsDeleting(false);
+	};
 
 	const handleDeleteFeedback = () => {
 		mutate({ id: params.feedbackId });
@@ -85,14 +109,37 @@ const FeedbackDetailView = () => {
 			</div>
 		);
 	}
+
+	const deletingModal = (
+		<div className="p-4 space-y-2">
+			<p>Do you want to delete this feedback</p>
+			{isPending && <p>Deleting. Please wait...</p>}
+			{!isPending && (
+				<div className="space-x-2">
+					<button
+						onClick={handleStopDelete}
+						className="p-2 bg-c-light-blue text-white rounded-lg">
+						Cancel
+					</button>
+					<button
+						onClick={handleDeleteFeedback}
+						className="p-2 bg-c-red text-white rounded-lg">
+						Delete
+					</button>
+				</div>
+			)}
+			{isErrorDeleting && <p>There was an error. Please try again later.</p>}
+		</div>
+	);
 	return (
 		<div className="container">
 			<FeedbackDetailsHeader />
 			<button
-				onClick={handleDeleteFeedback}
+				onClick={handleStartDelete}
 				className="p-2 bg-c-red text-white rounded-lg">
 				Delete
 			</button>
+			{isDeleting && deletingModal}
 			{content}
 			{comments}
 			<AddComment />
