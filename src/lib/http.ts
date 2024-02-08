@@ -254,3 +254,90 @@ export const addNewComment = async ({
 	const feedbackComment = await response.json();
 	return feedbackComment;
 };
+
+export const addCommentReply = async ({
+	postId,
+	commentId,
+	commentReply,
+}: {
+	postId: any;
+	commentId: any;
+	commentReply: any;
+}) => {
+	// Fetch all feedback data
+	const existingDataResponse = await fetch(
+		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
+		{ method: "GET", headers: { "Content-Type": "application.json" } }
+	);
+
+	if (!existingDataResponse.ok) {
+		throw new Error("Data could not be fetched!");
+	}
+
+	let allFeedbackData: ProductRequestsData = await existingDataResponse.json();
+
+	// Filter out the item with the provided ID
+	const updatedFeedbackData = allFeedbackData.filter(
+		(feedback) => feedback.id.toString() === postId
+	);
+
+	const updatedReplyData = updatedFeedbackData[0].comments.filter(
+		(comment) => comment.id === commentId
+	);
+
+	const currentFeedbackItemIndex = allFeedbackData.indexOf(
+		updatedFeedbackData[0]
+	);
+
+	const currentReplyItemIndex = updatedFeedbackData[0].comments.indexOf(
+		updatedReplyData[0]
+	);
+
+	const addReplyToData = (mainObject: any, replyToAdd: any) => {
+		// Check if the replies array exists
+		if (!mainObject.comments || !Array.isArray(mainObject.comments)) {
+			// If not, create the comments array and add the reply to it
+			mainObject.comments = [
+				{
+					replies: [replyToAdd],
+				},
+			];
+		} else {
+			// Find the first comment and its replies array
+			const firstComment = mainObject.comments[currentReplyItemIndex];
+			const repliesArray = firstComment.replies;
+
+			// Check if the replies array exists
+			if (!repliesArray || !Array.isArray(repliesArray)) {
+				// If not, create the replies array and add the reply to it
+				firstComment.replies = [replyToAdd];
+			} else {
+				// If yes, push the reply to the replies array
+				repliesArray.push(replyToAdd);
+			}
+		}
+
+		// Return the updated mainObject
+		return mainObject;
+	};
+
+	const newDataWithReply = addReplyToData(updatedFeedbackData[0], commentReply)
+
+	// Construct URL with the next index as the key
+	const url = `https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests/${currentFeedbackItemIndex}.json`;
+
+	// Send data to the constructed URL
+	const response = await fetch(url, {
+		method: "PUT",
+		body: JSON.stringify(newDataWithReply),
+		headers: { "Content-Type": "application/json" },
+	});
+
+	if (!response.ok) {
+		const error = new Error("An error occurred while sending the data!");
+		throw error;
+	}
+
+	const feedbackComment = await response.json();
+	return feedbackComment;
+};

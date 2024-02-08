@@ -103,6 +103,8 @@ const FeedbackDetailView = () => {
 								name={item.user.name}
 								username={item.user.username}
 								replyData={item.replies}
+								commentId={item.id}
+								postId={params.feedbackId}
 							/>
 						))}
 				</div>
