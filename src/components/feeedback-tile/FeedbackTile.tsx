@@ -1,11 +1,15 @@
 // BUILT-IN IMPORTS
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useToggle } from "usehooks-ts";
+import { useMutation } from "@tanstack/react-query";
 // INTERNAL IMPORTS
 import { Comment } from "../../types/types";
 import {
 	capitalizeString,
 	getTotalCommentsAndRepliesNumberFromReplyData,
 } from "../../utils/helpers";
+import { queryClient, addUpvote } from "../../lib/http";
 import commentIcon from "../../assets/icons/icon-comments.svg";
 
 const FeedbackTile = ({
@@ -30,10 +34,54 @@ const FeedbackTile = ({
 	const totalComments =
 		getTotalCommentsAndRepliesNumberFromReplyData(replyData);
 
+	const [upvotesCount, setUpvotesCount] = useState(upvotes);
+	const [canAddUpvote, toggleCanAddUpvote] = useToggle(true);
+
+	const { mutate } = useMutation({
+		mutationFn: addUpvote,
+		onSuccess: () => {
+			// setCharacterCount(characterCountBaseValue);
+			queryClient.invalidateQueries();
+		},
+	});
+
+	// console.log(id);
+
+	// const addUpvoteHandler = () => {
+	// 	if (canAddUpvote) {
+	// 		setUpvotesCount((prevUpvotesCount) => prevUpvotesCount + 1);
+	// 		toggleCanAddUpvote();
+	// 	} else {
+	// 		setUpvotesCount((prevUpvotesCount) => prevUpvotesCount - 1);
+	// 		toggleCanAddUpvote();
+	// 	}
+	// 	mutate({ id: id, updatedFeedback: upvotesCount });
+	// };
+
+	const addUpvoteHandler = () => {
+		if (canAddUpvote) {
+			setUpvotesCount((prevUpvotesCount) => {
+				const newCount = prevUpvotesCount + 1;
+				mutate({ id: id, updatedFeedback: newCount }); // Move mutate inside the updater function
+				return newCount; // Return the new count
+			});
+			toggleCanAddUpvote();
+		} else {
+			setUpvotesCount((prevUpvotesCount) => {
+				const newCount = prevUpvotesCount - 1;
+				mutate({ id: id, updatedFeedback: newCount }); // Move mutate inside the updater function
+				return newCount; // Return the new count
+			});
+			toggleCanAddUpvote();
+		}
+	};
+
 	return (
 		<div className="flex justify-between px-8 py-6 rounded-lg bg-white dark:bg-c-dark-frame">
 			<div className="w-min mr-8">
-				<button className="flex flex-col items-center w-10 p-3 space-y-2 text-xs font-bold rounded-lg transition-colors bg-c-gray text-c-light-blue hover:bg-c-light-blue/25 dark:text-c-dark-blue dark:hover:bg-c-gray/90">
+				<button
+					onClick={addUpvoteHandler}
+					className="flex flex-col items-center w-10 p-3 space-y-2 text-xs font-bold rounded-lg transition-colors bg-c-gray text-c-light-blue hover:bg-c-light-blue/25 dark:text-c-dark-blue dark:hover:bg-c-gray/90">
 					<svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M1 6l4-4 4 4"
@@ -43,7 +91,7 @@ const FeedbackTile = ({
 							fillRule="evenodd"
 						/>
 					</svg>
-					<p>{upvotes}</p>
+					<p>{upvotesCount}</p>
 				</button>
 			</div>
 			<Link
