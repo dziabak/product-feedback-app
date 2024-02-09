@@ -2,6 +2,7 @@ import { useToggle } from "usehooks-ts";
 import { useMutation } from "@tanstack/react-query";
 import { queryClient } from "../../lib/http";
 import { addCommentReply } from "../../lib/http";
+import { useRef } from "react";
 
 const FeedbackDetailsCommentReply = ({
 	image,
@@ -10,7 +11,7 @@ const FeedbackDetailsCommentReply = ({
 	content,
 	replyingTo,
 	commentId,
-	postId
+	postId,
 }: {
 	image: string;
 	name: string;
@@ -20,12 +21,14 @@ const FeedbackDetailsCommentReply = ({
 	commentId: string;
 	postId: string;
 }) => {
+	const replyRef = useRef<HTMLTextAreaElement>(null);
 	const [isReplying, toggleIsReplying] = useToggle();
 
 	const { mutate } = useMutation({
 		mutationFn: addCommentReply,
 		onSuccess: () => {
-			// textAreaRef.current!.value = "";
+			replyRef.current!.value = "";
+			toggleIsReplying();
 			// setCharacterCount(characterCountBaseValue);
 			queryClient.invalidateQueries();
 		},
@@ -57,10 +60,10 @@ const FeedbackDetailsCommentReply = ({
 						<p className="text-sm text-c-dark-gray">{username}</p>
 					</div>
 					<button
-							onClick={toggleIsReplying}
-							className="text-sm font-bold text-c-light-blue hover:text-c-light-blue/75">
-							Reply
-						</button>
+						onClick={toggleIsReplying}
+						className="text-sm font-bold text-c-light-blue hover:text-c-light-blue/75">
+						Reply
+					</button>
 				</div>
 				<p className="text-c-dark-gray">
 					<span className="font-bold text-c-magenta">{replyingTo}</span>
@@ -70,6 +73,7 @@ const FeedbackDetailsCommentReply = ({
 			{isReplying && (
 				<form id="content" onSubmit={postReplyHandler}>
 					<textarea
+						ref={replyRef}
 						name="content"
 						id="content"
 						className="p-6 rounded-md bg-c-light-gray max-h-32"></textarea>

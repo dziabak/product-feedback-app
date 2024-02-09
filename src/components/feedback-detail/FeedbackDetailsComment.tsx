@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { queryClient } from "../../lib/http";
 import { addCommentReply } from "../../lib/http";
 import FeedbackDetailsCommentReply from "./FeedbackDetailsCommentReply";
+import { useRef } from "react";
 
 const FeedbackDetailsComment = ({
 	image,
@@ -27,14 +28,14 @@ const FeedbackDetailsComment = ({
 	commentId: string;
 	postId: string;
 }) => {
-	// console.log(replyData);
-	// const [isReplying, setIsReplying] = useState(false);
+	const replyRef = useRef<HTMLTextAreaElement>(null);
 	const [isReplying, toggleIsReplying] = useToggle();
 
 	const { mutate } = useMutation({
 		mutationFn: addCommentReply,
 		onSuccess: () => {
-			// textAreaRef.current!.value = "";
+			replyRef.current!.value = "";
+			toggleIsReplying();
 			// setCharacterCount(characterCountBaseValue);
 			queryClient.invalidateQueries();
 		},
@@ -79,6 +80,7 @@ const FeedbackDetailsComment = ({
 			{isReplying && (
 				<form id="content" onSubmit={postReplyHandler}>
 					<textarea
+						ref={replyRef}
 						name="content"
 						id="content"
 						className="p-6 rounded-md bg-c-light-gray max-h-32"></textarea>
