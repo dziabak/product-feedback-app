@@ -89,6 +89,24 @@ const EditFeedbackForm = () => {
 						</select>
 					</div>
 					<div className="flex flex-col space-y-2">
+						<label htmlFor="status">
+							<p className="text-sm font-bold text-c-dark-blue">Status</p>
+							<p className="text-sm text-c-dark-gray">
+								Choose a status for your feedback
+							</p>
+						</label>
+						<select
+							name="status"
+							id="status"
+							defaultValue={data[0].status}
+							className="p-3 rounded-md bg-c-light-gray">
+							<option value="suggestion">Suggestion</option>
+							<option value="planned">Planned</option>
+							<option value="in-progress">In-progress</option>
+							<option value="live">Live</option>
+						</select>
+					</div>
+					<div className="flex flex-col space-y-2">
 						<label htmlFor="description">
 							<p className="text-sm font-bold text-c-dark-blue">
 								Feedback Details
