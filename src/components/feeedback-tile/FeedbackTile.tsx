@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useToggle } from "usehooks-ts";
 import { useMutation } from "@tanstack/react-query";
+import clsx from "clsx";
 // INTERNAL IMPORTS
 import { Comment } from "../../types/types";
 import {
@@ -45,19 +46,6 @@ const FeedbackTile = ({
 		},
 	});
 
-	// console.log(id);
-
-	// const addUpvoteHandler = () => {
-	// 	if (canAddUpvote) {
-	// 		setUpvotesCount((prevUpvotesCount) => prevUpvotesCount + 1);
-	// 		toggleCanAddUpvote();
-	// 	} else {
-	// 		setUpvotesCount((prevUpvotesCount) => prevUpvotesCount - 1);
-	// 		toggleCanAddUpvote();
-	// 	}
-	// 	mutate({ id: id, updatedFeedback: upvotesCount });
-	// };
-
 	const addUpvoteHandler = () => {
 		if (canAddUpvote) {
 			setUpvotesCount((prevUpvotesCount) => {
@@ -81,7 +69,9 @@ const FeedbackTile = ({
 			<div className="w-min mr-8">
 				<button
 					onClick={addUpvoteHandler}
-					className="flex flex-col items-center w-10 p-3 space-y-2 text-xs font-bold rounded-lg transition-colors bg-c-gray text-c-light-blue hover:bg-c-light-blue/25 dark:text-c-dark-blue dark:hover:bg-c-gray/90">
+					className={clsx(
+						"group flex flex-col items-center w-10 p-3 space-y-2 text-xs font-bold rounded-lg transition-colors bg-c-gray text-c-light-blue hover:bg-c-light-blue/25 dark:text-c-dark-blue dark:hover:bg-c-gray/90", !canAddUpvote && "bg-c-light-blue text-white hover:text-c-light-blue hover:bg-c-light-blue/25"
+					)}>
 					<svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M1 6l4-4 4 4"
@@ -89,6 +79,7 @@ const FeedbackTile = ({
 							strokeWidth="2"
 							fill="none"
 							fillRule="evenodd"
+							className={clsx(!canAddUpvote && "stroke-white group-hover:stroke-c-light-blue transition-colors")}
 						/>
 					</svg>
 					<p>{upvotesCount}</p>
