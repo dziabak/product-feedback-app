@@ -10,7 +10,7 @@ const RoadmapGrid = () => {
 	let content!: JSX.Element | JSX.Element[];
 
 	const { data, isFetching, isError } = useQuery({
-		queryKey: ["feedback"],
+		queryKey: ["feedback", "roadmap"],
 		queryFn: fetchWithoutSuggestionsData,
 	});
 

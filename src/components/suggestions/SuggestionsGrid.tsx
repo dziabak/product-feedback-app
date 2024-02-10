@@ -18,7 +18,7 @@ const SuggestionsGrid = () => {
 	const [sortingOption, setSortingOption] = useState("");
 
 	const { data, isFetching, isError } = useQuery({
-		queryKey: ["feedback"],
+		queryKey: ["feedback", "suggestions"],
 		queryFn: fetchOnlySuggestionsData,
 	});
 
