@@ -2,7 +2,11 @@
 import { ProductRequestsData, Comment } from "../types/types";
 
 export const capitalizeString = (string: string) => {
-	return string.charAt(0).toUpperCase() + string.slice(1);
+	if (string.length <= 2) {
+		return string.toUpperCase();
+	} else {
+		return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+	}
 };
 
 export const getTotalCommentsAndRepliesNumberFromFullDataSet = (
