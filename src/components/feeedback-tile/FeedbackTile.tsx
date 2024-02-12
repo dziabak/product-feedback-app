@@ -13,6 +13,17 @@ import {
 import { queryClient, addUpvote } from "../../lib/http";
 import commentIcon from "../../assets/icons/icon-comments.svg";
 
+type FeedbackTile = {
+	upvotes: number;
+	category: string;
+	title: string;
+	description: string;
+	commentsNumber: number;
+	status: string;
+	id: string;
+	replyData?: Comment[];
+};
+
 const FeedbackTile = ({
 	upvotes,
 	category,
@@ -21,16 +32,7 @@ const FeedbackTile = ({
 	commentsNumber,
 	id,
 	replyData,
-}: {
-	upvotes: number;
-	category: string;
-	title: string;
-	description: string;
-	commentsNumber: number;
-	status: string;
-	id: number;
-	replyData?: Comment[];
-}) => {
+}: FeedbackTile) => {
 	const categoryCapitalized = capitalizeString(category);
 	const totalComments =
 		getTotalCommentsAndRepliesNumberFromReplyData(replyData);
@@ -70,7 +72,9 @@ const FeedbackTile = ({
 				<button
 					onClick={addUpvoteHandler}
 					className={clsx(
-						"group flex flex-col items-center w-10 p-3 space-y-2 text-xs font-bold rounded-lg transition-colors bg-c-gray text-c-light-blue hover:bg-c-light-blue/25 dark:text-c-dark-blue dark:hover:bg-c-gray/90", !canAddUpvote && "bg-c-light-blue text-white hover:text-c-light-blue hover:bg-c-light-blue/25"
+						"group flex flex-col items-center w-10 p-3 space-y-2 text-xs font-bold rounded-lg transition-colors bg-c-gray text-c-light-blue hover:bg-c-light-blue/25 dark:text-c-dark-blue dark:hover:bg-c-gray/90",
+						!canAddUpvote &&
+							"bg-c-light-blue text-white hover:text-c-light-blue hover:bg-c-light-blue/25"
 					)}>
 					<svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
 						<path
@@ -79,7 +83,10 @@ const FeedbackTile = ({
 							strokeWidth="2"
 							fill="none"
 							fillRule="evenodd"
-							className={clsx(!canAddUpvote && "stroke-white group-hover:stroke-c-light-blue transition-colors")}
+							className={clsx(
+								!canAddUpvote &&
+									"stroke-white group-hover:stroke-c-light-blue transition-colors"
+							)}
 						/>
 					</svg>
 					<p>{upvotesCount}</p>

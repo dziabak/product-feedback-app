@@ -84,7 +84,7 @@ export const fetchFeedbackItemData = async ({
 
 	const feedbackItemData = allFeedbackData.filter((feedback) => {
 		// const niceUrl = makeNiceUrl(item.title);
-		return feedback.id.toString() === id;
+		return feedback.id === id;
 	});
 
 	return feedbackItemData;
@@ -138,7 +138,7 @@ export const deleteFeedback = async ({ id }: { id: any }) => {
 
 	// Filter out the item with the provided ID
 	const updatedFeedbackData = allFeedbackData.filter(
-		(feedback) => feedback.id.toString() !== id
+		(feedback) => feedback.id !== id
 	);
 
 	// Update the data in Firebase
@@ -173,7 +173,7 @@ export const editFeedback = async ({ id, event }: { id: any; event: any }) => {
 
 	// Filter out the item with the provided ID
 	const updatedFeedbackData = allFeedbackData.filter(
-		(feedback) => feedback.id.toString() === id
+		(feedback) => feedback.id === id
 	);
 
 	const currentFeedbackItemIndex = allFeedbackData.indexOf(
@@ -219,7 +219,7 @@ export const addNewComment = async ({
 
 	// Filter out the item with the provided ID
 	const updatedFeedbackData = allFeedbackData.filter(
-		(feedback) => feedback.id.toString() === id
+		(feedback) => feedback.id === id
 	);
 	const currentFeedbackItemIndex = allFeedbackData.indexOf(
 		updatedFeedbackData[0]
@@ -278,7 +278,7 @@ export const addCommentReply = async ({
 
 	// Filter out the item with the provided ID
 	const updatedFeedbackData = allFeedbackData.filter(
-		(feedback) => feedback.id.toString() === postId
+		(feedback) => feedback.id === postId
 	);
 
 	const updatedReplyData = updatedFeedbackData[0].comments.filter(
@@ -357,7 +357,7 @@ export const addUpvote = async ({ id, updatedFeedback }: { id: any; updatedFeedb
 
 	// Filter out the item with the provided ID
 	const updatedFeedbackData = allFeedbackData.filter(
-		(feedback) => feedback.id.toString() === id
+		(feedback) => feedback.id === id
 	);
 
 	// console.log(updatedFeedbackData[0]);

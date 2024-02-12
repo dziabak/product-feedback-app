@@ -1,13 +1,13 @@
 export type FeedbackData = {
 	productRequests: {
-		id: number;
+		id: string;
 		title: string;
 		category: string;
 		upvotes: number;
 		status: string;
 		description: string;
 		comments: {
-			id: number;
+			id: string;
 			content: string;
 			user: { image: string; name: string; username: string };
 			replies?: {
@@ -21,14 +21,14 @@ export type FeedbackData = {
 };
 
 export type ProductRequestsData = {
-	id: number;
+	id: string;
 	title: string;
 	category: string;
 	upvotes: number;
 	status: string;
 	description: string;
 	comments: {
-		id: number;
+		id: string;
 		content: string;
 		user: { image: string; name: string; username: string };
 		replies?: {
@@ -42,7 +42,7 @@ export type ProductRequestsData = {
 export type SingleProductRequestsData = ProductRequestsData[number];
 
 export type Comment = {
-	id: number;
+	id: string;
 	content: string;
 	user: { image: string; name: string; username: string };
 	replies?: {
