@@ -26,7 +26,7 @@ const RoadmapHeader = () => {
 				<p className="mr-8 text-2xl font-bold text-white">Roadmap</p>
 			</div>
 			<LinkButton
-				linkTo="/new-feedback"
+				linkTo="/roadmap/new-feedback"
 				color="magenta"
 				text="+ Add Feedback"
 			/>

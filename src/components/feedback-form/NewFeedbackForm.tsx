@@ -9,6 +9,7 @@ import LinkButton from "../ui/LinkButton";
 import GenericButton from "../ui/GenericButton";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
+import FeedbackFormLayout from "./FeedbackFormLayout";
 
 const NewFeedbackForm = () => {
 	let utilityContent!: JSX.Element;
@@ -54,8 +55,11 @@ const NewFeedbackForm = () => {
 	};
 
 	return (
-		<div className="p-8 rounded-lg bg-white w-[540px]">
+		<FeedbackFormLayout>
 			<form onSubmit={submitFormHandler} className="space-y-4">
+				<p className="py-4 font-bold text-2xl text-c-dark-blue">
+					Create New Feedback
+				</p>
 				<div className="flex flex-col space-y-2">
 					<label htmlFor="title">
 						<p className="text-sm font-bold text-c-dark-blue">Feedback Title</p>
@@ -114,7 +118,7 @@ const NewFeedbackForm = () => {
 					</div>
 				)}
 			</form>
-		</div>
+		</FeedbackFormLayout>
 	);
 };
 

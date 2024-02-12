@@ -6,6 +6,7 @@ import LinkButton from "../ui/LinkButton";
 // import GenericButton from "../ui/GenericButton";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
+import FeedbackFormLayout from "./FeedbackFormLayout";
 
 const EditFeedbackForm = () => {
 	const navigate = useNavigate();
@@ -19,7 +20,11 @@ const EditFeedbackForm = () => {
 		queryFn: () => fetchFeedbackItemData({ id: params.feedbackId }),
 	});
 
-	const { mutate, isPending: isPendingEdit, isError: isErrorEdit } = useMutation({
+	const {
+		mutate,
+		isPending: isPendingEdit,
+		isError: isErrorEdit,
+	} = useMutation({
 		mutationKey: ["feedbackItem"],
 		mutationFn: editFeedback,
 		onSuccess: () => {
@@ -50,7 +55,8 @@ const EditFeedbackForm = () => {
 
 	if (data) {
 		content = (
-			<div className="p-8 rounded-lg bg-white w-[540px]">
+			<div>
+				<p className="py-4 font-bold text-2xl text-c-dark-blue">Editing "{data[0].title}"</p>
 				<form onSubmit={editFormHandler} className="space-y-4">
 					<div className="flex flex-col space-y-2">
 						<label htmlFor="title">
@@ -92,7 +98,7 @@ const EditFeedbackForm = () => {
 						<label htmlFor="status">
 							<p className="text-sm font-bold text-c-dark-blue">Status</p>
 							<p className="text-sm text-c-dark-gray">
-								Choose a status for your feedback
+								Change feedback status
 							</p>
 						</label>
 						<select
@@ -132,13 +138,18 @@ const EditFeedbackForm = () => {
 							<button>Edit</button>
 						</div>
 					)}
-					{isErrorEdit && <p>There was an error while updating the data. Please try again later.</p>}
+					{isErrorEdit && (
+						<p>
+							There was an error while updating the data. Please try again
+							later.
+						</p>
+					)}
 				</form>
 			</div>
 		);
 	}
 
-	return <>{content}</>;
+	return <FeedbackFormLayout>{content}</FeedbackFormLayout>;
 };
 
 export default EditFeedbackForm;

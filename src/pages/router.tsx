@@ -13,7 +13,11 @@ export const router = createBrowserRouter([
 		path: "/",
 		element: <RootLayout />,
 		children: [
-			{ path: "/", element: <Suggestions /> },
+			{
+				path: "/",
+				element: <Suggestions />,
+				children: [{ path: "/new-feedback", element: <NewFeedback /> }],
+			},
 			{
 				path: "/feedback/:feedbackId",
 				element: <FeedbackDetail />,
@@ -21,8 +25,12 @@ export const router = createBrowserRouter([
 					{ path: "/feedback/:feedbackId/edit", element: <EditFeedback /> },
 				],
 			},
-			{ path: "/roadmap", element: <Roadmap /> },
-			{ path: "/new-feedback", element: <NewFeedback /> },
+			{
+				path: "/roadmap",
+				element: <Roadmap />,
+				children: [{ path: "/roadmap/new-feedback", element: <NewFeedback /> }],
+			},
+			// { path: "/new-feedback", element: <NewFeedback /> },
 		],
 	},
 ]);
