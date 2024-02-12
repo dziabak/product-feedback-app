@@ -6,6 +6,7 @@ export type FeedbackData = {
 		upvotes: number;
 		status: string;
 		description: string;
+		author: { image: string; name: string; username: string };
 		comments: {
 			id: string;
 			content: string;
@@ -27,6 +28,7 @@ export type ProductRequestsData = {
 	upvotes: number;
 	status: string;
 	description: string;
+	author: { image: string; name: string; username: string };
 	comments: {
 		id: string;
 		content: string;

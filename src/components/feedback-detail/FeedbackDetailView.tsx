@@ -20,6 +20,7 @@ const FeedbackDetailView = () => {
 
 	let content!: JSX.Element | JSX.Element[];
 	let comments!: JSX.Element | JSX.Element[];
+	let author!: JSX.Element | JSX.Element[];
 
 	const [isDeleting, setIsDeleting] = useState(false);
 
@@ -110,6 +111,33 @@ const FeedbackDetailView = () => {
 				</div>
 			</div>
 		);
+
+		author = (
+			<div className="px-8 py-4 mb-4 rounded-lg bg-white">
+				<div className="flex items-start">
+					<img
+						src={data[0].author.image}
+						alt="User photo"
+						className="w-12 mr-8 rounded-full"
+					/>
+					<div className="space-y-4">
+						<div className="flex items-center justify-between">
+							<div>
+								<p className="text-sm text-c-dark-gray">
+									by{" "}
+									<span className="font-bold text-base text-black">
+										{data[0].author.name}
+									</span>
+								</p>
+								<p className="text-sm text-c-dark-gray">
+									{data[0].author.username}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
 	}
 
 	const deletingModal = (
@@ -147,6 +175,7 @@ const FeedbackDetailView = () => {
 				Edit
 			</Link>
 			{isDeleting && deletingModal}
+			{author}
 			{content}
 			{comments}
 			<AddComment id={params.feedbackId} />

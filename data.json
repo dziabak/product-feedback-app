@@ -12,6 +12,11 @@
 			"upvotes": 112,
 			"status": "suggestion",
 			"description": "Easier to search for solutions based on a specific stack.",
+			"author": {
+				"image": "../assets/user-images/image-roxanne.jpg",
+				"name": "Roxanne Travis",
+				"username": "peppersprime32"
+			},
 			"comments": [
 				{
 					"id": "5iU8hMKt",
@@ -40,6 +45,11 @@
 			"upvotes": 99,
 			"status": "suggestion",
 			"description": "It would help people with light sensitivities and who prefer dark mode.",
+			"author": {
+				"image": "../assets/user-images/image-george.jpg",
+				"name": "George Partridge",
+				"username": "soccerviewer8"
+			},
 			"comments": [
 				{
 					"id": "FQqHjicd",
@@ -88,6 +98,11 @@
 			"upvotes": 65,
 			"status": "suggestion",
 			"description": "Challenge-specific Q&A would make for easy reference.",
+			"author": {
+				"image": "../assets/user-images/image-suzanne.jpg",
+				"name": "Suzanne Chang",
+				"username": "upbeat1811"
+			},
 			"comments": [
 				{
 					"id": "MXtG5LBD",
@@ -107,6 +122,11 @@
 			"upvotes": 51,
 			"status": "suggestion",
 			"description": "Images and screencasts can enhance comments on solutions.",
+			"author": {
+				"image": "../assets/user-images/image-jackson.jpg",
+				"name": "Jackson Barker",
+				"username": "countryspirit"
+			},
 			"comments": [
 				{
 					"id": "vWuvUonH",
@@ -135,6 +155,11 @@
 			"upvotes": 42,
 			"status": "suggestion",
 			"description": "Stay updated on comments and solutions other people post.",
+			"author": {
+				"image": "../assets/user-images/image-elijah.jpg",
+				"name": "Elijah Moss",
+				"username": "hexagon.bestagon"
+			},
 			"comments": [
 				{
 					"id": "1dHBp48f",
@@ -173,7 +198,12 @@
 			"category": "bug",
 			"upvotes": 3,
 			"status": "suggestion",
-			"description": "Challenge preview images are missing when you apply a filter."
+			"description": "Challenge preview images are missing when you apply a filter.",
+			"author": {
+				"image": "../assets/user-images/image-javier.jpg",
+				"name": "Javier Pollard",
+				"username": "warlikeduke"
+			}
 		},
 		{
 			"id": "MIYW6HLI",
@@ -182,6 +212,11 @@
 			"upvotes": 123,
 			"status": "planned",
 			"description": "It would be great to see a more detailed breakdown of solutions.",
+			"author": {
+				"image": "../assets/user-images/image-thomas.jpg",
+				"name": "Thomas Hood",
+				"username": "brawnybrave"
+			},
 			"comments": [
 				{
 					"id": "WklnDe1j",
@@ -210,6 +245,11 @@
 			"upvotes": 28,
 			"status": "planned",
 			"description": "Sequenced projects for different goals to help people improve.",
+			"author": {
+				"image": "../assets/user-images/image-ryan.jpg",
+				"name": "Ryan Welles",
+				"username": "voyager.344"
+			},
 			"comments": [
 				{
 					"id": "0JIpF91I",
@@ -229,6 +269,11 @@
 			"upvotes": 62,
 			"status": "in-progress",
 			"description": "Add ability to create professional looking portfolio from profile.",
+			"author": {
+				"image": "../assets/user-images/image-suzanne.jpg",
+				"name": "Suzanne Chang",
+				"username": "upbeat1811"
+			},
 			"comments": [
 				{
 					"id": "YOeL0Uq3",
@@ -248,6 +293,11 @@
 			"upvotes": 31,
 			"status": "in-progress",
 			"description": "Be able to bookmark challenges to take later on.",
+			"author": {
+				"image": "../assets/user-images/image-roxanne.jpg",
+				"name": "Roxanne Travis",
+				"username": "peppersprime32"
+			},
 			"comments": [
 				{
 					"id": "Maf1BrA8",
@@ -266,7 +316,12 @@
 			"category": "bug",
 			"upvotes": 9,
 			"status": "in-progress",
-			"description": "Screenshots of solutions with animations don’t display correctly."
+			"description": "Screenshots of solutions with animations don’t display correctly.",
+			"author": {
+				"image": "../assets/user-images/image-victoria.jpg",
+				"name": "Victoria Mejia",
+				"username": "arlen_the_marlin"
+			}
 		},
 		{
 			"id": "aqQRoryu",
@@ -275,6 +330,11 @@
 			"upvotes": 71,
 			"status": "live",
 			"description": "Small animations at specific points can add delight.",
+			"author": {
+				"image": "../assets/user-images/image-thomas.jpg",
+				"name": "Thomas Hood",
+				"username": "brawnybrave"
+			},
 			"comments": [
 				{
 					"id": "s98engYT",

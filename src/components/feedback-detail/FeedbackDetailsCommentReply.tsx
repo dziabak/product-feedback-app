@@ -19,7 +19,7 @@ const FeedbackDetailsCommentReply = ({
 	content: string;
 	replyingTo: string;
 	commentId: string;
-	postId: string;
+	postId: string | undefined;
 }) => {
 	const replyRef = useRef<HTMLTextAreaElement>(null);
 	const [isReplying, toggleIsReplying] = useToggle();
