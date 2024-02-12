@@ -21,6 +21,8 @@ export type FeedbackData = {
 	currentUser: { image: string; name: string; username: string };
 };
 
+export type CurrentUserData = { image: string; name: string; username: string };
+
 export type ProductRequestsData = {
 	id: string;
 	title: string;

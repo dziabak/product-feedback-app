@@ -1,9 +1,26 @@
 // EXTERNAL IMPORTS
 import { QueryClient } from "@tanstack/react-query";
 // TYPES
-import { FeedbackData, ProductRequestsData } from "../types/types";
+import { FeedbackData, ProductRequestsData, CurrentUserData } from "../types/types";
 
 export const queryClient = new QueryClient();
+
+export const fetchCurrentUserData = async () => {
+	// const response = await fetch("../data.json");
+	const response = await fetch(
+		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/currentUser.json",
+		{ method: "GET", headers: { "Content-Type": "application.json" } }
+	);
+
+	if (!response.ok) {
+		const error = new Error("Data could not be fetched!");
+		throw error;
+	}
+
+	const currentUserData: CurrentUserData = await response.json();
+
+	return currentUserData;
+};
 
 export const fetchAllFeedbackData = async () => {
 	// const response = await fetch("../data.json");
