@@ -1,9 +1,11 @@
 import { Outlet } from "react-router-dom";
+import { useDocumentTitle } from "usehooks-ts";
 // INTERNAL IMPORTS
 import SuggestionsNavigation from "../components/suggestions/SuggestionsNavigation";
 import SuggestionsMain from "../components/suggestions/SuggestionsMain";
 
 const Suggestions = () => {
+	useDocumentTitle("Suggestions | Feedback Board")
 	return (
 		<>
 			<Outlet />

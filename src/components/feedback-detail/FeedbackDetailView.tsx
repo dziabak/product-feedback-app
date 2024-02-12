@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 // EXTERNAL IMPORTS
 import { useQuery, useMutation } from "@tanstack/react-query";
+import { useDocumentTitle } from "usehooks-ts";
 // INTERNAL IMPORTS
 import { fetchFeedbackItemData, deleteFeedback } from "../../lib/http";
 import { getTotalCommentsAndRepliesNumberFromFullDataSet } from "../../utils/helpers";
@@ -15,6 +16,7 @@ import FeedbackDetailsComment from "./FeedbackDetailsComment";
 import AddComment from "./AddComment";
 
 const FeedbackDetailView = () => {
+	useDocumentTitle("Feedback Details | Feedback Board")
 	const params = useParams();
 	const navigate = useNavigate();
 
