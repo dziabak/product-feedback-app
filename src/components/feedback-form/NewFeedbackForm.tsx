@@ -49,6 +49,11 @@ const NewFeedbackForm = () => {
 			upvotes: 0,
 			comments: [],
 			status: "suggestion",
+			author: {
+				image: "../assets/user-images/image-zena.jpg",
+				name: "Zena Kelley",
+				username: "velvetround",
+			},
 		};
 
 		mutate(feedbackData);
