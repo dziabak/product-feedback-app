@@ -1,8 +1,8 @@
 // EXTERNAL IMPORTS
 import { useNavigate } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 // INTERNAL IMPORTS
-import { createNewFeedback } from "../../lib/http";
+import { createNewFeedback, fetchCurrentUserData } from "../../lib/http";
 import { generateRandomId } from "../../utils/helpers";
 import { queryClient } from "../../lib/http";
 import LinkButton from "../ui/LinkButton";
@@ -15,6 +15,11 @@ const NewFeedbackForm = () => {
 	let utilityContent!: JSX.Element;
 
 	const navigate = useNavigate();
+
+	const { data: currentUserData } = useQuery({
+		queryKey: ["user"],
+		queryFn: fetchCurrentUserData,
+	});
 
 	const { mutate, isPending, isError } = useMutation({
 		mutationFn: createNewFeedback,
@@ -49,11 +54,7 @@ const NewFeedbackForm = () => {
 			upvotes: 0,
 			comments: [],
 			status: "suggestion",
-			author: {
-				image: "../assets/user-images/image-zena.jpg",
-				name: "Zena Kelley",
-				username: "velvetround",
-			},
+			author: currentUserData,
 		};
 
 		mutate(feedbackData);
