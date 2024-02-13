@@ -9,6 +9,16 @@ export const capitalizeString = (string: string) => {
 	}
 };
 
+export const countTotalComments = (comments: Comment[]) => {
+	let totalComments = comments ? comments.length : 0;
+	if (comments) {
+		comments.forEach((comment) => {
+			totalComments += comment.replies ? comment.replies.length : 0;
+		});
+	}
+	return totalComments;
+};
+
 export const getTotalCommentsAndRepliesNumberFromFullDataSet = (
 	data: ProductRequestsData
 ) => {

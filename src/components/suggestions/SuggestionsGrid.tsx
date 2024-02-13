@@ -8,6 +8,7 @@ import FeedbackTile from "../feeedback-tile/FeedbackTile";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
 import SuggestionsNoFeedbackData from "./SuggestionsNoFeedbackData";
+import { countTotalComments } from "../../utils/helpers";
 
 const SuggestionsGrid = () => {
 	let content!: JSX.Element | JSX.Element[];
@@ -49,31 +50,22 @@ const SuggestionsGrid = () => {
 				sortingFunction = (a, b) => a.upvotes - b.upvotes;
 				break;
 			case "most-comments":
-				sortingFunction = (a, b) => b.comments?.length - a.comments?.length;
+				sortingFunction = (a, b) => {
+					const aTotalComments = countTotalComments(a.comments);
+					const bTotalComments = countTotalComments(b.comments);
+					return bTotalComments - aTotalComments;
+				};
 				break;
 			case "least-comments":
 				sortingFunction = (a, b) => {
-					const aCommentsLength = a.comments ? a.comments.length : undefined;
-					const bCommentsLength = b.comments ? b.comments.length : undefined;
-
-					if (aCommentsLength === undefined && bCommentsLength === undefined) {
-						return 0;
-					} else if (aCommentsLength === undefined) {
-						return -1;
-					} else if (bCommentsLength === undefined) {
-						return 1;
-					}
-
-					return aCommentsLength - bCommentsLength;
+					const aTotalComments = countTotalComments(a.comments);
+					const bTotalComments = countTotalComments(b.comments);
+					return aTotalComments - bTotalComments;
 				};
 				break;
 			default:
 				sortingFunction = (_a, _b) => 0; // Default to no change in order
 		}
-
-		// const filteredData = data.filter((item) => {
-		// 	return selectedFilters.some((filter) => item.category.includes(filter));
-		// });
 
 		const filteredData = data.filter((item) => {
 			// Show all categories if no filters are selected
