@@ -30,9 +30,9 @@ const RoadmapGridStatus = ({
 	));
 
 	return (
-		<div className="grid gap-4">
+		<div>
 			<RoadmapGridStatusHeader status={status} value={filteredData.length} />
-			{content}
+			<div className="grid gap-4">{content}</div>
 		</div>
 	);
 };

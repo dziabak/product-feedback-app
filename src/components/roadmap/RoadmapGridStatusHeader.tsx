@@ -11,7 +11,7 @@ const RoadmapGridStatusHeader = ({
 	const statusCapitalized = capitalizeString(status);
 
 	return (
-		<div>
+		<div className="my-4">
 			<p className="text-lg font-bold text-c-dark-blue">
 				{statusCapitalized} ({value})
 			</p>
