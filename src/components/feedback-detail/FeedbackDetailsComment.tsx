@@ -4,9 +4,9 @@ import { useMutation } from "@tanstack/react-query";
 import { queryClient } from "../../lib/http";
 import { addCommentReply } from "../../lib/http";
 import FeedbackDetailsCommentReply from "./FeedbackDetailsCommentReply";
-import { useRef } from "react";
 import clsx from "clsx";
 import useCurrentUserData from "../../hooks/useCurrentUserData";
+import useCharacterCountLimit from "../../hooks/useCharacterCountLimit";
 
 const FeedbackDetailsComment = ({
 	image,
@@ -30,17 +30,24 @@ const FeedbackDetailsComment = ({
 	commentId: string;
 	postId: string | undefined;
 }) => {
-	const replyRef = useRef<HTMLTextAreaElement>(null);
 	const [isReplying, toggleIsReplying] = useToggle();
 
 	const currentUserData = useCurrentUserData();
 
+	const {
+		textAreaRef,
+		textAreaInputHandler,
+		characterCount,
+		characterCountBaseValue,
+		setCharacterCount,
+	} = useCharacterCountLimit();
+
 	const { mutate } = useMutation({
 		mutationFn: addCommentReply,
 		onSuccess: () => {
-			replyRef.current!.value = "";
+			textAreaRef.current!.value = "";
 			toggleIsReplying();
-			// setCharacterCount(characterCountBaseValue);
+			setCharacterCount(characterCountBaseValue);
 			queryClient.invalidateQueries();
 		},
 	});
@@ -54,7 +61,6 @@ const FeedbackDetailsComment = ({
 			replyingTo: username,
 			user: currentUserData,
 		};
-		// console.log(reply);
 		mutate({ postId: postId, commentId: commentId, commentReply: reply });
 	};
 
@@ -74,7 +80,7 @@ const FeedbackDetailsComment = ({
 							Reply
 						</button>
 					</div>
-					<p className="text-c-dark-gray">{content}</p>
+					<p className="text-c-dark-gray break-all">{content}</p>
 				</div>
 			</div>
 			{isReplying && (
@@ -86,11 +92,18 @@ const FeedbackDetailsComment = ({
 						!isReplying && "opacity-0",
 						isReplying && "opacity-100"
 					)}>
-					<textarea
-						ref={replyRef}
-						name="content"
-						id="content"
-						className="max-h-24 w-full p-6 rounded-md bg-c-light-gray"></textarea>
+					<div className="w-full">
+						<textarea
+							name="content"
+							id="content"
+							ref={textAreaRef}
+							onChange={textAreaInputHandler}
+							minLength={1}
+							maxLength={characterCountBaseValue}
+							placeholder="Type your comment here"
+							className="min-h-24 max-h-32 w-full p-6 rounded-md bg-c-light-gray"></textarea>
+						<p className="text-c-dark-gray">{characterCount} characters left</p>
+					</div>
 					<button className="w-full px-6 py-3 text-sm font-bold whitespace-nowrap transition-colors rounded-lg bg-c-magenta text-white hover:bg-c-magenta/75 md:w-fit">
 						Post Reply
 					</button>
