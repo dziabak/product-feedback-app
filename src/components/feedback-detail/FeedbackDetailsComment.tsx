@@ -5,6 +5,7 @@ import { queryClient } from "../../lib/http";
 import { addCommentReply } from "../../lib/http";
 import FeedbackDetailsCommentReply from "./FeedbackDetailsCommentReply";
 import { useRef } from "react";
+import clsx from "clsx";
 
 const FeedbackDetailsComment = ({
 	image,
@@ -60,9 +61,9 @@ const FeedbackDetailsComment = ({
 
 	return (
 		<div className="w-full py-8 border-b last:border-0">
-			<div className="flex items-start">
+			<div className="flex items-start w-full">
 				<img src={image} alt="User photo" className="w-12 mr-8 rounded-full" />
-				<div className="space-y-4">
+				<div className="w-full space-y-4">
 					<div className="flex items-center justify-between">
 						<div>
 							<p className="font-bold">{name}</p>
@@ -78,13 +79,20 @@ const FeedbackDetailsComment = ({
 				</div>
 			</div>
 			{isReplying && (
-				<form id="content" onSubmit={postReplyHandler}>
+				<form
+					id="content"
+					onSubmit={postReplyHandler}
+					className={clsx(
+						"flex flex-col items-start mt-8 ml-20 space-y-4 transition-all duration-1000 md:flex-row md:space-y-0 md:space-x-4",
+						!isReplying && "opacity-0",
+						isReplying && "opacity-100"
+					)}>
 					<textarea
 						ref={replyRef}
 						name="content"
 						id="content"
-						className="p-6 rounded-md bg-c-light-gray max-h-32"></textarea>
-					<button className="px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-magenta text-white hover:bg-c-magenta/75">
+						className="max-h-24 w-full p-6 rounded-md bg-c-light-gray"></textarea>
+					<button className="w-full px-6 py-3 text-sm font-bold whitespace-nowrap transition-colors rounded-lg bg-c-magenta text-white hover:bg-c-magenta/75 md:w-fit">
 						Post Reply
 					</button>
 				</form>

@@ -51,33 +51,38 @@ const FeedbackDetailsCommentReply = ({
 		mutate({ postId: postId, commentId: commentId, commentReply: reply });
 	};
 	return (
-		<div className="flex items-start mt-8 ml-20">
-			<img src={image} alt="User photo" className="w-12 mr-8 rounded-full" />
-			<div className="space-y-4">
-				<div className="flex items-center justify-between">
-					<div>
-						<p className="font-bold">{name}</p>
-						<p className="text-sm text-c-dark-gray">{username}</p>
+		<div>
+			<div className="flex items-start mt-8 ml-20">
+				<img src={image} alt="User photo" className="w-12 mr-8 rounded-full" />
+				<div className="w-full space-y-4">
+					<div className="flex items-center justify-between">
+						<div>
+							<p className="font-bold">{name}</p>
+							<p className="text-sm text-c-dark-gray">{username}</p>
+						</div>
+						<button
+							onClick={toggleIsReplying}
+							className="text-sm font-bold text-c-light-blue hover:text-c-light-blue/75">
+							Reply
+						</button>
 					</div>
-					<button
-						onClick={toggleIsReplying}
-						className="text-sm font-bold text-c-light-blue hover:text-c-light-blue/75">
-						Reply
-					</button>
+					<p className="text-c-dark-gray">
+						<span className="font-bold text-c-magenta">{replyingTo} </span>
+						{content}
+					</p>
 				</div>
-				<p className="text-c-dark-gray">
-					<span className="font-bold text-c-magenta">{replyingTo}</span>
-					{content}
-				</p>
 			</div>
 			{isReplying && (
-				<form id="content" onSubmit={postReplyHandler}>
+				<form
+					id="content"
+					onSubmit={postReplyHandler}
+					className="flex flex-col items-start mt-8 ml-40 space-y-4 md:flex-row md:space-y-0 md:space-x-4">
 					<textarea
 						ref={replyRef}
 						name="content"
 						id="content"
-						className="p-6 rounded-md bg-c-light-gray max-h-32"></textarea>
-					<button className="px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-magenta text-white hover:bg-c-magenta/75">
+						className="max-h-24 w-full p-6 rounded-md bg-c-light-gray"></textarea>
+					<button className="w-full px-6 py-3 text-sm font-bold whitespace-nowrap transition-colors rounded-lg bg-c-magenta text-white hover:bg-c-magenta/75 md:w-fit">
 						Post Reply
 					</button>
 				</form>
