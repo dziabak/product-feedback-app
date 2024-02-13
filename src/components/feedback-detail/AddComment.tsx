@@ -1,15 +1,12 @@
 // BUILT-IN IMPORTS
-import { useMutation } from "@tanstack/react-query";
 import { addNewComment } from "../../lib/http";
-import { queryClient } from "../../lib/http";
 import { generateRandomId } from "../../utils/helpers";
 // INTERNAL IMPORTS
-import useCurrentUserData from "../../hooks/useCurrentUserData";
 import useCharacterCountLimit from "../../hooks/useCharacterCountLimit";
 
-const AddComment = ({ id }: { id: string | undefined }) => {
-	const currentUserData = useCurrentUserData();
+import useAddComment from "../../hooks/useAddComment";
 
+const AddComment = ({ id }: { id: string | undefined }) => {
 	const {
 		textAreaRef,
 		textAreaInputHandler,
@@ -18,32 +15,20 @@ const AddComment = ({ id }: { id: string | undefined }) => {
 		setCharacterCount,
 	} = useCharacterCountLimit();
 
-	const { mutate } = useMutation({
-		mutationFn: addNewComment,
-		onSuccess: () => {
-			textAreaRef.current!.value = "";
-			setCharacterCount(characterCountBaseValue);
-			queryClient.invalidateQueries();
-		},
-	});
-
-	const postCommentHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
-		e.preventDefault();
-		const formData = new FormData(e.currentTarget);
-		const data = Object.fromEntries(formData);
-		const comment = {
-			...data,
-			id: generateRandomId(),
-			user: currentUserData,
-		};
-		mutate({ id: id, comment: comment });
-	};
+	const { addCommentHandler } = useAddComment(
+		addNewComment,
+		{ id: generateRandomId() },
+		{ id: id },
+		textAreaRef,
+		setCharacterCount,
+		characterCountBaseValue
+	);
 
 	return (
 		<div className="mt-4 pb-12">
 			<form
 				id="content"
-				onSubmit={postCommentHandler}
+				onSubmit={addCommentHandler}
 				className="flex flex-col px-8 py-4 rounded-lg bg-white">
 				<p className="mb-8 text-lg font-bold">Add Comment</p>
 				<textarea

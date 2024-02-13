@@ -1,12 +1,10 @@
 // import { useState } from "react";
 import { useToggle } from "usehooks-ts";
-import { useMutation } from "@tanstack/react-query";
-import { queryClient } from "../../lib/http";
 import { addCommentReply } from "../../lib/http";
 import FeedbackDetailsCommentReply from "./FeedbackDetailsCommentReply";
 import clsx from "clsx";
-import useCurrentUserData from "../../hooks/useCurrentUserData";
 import useCharacterCountLimit from "../../hooks/useCharacterCountLimit";
+import useAddComment from "../../hooks/useAddComment";
 
 const FeedbackDetailsComment = ({
 	image,
@@ -32,37 +30,23 @@ const FeedbackDetailsComment = ({
 }) => {
 	const [isReplying, toggleIsReplying] = useToggle();
 
-	const currentUserData = useCurrentUserData();
-
 	const {
 		textAreaRef,
 		textAreaInputHandler,
 		characterCount,
 		characterCountBaseValue,
 		setCharacterCount,
-	} = useCharacterCountLimit();
+	} = useCharacterCountLimit(isReplying);
 
-	const { mutate } = useMutation({
-		mutationFn: addCommentReply,
-		onSuccess: () => {
-			textAreaRef.current!.value = "";
-			toggleIsReplying();
-			setCharacterCount(characterCountBaseValue);
-			queryClient.invalidateQueries();
-		},
-	});
-
-	const postReplyHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
-		e.preventDefault();
-		const formData = new FormData(e.currentTarget);
-		const data = Object.fromEntries(formData);
-		const reply = {
-			...data,
-			replyingTo: username,
-			user: currentUserData,
-		};
-		mutate({ postId: postId, commentId: commentId, commentReply: reply });
-	};
+	const { addCommentHandler } = useAddComment(
+		addCommentReply,
+		{ replyingTo: username },
+		{ postId: postId, commentId: commentId },
+		textAreaRef,
+		setCharacterCount,
+		characterCountBaseValue,
+		toggleIsReplying,
+	);
 
 	return (
 		<div className="w-full py-8 border-b last:border-0">
@@ -86,7 +70,7 @@ const FeedbackDetailsComment = ({
 			{isReplying && (
 				<form
 					id="content"
-					onSubmit={postReplyHandler}
+					onSubmit={addCommentHandler}
 					className={clsx(
 						"flex flex-col items-start mt-8 ml-20 space-y-4 transition-all duration-1000 md:flex-row md:space-y-0 md:space-x-4",
 						!isReplying && "opacity-0",

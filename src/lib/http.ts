@@ -275,11 +275,11 @@ export const addNewComment = async ({
 export const addCommentReply = async ({
 	postId,
 	commentId,
-	commentReply,
+	comment,
 }: {
 	postId: any;
 	commentId: any;
-	commentReply: any;
+	comment: any;
 }) => {
 	// Fetch all feedback data
 	const existingDataResponse = await fetch(
@@ -338,7 +338,7 @@ export const addCommentReply = async ({
 		return mainObject;
 	};
 
-	const newDataWithReply = addReplyToData(updatedFeedbackData[0], commentReply)
+	const newDataWithReply = addReplyToData(updatedFeedbackData[0], comment)
 
 	// Construct URL with the next index as the key
 	const url = `https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests/${currentFeedbackItemIndex}.json`;

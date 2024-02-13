@@ -1,9 +1,13 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const useCharacterCountLimit = () => {
+const useCharacterCountLimit = (isReplying?: boolean) => {
 	const characterCountBaseValue = 250;
 	const textAreaRef = useRef<HTMLTextAreaElement>(null);
 	const [characterCount, setCharacterCount] = useState(characterCountBaseValue);
+
+	useEffect(() => {
+		setCharacterCount(characterCountBaseValue);
+	}, [isReplying]);
 
 	const textAreaInputHandler = () => {
 		if (characterCount > textAreaRef.current!.value.length) {

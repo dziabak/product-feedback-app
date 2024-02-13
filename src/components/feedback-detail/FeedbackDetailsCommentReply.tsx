@@ -1,9 +1,7 @@
 import { useToggle } from "usehooks-ts";
-import { useMutation } from "@tanstack/react-query";
-import { queryClient } from "../../lib/http";
 import { addCommentReply } from "../../lib/http";
-import useCurrentUserData from "../../hooks/useCurrentUserData";
 import useCharacterCountLimit from "../../hooks/useCharacterCountLimit";
+import useAddComment from "../../hooks/useAddComment";
 
 const FeedbackDetailsCommentReply = ({
 	image,
@@ -24,37 +22,23 @@ const FeedbackDetailsCommentReply = ({
 }) => {
 	const [isReplying, toggleIsReplying] = useToggle();
 
-	const currentUserData = useCurrentUserData();
-
 	const {
 		textAreaRef,
 		textAreaInputHandler,
 		characterCount,
 		characterCountBaseValue,
 		setCharacterCount,
-	} = useCharacterCountLimit();
+	} = useCharacterCountLimit(isReplying);
 
-	const { mutate } = useMutation({
-		mutationFn: addCommentReply,
-		onSuccess: () => {
-			textAreaRef.current!.value = "";
-			toggleIsReplying();
-			setCharacterCount(characterCountBaseValue);
-			queryClient.invalidateQueries();
-		},
-	});
-
-	const postReplyHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
-		e.preventDefault();
-		const formData = new FormData(e.currentTarget);
-		const data = Object.fromEntries(formData);
-		const reply = {
-			...data,
-			replyingTo: username,
-			user: currentUserData,
-		};
-		mutate({ postId: postId, commentId: commentId, commentReply: reply });
-	};
+	const { addCommentHandler } = useAddComment(
+		addCommentReply,
+		{ replyingTo: username },
+		{ postId: postId, commentId: commentId },
+		textAreaRef,
+		setCharacterCount,
+		characterCountBaseValue,
+		toggleIsReplying
+	);
 	return (
 		<div>
 			<div className="flex items-start mt-8 ml-20">
@@ -80,7 +64,7 @@ const FeedbackDetailsCommentReply = ({
 			{isReplying && (
 				<form
 					id="content"
-					onSubmit={postReplyHandler}
+					onSubmit={addCommentHandler}
 					className="flex flex-col items-start mt-8 ml-40 space-y-4 md:flex-row md:space-y-0 md:space-x-4">
 					<div className="w-full">
 						<textarea
