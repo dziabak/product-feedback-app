@@ -3,6 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import { queryClient } from "../../lib/http";
 import { addCommentReply } from "../../lib/http";
 import { useRef } from "react";
+import useCurrentUserData from "../../hooks/useCurrentUserData";
 
 const FeedbackDetailsCommentReply = ({
 	image,
@@ -24,6 +25,8 @@ const FeedbackDetailsCommentReply = ({
 	const replyRef = useRef<HTMLTextAreaElement>(null);
 	const [isReplying, toggleIsReplying] = useToggle();
 
+	const currentUserData = useCurrentUserData();
+
 	const { mutate } = useMutation({
 		mutationFn: addCommentReply,
 		onSuccess: () => {
@@ -41,11 +44,7 @@ const FeedbackDetailsCommentReply = ({
 		const reply = {
 			...data,
 			replyingTo: username,
-			user: {
-				image: "../assets/user-images/image-zena.jpg",
-				name: "Zena Kelley",
-				username: "velvetround",
-			},
+			user: currentUserData,
 		};
 		// console.log(reply);
 		mutate({ postId: postId, commentId: commentId, commentReply: reply });

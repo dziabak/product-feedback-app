@@ -6,6 +6,7 @@ import { addCommentReply } from "../../lib/http";
 import FeedbackDetailsCommentReply from "./FeedbackDetailsCommentReply";
 import { useRef } from "react";
 import clsx from "clsx";
+import useCurrentUserData from "../../hooks/useCurrentUserData";
 
 const FeedbackDetailsComment = ({
 	image,
@@ -32,6 +33,8 @@ const FeedbackDetailsComment = ({
 	const replyRef = useRef<HTMLTextAreaElement>(null);
 	const [isReplying, toggleIsReplying] = useToggle();
 
+	const currentUserData = useCurrentUserData();
+
 	const { mutate } = useMutation({
 		mutationFn: addCommentReply,
 		onSuccess: () => {
@@ -49,11 +52,7 @@ const FeedbackDetailsComment = ({
 		const reply = {
 			...data,
 			replyingTo: username,
-			user: {
-				image: "../assets/user-images/image-zena.jpg",
-				name: "Zena Kelley",
-				username: "velvetround",
-			},
+			user: currentUserData,
 		};
 		// console.log(reply);
 		mutate({ postId: postId, commentId: commentId, commentReply: reply });

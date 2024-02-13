@@ -6,11 +6,14 @@ import { queryClient } from "../../lib/http";
 import { generateRandomId } from "../../utils/helpers";
 // INTERNAL IMPORTS
 // import GenericButton from "../ui/GenericButton";
+import useCurrentUserData from "../../hooks/useCurrentUserData";
 
 const AddComment = ({ id }: { id: string | undefined }) => {
 	const characterCountBaseValue = 250;
 	const textAreaRef = useRef<HTMLTextAreaElement>(null);
 	const [characterCount, setCharacterCount] = useState(characterCountBaseValue);
+
+	const currentUserData = useCurrentUserData();
 
 	const { mutate } = useMutation({
 		mutationFn: addNewComment,
@@ -40,11 +43,7 @@ const AddComment = ({ id }: { id: string | undefined }) => {
 		const comment = {
 			...data,
 			id: generateRandomId(),
-			user: {
-				image: "../assets/user-images/image-george.jpg",
-				name: "George Partridge",
-				username: "soccerviewer8",
-			},
+			user: currentUserData,
 		};
 		// console.log(comment);
 		mutate({ id: id, comment: comment });

@@ -1,8 +1,9 @@
 // EXTERNAL IMPORTS
 import { useNavigate } from "react-router-dom";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 // INTERNAL IMPORTS
-import { createNewFeedback, fetchCurrentUserData } from "../../lib/http";
+import useCurrentUserData from "../../hooks/useCurrentUserData";
+import { createNewFeedback } from "../../lib/http";
 import { generateRandomId } from "../../utils/helpers";
 import { queryClient } from "../../lib/http";
 import LinkButton from "../ui/LinkButton";
@@ -16,10 +17,7 @@ const NewFeedbackForm = () => {
 
 	const navigate = useNavigate();
 
-	const { data: currentUserData } = useQuery({
-		queryKey: ["user"],
-		queryFn: fetchCurrentUserData,
-	});
+	const currentUserData = useCurrentUserData();
 
 	const { mutate, isPending, isError } = useMutation({
 		mutationFn: createNewFeedback,
