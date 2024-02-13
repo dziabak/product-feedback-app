@@ -5,6 +5,7 @@ import FeedbackDetailsCommentReply from "./FeedbackDetailsCommentReply";
 import clsx from "clsx";
 import useCharacterCountLimit from "../../hooks/useCharacterCountLimit";
 import useAddComment from "../../hooks/useAddComment";
+import { generateRandomId } from "../../utils/helpers";
 
 const FeedbackDetailsComment = ({
 	image,
@@ -45,7 +46,7 @@ const FeedbackDetailsComment = ({
 		textAreaRef,
 		setCharacterCount,
 		characterCountBaseValue,
-		toggleIsReplying,
+		toggleIsReplying
 	);
 
 	return (
@@ -96,7 +97,7 @@ const FeedbackDetailsComment = ({
 			{replyData !== undefined &&
 				replyData.map((item) => (
 					<FeedbackDetailsCommentReply
-						key={item.content}
+						key={generateRandomId()}
 						content={item.content}
 						replyingTo={item.replyingTo}
 						image={item.user.image}

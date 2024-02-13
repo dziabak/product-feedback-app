@@ -14,9 +14,10 @@ import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
 import FeedbackDetailsComment from "./FeedbackDetailsComment";
 import AddComment from "./AddComment";
+import { generateRandomId } from "../../utils/helpers";
 
 const FeedbackDetailView = () => {
-	useDocumentTitle("Feedback Details | Feedback Board")
+	useDocumentTitle("Feedback Details | Feedback Board");
 	const params = useParams();
 	const navigate = useNavigate();
 
@@ -100,7 +101,7 @@ const FeedbackDetailView = () => {
 					{data[0].comments !== undefined &&
 						data[0].comments.map((item) => (
 							<FeedbackDetailsComment
-								key={item.id}
+								key={generateRandomId()}
 								content={item.content}
 								image={item.user.image}
 								name={item.user.name}
