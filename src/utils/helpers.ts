@@ -9,7 +9,7 @@ export const capitalizeString = (string: string) => {
 	}
 };
 
-export const countTotalComments = (comments: Comment[]) => {
+export const countTotalComments = (comments: Comment[] | undefined) => {
 	let totalComments = comments ? comments.length : 0;
 	if (comments) {
 		comments.forEach((comment) => {

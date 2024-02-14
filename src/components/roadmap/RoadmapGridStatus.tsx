@@ -20,8 +20,10 @@ const RoadmapGridStatus = ({
 	content = filteredData.map((feedback) => (
 		<FeedbackTileRoadmap
 			key={feedback.id}
+			id={feedback.id}
 			category={feedback.category}
-			comments={feedback.comments?.length}
+			comments={feedback.comments}
+			commentsNumber={feedback.comments?.length}
 			description={feedback.description}
 			title={feedback.title}
 			upvotes={feedback.upvotes}

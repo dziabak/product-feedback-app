@@ -84,8 +84,8 @@ const SuggestionsGrid = () => {
 				key={feedback.id}
 				id={feedback.id}
 				category={feedback.category}
+				comments={feedback.comments}
 				commentsNumber={feedback.comments?.length}
-				replyData={feedback.comments}
 				description={feedback.description}
 				title={feedback.title}
 				upvotes={feedback.upvotes}

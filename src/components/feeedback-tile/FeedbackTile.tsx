@@ -1,17 +1,11 @@
 // BUILT-IN IMPORTS
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useToggle } from "usehooks-ts";
-import { useMutation } from "@tanstack/react-query";
 import clsx from "clsx";
 // INTERNAL IMPORTS
 import { Comment } from "../../types/types";
-import {
-	capitalizeString,
-	getTotalCommentsAndRepliesNumberFromReplyData,
-} from "../../utils/helpers";
-import { queryClient, addUpvote } from "../../lib/http";
+import { capitalizeString, countTotalComments } from "../../utils/helpers";
 import commentIcon from "../../assets/icons/icon-comments.svg";
+import useAddUpvote from "../../hooks/useAddUpvote";
 
 type FeedbackTile = {
 	upvotes: number;
@@ -21,7 +15,7 @@ type FeedbackTile = {
 	commentsNumber: number;
 	status: string;
 	id: string;
-	replyData?: Comment[];
+	comments?: Comment[];
 };
 
 const FeedbackTile = ({
@@ -31,40 +25,15 @@ const FeedbackTile = ({
 	description,
 	commentsNumber,
 	id,
-	replyData,
+	comments,
 }: FeedbackTile) => {
 	const categoryCapitalized = capitalizeString(category);
-	const totalComments =
-		getTotalCommentsAndRepliesNumberFromReplyData(replyData);
+	const totalComments = countTotalComments(comments);
 
-	const [upvotesCount, setUpvotesCount] = useState(upvotes);
-	const [canAddUpvote, toggleCanAddUpvote] = useToggle(true);
-
-	const { mutate } = useMutation({
-		mutationFn: addUpvote,
-		onSuccess: () => {
-			// setCharacterCount(characterCountBaseValue);
-			queryClient.invalidateQueries();
-		},
-	});
-
-	const addUpvoteHandler = () => {
-		if (canAddUpvote) {
-			setUpvotesCount((prevUpvotesCount) => {
-				const newCount = prevUpvotesCount + 1;
-				mutate({ id: id, updatedFeedback: newCount }); // Move mutate inside the updater function
-				return newCount; // Return the new count
-			});
-			toggleCanAddUpvote();
-		} else {
-			setUpvotesCount((prevUpvotesCount) => {
-				const newCount = prevUpvotesCount - 1;
-				mutate({ id: id, updatedFeedback: newCount }); // Move mutate inside the updater function
-				return newCount; // Return the new count
-			});
-			toggleCanAddUpvote();
-		}
-	};
+	const { addUpvoteHandler, upvotesCount, canAddUpvote } = useAddUpvote(
+		id,
+		upvotes
+	);
 
 	return (
 		<div className="flex justify-between px-8 py-6 rounded-lg bg-white dark:bg-c-dark-frame">
@@ -103,7 +72,7 @@ const FeedbackTile = ({
 						<p className="text-c-dark-gray dark:text-c-light-gray">
 							{description}
 						</p>
-						<p className="inline-block px-3 py-2 text-sm font-semibold transition-colors rounded-xl bg-c-gray text-c-light-blue dark:text-c-dark-blue">
+						<p className="inline-block px-4 py-2 text-sm font-semibold transition-colors rounded-xl bg-c-gray text-c-light-blue dark:text-c-dark-blue">
 							{categoryCapitalized}
 						</p>
 					</div>
