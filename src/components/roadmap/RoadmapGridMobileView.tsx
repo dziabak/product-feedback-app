@@ -4,6 +4,8 @@ import { useState } from "react";
 import clsx from "clsx";
 // TYPES
 import { ProductRequestsData } from "../../types/types";
+// HELPERS
+import { getStatusLength } from "../../utils/helpers";
 // COMPONENTS
 import RoadmapGridStatus from "./RoadmapGridStatus";
 
@@ -11,13 +13,6 @@ const RoadmapGridMobileView = ({ data }: { data: ProductRequestsData }) => {
 	let content!: JSX.Element | JSX.Element[];
 
 	const [status, setStatus] = useState("planned");
-
-	const getStatusLength = (data: ProductRequestsData, status: string) => {
-		const filteredData = data.filter((feedback) => {
-			return feedback.status.includes(status);
-		});
-		return filteredData.length;
-	};
 
 	const plannedLength = getStatusLength(data, "planned");
 	const inProgressLength = getStatusLength(data, "in-progress");

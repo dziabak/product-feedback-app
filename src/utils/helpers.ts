@@ -19,6 +19,13 @@ export const countTotalComments = (comments: Comment[] | undefined) => {
 	return totalComments;
 };
 
+export const getStatusLength = (data: ProductRequestsData, status: string) => {
+	const filteredData = data.filter((feedback) => {
+		return feedback.status.includes(status);
+	});
+	return filteredData.length;
+};
+
 export const getTotalCommentsAndRepliesNumberFromFullDataSet = (
 	data: ProductRequestsData
 ) => {
