@@ -1,19 +1,19 @@
-// INTERNAL IMPORTS
+// HELPERS
 import { capitalizeString } from "../../utils/helpers";
 
 const RoadmapGridStatusHeader = ({
 	status,
-	value,
+	statusLength,
 }: {
 	status: string;
-	value: number;
+	statusLength: number;
 }) => {
 	const statusCapitalized = capitalizeString(status);
 
 	return (
 		<div className="my-4">
 			<p className="text-lg font-bold text-c-dark-blue">
-				{statusCapitalized} ({value})
+				{statusCapitalized} ({statusLength})
 			</p>
 			{status === "planned" && <p className="text-c-dark-gray">Ideas prioritized for research</p>}
 			{status === "in-progress" && <p className="text-c-dark-gray">Currently being developed</p>}

@@ -1,6 +1,6 @@
-// BUILT-IN IMPORTS
+// REACT
 import { Link } from "react-router-dom";
-// INTENRAL IMPORTS
+// COMPONENTS
 import LinkButton from "../ui/LinkButton";
 
 const RoadmapHeader = () => {

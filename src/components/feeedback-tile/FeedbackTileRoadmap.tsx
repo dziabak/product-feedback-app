@@ -36,7 +36,7 @@ const FeedbackTileRoadmap = ({
 	);
 
 	return (
-		<div className="rounded-lg bg-white">
+		<div className="h-72 md:h-80 xl:h-72 flex flex-col justify-between rounded-lg bg-white">
 			<Link to={`/feedback/${id}`} className="group rounded-lg bg-white">
 				<FeedbackTileAccent status={status} />
 				<FeedbackTileStatus status={status} />
@@ -45,7 +45,7 @@ const FeedbackTileRoadmap = ({
 						<p className="text-lg font-bold transition-colors group-hover:text-c-light-blue dark:text-c-light-gray dark:group-hover:text-c-light-gray/75">
 							{title}
 						</p>
-						<p className="text-c-dark-gray">{description}</p>
+						<p className="text-c-dark-gray line-clamp-2">{description}</p>
 						<p className="inline-block px-4 py-2 text-sm font-semibold transition-colors rounded-xl bg-c-gray text-c-light-blue">
 							{categoryCapitalized}
 						</p>

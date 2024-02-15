@@ -1,6 +1,6 @@
-// INTERNAL IMPORTS
-// import FeedbackTile from "../feeedback-tile/FeedbackTile";
+// TYPES
 import { ProductRequestsData } from "../../types/types";
+// COMPONENTS
 import FeedbackTileRoadmap from "../feeedback-tile/FeedbackTileRoadmap";
 import RoadmapGridStatusHeader from "./RoadmapGridStatusHeader";
 
@@ -33,7 +33,7 @@ const RoadmapGridStatus = ({
 
 	return (
 		<div>
-			<RoadmapGridStatusHeader status={status} value={filteredData.length} />
+			<RoadmapGridStatusHeader status={status} statusLength={filteredData.length} />
 			<div className="grid gap-4">{content}</div>
 		</div>
 	);
