@@ -1,6 +1,6 @@
 // INTERNAL IMPORTS
-import CategoryLabel from "../ui/CategoryLabel";
-import BackgroundFrame from "../ui/BackgroundFrame";
+import CategoryLabel from "../../ui/CategoryLabel";
+import BackgroundFrame from "../../ui/BackgroundFrame";
 
 const SuggestionsCategoryFilter = () => {
 	const CATEGORY_DATA = ["all", "ui", "ux", "enhancement", "bug", "feature"];

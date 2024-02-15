@@ -2,13 +2,13 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 // INTERNAL IMPORTS
-import { SingleProductRequestsData } from "../../types/types";
-import { fetchOnlySuggestionsData } from "../../lib/http";
-import FeedbackTile from "../feeedback-tile/FeedbackTile";
-import LoadingSpinner from "../ui/LoadingSpinner";
-import ErrorBlock from "../ui/ErrorBlock";
+import { SingleProductRequestsData } from "../../../types/types";
+import { fetchOnlySuggestionsData } from "../../../lib/http";
+import FeedbackTile from "../../feeedback-tile/FeedbackTile";
+import LoadingSpinner from "../../ui/LoadingSpinner";
+import ErrorBlock from "../../ui/ErrorBlock";
 import SuggestionsNoFeedbackData from "./SuggestionsNoFeedbackData";
-import { countTotalComments } from "../../utils/helpers";
+import { countTotalComments } from "../../../utils/helpers";
 
 const SuggestionsGrid = () => {
 	let content!: JSX.Element | JSX.Element[];

@@ -1,7 +1,7 @@
 // INTERNAL IMPORTS
 import SuggestionsRoadmapViewHeader from "./SuggestionsRoadmapViewHeader";
 import SuggestionsRoadmapViewStatusIndicator from "./SuggestionsRoadmapViewStatusIndicator";
-import BackgroundFrame from "../ui/BackgroundFrame";
+import BackgroundFrame from "../../../ui/BackgroundFrame";
 
 const SuggestionsRoadmapView = () => {
 	const STATUS_DATA = [

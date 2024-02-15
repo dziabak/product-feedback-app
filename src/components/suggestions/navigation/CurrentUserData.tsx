@@ -1,5 +1,5 @@
-import useCurrentUserData from "../../hooks/useCurrentUserData";
-import BackgroundFrame from "../ui/BackgroundFrame";
+import useCurrentUserData from "../../../hooks/useCurrentUserData";
+import BackgroundFrame from "../../ui/BackgroundFrame";
 
 const CurrentUserData = () => {
 	const currentUserData = useCurrentUserData();

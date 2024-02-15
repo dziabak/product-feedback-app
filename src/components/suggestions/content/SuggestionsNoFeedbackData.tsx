@@ -1,7 +1,7 @@
 // BUILT-IN IMPORTS
 import { Link } from "react-router-dom";
 // INTERNAL IMPORTS
-import image from "../../assets/suggestions/illustration-empty.svg";
+import image from "../../../assets/suggestions/illustration-empty.svg";
 
 const SuggestionsNoFeedbackData = () => {
 	return (

@@ -1,7 +1,7 @@
 // EXTERNAL IMPORTS
 import { useDarkMode } from "usehooks-ts";
 // INTERNAL IMPORTS
-import BackgroundFrame from "../ui/BackgroundFrame";
+import BackgroundFrame from "../../ui/BackgroundFrame";
 
 const SuggestionsDarkMode = () => {
 	const { isDarkMode, toggle } = useDarkMode();

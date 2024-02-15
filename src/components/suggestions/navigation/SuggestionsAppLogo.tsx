@@ -1,11 +1,11 @@
 // INTERNAL IMPORTS
-import desktopBackground from "../../assets/suggestions/desktop/background-header.png";
-import tabletBackground from "../../assets/suggestions/tablet/background-header.png";
-import mobileBackground from "../../assets/suggestions/mobile/background-header.png";
+import desktopBackground from "../../../assets/suggestions/desktop/background-header.png";
+import tabletBackground from "../../../assets/suggestions/tablet/background-header.png";
+import mobileBackground from "../../../assets/suggestions/mobile/background-header.png";
 
-import burgerIcon from "../../assets/icons/mobile/icon-hamburger.svg";
+import burgerIcon from "../../../assets/icons/mobile/icon-hamburger.svg";
 
-const SuggestionsHeader = () => {
+const SuggestionsAppLogo = () => {
 	return (
 		<div className="relative">
 			<picture>
@@ -28,4 +28,4 @@ const SuggestionsHeader = () => {
 	);
 };
 
-export default SuggestionsHeader;
+export default SuggestionsAppLogo;
