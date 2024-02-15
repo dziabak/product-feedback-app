@@ -9,9 +9,7 @@ import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
 
 const RoadmapGrid = () => {
-	let desktopView!: JSX.Element | JSX.Element[];
-	let mobileView!: JSX.Element | JSX.Element[];
-	let utilityContent!: JSX.Element | JSX.Element[];
+	let content!: JSX.Element | JSX.Element[];
 
 	const { data, isFetching, isError } = useQuery({
 		queryKey: ["feedback", "roadmap"],
@@ -19,7 +17,7 @@ const RoadmapGrid = () => {
 	});
 
 	if (isFetching) {
-		utilityContent = (
+		content = (
 			<div className="mt-64">
 				<LoadingSpinner />
 			</div>
@@ -27,7 +25,7 @@ const RoadmapGrid = () => {
 	}
 
 	if (isError) {
-		utilityContent = (
+		content = (
 			<div className="mt-64">
 				<ErrorBlock
 					errorHeader="We couldn't fetch your data :("
@@ -38,17 +36,19 @@ const RoadmapGrid = () => {
 	}
 
 	if (data) {
-		mobileView = <RoadmapGridMobileView data={data} />;
-		desktopView = <RoadmapGridDesktopView data={data} />;
+		content = (
+			<>
+				<div className="md:hidden">
+					<RoadmapGridMobileView data={data} />
+				</div>
+				<div className="hidden md:grid grid-cols-3 gap-4">
+					<RoadmapGridDesktopView data={data} />
+				</div>
+			</>
+		);
 	}
 
-	return (
-		<>
-			{utilityContent}
-			<div className="md:hidden">{mobileView}</div>
-			<div className="hidden md:grid grid-cols-3 gap-4">{desktopView}</div>
-		</>
-	);
+	return <>{content}</>;
 };
 
 export default RoadmapGrid;
