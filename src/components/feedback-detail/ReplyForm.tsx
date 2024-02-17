@@ -1,26 +1,44 @@
-// REACT
-import { useState, useEffect } from "react";
 // LIBRARIES
-import { useTimeout } from "usehooks-ts";
 import clsx from "clsx";
+// DATA
+import { addCommentReply } from "../../lib/http";
+// HOOKS
+import useCharacterCountLimit from "../../hooks/useCharacterCountLimit";
+import useAddComment from "../../hooks/useAddComment";
+import useReplyFormAnimation from "../../hooks/useReplyFormAnimation";
 
 const ReplyForm = ({
-	addCommentHandler,
-	textAreaRef,
-	textAreaInputHandler,
-	characterCountBaseValue,
-	characterCount,
+	isReplying,
+	toggleIsReplying,
+	username,
+	postId,
+	commentId,
+}: {
+	isReplying: boolean,
+	toggleIsReplying: () => void,
+	username: string,
+	postId: string | undefined,
+	commentId: string,
 }) => {
-	const [isFormOpen, setIsFormOpen] = useState(false);
-	const [isOpacityApplied, setIsOpacityApplied] = useState(false);
+	const { isFormOpen, isOpacityApplied } = useReplyFormAnimation();
 
-	useEffect(() => {
-		setIsFormOpen(true);
-	}, []);
+	const {
+		textAreaRef,
+		textAreaInputHandler,
+		characterCount,
+		characterCountBaseValue,
+		setCharacterCount,
+	} = useCharacterCountLimit(isReplying);
 
-	useTimeout(() => {
-		setIsOpacityApplied(true);
-	}, 100);
+	const { addCommentHandler } = useAddComment(
+		addCommentReply,
+		{ replyingTo: username },
+		{ postId: postId, commentId: commentId },
+		textAreaRef,
+		setCharacterCount,
+		characterCountBaseValue,
+		toggleIsReplying
+	);
 
 	return (
 		<form
