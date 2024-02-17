@@ -15,9 +15,9 @@ import FeedbackTile from "../feeedback-tile/FeedbackTile";
 import FeedbackDetailsHeader from "./FeedbackDetailsHeader";
 import CommentsSection from "./CommentsSection";
 import AddComment from "./AddComment";
-import AuthorLabel from "./AuthorLabel";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
+import LabelsGroup from "./LabelsGroup";
 
 const FeedbackDetailView = () => {
 	useDocumentTitle("Feedback Details | Feedback Board");
@@ -120,7 +120,7 @@ const FeedbackDetailView = () => {
 				Delete
 			</button> */}
 			{isDeleting && deletingModal}
-			<AuthorLabel data={data} />
+			<LabelsGroup data={data} />
 			{content}
 			<CommentsSection data={data} id={params.feedbackId} />
 			<AddComment id={params.feedbackId} />

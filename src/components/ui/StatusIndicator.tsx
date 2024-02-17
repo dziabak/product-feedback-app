@@ -8,7 +8,8 @@ const StatusIndicator = ({ status }: { status: string }) => {
 				"w-1 p-1 mr-3 rounded-full",
 				status === "planned" && "bg-c-orange",
 				status === "in-progress" && "bg-c-magenta",
-				status === "live" && "bg-c-aqua"
+				status === "live" && "bg-c-aqua",
+				status === "suggestion" && "bg-c-light-blue"
 			)}></div>
 	);
 };
