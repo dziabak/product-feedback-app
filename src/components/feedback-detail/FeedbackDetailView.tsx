@@ -1,6 +1,6 @@
 // REACT
 import { useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 // LIBRARIES
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useDocumentTitle } from "usehooks-ts";
@@ -113,17 +113,12 @@ const FeedbackDetailView = () => {
 
 	return (
 		<div className="container py-8">
-			<FeedbackDetailsHeader />
-			<button
+			<FeedbackDetailsHeader id={params.feedbackId} />
+			{/* <button
 				onClick={handleStartDelete}
 				className="p-2 bg-c-red text-white rounded-lg">
 				Delete
-			</button>
-			<Link
-				to={`/feedback/${params.feedbackId}/edit`}
-				className="p-2 bg-c-light-blue text-white rounded-lg">
-				Edit
-			</Link>
+			</button> */}
 			{isDeleting && deletingModal}
 			<AuthorLabel data={data} />
 			{content}

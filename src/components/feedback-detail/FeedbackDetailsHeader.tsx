@@ -1,9 +1,7 @@
-// BUILT-IN IMPORTS
+// REACT
 import { Link } from "react-router-dom";
-// INTERNAL IMPORTS
-import GenericButton from "../ui/GenericButton";
 
-const FeedbackDetailsHeader = () => {
+const FeedbackDetailsHeader = ({ id }: { id: string | undefined }) => {
 	return (
 		<div className="flex justify-between mb-8">
 			<Link
@@ -24,7 +22,11 @@ const FeedbackDetailsHeader = () => {
 				</svg>
 				Go Back
 			</Link>
-			<GenericButton text="Edit Feedback" color="light-blue" />
+			<Link
+				to={`/feedback/${id}/edit`}
+				className="px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-light-blue text-white hover:bg-c-light-blue/75">
+				Edit Feedback
+			</Link>
 		</div>
 	);
 };

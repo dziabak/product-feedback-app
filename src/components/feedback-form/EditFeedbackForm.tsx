@@ -1,19 +1,24 @@
-import { useNavigate, useParams } from "react-router-dom";
+// REACT
+import { useNavigate, useParams, Link } from "react-router-dom";
+// LIBRARIES
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { queryClient } from "../../lib/http";
-import { fetchFeedbackItemData, editFeedback } from "../../lib/http";
-import LinkButton from "../ui/LinkButton";
-// import GenericButton from "../ui/GenericButton";
+// DATA
+import {
+	queryClient,
+	fetchFeedbackItemData,
+	editFeedback,
+} from "../../lib/http";
+// COMPONENTS
+import FeedbackFormLayout from "./FeedbackFormLayout";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
-import FeedbackFormLayout from "./FeedbackFormLayout";
 
 const EditFeedbackForm = () => {
 	const navigate = useNavigate();
 	const params = useParams();
 
-	let utilityContent!: JSX.Element;
 	let content!: JSX.Element;
+	let utilityContent!: JSX.Element;
 
 	const { data, isPending, isError } = useQuery({
 		queryKey: ["feedbackItem", params.feedbackId],
@@ -56,7 +61,9 @@ const EditFeedbackForm = () => {
 	if (data) {
 		content = (
 			<div>
-				<p className="py-4 font-bold text-2xl text-c-dark-blue">Editing "{data[0].title}"</p>
+				<p className="py-4 mb-4 font-bold text-2xl text-c-dark-blue">
+					Editing "{data[0].title}"
+				</p>
 				<form onSubmit={editFormHandler} className="space-y-4">
 					<div className="flex flex-col space-y-2">
 						<label htmlFor="title">
@@ -97,9 +104,7 @@ const EditFeedbackForm = () => {
 					<div className="flex flex-col space-y-2">
 						<label htmlFor="status">
 							<p className="text-sm font-bold text-c-dark-blue">Status</p>
-							<p className="text-sm text-c-dark-gray">
-								Change feedback status
-							</p>
+							<p className="text-sm text-c-dark-gray">Change feedback status</p>
 						</label>
 						<select
 							name="status"
@@ -132,10 +137,22 @@ const EditFeedbackForm = () => {
 					{utilityContent}
 					{isPendingEdit && <p>Submitting updated data...</p>}
 					{!isPendingEdit && (
-						<div className="flex justify-end pt-8 space-x-4">
-							<LinkButton linkTo=".." color="dark-blue" text="Cancel" />
-							{/* <GenericButton text="Edit" color="magenta" /> */}
-							<button>Edit</button>
+						<div className="flex justify-between pt-8 space-x-4">
+							<button
+								disabled
+								className="flex items-center px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-red text-white hover:bg-c-red/75 disabled:bg-c-dark-gray">
+								Delete
+							</button>
+							<div className="flex space-x-4">
+								<Link
+									to=".."
+									className="flex items-center px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-dark-blue text-white hover:bg-c-dark-blue/75">
+									Cancel
+								</Link>
+								<button className="flex items-center px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-magenta text-white hover:bg-c-magenta/75">
+									Save changes
+								</button>
+							</div>
 						</div>
 					)}
 					{isErrorEdit && (
