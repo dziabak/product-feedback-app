@@ -70,7 +70,7 @@ const FeedbackTile = ({
 				className="group w-full flex items-center justify-between">
 				<div className="flex items-start space-x-12">
 					<div className="space-y-2">
-						<p className="text-lg font-bold transition-colors text-c-dark-blue group-hover:text-c-light-blue dark:text-c-light-gray dark:group-hover:text-c-light-gray/75">
+						<p className="line-clamp-1 text-lg font-bold transition-colors text-c-dark-blue group-hover:text-c-light-blue dark:text-c-light-gray dark:group-hover:text-c-light-gray/75">
 							{title}
 						</p>
 						<p className="text-c-dark-gray dark:text-c-light-gray">

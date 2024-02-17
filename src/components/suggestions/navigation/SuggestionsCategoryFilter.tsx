@@ -48,7 +48,7 @@ const SuggestionsCategoryFilter = ({
 
 	useEffect(() => {
 		onDataFiltered(filteredData);
-	}, [selectedFilters]);
+	}, [selectedFilters, data]);
 
 	return (
 		<BackgroundFrame>

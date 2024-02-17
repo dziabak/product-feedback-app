@@ -10,6 +10,11 @@ import {
 } from "../../lib/http";
 // COMPONENTS
 import FeedbackFormLayout from "./FeedbackFormLayout";
+import FormHeader from "./form-components/FormHeader";
+import FormTitle from "./form-components/FormTitle";
+import FormCategory from "./form-components/FormCategory";
+import FormStatus from "./form-components/FormStatus";
+import FormDetails from "./form-components/FormDetails";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
 
@@ -34,7 +39,7 @@ const EditFeedbackForm = () => {
 		mutationFn: editFeedback,
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ["feedbackItem"] });
-			navigate("../");
+			navigate("..");
 		},
 	});
 
@@ -60,109 +65,40 @@ const EditFeedbackForm = () => {
 
 	if (data) {
 		content = (
-			<div>
-				<p className="py-4 mb-4 font-bold text-2xl text-c-dark-blue">
-					Editing "{data[0].title}"
-				</p>
-				<form onSubmit={editFormHandler} className="space-y-4">
-					<div className="flex flex-col space-y-2">
-						<label htmlFor="title">
-							<p className="text-sm font-bold text-c-dark-blue">
-								Feedback Title
-							</p>
-							<p className="text-sm text-c-dark-gray">
-								Add a short, descriptive headline
-							</p>
-						</label>
-						<input
-							type="text"
-							name="title"
-							id="title"
-							className="p-3 rounded-md bg-c-light-gray"
-							defaultValue={data[0].title}
-						/>
-					</div>
-					<div className="flex flex-col space-y-2">
-						<label htmlFor="category">
-							<p className="text-sm font-bold text-c-dark-blue">Category</p>
-							<p className="text-sm text-c-dark-gray">
-								Choose a category for your feedback
-							</p>
-						</label>
-						<select
-							name="category"
-							id="category"
-							defaultValue={data[0].category}
-							className="p-3 rounded-md bg-c-light-gray">
-							<option value="feature">Feature</option>
-							<option value="ui">UI</option>
-							<option value="ux">UX</option>
-							<option value="enhancement">Enhancement</option>
-							<option value="bug">Bug</option>
-						</select>
-					</div>
-					<div className="flex flex-col space-y-2">
-						<label htmlFor="status">
-							<p className="text-sm font-bold text-c-dark-blue">Status</p>
-							<p className="text-sm text-c-dark-gray">Change feedback status</p>
-						</label>
-						<select
-							name="status"
-							id="status"
-							defaultValue={data[0].status}
-							className="p-3 rounded-md bg-c-light-gray">
-							<option value="suggestion">Suggestion</option>
-							<option value="planned">Planned</option>
-							<option value="in-progress">In-progress</option>
-							<option value="live">Live</option>
-						</select>
-					</div>
-					<div className="flex flex-col space-y-2">
-						<label htmlFor="description">
-							<p className="text-sm font-bold text-c-dark-blue">
-								Feedback Details
-							</p>
-							<p className="text-sm text-c-dark-gray">
-								Include any specific comments on what should be improved, added,
-								etc.
-							</p>
-						</label>
-						<textarea
-							name="description"
-							id="description"
-							className="p-3 rounded-md bg-c-light-gray"
-							defaultValue={data[0].description}
-						/>
-					</div>
-					{utilityContent}
-					{isPendingEdit && <p>Submitting updated data...</p>}
-					{!isPendingEdit && (
-						<div className="flex justify-between pt-8 space-x-4">
-							<button
-								disabled
-								className="flex items-center px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-red text-white hover:bg-c-red/75 disabled:bg-c-dark-gray">
-								Delete
+			<form onSubmit={editFormHandler} className="space-y-4">
+				<FormHeader text={`Editing "${data[0].title}"`} />
+				<FormTitle defaultValue={data[0].title} />
+				<FormCategory defaultValue={data[0].category} />
+				<FormStatus defaultValue={data[0].status} />
+				<FormDetails defaultValue={data[0].description} />
+
+				{utilityContent}
+				{isPendingEdit && <p>Submitting updated data...</p>}
+				{!isPendingEdit && (
+					<div className="flex justify-between pt-8 space-x-4">
+						<button
+							disabled
+							className="flex items-center px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-red text-white hover:bg-c-red/75 disabled:bg-c-dark-gray">
+							Delete
+						</button>
+						<div className="flex space-x-4">
+							<Link
+								to=".."
+								className="flex items-center px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-dark-blue text-white hover:bg-c-dark-blue/75">
+								Cancel
+							</Link>
+							<button className="flex items-center px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-magenta text-white hover:bg-c-magenta/75">
+								Save changes
 							</button>
-							<div className="flex space-x-4">
-								<Link
-									to=".."
-									className="flex items-center px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-dark-blue text-white hover:bg-c-dark-blue/75">
-									Cancel
-								</Link>
-								<button className="flex items-center px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-magenta text-white hover:bg-c-magenta/75">
-									Save changes
-								</button>
-							</div>
 						</div>
-					)}
-					{isErrorEdit && (
-						<p>
-							There was an error while updating the data. Please try again
-							later.
-						</p>
-					)}
-				</form>
-			</div>
+					</div>
+				)}
+				{isErrorEdit && (
+					<p>
+						There was an error while updating the data. Please try again later.
+					</p>
+				)}
+			</form>
 		);
 	}
 

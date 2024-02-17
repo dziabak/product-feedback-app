@@ -46,7 +46,7 @@ const FeedbackTileRoadmap = ({
 				<FeedbackTileStatus status={status} />
 				<div className="px-8 space-y-4">
 					<div className="space-y-2">
-						<p className="text-lg font-bold transition-colors text-c-dark-blue group-hover:text-c-light-blue dark:text-c-light-gray dark:group-hover:text-c-light-gray/75">
+						<p className="line-clamp-1 text-lg font-bold transition-colors text-c-dark-blue group-hover:text-c-light-blue dark:text-c-light-gray dark:group-hover:text-c-light-gray/75">
 							{title}
 						</p>
 						<p className="text-c-dark-gray line-clamp-2">{description}</p>
