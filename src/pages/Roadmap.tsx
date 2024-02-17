@@ -1,6 +1,8 @@
+// REACT
 import { Outlet } from "react-router-dom";
+// LIBRARIES
 import { useDocumentTitle } from "usehooks-ts";
-// INTERNAL IMPORTS
+// COMPONENTS
 import RoadmapHeader from "../components/roadmap/RoadmapHeader";
 import RoadmapGrid from "../components/roadmap/RoadmapGrid";
 
@@ -10,7 +12,7 @@ const Roadmap = () => {
 	return (
 		<>
 			<Outlet />
-			<section className="container">
+			<section className="container py-8">
 				<RoadmapHeader />
 				<RoadmapGrid />
 			</section>

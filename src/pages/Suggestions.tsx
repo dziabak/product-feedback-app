@@ -1,6 +1,8 @@
+// REACT
 import { Outlet } from "react-router-dom";
+// LIBRARIES
 import { useDocumentTitle } from "usehooks-ts";
-// INTERNAL IMPORTS
+// COMPONENTS
 import SuggestionsMain from "../components/suggestions/SuggestionsMain";
 
 const Suggestions = () => {

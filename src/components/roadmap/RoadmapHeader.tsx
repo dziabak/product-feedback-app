@@ -5,7 +5,7 @@ import LinkButton from "../ui/LinkButton";
 
 const RoadmapHeader = () => {
 	return (
-		<div className="flex justify-between items-center p-4 rounded-lg bg-c-dark-blue">
+		<div className="flex justify-between items-center px-6 py-4 rounded-lg bg-c-dark-blue">
 			<div className="flex flex-col space-y-2">
 				<Link to="/" className="flex items-center text-sm font-bold text-white">
 					<svg

@@ -1,16 +1,49 @@
-// INTERNAL IMPORTS
+// TYPES
+import { ProductRequestsData } from "../../../types/types";
+// COMPONENTS
+import SuggestionsSortingForm from "./SuggestionsSortingForm";
 import LinkButton from "../../ui/LinkButton";
+// IMAGES
 import headerIcon from "../../../assets/suggestions/icon-suggestions.svg";
 
-const SuggestionsContentHeader = () => {
+const SuggestionsContentHeader = ({
+	filteredData,
+	onDataSorted,
+}: {
+	filteredData: ProductRequestsData | undefined;
+	onDataSorted: (arg0: ProductRequestsData) => void;
+}) => {
+	const handleSortedData = (sortedData: ProductRequestsData) => {
+		onDataSorted(sortedData);
+	};
+
+	let headerText;
+
+	if (filteredData) {
+		if (filteredData.length === 1) {
+			headerText = (
+				<p className="mr-8 pr-1 text-lg font-bold text-white">
+					{filteredData.length} Suggestion
+				</p>
+			);
+		} else {
+			headerText = (
+				<p className="mr-8 text-lg font-bold text-white">
+					{filteredData.length} Suggestions
+				</p>
+			);
+		}
+	}
+
 	return (
-		<div className="flex justify-between p-4 rounded-lg bg-c-dark-blue dark:bg-c-dark-header">
+		<div className="flex items-center justify-between px-6 py-4 rounded-lg bg-c-dark-blue dark:bg-c-dark-header">
 			<div className="flex items-center">
 				<img src={headerIcon} alt="Icon of a lightbulb" className="mr-4" />
-				<p className="mr-8 text-lg font-bold text-white">6 Suggestion</p>
-				<p className="text-sm text-white">
-					Sort by: <span className="font-bold">Most Upvotes</span>
-				</p>
+				{headerText}
+				<SuggestionsSortingForm
+					filteredData={filteredData}
+					onDataSorted={handleSortedData}
+				/>
 			</div>
 			<LinkButton
 				linkTo="/new-feedback"

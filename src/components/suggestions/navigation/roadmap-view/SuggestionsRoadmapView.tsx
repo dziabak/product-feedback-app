@@ -55,7 +55,7 @@ const SuggestionsRoadmapView = () => {
 
 	return (
 		<BackgroundFrame>
-			<div className="flex flex-col justify-between">
+			<div className="flex flex-col justify-between p-2">
 				<SuggestionsRoadmapViewHeader />
 				<div className="space-y-1">{content}</div>
 			</div>

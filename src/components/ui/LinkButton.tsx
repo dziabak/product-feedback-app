@@ -1,4 +1,4 @@
-// BUILT-IN IMPORTS
+// REACT
 import { Link } from "react-router-dom";
 
 const LinkButton = ({
@@ -13,7 +13,7 @@ const LinkButton = ({
 	return (
 		<Link
 			to={linkTo}
-			className={`px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-${color} text-white hover:bg-c-${color}/75`}>
+			className={`flex items-center px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-${color} text-white hover:bg-c-${color}/75`}>
 			{text}
 		</Link>
 	);
