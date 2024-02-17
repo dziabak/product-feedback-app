@@ -5,7 +5,7 @@ import GenericButton from "../ui/GenericButton";
 
 const FeedbackDetailsHeader = () => {
 	return (
-		<div className="flex justify-between py-12">
+		<div className="flex justify-between mb-8">
 			<Link
 				to=".."
 				className="flex items-center text-sm font-bold text-c-dark-gray">

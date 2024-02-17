@@ -30,7 +30,7 @@ const AddComment = ({ id }: { id: string | undefined }) => {
 				id="content"
 				onSubmit={addCommentHandler}
 				className="flex flex-col px-8 py-4 rounded-lg bg-white">
-				<p className="mb-8 text-lg font-bold">Add Comment</p>
+				<p className="mb-8 text-lg font-bold text-c-dark-blue">Add Comment</p>
 				<textarea
 					name="content"
 					id="content"

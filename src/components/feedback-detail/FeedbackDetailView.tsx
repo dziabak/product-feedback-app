@@ -1,20 +1,23 @@
-// BUILT-IN IMPORTS
+// REACT
 import { useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-// EXTERNAL IMPORTS
+// LIBRARIES
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useDocumentTitle } from "usehooks-ts";
-// INTERNAL IMPORTS
-import { fetchFeedbackItemData, deleteFeedback } from "../../lib/http";
-import { getTotalCommentsAndRepliesNumberFromFullDataSet } from "../../utils/helpers";
-import { queryClient } from "../../lib/http";
+// DATA
+import {
+	queryClient,
+	fetchFeedbackItemData,
+	deleteFeedback,
+} from "../../lib/http";
+// COMPONENTS
 import FeedbackTile from "../feeedback-tile/FeedbackTile";
 import FeedbackDetailsHeader from "./FeedbackDetailsHeader";
+import CommentsSection from "./CommentsSection";
+import AddComment from "./AddComment";
+import AuthorLabel from "./AuthorLabel";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
-import FeedbackDetailsComment from "./FeedbackDetailsComment";
-import AddComment from "./AddComment";
-import { generateRandomId } from "../../utils/helpers";
 
 const FeedbackDetailView = () => {
 	useDocumentTitle("Feedback Details | Feedback Board");
@@ -22,8 +25,6 @@ const FeedbackDetailView = () => {
 	const navigate = useNavigate();
 
 	let content!: JSX.Element | JSX.Element[];
-	let comments!: JSX.Element | JSX.Element[];
-	let author!: JSX.Element | JSX.Element[];
 
 	const [isDeleting, setIsDeleting] = useState(false);
 
@@ -73,74 +74,19 @@ const FeedbackDetailView = () => {
 	}
 
 	if (data) {
-		const totalComments = getTotalCommentsAndRepliesNumberFromFullDataSet(data);
-
 		content = data.map((feedback) => (
 			<FeedbackTile
 				key={feedback.id}
 				id={feedback.id}
 				category={feedback.category}
 				commentsNumber={feedback.comments?.length}
-				replyData={feedback.comments}
+				comments={feedback.comments}
 				description={feedback.description}
 				status={feedback.status}
 				title={feedback.title}
 				upvotes={feedback.upvotes}
 			/>
 		));
-
-		comments = (
-			<div className="mt-4">
-				<div className="flex flex-col px-8 pt-4 pb-12 rounded-lg bg-white">
-					<p className="mb-8 text-lg font-bold">{totalComments} Comments</p>
-					{data[0].comments === undefined && (
-						<p className="mb-8 text-center text-c-dark-gray">
-							Be the first to comment!
-						</p>
-					)}
-					{data[0].comments !== undefined &&
-						data[0].comments.map((item) => (
-							<FeedbackDetailsComment
-								key={generateRandomId()}
-								content={item.content}
-								image={item.user.image}
-								name={item.user.name}
-								username={item.user.username}
-								replyData={item.replies}
-								commentId={item.id}
-								postId={params.feedbackId}
-							/>
-						))}
-				</div>
-			</div>
-		);
-
-		author = (
-			<div className="px-8 py-4 mb-4 rounded-lg bg-white">
-				<div className="flex items-start">
-					<img
-						src={data[0].author.image}
-						alt="User photo"
-						className="w-12 mr-8 rounded-full"
-					/>
-					<div className="space-y-4">
-						<div className="flex items-center justify-between">
-							<div>
-								<p className="text-sm text-c-dark-gray">
-									by{" "}
-									<span className="font-bold text-base text-black">
-										{data[0].author.name}
-									</span>
-								</p>
-								<p className="text-sm text-c-dark-gray">
-									{data[0].author.username}
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		);
 	}
 
 	const deletingModal = (
@@ -164,8 +110,9 @@ const FeedbackDetailView = () => {
 			{isErrorDeleting && <p>There was an error. Please try again later.</p>}
 		</div>
 	);
+
 	return (
-		<div className="container">
+		<div className="container py-8">
 			<FeedbackDetailsHeader />
 			<button
 				onClick={handleStartDelete}
@@ -178,9 +125,9 @@ const FeedbackDetailView = () => {
 				Edit
 			</Link>
 			{isDeleting && deletingModal}
-			{author}
+			<AuthorLabel data={data} />
 			{content}
-			{comments}
+			<CommentsSection data={data} id={params.feedbackId} />
 			<AddComment id={params.feedbackId} />
 		</div>
 	);
