@@ -1,7 +1,7 @@
 // TYPES
 import { ProductRequestsData } from "../../types/types";
 // COMPONENTS
-import FeedbackTileRoadmap from "../feeedback-tile/FeedbackTileRoadmap";
+import FeedbackTileRoadmap from "../feeedback-tile/feedback-tile-roadmap/FeedbackTileRoadmap";
 import RoadmapGridStatusHeader from "./RoadmapGridStatusHeader";
 
 const RoadmapGridStatus = ({
@@ -33,7 +33,10 @@ const RoadmapGridStatus = ({
 
 	return (
 		<div>
-			<RoadmapGridStatusHeader status={status} statusLength={filteredData.length} />
+			<RoadmapGridStatusHeader
+				status={status}
+				statusLength={filteredData.length}
+			/>
 			<div className="grid gap-4">{content}</div>
 		</div>
 	);

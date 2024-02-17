@@ -6,7 +6,7 @@ import { fetchWithoutSuggestionsData } from "../../../../lib/http";
 import { getStatusLength } from "../../../../utils/helpers";
 // COMPONENTS
 import SuggestionsRoadmapViewHeader from "./SuggestionsRoadmapViewHeader";
-import SuggestionsRoadmapViewStatusIndicator from "./SuggestionsRoadmapViewStatusIndicator";
+import SuggestionsRoadmapViewStatus from "./SuggestionsRoadmapViewStatus";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
 import ErrorBlock from "../../../ui/ErrorBlock";
 import BackgroundFrame from "../../../ui/BackgroundFrame";
@@ -38,17 +38,16 @@ const SuggestionsRoadmapView = () => {
 		const liveLength = getStatusLength(data, "live");
 
 		const STATUS_DATA = [
-			{ status: "Planned", value: plannedLength, color: "orange" },
-			{ status: "In-Progress", value: inProgressLength, color: "magenta" },
-			{ status: "Live", value: liveLength, color: "aqua" },
+			{ status: "planned", value: plannedLength },
+			{ status: "in-progress", value: inProgressLength },
+			{ status: "live", value: liveLength },
 		];
 
 		content = STATUS_DATA.map((item) => (
-			<SuggestionsRoadmapViewStatusIndicator
+			<SuggestionsRoadmapViewStatus
 				key={item.status}
 				status={item.status}
 				value={item.value}
-				color={item.color}
 			/>
 		));
 	}

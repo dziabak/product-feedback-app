@@ -1,12 +1,16 @@
-// BUILT-IN IMPORTS
+// REACT
 import { Link } from "react-router-dom";
-// INTERNAL IMPORTS
-import { capitalizeString, countTotalComments } from "../../utils/helpers";
+// LIBRARIES
+import clsx from "clsx";
+// TYPES
+import { Comment } from "../../../types/types";
+// HOOKS
+import useAddUpvote from "../../../hooks/useAddUpvote";
+// HELPERS
+import { capitalizeString, countTotalComments } from "../../../utils/helpers";
+// COMPONENTS
 import FeedbackTileAccent from "./FeedbackTileAccent";
 import FeedbackTileStatus from "./FeedbackTileStatus";
-import clsx from "clsx";
-import useAddUpvote from "../../hooks/useAddUpvote";
-import { Comment } from "../../types/types";
 
 const FeedbackTileRoadmap = ({
 	upvotes,

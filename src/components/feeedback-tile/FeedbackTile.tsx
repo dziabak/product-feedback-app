@@ -1,11 +1,15 @@
-// BUILT-IN IMPORTS
+// REACT
 import { Link } from "react-router-dom";
+// LIBRARIES
 import clsx from "clsx";
-// INTERNAL IMPORTS
+// TYPES
 import { Comment } from "../../types/types";
-import { capitalizeString, countTotalComments } from "../../utils/helpers";
-import commentIcon from "../../assets/icons/icon-comments.svg";
+// HOOKS
 import useAddUpvote from "../../hooks/useAddUpvote";
+// HELPERS
+import { capitalizeString, countTotalComments } from "../../utils/helpers";
+//IMAGES
+import commentIcon from "../../assets/icons/icon-comments.svg";
 
 type FeedbackTile = {
 	upvotes: number;
