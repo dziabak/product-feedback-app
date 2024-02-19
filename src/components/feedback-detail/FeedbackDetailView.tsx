@@ -114,11 +114,11 @@ const FeedbackDetailView = () => {
 	return (
 		<div className="container py-8">
 			<FeedbackDetailsHeader id={params.feedbackId} />
-			{/* <button
+			<button
 				onClick={handleStartDelete}
 				className="p-2 bg-c-red text-white rounded-lg">
 				Delete
-			</button> */}
+			</button>
 			{isDeleting && deletingModal}
 			<LabelsGroup data={data} />
 			{content}
