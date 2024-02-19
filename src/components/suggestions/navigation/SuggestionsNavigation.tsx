@@ -34,7 +34,7 @@ const SuggestionsNavigation = ({
 	}, [isMobileNavOpen]);
 
 	return (
-		<div className="md:flex md:space-x-4 md:mb-12 lg:flex-col lg:space-x-0 lg:space-y-4 lg:mb-0">
+		<nav className="md:flex md:space-x-4 md:mb-12 lg:flex-col lg:space-x-0 lg:space-y-4 lg:mb-0">
 			<SuggestionsAppLogo
 				toggleValue={isMobileNavOpen}
 				toggleFunction={toggleIsMobileNavOpen}
@@ -43,16 +43,14 @@ const SuggestionsNavigation = ({
 			{/* <SuggestionsDarkMode /> */}
 			<div
 				className={clsx(
-					!md && !isMobileNavOpen && "hidden",
-					!md && isMobileNavOpen && "block",
-					md && !isMobileNavOpen && "block"
+					!isMobileNavOpen && "hidden md:block",
+					isMobileNavOpen && "block"
 				)}>
 				<div
 					className={clsx(
 						"relative transition-opacity duration-300",
-						!isAnim && "opacity-0",
-						isAnim && "opacity-100",
-						md && !isAnim && "opacity-100"
+						!isAnim && "opacity-0 md:opacity-100",
+						isAnim && "opacity-100"
 					)}>
 					<div className="absolute top-0 left-0 h-screen w-full bg-black/50 md:hidden"></div>
 					<div
@@ -61,14 +59,8 @@ const SuggestionsNavigation = ({
 							!md && "absolute right-0 flex justify-end w-3/4 p-6 bg-c-gray",
 							!isAnim && "translate-x-8",
 							isAnim && "translate-x-0"
-							// md && !isAnim && "translate-x-0"
 						)}>
-						<div
-							className={clsx(
-								!md && "h-screen space-y-6",
-								md &&
-									"md:flex md:space-x-4 lg:flex-col lg:space-x-0 lg:space-y-4"
-							)}>
+						<div className="h-screen space-y-6 md:h-auto md:space-y-0 md:flex md:space-x-4 lg:flex-col lg:space-x-0 lg:space-y-4">
 							<SuggestionsCategoryFilter
 								data={data}
 								onDataFiltered={handleFilteredData}
@@ -78,7 +70,7 @@ const SuggestionsNavigation = ({
 					</div>
 				</div>
 			</div>
-		</div>
+		</nav>
 	);
 };
 
