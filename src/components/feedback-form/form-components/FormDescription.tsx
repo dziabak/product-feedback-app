@@ -2,7 +2,7 @@
 import FormSectionWrapper from "./FormSectionWrapper";
 import FormLabel from "./FormLabel";
 
-const FormDetails = ({ defaultValue }: { defaultValue?: any }) => {
+const FormDescription = ({ defaultValue }: { defaultValue?: any }) => {
 	return (
 		<FormSectionWrapper>
 			<FormLabel
@@ -21,4 +21,4 @@ const FormDetails = ({ defaultValue }: { defaultValue?: any }) => {
 	);
 };
 
-export default FormDetails;
+export default FormDescription;
