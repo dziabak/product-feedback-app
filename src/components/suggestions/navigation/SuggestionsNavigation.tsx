@@ -43,7 +43,6 @@ const SuggestionsNavigation = ({
 			{/* <SuggestionsDarkMode /> */}
 			<div
 				className={clsx(
-					"",
 					!md && !isMobileNavOpen && "hidden",
 					!md && isMobileNavOpen && "block",
 					md && !isMobileNavOpen && "block"
@@ -58,11 +57,11 @@ const SuggestionsNavigation = ({
 					<div className="absolute top-0 left-0 h-screen w-full bg-black/50 md:hidden"></div>
 					<div
 						className={clsx(
-							"transition-transform duration-300",
+							"transition-transform duration-300 md:translate-x-0",
 							!md && "absolute right-0 flex justify-end w-3/4 p-6 bg-c-gray",
 							!isAnim && "translate-x-8",
-							isAnim && "translate-x-0",
-							md && !isAnim && "translate-x-0"
+							isAnim && "translate-x-0"
+							// md && !isAnim && "translate-x-0"
 						)}>
 						<div
 							className={clsx(
