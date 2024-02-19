@@ -31,7 +31,7 @@ const SuggestionsGrid = ({
 		}
 	}
 
-	return <div className="space-y-4">{content}</div>;
+	return <div className="mx-4 space-y-4 md:mx-0">{content}</div>;
 };
 
 export default SuggestionsGrid;

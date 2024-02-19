@@ -9,7 +9,7 @@ const SuggestionsRoadmapViewHeader = () => {
 			</p>
 			<Link
 				to="/roadmap"
-				className="text-sm font-semibold underline text-c-light-blue dark:text-c-light-gray">
+				className="text-sm font-semibold underline transition-colors text-c-light-blue dark:text-c-light-gray hover:text-c-light-blue/75">
 				View
 			</Link>
 		</div>

@@ -67,8 +67,8 @@ const FeedbackTile = ({
 			</div>
 			<Link
 				to={`/feedback/${id}`}
-				className="group w-full flex items-center justify-between">
-				<div className="flex items-start space-x-12">
+				className="group w-full flex items-center justify-between space-x-4">
+				<div className="flex items-start space-x-12 ">
 					<div className="space-y-2">
 						<p className="line-clamp-1 text-lg font-bold transition-colors text-c-dark-blue group-hover:text-c-light-blue dark:text-c-light-gray dark:group-hover:text-c-light-gray/75">
 							{title}

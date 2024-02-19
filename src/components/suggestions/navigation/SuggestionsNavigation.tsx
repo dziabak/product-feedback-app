@@ -1,3 +1,8 @@
+// REACT
+import { useState, useEffect } from "react";
+// LIBRARIES
+import clsx from "clsx";
+import { useToggle, useLockedBody, useMediaQuery } from "usehooks-ts";
 // TYPES
 import { ProductRequestsData } from "../../../types/types";
 // COMPONENTS
@@ -18,17 +23,61 @@ const SuggestionsNavigation = ({
 		onDataFiltered(filteredData);
 	};
 
+	const [isMobileNavOpen, toggleIsMobileNavOpen] = useToggle();
+	useLockedBody(isMobileNavOpen, "root");
+	const md = useMediaQuery("(min-width: 768px)");
+
+	const [isAnim, setIsAnim] = useState(true);
+
+	useEffect(() => {
+		setIsAnim(!isAnim);
+	}, [isMobileNavOpen]);
+
 	return (
-		<div>
-			<div className="space-y-4 md:space-y-0 md:grid md:grid-cols-3 md:gap-4 lg:block lg:space-y-4">
-				<SuggestionsAppLogo />
-				{/* <CurrentUserData /> */}
-				{/* <SuggestionsDarkMode /> */}
-				<SuggestionsCategoryFilter
-					data={data}
-					onDataFiltered={handleFilteredData}
-				/>
-				<SuggestionsRoadmapView />
+		<div className="md:flex md:space-x-4 md:mb-12 lg:flex-col lg:space-x-0 lg:space-y-4 lg:mb-0">
+			<SuggestionsAppLogo
+				toggleValue={isMobileNavOpen}
+				toggleFunction={toggleIsMobileNavOpen}
+			/>
+			{/* <CurrentUserData /> */}
+			{/* <SuggestionsDarkMode /> */}
+			<div
+				className={clsx(
+					"",
+					!md && !isMobileNavOpen && "hidden",
+					!md && isMobileNavOpen && "block",
+					md && !isMobileNavOpen && "block"
+				)}>
+				<div
+					className={clsx(
+						"relative transition-opacity duration-300",
+						!isAnim && "opacity-0",
+						isAnim && "opacity-100",
+						md && !isAnim && "opacity-100"
+					)}>
+					<div className="absolute top-0 left-0 h-screen w-full bg-black/50 md:hidden"></div>
+					<div
+						className={clsx(
+							"transition-transform duration-300",
+							!md && "absolute right-0 flex justify-end w-3/4 p-6 bg-c-gray",
+							!isAnim && "translate-x-8",
+							isAnim && "translate-x-0",
+							md && !isAnim && "translate-x-0"
+						)}>
+						<div
+							className={clsx(
+								!md && "h-screen space-y-6",
+								md &&
+									"md:flex md:space-x-4 lg:flex-col lg:space-x-0 lg:space-y-4"
+							)}>
+							<SuggestionsCategoryFilter
+								data={data}
+								onDataFiltered={handleFilteredData}
+							/>
+							<SuggestionsRoadmapView />
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

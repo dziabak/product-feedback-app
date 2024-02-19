@@ -1,13 +1,19 @@
-// INTERNAL IMPORTS
+// IMAGES
 import desktopBackground from "../../../assets/suggestions/desktop/background-header.png";
 import tabletBackground from "../../../assets/suggestions/tablet/background-header.png";
 import mobileBackground from "../../../assets/suggestions/mobile/background-header.png";
-
 import burgerIcon from "../../../assets/icons/mobile/icon-hamburger.svg";
+import closeIcon from "../../../assets/icons/mobile/icon-close.svg";
 
-const SuggestionsAppLogo = () => {
+const SuggestionsAppLogo = ({
+	toggleValue,
+	toggleFunction,
+}: {
+	toggleValue: boolean;
+	toggleFunction: () => void;
+}) => {
 	return (
-		<div className="relative">
+		<div className="relative md:w-1/3 lg:w-full">
 			<picture>
 				<source srcSet={desktopBackground} media="(min-width: 1024px)" />
 				<source srcSet={tabletBackground} media="(min-width: 768px)" />
@@ -22,7 +28,14 @@ const SuggestionsAppLogo = () => {
 					<h1 className="font-bold text-white md:text-xl">Frontend Mentor</h1>
 					<p className="text-sm text-white/75 md:text-base">Feedback Board</p>
 				</div>
-				<img src={burgerIcon} alt="" className="md:hidden" />
+
+				<button className="md:hidden" onClick={toggleFunction}>
+					{!toggleValue ? (
+						<img src={burgerIcon} alt="" />
+					) : (
+						<img src={closeIcon} alt="" />
+					)}
+				</button>
 			</div>
 		</div>
 	);

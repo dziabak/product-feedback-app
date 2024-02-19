@@ -51,21 +51,23 @@ const SuggestionsCategoryFilter = ({
 	}, [selectedFilters, data]);
 
 	return (
-		<BackgroundFrame>
-			{["all", ...CATEGORY_DATA].map((item) => (
-				<button
-					onClick={filterHandler}
-					key={item}
-					className={`px-4 py-2 m-2 text-sm font-semibold transition-colors rounded-xl ${
-						(selectedFilters.includes(item) && item !== "all") ||
-						(selectedFilters.length === 0 && item === "all")
-							? "bg-c-light-blue text-white"
-							: "bg-c-gray text-c-light-blue hover:bg-c-light-blue hover:text-white"
-					} ${item.length <= 2 ? "uppercase" : "capitalize"}`}>
-					{item}
-				</button>
-			))}
-		</BackgroundFrame>
+		<div className="md:w-1/2 lg:w-full">
+			<BackgroundFrame>
+				{["all", ...CATEGORY_DATA].map((item) => (
+					<button
+						onClick={filterHandler}
+						key={item}
+						className={`px-4 py-2 m-2 text-sm font-semibold transition-colors rounded-xl ${
+							(selectedFilters.includes(item) && item !== "all") ||
+							(selectedFilters.length === 0 && item === "all")
+								? "bg-c-light-blue text-white"
+								: "bg-c-gray text-c-light-blue hover:bg-c-light-blue hover:text-white"
+						} ${item.length <= 2 ? "uppercase" : "capitalize"}`}>
+						{item}
+					</button>
+				))}
+			</BackgroundFrame>
+		</div>
 	);
 };
 
