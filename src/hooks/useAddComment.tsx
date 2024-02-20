@@ -2,31 +2,38 @@ import { useMutation } from "@tanstack/react-query";
 import useCurrentUserData from "./useCurrentUserData";
 import { queryClient } from "../lib/http";
 
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 const useAddComment = (
 	mutationFn: (variables: any) => Promise<any>,
 	commentData: Record<string, any>,
 	mutationObject: Record<string, any>,
-	textAreaRef: React.RefObject<HTMLTextAreaElement>,
-	setCharacterCount: React.Dispatch<React.SetStateAction<number>>,
-	characterCountBaseValue: number,
-	onSuccessAction?: () => void,
+	onSuccessAction?: () => void
 ) => {
 	const currentUserData = useCurrentUserData();
+
+	const characterCountBaseValue = 250;
+	let currentCharacterCount!: number;
+
+	const commentSchema = z.object({
+		content: z.string().min(1, "This can't be empty!").max(250),
+	});
+
+	type TCommentSchema = z.infer<typeof commentSchema>;
 
 	const { mutate } = useMutation({
 		mutationFn: mutationFn,
 		onSuccess: () => {
-			textAreaRef.current!.value = "";
-			setCharacterCount(characterCountBaseValue);
+			reset();
 			queryClient.invalidateQueries();
 			onSuccessAction!();
 		},
 	});
 
-	const addCommentHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
-		e.preventDefault();
-		const formData = new FormData(e.currentTarget);
-		const data = Object.fromEntries(formData);
+	const onSubmit = (data: TCommentSchema) => {
+		console.log(data);
 		const comment = {
 			...data,
 			...commentData,
@@ -34,7 +41,27 @@ const useAddComment = (
 		};
 		mutate({ ...mutationObject, comment: comment });
 	};
-	return { addCommentHandler };
+
+	const {
+		register,
+		reset,
+		watch,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<TCommentSchema>({ resolver: zodResolver(commentSchema) });
+
+	if (watch("content") !== undefined) {
+		currentCharacterCount = watch("content").length;
+	}
+
+	return {
+		register,
+		handleSubmit,
+		onSubmit,
+		errors,
+		characterCountBaseValue,
+		currentCharacterCount,
+	};
 };
 
 export default useAddComment;

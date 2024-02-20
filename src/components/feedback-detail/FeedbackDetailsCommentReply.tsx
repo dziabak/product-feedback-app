@@ -26,7 +26,7 @@ const FeedbackDetailsCommentReply = ({
 	return (
 		<div>
 			<div className="flex items-start mt-8">
-			<CommentUserInfo
+				<CommentUserInfo
 					image={image}
 					name={name}
 					username={username}
@@ -36,13 +36,7 @@ const FeedbackDetailsCommentReply = ({
 				/>
 			</div>
 			{isReplying && (
-				<ReplyForm
-					isReplying={isReplying}
-					toggleIsReplying={toggleIsReplying}
-					username={username}
-					postId={postId}
-					commentId={commentId}
-				/>
+				<ReplyForm username={username} postId={postId} commentId={commentId} />
 			)}
 		</div>
 	);

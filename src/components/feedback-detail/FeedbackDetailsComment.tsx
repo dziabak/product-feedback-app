@@ -43,13 +43,7 @@ const FeedbackDetailsComment = ({
 				/>
 			</div>
 			{isReplying && (
-				<ReplyForm
-					isReplying={isReplying}
-					toggleIsReplying={toggleIsReplying}
-					username={username}
-					postId={postId}
-					commentId={commentId}
-				/>
+				<ReplyForm username={username} postId={postId} commentId={commentId} />
 			)}
 			<div className="ml-14">
 				{replyData !== undefined &&
