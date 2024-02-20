@@ -6,7 +6,18 @@ import clsx from "clsx";
 import FormSectionWrapper from "./FormSectionWrapper";
 import FormLabel from "./FormLabel";
 
-const FormDescription = ({ register, errors }: FormField) => {
+type FormDescriptionProps = FormField & { watch: any };
+
+const FormDescription = ({ register, errors, watch }: FormDescriptionProps) => {
+	const characterCountBaseValue = 250;
+	let currentCharacterCount!: number;
+
+	if (watch("description") !== undefined) {
+		currentCharacterCount = watch("description").length;
+	} else {
+		currentCharacterCount = 0;
+	}
+
 	return (
 		<FormSectionWrapper>
 			<FormLabel
@@ -19,6 +30,7 @@ const FormDescription = ({ register, errors }: FormField) => {
 				{...register}
 				name="description"
 				id="description"
+				maxLength={characterCountBaseValue}
 				className={clsx(
 					"p-3 rounded-md bg-c-light-gray border border-c-light-gray outline-none focus:border-c-light-blue",
 					errors.description &&
@@ -26,8 +38,11 @@ const FormDescription = ({ register, errors }: FormField) => {
 				)}
 			/>
 			{errors.description && (
-				<p className="text-sm text-c-red">{errors.description.message}</p>
+				<p className="pb-2 text-sm text-c-red">{errors.description.message}</p>
 			)}
+			<p className="text-c-dark-gray">
+				{characterCountBaseValue - currentCharacterCount} characters left
+			</p>
 		</FormSectionWrapper>
 	);
 };

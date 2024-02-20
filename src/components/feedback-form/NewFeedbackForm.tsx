@@ -67,6 +67,7 @@ const NewFeedbackForm = () => {
 
 	const {
 		register,
+		watch,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<TFeedbackFormSchema>({
@@ -79,7 +80,7 @@ const NewFeedbackForm = () => {
 				<FormHeader text="Create New Feedback" />
 				<FormTitle register={register("title")} errors={errors} />
 				<FormCategory register={register("category")} errors={errors} />
-				<FormDescription register={register("description")} errors={errors} />
+				<FormDescription register={register("description")} watch={watch} errors={errors} />
 
 				{utilityContent}
 				{!isPending && (
