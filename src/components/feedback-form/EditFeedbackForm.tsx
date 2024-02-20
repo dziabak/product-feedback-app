@@ -2,9 +2,10 @@
 import { useNavigate, useParams, Link } from "react-router-dom";
 // LIBRARIES
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { z } from "zod";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+// TYPES
+import { feedbackFormSchema, TFeedbackFormSchema } from "../../types/types";
 // DATA
 import {
 	queryClient,
@@ -20,15 +21,6 @@ import FormStatus from "./form-components/FormStatus";
 import FormDescription from "./form-components/FormDescription";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
-
-const schema = z.object({
-	title: z.string().min(1, "This can't be empty!").max(30),
-	category: z.string(),
-	status: z.string(),
-	description: z.string().min(1, "This can't be empty!").max(250),
-});
-
-type FormFields = z.infer<typeof schema>;
 
 const EditFeedbackForm = () => {
 	const navigate = useNavigate();
@@ -54,8 +46,8 @@ const EditFeedbackForm = () => {
 		},
 	});
 
-	const onSubmit: SubmitHandler<FormFields> = (data) => {
-		mutate({ id: params.feedbackId, event: data });
+	const onSubmit = (data: TFeedbackFormSchema) => {
+		mutate({ id: params.feedbackId, formData: data });
 	};
 
 	if (isPending) {
@@ -95,9 +87,9 @@ const EditFeedbackForm = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<FormFields>({
+	} = useForm<TFeedbackFormSchema>({
 		defaultValues: defaultValues,
-		resolver: zodResolver(schema),
+		resolver: zodResolver(feedbackFormSchema),
 	});
 
 	return (

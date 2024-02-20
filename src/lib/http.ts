@@ -1,7 +1,11 @@
 // EXTERNAL IMPORTS
 import { QueryClient } from "@tanstack/react-query";
 // TYPES
-import { FeedbackData, ProductRequestsData, CurrentUserData } from "../types/types";
+import {
+	FeedbackData,
+	ProductRequestsData,
+	CurrentUserData,
+} from "../types/types";
 
 export const queryClient = new QueryClient();
 
@@ -175,7 +179,13 @@ export const deleteFeedback = async ({ id }: { id: any }) => {
 	return updateResponse.json();
 };
 
-export const editFeedback = async ({ id, event }: { id: any; event: any }) => {
+export const editFeedback = async ({
+	id,
+	formData,
+}: {
+	id: any;
+	formData: any;
+}) => {
 	// Fetch all feedback data
 	const existingDataResponse = await fetch(
 		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
@@ -196,7 +206,7 @@ export const editFeedback = async ({ id, event }: { id: any; event: any }) => {
 	const currentFeedbackItemIndex = allFeedbackData.indexOf(
 		updatedFeedbackData[0]
 	);
-	const editedFeedback = { ...updatedFeedbackData[0], ...event };
+	const editedFeedback = { ...updatedFeedbackData[0], ...formData };
 
 	// Update the data in Firebase
 	const updateResponse = await fetch(
@@ -338,7 +348,7 @@ export const addCommentReply = async ({
 		return mainObject;
 	};
 
-	const newDataWithReply = addReplyToData(updatedFeedbackData[0], comment)
+	const newDataWithReply = addReplyToData(updatedFeedbackData[0], comment);
 
 	// Construct URL with the next index as the key
 	const url = `https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests/${currentFeedbackItemIndex}.json`;
@@ -359,7 +369,13 @@ export const addCommentReply = async ({
 	return feedbackComment;
 };
 
-export const addUpvote = async ({ id, updatedFeedback }: { id: any; updatedFeedback: any }) => {
+export const addUpvote = async ({
+	id,
+	updatedFeedback,
+}: {
+	id: any;
+	updatedFeedback: any;
+}) => {
 	// Fetch all feedback data
 	const existingDataResponse = await fetch(
 		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
@@ -383,7 +399,10 @@ export const addUpvote = async ({ id, updatedFeedback }: { id: any; updatedFeedb
 	const currentFeedbackItemIndex = allFeedbackData.indexOf(
 		updatedFeedbackData[0]
 	);
-	const editedFeedback = { ...updatedFeedbackData[0], upvotes: updatedFeedback };
+	const editedFeedback = {
+		...updatedFeedbackData[0],
+		upvotes: updatedFeedback,
+	};
 	// console.log(editedFeedback);
 
 	// Update the data in Firebase

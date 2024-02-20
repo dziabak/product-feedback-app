@@ -1,10 +1,12 @@
+// TYPES
+import { FormField } from "../../../types/types";
 // LIBRARIES
 import clsx from "clsx";
 // COMPONENTS
 import FormSectionWrapper from "./FormSectionWrapper";
 import FormLabel from "./FormLabel";
 
-const FormTitle = ({ register, errors }: { register: any; errors: any }) => {
+const FormTitle = ({ register, errors }: FormField) => {
 	return (
 		<FormSectionWrapper>
 			<FormLabel

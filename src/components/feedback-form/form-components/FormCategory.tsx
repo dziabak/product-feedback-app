@@ -1,8 +1,10 @@
+// TYPES
+import { FormField } from "../../../types/types";
 // COMPONENTS
 import FormSectionWrapper from "./FormSectionWrapper";
 import FormLabel from "./FormLabel";
 
-const FormCategory = ({ register, errors }: { register: any; errors: any }) => {
+const FormCategory = ({ register, errors }: FormField) => {
 	return (
 		<FormSectionWrapper>
 			<FormLabel

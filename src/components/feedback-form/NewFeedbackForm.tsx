@@ -2,9 +2,10 @@
 import { useNavigate } from "react-router-dom";
 // LIBRARIES
 import { useMutation } from "@tanstack/react-query";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { z } from "zod";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+// TYPES
+import { feedbackFormSchema, TFeedbackFormSchema } from "../../types/types";
 // DATA
 import { queryClient, createNewFeedback } from "../../lib/http";
 // HOOKS
@@ -21,14 +22,6 @@ import LinkButton from "../ui/LinkButton";
 import GenericButton from "../ui/GenericButton";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
-
-const schema = z.object({
-	title: z.string().min(1, "This can't be empty!").max(30),
-	category: z.string(),
-	description: z.string().min(1, "This can't be empty!").max(250),
-});
-
-type FormFields = z.infer<typeof schema>;
 
 const NewFeedbackForm = () => {
 	let utilityContent!: JSX.Element;
@@ -60,7 +53,7 @@ const NewFeedbackForm = () => {
 
 	const randomId = generateRandomId();
 
-	const onSubmit: SubmitHandler<FormFields> = (data) => {
+	const onSubmit = (data: TFeedbackFormSchema) => {
 		const feedbackData = {
 			...data,
 			id: randomId,
@@ -76,7 +69,9 @@ const NewFeedbackForm = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<FormFields>({ resolver: zodResolver(schema) });
+	} = useForm<TFeedbackFormSchema>({
+		resolver: zodResolver(feedbackFormSchema),
+	});
 
 	return (
 		<FeedbackFormLayout>

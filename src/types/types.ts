@@ -1,3 +1,7 @@
+// LIBRARIES
+import { z } from "zod";
+import { UseFormRegisterReturn, FieldErrors } from "react-hook-form";
+
 export type FeedbackData = {
 	productRequests: {
 		id: string;
@@ -54,4 +58,18 @@ export type Comment = {
 		replyingTo: string;
 		user: { image: string; name: string; username: string };
 	}[];
+};
+
+export const feedbackFormSchema = z.object({
+	title: z.string().min(1, "This can't be empty!").max(30),
+	category: z.string(),
+	status: z.string().optional(),
+	description: z.string().min(1, "This can't be empty!").max(250),
+});
+
+export type TFeedbackFormSchema = z.infer<typeof feedbackFormSchema>;
+
+export type FormField = {
+	register: UseFormRegisterReturn<string>;
+	errors: FieldErrors<TFeedbackFormSchema>;
 };
