@@ -2,6 +2,9 @@
 import { useNavigate } from "react-router-dom";
 // LIBRARIES
 import { useMutation } from "@tanstack/react-query";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 // DATA
 import { queryClient, createNewFeedback } from "../../lib/http";
 // HOOKS
@@ -13,11 +16,19 @@ import FeedbackFormLayout from "./FeedbackFormLayout";
 import FormHeader from "./form-components/FormHeader";
 import FormTitle from "./form-components/FormTitle";
 import FormCategory from "./form-components/FormCategory";
-import FormDetails from "./form-components/FormDetails";
+import FormDescription from "./form-components/FormDescription";
 import LinkButton from "../ui/LinkButton";
 import GenericButton from "../ui/GenericButton";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
+
+const schema = z.object({
+	title: z.string().min(1, "This can't be empty!").max(30),
+	category: z.string(),
+	description: z.string().min(1, "This can't be empty!").max(250),
+});
+
+type FormFields = z.infer<typeof schema>;
 
 const NewFeedbackForm = () => {
 	let utilityContent!: JSX.Element;
@@ -49,10 +60,7 @@ const NewFeedbackForm = () => {
 
 	const randomId = generateRandomId();
 
-	const submitFormHandler = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		const formData = new FormData(e.currentTarget);
-		const data = Object.fromEntries(formData);
+	const onSubmit: SubmitHandler<FormFields> = (data) => {
 		const feedbackData = {
 			...data,
 			id: randomId,
@@ -61,17 +69,22 @@ const NewFeedbackForm = () => {
 			status: "suggestion",
 			author: currentUserData,
 		};
-
 		mutate(feedbackData);
 	};
 
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<FormFields>({ resolver: zodResolver(schema) });
+
 	return (
 		<FeedbackFormLayout>
-			<form onSubmit={submitFormHandler} className="space-y-4">
+			<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 				<FormHeader text="Create New Feedback" />
-				<FormTitle />
-				<FormCategory />
-				<FormDetails />
+				<FormTitle register={register("title")} errors={errors} />
+				<FormCategory register={register("category")} errors={errors} />
+				<FormDescription register={register("description")} errors={errors} />
 
 				{utilityContent}
 				{!isPending && (

@@ -2,6 +2,9 @@
 import { useNavigate, useParams, Link } from "react-router-dom";
 // LIBRARIES
 import { useQuery, useMutation } from "@tanstack/react-query";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 // DATA
 import {
 	queryClient,
@@ -14,15 +17,23 @@ import FormHeader from "./form-components/FormHeader";
 import FormTitle from "./form-components/FormTitle";
 import FormCategory from "./form-components/FormCategory";
 import FormStatus from "./form-components/FormStatus";
-import FormDetails from "./form-components/FormDetails";
+import FormDescription from "./form-components/FormDescription";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
+
+const schema = z.object({
+	title: z.string().min(1, "This can't be empty!").max(30),
+	category: z.string(),
+	status: z.string(),
+	description: z.string().min(1, "This can't be empty!").max(250),
+});
+
+type FormFields = z.infer<typeof schema>;
 
 const EditFeedbackForm = () => {
 	const navigate = useNavigate();
 	const params = useParams();
 
-	let content!: JSX.Element;
 	let utilityContent!: JSX.Element;
 
 	const { data, isPending, isError } = useQuery({
@@ -43,10 +54,7 @@ const EditFeedbackForm = () => {
 		},
 	});
 
-	const editFormHandler = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		const formData = new FormData(e.currentTarget);
-		const data = Object.fromEntries(formData);
+	const onSubmit: SubmitHandler<FormFields> = (data) => {
 		mutate({ id: params.feedbackId, event: data });
 	};
 
@@ -63,14 +71,43 @@ const EditFeedbackForm = () => {
 		);
 	}
 
+	let defaultValues = {
+		title: "",
+		category: "",
+		status: "",
+		description: "",
+	};
+
+	let title = "";
+
 	if (data) {
-		content = (
-			<form onSubmit={editFormHandler} className="space-y-4">
-				<FormHeader text={`Editing "${data[0].title}"`} />
-				<FormTitle defaultValue={data[0].title} />
-				<FormCategory defaultValue={data[0].category} />
-				<FormStatus defaultValue={data[0].status} />
-				<FormDetails defaultValue={data[0].description} />
+		title = data[0].title;
+
+		defaultValues = {
+			title: data[0].title,
+			category: data[0].category,
+			status: data[0].status,
+			description: data[0].description,
+		};
+	}
+
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<FormFields>({
+		defaultValues: defaultValues,
+		resolver: zodResolver(schema),
+	});
+
+	return (
+		<FeedbackFormLayout>
+			<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+				<FormHeader text={`Editing "${title}"`} />
+				<FormTitle register={register("title")} errors={errors} />
+				<FormCategory register={register("category")} errors={errors} />
+				<FormStatus register={register("status")} errors={errors} />
+				<FormDescription register={register("description")} errors={errors} />
 
 				{utilityContent}
 				{isPendingEdit && <p>Submitting updated data...</p>}
@@ -99,10 +136,8 @@ const EditFeedbackForm = () => {
 					</p>
 				)}
 			</form>
-		);
-	}
-
-	return <FeedbackFormLayout>{content}</FeedbackFormLayout>;
+		</FeedbackFormLayout>
+	);
 };
 
 export default EditFeedbackForm;

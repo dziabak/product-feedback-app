@@ -1,8 +1,16 @@
+// LIBRARIES
+import clsx from "clsx";
 // COMPONENTS
 import FormSectionWrapper from "./FormSectionWrapper";
 import FormLabel from "./FormLabel";
 
-const FormDescription = ({ defaultValue }: { defaultValue?: any }) => {
+const FormDescription = ({
+	register,
+	errors,
+}: {
+	register: any;
+	errors: any;
+}) => {
 	return (
 		<FormSectionWrapper>
 			<FormLabel
@@ -12,11 +20,18 @@ const FormDescription = ({ defaultValue }: { defaultValue?: any }) => {
 					etc."
 			/>
 			<textarea
+				{...register}
 				name="description"
 				id="description"
-				className="p-3 rounded-md bg-c-light-gray"
-				defaultValue={defaultValue}
+				className={clsx(
+					"p-3 rounded-md bg-c-light-gray border border-c-light-gray outline-none focus:border-c-light-blue",
+					errors.description &&
+						"outline-none border border-c-red focus:border-transparent focus:ring focus:ring-c-red caret-c-red"
+				)}
 			/>
+			{errors.description && (
+				<p className="text-sm text-c-red">{errors.description.message}</p>
+			)}
 		</FormSectionWrapper>
 	);
 };
