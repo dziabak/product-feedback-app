@@ -32,7 +32,6 @@ const SuggestionsAppLogo = ({
 					<h1 className="font-bold text-lg text-white md:text-xl">
 						Feedback Nexus
 					</h1>
-					{/* <p className="text-sm text-white/75 md:text-base">Feedback Board</p> */}
 					<div>
 						<p className="hidden text-xs text-white/75 md:block">
 							logged in as:
