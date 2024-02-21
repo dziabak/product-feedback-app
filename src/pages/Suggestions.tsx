@@ -6,7 +6,8 @@ import { useDocumentTitle } from "usehooks-ts";
 import SuggestionsMain from "../components/suggestions/SuggestionsMain";
 
 const Suggestions = () => {
-	useDocumentTitle("Suggestions | Feedback Board");
+	useDocumentTitle("Suggestions | Feedback Nexus");
+
 	return (
 		<>
 			<Outlet />

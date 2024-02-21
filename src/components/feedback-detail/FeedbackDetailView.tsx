@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 // LIBRARIES
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { useDocumentTitle } from "usehooks-ts";
 // DATA
 import {
 	queryClient,
@@ -20,7 +19,6 @@ import ErrorBlock from "../ui/ErrorBlock";
 import LabelsGroup from "./LabelsGroup";
 
 const FeedbackDetailView = () => {
-	useDocumentTitle("Feedback Details | Feedback Board");
 	const params = useParams();
 	const navigate = useNavigate();
 

@@ -7,7 +7,7 @@ import RoadmapHeader from "../components/roadmap/RoadmapHeader";
 import RoadmapGrid from "../components/roadmap/RoadmapGrid";
 
 const Roadmap = () => {
-	useDocumentTitle("Roadmap | Feedback Board");
+	useDocumentTitle("Roadmap | Feedback Nexus");
 
 	return (
 		<>
