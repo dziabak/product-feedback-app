@@ -3,8 +3,7 @@ import { Outlet } from "react-router-dom";
 // LIBRARIES
 import { useDocumentTitle } from "usehooks-ts";
 // COMPONENTS
-import RoadmapHeader from "../components/roadmap/RoadmapHeader";
-import RoadmapGrid from "../components/roadmap/RoadmapGrid";
+import RoadmapMain from "../components/roadmap/RoadmapMain";
 
 const Roadmap = () => {
 	useDocumentTitle("Roadmap | Feedback Nexus");
@@ -12,10 +11,7 @@ const Roadmap = () => {
 	return (
 		<>
 			<Outlet />
-			<section className="container md:py-8">
-				<RoadmapHeader />
-				<RoadmapGrid />
-			</section>
+			<RoadmapMain />
 		</>
 	);
 };

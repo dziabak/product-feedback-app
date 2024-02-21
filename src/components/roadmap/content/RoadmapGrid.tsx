@@ -1,10 +1,10 @@
 // TYPES
-import { ProductRequestsData } from "../../types/types";
+import { ProductRequestsData } from "../../../types/types";
 // COMPONENTS
-import FeedbackTileRoadmap from "../feeedback-tile/feedback-tile-roadmap/FeedbackTileRoadmap";
-import RoadmapGridStatusHeader from "./RoadmapGridStatusHeader";
+import FeedbackTileRoadmap from "../../feeedback-tile/feedback-tile-roadmap/FeedbackTileRoadmap";
+import RoadmapGridLabel from "./RoadmapGridLabel";
 
-const RoadmapGridStatus = ({
+const RoadmapGrid = ({
 	data,
 	status,
 }: {
@@ -33,13 +33,10 @@ const RoadmapGridStatus = ({
 
 	return (
 		<div>
-			<RoadmapGridStatusHeader
-				status={status}
-				statusLength={filteredData.length}
-			/>
+			<RoadmapGridLabel status={status} statusLength={filteredData.length} />
 			<div className="grid gap-4">{content}</div>
 		</div>
 	);
 };
 
-export default RoadmapGridStatus;
+export default RoadmapGrid;

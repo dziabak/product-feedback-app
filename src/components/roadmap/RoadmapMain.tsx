@@ -3,12 +3,13 @@ import { useQuery } from "@tanstack/react-query";
 // DATA
 import { fetchWithoutSuggestionsData } from "../../lib/http";
 // COMPONENTS
-import RoadmapGridMobileView from "./RoadmapGridMobileView";
-import RoadmapGridDesktopView from "./RoadmapGridDesktopView";
+import RoadmapHeader from "./content/RoadmapHeader";
+import RoadmapMobileLayout from "./layouts/RoadmapMobileLayout";
+import RoadmapDesktopLayout from "./layouts/RoadmapDesktopLayout";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
 
-const RoadmapGrid = () => {
+const RoadmapMain = () => {
 	let content!: JSX.Element | JSX.Element[];
 
 	const { data, isFetching, isError } = useQuery({
@@ -39,16 +40,21 @@ const RoadmapGrid = () => {
 		content = (
 			<>
 				<div className="md:hidden">
-					<RoadmapGridMobileView data={data} />
+					<RoadmapMobileLayout data={data} />
 				</div>
 				<div className="hidden md:grid grid-cols-3 gap-4">
-					<RoadmapGridDesktopView data={data} />
+					<RoadmapDesktopLayout data={data} />
 				</div>
 			</>
 		);
 	}
 
-	return <>{content}</>;
+	return (
+		<section className="container md:py-8">
+			<RoadmapHeader />
+			{content}
+		</section>
+	);
 };
 
-export default RoadmapGrid;
+export default RoadmapMain;

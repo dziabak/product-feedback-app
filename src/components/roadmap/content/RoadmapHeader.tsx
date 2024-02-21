@@ -1,11 +1,11 @@
 // REACT
 import { Link } from "react-router-dom";
 // COMPONENTS
-import LinkButton from "../ui/LinkButton";
+import LinkButton from "../../ui/LinkButton";
 
 const RoadmapHeader = () => {
 	return (
-		<div className="flex justify-between items-center px-8 py-8 bg-c-dark-blue md:rounded-lg md:px-12">
+		<div className="flex justify-between items-center px-8 py-8 bg-c-dark-blue md:rounded-lg md:px-10">
 			<div className="flex flex-col space-y-2">
 				<Link
 					to="/"

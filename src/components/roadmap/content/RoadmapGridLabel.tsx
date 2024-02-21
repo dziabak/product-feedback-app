@@ -1,4 +1,4 @@
-const RoadmapGridStatusHeader = ({
+const RoadmapGridLabel = ({
 	status,
 	statusLength,
 }: {
@@ -23,4 +23,4 @@ const RoadmapGridStatusHeader = ({
 	);
 };
 
-export default RoadmapGridStatusHeader;
+export default RoadmapGridLabel;

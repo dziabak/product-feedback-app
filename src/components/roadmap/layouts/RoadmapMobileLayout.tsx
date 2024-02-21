@@ -3,13 +3,13 @@ import { useState } from "react";
 // LIBRARIES
 import clsx from "clsx";
 // TYPES
-import { ProductRequestsData } from "../../types/types";
+import { ProductRequestsData } from "../../../types/types";
 // HELPERS
-import { getStatusLength } from "../../utils/helpers";
+import { getStatusLength } from "../../../utils/helpers";
 // COMPONENTS
-import RoadmapGridStatus from "./RoadmapGridStatus";
+import RoadmapGrid from "../content/RoadmapGrid";
 
-const RoadmapGridMobileView = ({ data }: { data: ProductRequestsData }) => {
+const RoadmapMobileLayout = ({ data }: { data: ProductRequestsData }) => {
 	let content!: JSX.Element | JSX.Element[];
 
 	const [status, setStatus] = useState("planned");
@@ -19,11 +19,11 @@ const RoadmapGridMobileView = ({ data }: { data: ProductRequestsData }) => {
 	const liveLength = getStatusLength(data, "live");
 
 	if (status === "planned") {
-		content = <RoadmapGridStatus data={data} status="planned" />;
+		content = <RoadmapGrid data={data} status="planned" />;
 	} else if (status === "in-progress") {
-		content = <RoadmapGridStatus data={data} status="in-progress" />;
+		content = <RoadmapGrid data={data} status="in-progress" />;
 	} else {
-		content = <RoadmapGridStatus data={data} status="live" />;
+		content = <RoadmapGrid data={data} status="live" />;
 	}
 
 	return (
@@ -67,4 +67,4 @@ const RoadmapGridMobileView = ({ data }: { data: ProductRequestsData }) => {
 	);
 };
 
-export default RoadmapGridMobileView;
+export default RoadmapMobileLayout;
