@@ -12,7 +12,7 @@ const Roadmap = () => {
 	return (
 		<>
 			<Outlet />
-			<section className="container py-8">
+			<section className="container md:py-8">
 				<RoadmapHeader />
 				<RoadmapGrid />
 			</section>

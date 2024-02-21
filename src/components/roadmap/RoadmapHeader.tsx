@@ -5,25 +5,30 @@ import LinkButton from "../ui/LinkButton";
 
 const RoadmapHeader = () => {
 	return (
-		<div className="flex justify-between items-center px-6 py-4 rounded-lg bg-c-dark-blue">
+		<div className="flex justify-between items-center px-8 py-8 bg-c-dark-blue md:rounded-lg md:px-12">
 			<div className="flex flex-col space-y-2">
-				<Link to="/" className="flex items-center text-sm font-bold text-white">
+				<Link
+					to="/"
+					className="group flex items-center text-sm font-bold text-white">
 					<svg
-						className="mr-2"
+						className="mr-3"
 						width="7"
 						height="10"
 						xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M6 9L2 5l4-4"
-							stroke="#FFFFFF"
+							stroke="#CDD2EE"
 							strokeWidth="2"
 							fill="none"
 							fillRule="evenodd"
 						/>
 					</svg>
-					Go Back
+					<span className="relative">
+						Go Back
+						<span className="absolute bottom-0 left-0 h-[0.1rem] bg-white w-0 transition-all duration-300 group-hover:w-full"></span>
+					</span>
 				</Link>
-				<p className="mr-8 text-2xl font-bold text-white">Roadmap</p>
+				<p className="mr-8 text-xl font-bold text-white md:text-2xl">Roadmap</p>
 			</div>
 			<LinkButton
 				linkTo="/roadmap/new-feedback"

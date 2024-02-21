@@ -45,9 +45,9 @@ const FeedbackTile = ({
 				<button
 					onClick={addUpvoteHandler}
 					className={clsx(
-						"group flex flex-col items-center w-10 p-3 space-y-2 text-xs font-bold rounded-lg transition-colors bg-c-gray text-c-light-blue hover:bg-c-light-blue/25 dark:text-c-dark-blue dark:hover:bg-c-gray/90",
+						"group flex flex-col items-center w-10 p-3 space-y-2 text-xs font-bold rounded-[10px] transition-colors bg-c-gray text-c-dark-blue hover:bg-c-light-blue/25 dark:text-c-dark-blue dark:hover:bg-c-gray/90",
 						!canAddUpvote &&
-							"bg-c-light-blue text-white hover:text-c-light-blue hover:bg-c-light-blue/25"
+							"bg-c-light-blue text-white hover:text-c-dark-blue hover:bg-c-light-blue/25"
 					)}>
 					<svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
 						<path
@@ -76,7 +76,7 @@ const FeedbackTile = ({
 						<p className="text-c-dark-gray dark:text-c-light-gray">
 							{description}
 						</p>
-						<p className="inline-block px-4 py-2 text-sm font-semibold transition-colors rounded-xl bg-c-gray text-c-light-blue dark:text-c-dark-blue">
+						<p className="inline-block px-4 py-2 text-sm font-semibold transition-colors rounded-[10px] bg-c-gray text-c-light-blue dark:text-c-dark-blue">
 							{categoryCapitalized}
 						</p>
 					</div>
