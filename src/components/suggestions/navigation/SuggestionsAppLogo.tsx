@@ -36,13 +36,11 @@ const SuggestionsAppLogo = ({
 						<p className="hidden text-xs text-white/75 md:block">
 							logged in as:
 						</p>
-						{currentUserData ? (
+						{currentUserData && (
 							<p className="text-sm text-white/75">
 								<span className="font-bold">{currentUserData.name}</span> (
 								{currentUserData.username})
 							</p>
-						) : (
-							<p className="text-sm font-bold text-white/75">Guest</p>
 						)}
 					</div>
 				</div>

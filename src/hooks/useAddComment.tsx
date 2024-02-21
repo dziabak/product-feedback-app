@@ -33,7 +33,6 @@ const useAddComment = (
 	});
 
 	const onSubmit = (data: TCommentSchema) => {
-		console.log(data);
 		const comment = {
 			...data,
 			...commentData,
