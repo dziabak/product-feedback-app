@@ -60,7 +60,7 @@ const SuggestionsCategoryFilter = ({
 						className={`px-4 py-2 m-2 text-sm font-semibold transition-colors rounded-[10px] ${
 							(selectedFilters.includes(item) && item !== "all") ||
 							(selectedFilters.length === 0 && item === "all")
-								? "bg-c-light-blue text-white"
+								? "bg-c-light-blue text-white hover:bg-c-light-blue/25 hover:text-c-light-blue"
 								: "bg-c-gray text-c-light-blue hover:bg-c-light-blue/25 hover:text-c-light-blue"
 						} ${item.length <= 2 ? "uppercase" : "capitalize"}`}>
 						{item}
