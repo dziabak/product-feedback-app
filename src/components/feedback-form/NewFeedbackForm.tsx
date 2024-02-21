@@ -20,7 +20,7 @@ import FormCategory from "./form-components/FormCategory";
 import FormDescription from "./form-components/FormDescription";
 import LinkButton from "../ui/LinkButton";
 import GenericButton from "../ui/GenericButton";
-import LoadingSpinner from "../ui/LoadingSpinner";
+import LoadingText from "../ui/LoadingText";
 import ErrorBlock from "../ui/ErrorBlock";
 
 const NewFeedbackForm = () => {
@@ -39,13 +39,14 @@ const NewFeedbackForm = () => {
 	});
 
 	if (isPending) {
-		utilityContent = <LoadingSpinner />;
+		utilityContent = <LoadingText text="Submitting data..." />;
 	}
 
 	if (isError) {
 		utilityContent = (
 			<ErrorBlock
-				errorHeader="There was an error"
+			small
+				errorHeader="There was an error while submitting the data"
 				errorMessage="Please try again later"
 			/>
 		);
@@ -75,12 +76,16 @@ const NewFeedbackForm = () => {
 	});
 
 	return (
-		<FeedbackFormLayout>
+		<FeedbackFormLayout isPending={isPending}>
 			<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 				<FormHeader text="Create New Feedback" />
 				<FormTitle register={register("title")} errors={errors} />
 				<FormCategory register={register("category")} errors={errors} />
-				<FormDescription register={register("description")} watch={watch} errors={errors} />
+				<FormDescription
+					register={register("description")}
+					watch={watch}
+					errors={errors}
+				/>
 
 				{utilityContent}
 				{!isPending && (

@@ -19,7 +19,7 @@ import FormTitle from "./form-components/FormTitle";
 import FormCategory from "./form-components/FormCategory";
 import FormStatus from "./form-components/FormStatus";
 import FormDescription from "./form-components/FormDescription";
-import LoadingSpinner from "../ui/LoadingSpinner";
+import LoadingText from "../ui/LoadingText";
 import ErrorBlock from "../ui/ErrorBlock";
 
 const EditFeedbackForm = () => {
@@ -51,13 +51,28 @@ const EditFeedbackForm = () => {
 	};
 
 	if (isPending) {
-		utilityContent = <LoadingSpinner />;
+		utilityContent = <LoadingText text="Loading data..." />;
 	}
 
 	if (isError) {
 		utilityContent = (
 			<ErrorBlock
-				errorHeader="There was an error"
+				small
+				errorHeader="There was an error while loading the data"
+				errorMessage="Please try again later"
+			/>
+		);
+	}
+
+	if (isPendingEdit) {
+		utilityContent = <LoadingText text="Submitting updated data..." />;
+	}
+
+	if (isErrorEdit) {
+		utilityContent = (
+			<ErrorBlock
+				small
+				errorHeader="There was an error while editing the data"
 				errorMessage="Please try again later"
 			/>
 		);
@@ -94,16 +109,18 @@ const EditFeedbackForm = () => {
 	});
 
 	return (
-		<FeedbackFormLayout>
+		<FeedbackFormLayout isPending={isPendingEdit}>
 			<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 				<FormHeader text={`Editing "${title}"`} />
 				<FormTitle register={register("title")} errors={errors} />
 				<FormCategory register={register("category")} errors={errors} />
 				<FormStatus register={register("status")} errors={errors} />
-				<FormDescription register={register("description")} watch={watch} errors={errors} />
-
+				<FormDescription
+					register={register("description")}
+					watch={watch}
+					errors={errors}
+				/>
 				{utilityContent}
-				{isPendingEdit && <p>Submitting updated data...</p>}
 				{!isPendingEdit && (
 					<div className="flex justify-between pt-8 space-x-4">
 						<button
@@ -122,11 +139,6 @@ const EditFeedbackForm = () => {
 							</button>
 						</div>
 					</div>
-				)}
-				{isErrorEdit && (
-					<p>
-						There was an error while updating the data. Please try again later.
-					</p>
 				)}
 			</form>
 		</FeedbackFormLayout>
