@@ -87,7 +87,7 @@ const FeedbackTile = ({
 						alt="Icon of speech bubble representing comments"
 					/>
 					{commentsNumber === undefined ? (
-						<p className="font-bold text-c-dark-blue dark:text-c-light-gray">
+						<p className="font-bold text-c-dark-blue/50 dark:text-c-light-gray">
 							0
 						</p>
 					) : (

@@ -89,7 +89,7 @@ const FeedbackTileRoadmap = ({
 						/>
 					</svg>
 					{commentsNumber === undefined ? (
-						<p className="font-bold text-c-dark-blue">0</p>
+						<p className="font-bold text-c-dark-blue/50">0</p>
 					) : (
 						<p className="font-bold text-c-dark-blue">{totalComments}</p>
 					)}
