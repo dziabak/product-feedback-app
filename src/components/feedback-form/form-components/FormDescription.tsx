@@ -32,7 +32,7 @@ const FormDescription = ({ register, errors, watch }: FormDescriptionProps) => {
 				id="description"
 				maxLength={characterCountBaseValue}
 				className={clsx(
-					"p-3 rounded-md bg-c-light-gray border border-c-light-gray outline-none focus:border-c-light-blue",
+					"min-h-36 max-h-44 p-3 rounded-md bg-c-light-gray border border-c-light-gray outline-none focus:border-c-light-blue",
 					errors.description &&
 						"outline-none border border-c-red focus:border-transparent focus:ring focus:ring-c-red caret-c-red"
 				)}
