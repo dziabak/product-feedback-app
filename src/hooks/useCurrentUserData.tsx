@@ -12,7 +12,7 @@ const useCurrentUserData = () => {
 
 	if (isError) {
 		const guestUserData = {
-			image: "../assets/user-images/image-guest.svg",
+			image: "/assets/user-images/image-guest.svg",
 			name: "Guest",
 			username: "guest",
 		};
