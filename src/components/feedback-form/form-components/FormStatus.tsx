@@ -16,7 +16,7 @@ const FormStatus = ({ register, errors }: FormField) => {
 				{...register}
 				name="status"
 				id="status"
-				className="p-3 rounded-md bg-c-light-gray">
+				className="p-3 rounded-md border outline-none bg-c-light-gray border-c-light-gray focus:border-c-light-blue">
 				<option value="suggestion">Suggestion</option>
 				<option value="planned">Planned</option>
 				<option value="in-progress">In-progress</option>

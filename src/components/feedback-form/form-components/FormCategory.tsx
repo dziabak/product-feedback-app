@@ -16,7 +16,7 @@ const FormCategory = ({ register, errors }: FormField) => {
 				{...register}
 				name="category"
 				id="category"
-				className="p-3 rounded-md bg-c-light-gray border border-c-light-gray outline-none focus:border-c-light-blue">
+				className="p-3 rounded-md border outline-none bg-c-light-gray border-c-light-gray focus:border-c-light-blue">
 				<option value="feature">Feature</option>
 				<option value="ui">UI</option>
 				<option value="ux">UX</option>
