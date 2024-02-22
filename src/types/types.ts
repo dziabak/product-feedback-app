@@ -61,10 +61,10 @@ export type Comment = {
 };
 
 export const feedbackFormSchema = z.object({
-	title: z.string().min(1, "This can't be empty!").max(30),
+	title: z.string().min(1, "This can't be empty!").max(50),
 	category: z.string(),
 	status: z.string().optional(),
-	description: z.string().min(1, "This can't be empty!").max(250),
+	description: z.string().min(1, "This can't be empty!").max(500),
 });
 
 export type TFeedbackFormSchema = z.infer<typeof feedbackFormSchema>;

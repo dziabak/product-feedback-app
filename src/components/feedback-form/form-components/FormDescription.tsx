@@ -9,7 +9,7 @@ import FormLabel from "./FormLabel";
 type FormDescriptionProps = FormField & { watch: any };
 
 const FormDescription = ({ register, errors, watch }: FormDescriptionProps) => {
-	const characterCountBaseValue = 250;
+	const characterCountBaseValue = 500;
 	let currentCharacterCount!: number;
 
 	if (watch("description") !== undefined) {

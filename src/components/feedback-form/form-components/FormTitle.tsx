@@ -19,6 +19,7 @@ const FormTitle = ({ register, errors }: FormField) => {
 				type="text"
 				name="title"
 				id="title"
+				maxLength={50}
 				className={clsx(
 					"p-3 rounded-md bg-c-light-gray border border-c-light-gray outline-none focus:border-c-light-blue",
 					errors.title &&

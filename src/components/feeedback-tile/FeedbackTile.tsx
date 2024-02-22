@@ -74,18 +74,20 @@ const FeedbackTile = ({
 					location.pathname !== "/" && "cursor-default"
 				)}>
 				<div className="flex items-start space-x-12 ">
-					<div className="space-y-2">
-						<p
-							className={clsx(
-								"line-clamp-1 text-lg font-bold transition-colors text-c-dark-blue  dark:text-c-light-gray ",
-								location.pathname === "/" &&
-									"group-hover:text-c-light-blue dark:group-hover:text-c-light-gray/75"
-							)}>
-							{title}
-						</p>
-						<p className="text-c-dark-gray dark:text-c-light-gray">
-							{description}
-						</p>
+					<div className="space-y-4">
+						<div className="space-y-1">
+							<p
+								className={clsx(
+									"break-all line-clamp-1 text-lg font-bold transition-colors text-c-dark-blue dark:text-c-light-gray",
+									location.pathname === "/" &&
+										"group-hover:text-c-light-blue dark:group-hover:text-c-light-gray/75"
+								)}>
+								{title}
+							</p>
+							<p className="whitespace-pre-line text-c-dark-gray dark:text-c-light-gray">
+								{description}
+							</p>
+						</div>
 						<p className="inline-block px-4 py-2 text-sm font-semibold transition-colors rounded-[10px] bg-c-gray text-c-light-blue dark:text-c-dark-blue">
 							{categoryCapitalized}
 						</p>
