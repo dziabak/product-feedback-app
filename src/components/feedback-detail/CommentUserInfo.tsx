@@ -24,8 +24,9 @@ const CommentUserInfo = ({
 					</div>
 					<button
 						onClick={toggleIsReplying}
-						className="text-sm font-bold text-c-light-blue hover:text-c-light-blue/75">
+						className="group relative text-sm font-bold text-c-light-blue">
 						Reply
+						<span className="absolute -bottom-[0.1rem] left-0 h-[0.1rem] bg-c-light-blue w-0 group-hover:w-full transition-all duration-300"></span>
 					</button>
 				</div>
 				<p className="text-c-dark-gray text-wrap">

@@ -1,5 +1,5 @@
 // REACT
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 // LIBRARIES
 import clsx from "clsx";
 // TYPES
@@ -31,6 +31,8 @@ const FeedbackTile = ({
 	id,
 	comments,
 }: FeedbackTile) => {
+	const location = useLocation();
+
 	const categoryCapitalized = capitalizeString(category);
 	const totalComments = countTotalComments(comments);
 
@@ -67,10 +69,18 @@ const FeedbackTile = ({
 			</div>
 			<Link
 				to={`/feedback/${id}`}
-				className="group w-full flex items-center justify-between space-x-4">
+				className={clsx(
+					"group w-full flex items-center justify-between space-x-4",
+					location.pathname !== "/" && "cursor-default"
+				)}>
 				<div className="flex items-start space-x-12 ">
 					<div className="space-y-2">
-						<p className="line-clamp-1 text-lg font-bold transition-colors text-c-dark-blue group-hover:text-c-light-blue dark:text-c-light-gray dark:group-hover:text-c-light-gray/75">
+						<p
+							className={clsx(
+								"line-clamp-1 text-lg font-bold transition-colors text-c-dark-blue  dark:text-c-light-gray ",
+								location.pathname === "/" &&
+									"group-hover:text-c-light-blue dark:group-hover:text-c-light-gray/75"
+							)}>
 							{title}
 						</p>
 						<p className="text-c-dark-gray dark:text-c-light-gray">
