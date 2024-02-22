@@ -14,13 +14,16 @@ const FeedbackFormLayout = ({
 	children: JSX.Element;
 	isPending: any;
 }) => {
+	const dialogRef = useRef<HTMLDialogElement>(null);
+	const contentRef = useRef<HTMLDivElement>(null);
+
+	const navigate = useNavigate();
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	useEffect(() => {
 		setIsModalOpen(true);
+		dialogRef.current?.showModal();
 	}, []);
-
-	const ref = useRef<HTMLDivElement>(null);
-	const navigate = useNavigate();
 
 	const handleClickOutside = () => {
 		if (!isPending) {
@@ -28,7 +31,7 @@ const FeedbackFormLayout = ({
 		}
 	};
 
-	useOnClickOutside(ref, handleClickOutside);
+	useOnClickOutside(contentRef, handleClickOutside);
 
 	const location = useLocation();
 	let renderedIcon: string;
@@ -40,16 +43,17 @@ const FeedbackFormLayout = ({
 	}
 
 	return (
-		<section
+		<dialog
+			ref={dialogRef}
 			className={clsx(
-				"fixed top-0 left-0 z-10 w-full h-full bg-c-dark-blue/50 backdrop-blur transition-all duration-300",
+				"fixed top-0 left-0 w-full h-full bg-c-dark-blue/0 transition-all duration-300 backdrop:bg-c-dark-blue/50 backdrop:backdrop-blur backdrop:cursor-pointer",
 				!isModalOpen && "opacity-0",
 				isModalOpen && "opacity-100",
 				!isPending && "cursor-pointer"
 			)}>
 			<div className="flex flex-col items-center justify-center w-full h-full">
 				<div
-					ref={ref}
+					ref={contentRef}
 					className={clsx(
 						"relative z-20 p-8 rounded-lg bg-white cursor-default transition-all duration-500",
 						!isModalOpen && "-mt-16",
@@ -57,13 +61,13 @@ const FeedbackFormLayout = ({
 					)}>
 					<img
 						src={renderedIcon}
-						alt=""
+						alt="Icon for a feedback form"
 						className="absolute top-0 -mt-8 w-14 h-14"
 					/>
 					{children}
 				</div>
 			</div>
-		</section>
+		</dialog>
 	);
 };
 
