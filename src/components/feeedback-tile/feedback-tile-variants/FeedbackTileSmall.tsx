@@ -1,19 +1,18 @@
 // REACT
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 // LIBRARIES
 import clsx from "clsx";
 // TYPES
-import { Comment } from "../../../types/types";
-// HOOKS
-import useAddUpvote from "../../../hooks/useAddUpvote";
+import { FeedbackTileProps } from "../../../types/types";
 // HELPERS
 import { capitalizeString, countTotalComments } from "../../../utils/helpers";
 // COMPONENTS
-import FeedbackTileAccent from "./FeedbackTileAccent";
-import FeedbackTileStatus from "./FeedbackTileStatus";
+import FeedbackTileAccent from "../feedback-tile-roadmap/FeedbackTileAccent";
+import FeedbackTileStatus from "../feedback-tile-roadmap/FeedbackTileStatus";
+// IMAGES
+import commentIcon from "../../../assets/icons/icon-comments.svg";
 
-const FeedbackTileRoadmap = ({
-	upvotes,
+const FeedbackTileSmall = ({
 	category,
 	title,
 	description,
@@ -21,35 +20,43 @@ const FeedbackTileRoadmap = ({
 	status,
 	id,
 	comments,
-}: {
-	upvotes: number;
-	category: string;
-	title: string;
-	description: string;
-	commentsNumber: number;
-	status: string;
-	id: string;
-	comments?: Comment[];
-}) => {
+	addUpvoteHandler,
+	upvotesCount,
+	canAddUpvote,
+}: FeedbackTileProps) => {
 	const categoryCapitalized = capitalizeString(category);
 	const totalComments = countTotalComments(comments);
 
-	const { addUpvoteHandler, upvotesCount, canAddUpvote } = useAddUpvote(
-		id,
-		upvotes
-	);
+	const location = useLocation();
 
 	return (
-		<div className="h-72 md:h-80 xl:h-72 flex flex-col justify-between rounded-lg bg-white">
+		<div
+			className={clsx(
+				"flex flex-col justify-between rounded-lg bg-white",
+				location.pathname === "/roadmap" && "h-72 md:h-80 xl:h-72",
+				location.pathname !== "/roadmap" && "pt-8"
+			)}>
 			<Link to={`/feedback/${id}`} className="group rounded-lg bg-white">
-				<FeedbackTileAccent status={status} />
-				<FeedbackTileStatus status={status} />
+				{location.pathname === "/roadmap" && (
+					<>
+						<FeedbackTileAccent status={status} />
+						<FeedbackTileStatus status={status} />
+					</>
+				)}
 				<div className="px-8 space-y-4">
-					<div className="space-y-2">
-						<p className="line-clamp-1 text-lg font-bold transition-colors text-c-dark-blue group-hover:text-c-light-blue dark:text-c-light-gray dark:group-hover:text-c-light-gray/75">
-							{title}
-						</p>
-						<p className="text-c-dark-gray line-clamp-2">{description}</p>
+					<div className="space-y-4">
+						<div className="space-y-1">
+							<p className="break-all line-clamp-1 text-lg font-bold transition-colors text-c-dark-blue group-hover:text-c-light-blue dark:text-c-light-gray dark:group-hover:text-c-light-gray/75">
+								{title}
+							</p>
+							<p
+								className={clsx(
+									"whitespace-pre-line text-c-dark-gray",
+									location.pathname === "/roadmap" && "line-clamp-2"
+								)}>
+								{description}
+							</p>
+						</div>
 						<p className="inline-block px-4 py-2 text-sm font-semibold transition-colors rounded-[10px] bg-c-gray text-c-light-blue">
 							{categoryCapitalized}
 						</p>
@@ -81,13 +88,10 @@ const FeedbackTileRoadmap = ({
 				</button>
 
 				<div className="flex items-center space-x-2">
-					<svg width="18" height="16" xmlns="http://www.w3.org/2000/svg">
-						<path
-							d="M2.62 16H1.346l.902-.91c.486-.491.79-1.13.872-1.823C1.036 11.887 0 9.89 0 7.794 0 3.928 3.52 0 9.03 0 14.87 0 18 3.615 18 7.455c0 3.866-3.164 7.478-8.97 7.478-1.017 0-2.078-.137-3.025-.388A4.705 4.705 0 012.62 16z"
-							fill="#CDD2EE"
-							fillRule="nonzero"
-						/>
-					</svg>
+					<img
+						src={commentIcon}
+						alt="Icon of speech bubble representing comments"
+					/>
 					{commentsNumber === undefined ? (
 						<p className="font-bold text-c-dark-blue/50">0</p>
 					) : (
@@ -99,4 +103,4 @@ const FeedbackTileRoadmap = ({
 	);
 };
 
-export default FeedbackTileRoadmap;
+export default FeedbackTileSmall;

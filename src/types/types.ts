@@ -73,3 +73,18 @@ export type FormField = {
 	register: UseFormRegisterReturn<string>;
 	errors: FieldErrors<TFeedbackFormSchema>;
 };
+
+export type FeedbackTileProps = {
+	upvotes: number;
+	category: string;
+	title: string;
+	description: string;
+	commentsNumber: number;
+	status: string;
+	id: string;
+	comments?: Comment[];
+	addUpvoteHandler?: any;
+	upvotesCount?: any;
+	canAddUpvote?: any;
+	small?: boolean;
+};

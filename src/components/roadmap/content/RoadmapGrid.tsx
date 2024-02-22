@@ -1,7 +1,7 @@
 // TYPES
 import { ProductRequestsData } from "../../../types/types";
 // COMPONENTS
-import FeedbackTileRoadmap from "../../feeedback-tile/feedback-tile-roadmap/FeedbackTileRoadmap";
+import FeedbackTile from "../../feeedback-tile/FeedbackTile";
 import RoadmapGridLabel from "./RoadmapGridLabel";
 
 const RoadmapGrid = ({
@@ -18,7 +18,8 @@ const RoadmapGrid = ({
 	});
 
 	content = filteredData.map((feedback) => (
-		<FeedbackTileRoadmap
+		<FeedbackTile
+			small
 			key={feedback.id}
 			id={feedback.id}
 			category={feedback.category}
