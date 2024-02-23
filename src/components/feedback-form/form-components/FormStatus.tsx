@@ -5,7 +5,7 @@ import { TFeedbackFormSchema } from "../../../types/types";
 // COMPONENTS
 import FormSectionWrapper from "./FormSectionWrapper";
 import FormLabel from "./FormLabel";
-import ListboxComponent from "./Listbox";
+import FormListbox from "./FormListbox";
 
 const FormStatus = ({ control }: { control: Control<TFeedbackFormSchema> }) => {
 	const statusData = ["suggestion", "planned", "in-progress", "live"];
@@ -21,7 +21,7 @@ const FormStatus = ({ control }: { control: Control<TFeedbackFormSchema> }) => {
 				name="status"
 				control={control}
 				render={({ field }) => (
-					<ListboxComponent
+					<FormListbox
 						listboxData={statusData}
 						selected={field.value}
 						setSelected={field.onChange}

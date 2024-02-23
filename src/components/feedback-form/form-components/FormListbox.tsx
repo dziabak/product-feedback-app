@@ -8,7 +8,7 @@ import { capitalizeString } from "../../../utils/helpers";
 import arrowIcon from "../../../assets/icons/icon-arrow-down.svg";
 import checkIcon from "../../../assets/icons/icon-check.svg";
 
-const ListboxComponent = ({
+const FormListbox = ({
 	selected,
 	setSelected,
 	listboxData,
@@ -67,4 +67,4 @@ const ListboxComponent = ({
 	);
 };
 
-export default ListboxComponent;
+export default FormListbox;

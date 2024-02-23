@@ -5,7 +5,7 @@ import { TFeedbackFormSchema } from "../../../types/types";
 // COMPONENTS
 import FormSectionWrapper from "./FormSectionWrapper";
 import FormLabel from "./FormLabel";
-import ListboxComponent from "./Listbox";
+import FormListbox from "./FormListbox";
 
 const FormCategory = ({
 	control,
@@ -25,7 +25,7 @@ const FormCategory = ({
 				name="category"
 				control={control}
 				render={({ field }) => (
-					<ListboxComponent
+					<FormListbox
 						listboxData={categoryData}
 						selected={field.value}
 						setSelected={field.onChange}
