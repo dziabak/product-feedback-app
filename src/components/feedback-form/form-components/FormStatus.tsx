@@ -1,10 +1,15 @@
 // TYPES
-import { FormField } from "../../../types/types";
+import { Controller, Control } from "react-hook-form";
+// TYPES
+import { TFeedbackFormSchema } from "../../../types/types";
 // COMPONENTS
 import FormSectionWrapper from "./FormSectionWrapper";
 import FormLabel from "./FormLabel";
+import ListboxComponent from "./Listbox";
 
-const FormStatus = ({ register, errors }: FormField) => {
+const FormStatus = ({ control }: { control: Control<TFeedbackFormSchema> }) => {
+	const statusData = ["suggestion", "planned", "in-progress", "live"];
+
 	return (
 		<FormSectionWrapper>
 			<FormLabel
@@ -12,19 +17,17 @@ const FormStatus = ({ register, errors }: FormField) => {
 				label="Status"
 				description="Change feedback status"
 			/>
-			<select
-				{...register}
+			<Controller
 				name="status"
-				id="status"
-				className="p-3 rounded-md border outline-none bg-c-light-gray border-c-light-gray focus:border-c-light-blue">
-				<option value="suggestion">Suggestion</option>
-				<option value="planned">Planned</option>
-				<option value="in-progress">In-progress</option>
-				<option value="live">Live</option>
-			</select>
-			{errors.status && (
-				<p className="text-sm text-c-red">{errors.status.message}</p>
-			)}
+				control={control}
+				render={({ field }) => (
+					<ListboxComponent
+						listboxData={statusData}
+						selected={field.value}
+						setSelected={field.onChange}
+					/>
+				)}
+			/>
 		</FormSectionWrapper>
 	);
 };

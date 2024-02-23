@@ -1,10 +1,19 @@
+// LIBRARIES
+import { Controller, Control } from "react-hook-form";
 // TYPES
-import { FormField } from "../../../types/types";
+import { TFeedbackFormSchema } from "../../../types/types";
 // COMPONENTS
 import FormSectionWrapper from "./FormSectionWrapper";
 import FormLabel from "./FormLabel";
+import ListboxComponent from "./Listbox";
 
-const FormCategory = ({ register, errors }: FormField) => {
+const FormCategory = ({
+	control,
+}: {
+	control: Control<TFeedbackFormSchema>;
+}) => {
+	const categoryData = ["feature", "ui", "ux", "enhancement", "bug"];
+
 	return (
 		<FormSectionWrapper>
 			<FormLabel
@@ -12,20 +21,17 @@ const FormCategory = ({ register, errors }: FormField) => {
 				label="Category"
 				description="Choose a category for your feedback"
 			/>
-			<select
-				{...register}
+			<Controller
 				name="category"
-				id="category"
-				className="p-3 rounded-md border outline-none bg-c-light-gray border-c-light-gray focus:border-c-light-blue">
-				<option value="feature">Feature</option>
-				<option value="ui">UI</option>
-				<option value="ux">UX</option>
-				<option value="enhancement">Enhancement</option>
-				<option value="bug">Bug</option>
-			</select>
-			{errors.category && (
-				<p className="text-sm text-c-red">{errors.category.message}</p>
-			)}
+				control={control}
+				render={({ field }) => (
+					<ListboxComponent
+						listboxData={categoryData}
+						selected={field.value}
+						setSelected={field.onChange}
+					/>
+				)}
+			/>
 		</FormSectionWrapper>
 	);
 };

@@ -101,6 +101,7 @@ const EditFeedbackForm = () => {
 	const {
 		register,
 		watch,
+		control,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<TFeedbackFormSchema>({
@@ -113,8 +114,8 @@ const EditFeedbackForm = () => {
 			<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 				<FormHeader text={`Editing "${title}"`} />
 				<FormTitle register={register("title")} errors={errors} />
-				<FormCategory register={register("category")} errors={errors} />
-				<FormStatus register={register("status")} errors={errors} />
+				<FormCategory control={control} />
+				<FormStatus control={control} />
 				<FormDescription
 					register={register("description")}
 					watch={watch}

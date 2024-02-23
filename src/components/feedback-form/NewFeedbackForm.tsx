@@ -45,7 +45,7 @@ const NewFeedbackForm = () => {
 	if (isError) {
 		utilityContent = (
 			<ErrorBlock
-			small
+				small
 				errorHeader="There was an error while submitting the data"
 				errorMessage="Please try again later"
 			/>
@@ -69,9 +69,11 @@ const NewFeedbackForm = () => {
 	const {
 		register,
 		watch,
+		control,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<TFeedbackFormSchema>({
+		defaultValues: { category: "feature" },
 		resolver: zodResolver(feedbackFormSchema),
 	});
 
@@ -80,7 +82,7 @@ const NewFeedbackForm = () => {
 			<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 				<FormHeader text="Create New Feedback" />
 				<FormTitle register={register("title")} errors={errors} />
-				<FormCategory register={register("category")} errors={errors} />
+				<FormCategory control={control} />
 				<FormDescription
 					register={register("description")}
 					watch={watch}

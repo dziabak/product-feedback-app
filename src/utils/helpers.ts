@@ -1,7 +1,11 @@
 // TYPES
 import { ProductRequestsData, Comment } from "../types/types";
 
-export const capitalizeString = (string: string) => {
+export const capitalizeString = (string: string | undefined) => {
+	if (string === undefined) {
+		return "";
+	}
+
 	if (string.length <= 2) {
 		return string.toUpperCase();
 	} else {
