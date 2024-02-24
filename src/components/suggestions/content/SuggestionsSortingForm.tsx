@@ -5,75 +5,81 @@ import {
 	ProductRequestsData,
 	SingleProductRequestsData,
 } from "../../../types/types";
+// DATA
+import { sortFormData } from "../../../lib/data";
 // HELPERS
 import { countTotalComments } from "../../../utils/helpers";
+// COMPONENTS
+import SortListbox from "./SortListbox";
 
 const SuggestionsSortingForm = ({
 	filteredData,
 	onDataSorted,
+	initialData,
 }: {
+	initialData: ProductRequestsData | undefined;
 	filteredData: ProductRequestsData | undefined;
 	onDataSorted: (arg0: ProductRequestsData) => void;
 }) => {
-	const [sortingOption, setSortingOption] = useState("");
+	const sortData = sortFormData;
+
+	const [sortingOption, setSortingOption] = useState(sortData[0]);
+	const [sortingInitiated, setSortingInitiated] = useState(false);
 
 	useEffect(() => {
-		let sortingFunction: (
-			a: SingleProductRequestsData,
-			b: SingleProductRequestsData
-		) => number;
+		if (sortingInitiated) {
+			let sortingFunction: (
+				a: SingleProductRequestsData,
+				b: SingleProductRequestsData
+			) => number;
 
-		switch (sortingOption) {
-			case "most-upvotes":
-				sortingFunction = (a, b) => b.upvotes - a.upvotes;
-				break;
-			case "least-upvotes":
-				sortingFunction = (a, b) => a.upvotes - b.upvotes;
-				break;
-			case "most-comments":
-				sortingFunction = (a, b) => {
-					const aTotalComments = countTotalComments(a.comments);
-					const bTotalComments = countTotalComments(b.comments);
-					return bTotalComments - aTotalComments;
-				};
-				break;
-			case "least-comments":
-				sortingFunction = (a, b) => {
-					const aTotalComments = countTotalComments(a.comments);
-					const bTotalComments = countTotalComments(b.comments);
-					return aTotalComments - bTotalComments;
-				};
-				break;
-			default:
-				sortingFunction = (_a, _b) => 0;
+			switch (sortingOption) {
+				case "most upvotes":
+					sortingFunction = (a, b) => b.upvotes - a.upvotes;
+					break;
+				case "least upvotes":
+					sortingFunction = (a, b) => a.upvotes - b.upvotes;
+					break;
+				case "most comments":
+					sortingFunction = (a, b) => {
+						const aTotalComments = countTotalComments(a.comments);
+						const bTotalComments = countTotalComments(b.comments);
+						return bTotalComments - aTotalComments;
+					};
+					break;
+				case "least comments":
+					sortingFunction = (a, b) => {
+						const aTotalComments = countTotalComments(a.comments);
+						const bTotalComments = countTotalComments(b.comments);
+						return aTotalComments - bTotalComments;
+					};
+					break;
+				default:
+					sortingFunction = (_a, _b) => 0;
+			}
+
+			if (filteredData) {
+				const sortedData = [...filteredData].sort(sortingFunction);
+				onDataSorted(sortedData);
+			}
+		} else {
+			onDataSorted(initialData!);
 		}
+	}, [sortingOption, sortingInitiated, filteredData, initialData]);
 
-		if (filteredData) {
-			const sortedData = [...filteredData].sort(sortingFunction);
-			onDataSorted(sortedData);
-		}
-	}, [sortingOption, filteredData]);
-
-	const handleSortingForm: React.FormEventHandler<HTMLFormElement> = (e) => {
-		const selectedSortingOption = (e.target as HTMLSelectElement).value;
-		setSortingOption(selectedSortingOption);
+	const handleSortingChange = (selectedOption: string) => {
+		setSortingOption(selectedOption);
+		setSortingInitiated(true);
 	};
 
 	return (
-		<form onChange={handleSortingForm} className="flex items-center space-x-2">
+		<form className="group flex items-center space-x-2">
 			<label htmlFor="category">
-				<p className="text-sm text-white">Sort by:</p>
+				<p className="text-sm text-c-gray transition-colors group-hover:text-c-gray/75 md:text-base">
+					Sort by:
+				</p>
 			</label>
-			<select
-				name="category"
-				id="category"
-				className="p-3 rounded-md font-bold text-white bg-c-dark-blue">
-				<option value="">...</option>
-				<option value="most-upvotes">Most Upvotes</option>
-				<option value="least-upvotes">Least Upvotes</option>
-				<option value="most-comments">Most Comments</option>
-				<option value="least-comments">Least Comments</option>
-			</select>
+			<SortListbox selected={sortingOption} setSelected={handleSortingChange} />
 		</form>
 	);
 };

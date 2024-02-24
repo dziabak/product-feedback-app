@@ -48,14 +48,14 @@ const SuggestionsNavigation = ({
 				)}>
 				<div
 					className={clsx(
-						"relative transition-opacity duration-300",
+						"z-10 relative transition-opacity duration-300",
 						!isAnim && "opacity-0 md:opacity-100",
 						isAnim && "opacity-100"
 					)}>
-					<div className="absolute top-0 left-0 h-screen w-full bg-black/50 md:hidden"></div>
+					<div className="z-20 absolute top-0 left-0 h-screen w-full bg-black/50 md:hidden"></div>
 					<div
 						className={clsx(
-							"transition-transform duration-300 md:translate-x-0",
+							"z-30 transition-transform duration-300 md:translate-x-0",
 							!md && "absolute right-0 flex justify-end w-3/4 p-6 bg-c-gray",
 							!isAnim && "translate-x-8",
 							isAnim && "translate-x-0"

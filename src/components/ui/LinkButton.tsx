@@ -13,7 +13,7 @@ const LinkButton = ({
 	return (
 		<Link
 			to={linkTo}
-			className={`flex items-center px-6 py-3 text-sm font-bold transition-colors rounded-[10px] bg-c-${color} text-white hover:bg-c-${color}-hover`}>
+			className={`flex items-center px-4 py-3 text-sm font-bold transition-colors rounded-[10px] bg-c-${color} text-white hover:bg-c-${color}-hover md:px-6`}>
 			{text}
 		</Link>
 	);
