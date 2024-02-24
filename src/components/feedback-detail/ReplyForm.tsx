@@ -5,6 +5,8 @@ import { addCommentReply } from "../../lib/http";
 // HOOKS
 import useAddComment from "../../hooks/useAddComment";
 import useReplyFormAnimation from "../../hooks/useReplyFormAnimation";
+// COMPONENTS
+import GenericButton from "../ui/GenericButton";
 
 const ReplyForm = ({
 	username,
@@ -59,9 +61,7 @@ const ReplyForm = ({
 					{characterCountBaseValue - currentCharacterCount} characters left
 				</p>
 			</div>
-			<button className="w-full px-6 py-3 text-sm font-bold whitespace-nowrap transition-colors rounded-lg bg-c-magenta text-white hover:bg-c-magenta/75 md:w-fit">
-				Post Reply
-			</button>
+			<GenericButton text="Post Reply" color="magenta" mobile/>
 		</form>
 	);
 };

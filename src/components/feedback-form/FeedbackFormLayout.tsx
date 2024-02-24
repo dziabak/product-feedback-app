@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 //EXTERNAL IMPORTS
 import clsx from "clsx";
-import { useOnClickOutside } from "usehooks-ts";
+import { useOnClickOutside, useLockedBody } from "usehooks-ts";
 import newFeedbackIcon from "../../assets/icons/icon-new-feedback.svg";
 import editFeedbackIcon from "../../assets/icons/icon-edit-feedback.svg";
 
@@ -32,6 +32,7 @@ const FeedbackFormLayout = ({
 	};
 
 	useOnClickOutside(contentRef, handleClickOutside);
+	useLockedBody(isModalOpen, "root")
 
 	const location = useLocation();
 	let renderedIcon: string;
@@ -51,18 +52,18 @@ const FeedbackFormLayout = ({
 				isModalOpen && "opacity-100",
 				!isPending && "cursor-pointer"
 			)}>
-			<div className="flex flex-col items-center justify-center w-full h-full">
+			<div className="flex flex-col items-center justify-center w-full md:h-full">
 				<div
 					ref={contentRef}
 					className={clsx(
-						"relative z-20 p-8 rounded-lg bg-white cursor-default transition-all duration-500",
-						!isModalOpen && "-mt-16",
-						isModalOpen && "mt-0"
+						"relative z-20 w-full p-8 rounded-lg bg-white cursor-default transition-all duration-500 md:w-auto",
+						!isModalOpen && "-translate-y-16",
+						isModalOpen && "translate-y-0"
 					)}>
 					<img
 						src={renderedIcon}
 						alt="Icon for a feedback form"
-						className="absolute top-0 -mt-8 w-14 h-14"
+						className="hidden absolute top-0 -mt-8 w-14 h-14 md:block"
 					/>
 					{children}
 				</div>

@@ -18,10 +18,10 @@ import FormHeader from "./form-components/FormHeader";
 import FormTitle from "./form-components/FormTitle";
 import FormCategory from "./form-components/FormCategory";
 import FormDescription from "./form-components/FormDescription";
-import LinkButton from "../ui/LinkButton";
-import GenericButton from "../ui/GenericButton";
 import LoadingText from "../ui/LoadingText";
 import ErrorBlock from "../ui/ErrorBlock";
+import LinkButton from "../ui/LinkButton";
+import GenericButton from "../ui/GenericButton";
 
 const NewFeedbackForm = () => {
 	let utilityContent!: JSX.Element;
@@ -91,9 +91,9 @@ const NewFeedbackForm = () => {
 
 				{utilityContent}
 				{!isPending && (
-					<div className="flex justify-end pt-8 space-x-4">
-						<LinkButton linkTo=".." color="dark-blue" text="Cancel" />
-						<GenericButton text="Add Feedback" color="magenta" />
+					<div className="flex flex-col justify-end pt-8 space-y-4 md:flex-row md:space-y-0 md:space-x-4">
+						<LinkButton linkTo=".." text="Cancel" color="dark-blue" mobile/>
+						<GenericButton text="Add Feedback" color="magenta" mobile/>
 					</div>
 				)}
 			</form>

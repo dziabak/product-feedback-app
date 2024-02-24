@@ -18,9 +18,9 @@ export default {
 				"c-magenta-hover": "#C75AF6",
 				"c-red": "#D73737",
 				"c-red-hover": "#E98888",
-				"c-dark-background": "#181D35",
-				"c-dark-frame": "#232A4D",
-				"c-dark-header": "#13172A",
+				// "c-dark-background": "#181D35",
+				// "c-dark-frame": "#232A4D",
+				// "c-dark-header": "#13172A",
 			},
 			container: {
 				center: true,

@@ -1,5 +1,5 @@
 // REACT
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // LIBRARIES
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
@@ -21,6 +21,8 @@ import FormStatus from "./form-components/FormStatus";
 import FormDescription from "./form-components/FormDescription";
 import LoadingText from "../ui/LoadingText";
 import ErrorBlock from "../ui/ErrorBlock";
+import LinkButton from "../ui/LinkButton";
+import GenericButton from "../ui/GenericButton";
 
 const EditFeedbackForm = () => {
 	const navigate = useNavigate();
@@ -123,21 +125,11 @@ const EditFeedbackForm = () => {
 				/>
 				{utilityContent}
 				{!isPendingEdit && (
-					<div className="flex justify-between pt-8 space-x-4">
-						<button
-							disabled
-							className="flex items-center px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-red text-white hover:bg-c-red/75 disabled:bg-c-dark-gray">
-							Delete
-						</button>
-						<div className="flex space-x-4">
-							<Link
-								to=".."
-								className="flex items-center px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-dark-blue text-white hover:bg-c-dark-blue/75">
-								Cancel
-							</Link>
-							<button className="flex items-center px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-magenta text-white hover:bg-c-magenta/75">
-								Save changes
-							</button>
+					<div className="flex flex-col-reverse pt-8 space-y-4 space-y-reverse md:flex-row md:justify-between md:space-y-0 md:space-x-4">
+						<GenericButton disabled text="Delete" color="red" mobile />
+						<div className="flex flex-col-reverse space-y-4 space-y-reverse md:flex-row md:space-y-0 md:space-x-4">
+							<LinkButton linkTo=".." text="Cancel" color="dark-blue" mobile />
+							<GenericButton text="Save changes" color="magenta" mobile />
 						</div>
 					</div>
 				)}

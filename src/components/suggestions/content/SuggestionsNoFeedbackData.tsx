@@ -1,6 +1,6 @@
-// BUILT-IN IMPORTS
-import { Link } from "react-router-dom";
-// INTERNAL IMPORTS
+// COMPONENTS
+import LinkButton from "../../ui/LinkButton";
+// IMAGES
 import image from "../../../assets/suggestions/illustration-empty.svg";
 
 const SuggestionsNoFeedbackData = () => {
@@ -21,9 +21,7 @@ const SuggestionsNoFeedbackData = () => {
 					</p>
 				</div>
 			</div>
-			<button className="px-6 py-3 text-sm font-bold text-white rounded-lg bg-c-magenta">
-				<Link to="/new-feedback">+ Add Feedback</Link>
-			</button>
+			<LinkButton linkTo="/new-feedback" text="+ Add Feedback" color="magenta" />
 		</div>
 	);
 };

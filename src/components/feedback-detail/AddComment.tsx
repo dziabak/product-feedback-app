@@ -6,6 +6,8 @@ import { addNewComment } from "../../lib/http";
 import useAddComment from "../../hooks/useAddComment";
 // HELPERS
 import { generateRandomId } from "../../utils/helpers";
+// COMPONENTS
+import GenericButton from "../ui/GenericButton";
 
 const AddComment = ({ id }: { id: string | undefined }) => {
 	const {
@@ -43,9 +45,7 @@ const AddComment = ({ id }: { id: string | undefined }) => {
 					<p className="text-c-dark-gray">
 						{characterCountBaseValue - currentCharacterCount} characters left
 					</p>
-					<button className="px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-magenta text-white hover:bg-c-magenta/75">
-						Post Comment
-					</button>
+					<GenericButton text="Post Comment" color="magenta" />
 				</div>
 			</form>
 		</div>

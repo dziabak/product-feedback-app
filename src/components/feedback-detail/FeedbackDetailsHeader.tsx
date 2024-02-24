@@ -1,5 +1,7 @@
 // REACT
 import { Link } from "react-router-dom";
+// COMPONENTS
+import LinkButton from "../ui/LinkButton";
 
 const FeedbackDetailsHeader = ({ id }: { id: string | undefined }) => {
 	return (
@@ -25,11 +27,11 @@ const FeedbackDetailsHeader = ({ id }: { id: string | undefined }) => {
 					<span className="absolute bottom-0 left-0 h-[0.1rem] bg-c-dark-gray w-0 transition-all duration-300 group-hover:w-full"></span>
 				</span>
 			</Link>
-			<Link
-				to={`/feedback/${id}/edit`}
-				className="px-6 py-3 text-sm font-bold transition-colors rounded-lg bg-c-light-blue text-white hover:bg-c-light-blue-hover">
-				Edit Feedback
-			</Link>
+			<LinkButton
+				linkTo={`/feedback/${id}/edit`}
+				text="Edit Feedback"
+				color="light-blue"
+			/>
 		</div>
 	);
 };
