@@ -13,7 +13,7 @@ const LabelsGroup = ({
 
 	if (data) {
 		content = (
-			<div className="flex justify-between px-8 py-4 ">
+			<div className="flex justify-between items-end px-1 py-4 md:px-8">
 				<StatusLabel data={data} />
 				<AuthorLabel data={data} />
 			</div>

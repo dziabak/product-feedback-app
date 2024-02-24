@@ -16,7 +16,7 @@ const CommentUserInfo = ({
 	return (
 		<>
 			<img src={image} alt="User photo" className="w-12 rounded-full" />
-			<div className="w-full ml-8 space-y-4">
+			<div className="w-full ml-3 space-y-6 md:ml-8 md:space-y-4">
 				<div className="flex items-center justify-between">
 					<div>
 						<p className="font-bold text-c-dark-blue">{name}</p>
@@ -29,7 +29,7 @@ const CommentUserInfo = ({
 						<span className="absolute -bottom-[0.1rem] left-0 h-[0.1rem] bg-c-light-blue w-0 group-hover:w-full transition-all duration-300"></span>
 					</button>
 				</div>
-				<p className="text-c-dark-gray text-wrap">
+				<p className="-ml-[60px] text-c-dark-gray text-wrap md:ml-0">
 					{replyingTo && (
 						<span className="font-bold text-c-magenta">{replyingTo} </span>
 					)}

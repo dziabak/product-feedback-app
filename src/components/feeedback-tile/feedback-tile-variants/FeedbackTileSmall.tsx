@@ -36,7 +36,12 @@ const FeedbackTileSmall = ({
 				location.pathname === "/roadmap" && "h-72 md:h-80 xl:h-72",
 				location.pathname !== "/roadmap" && "pt-8"
 			)}>
-			<Link to={`/feedback/${id}`} className="group rounded-lg bg-white">
+			<Link
+				to={`/feedback/${id}`}
+				className={clsx(
+					"group rounded-lg bg-white",
+					location.pathname !== "/" && "cursor-default"
+				)}>
 				{location.pathname === "/roadmap" && (
 					<>
 						<FeedbackTileAccent status={status} />
@@ -46,7 +51,12 @@ const FeedbackTileSmall = ({
 				<div className="px-8 space-y-4">
 					<div className="space-y-4">
 						<div className="space-y-1">
-							<p className="break-all line-clamp-1 text-lg font-bold transition-colors text-c-dark-blue group-hover:text-c-light-blue dark:text-c-light-gray dark:group-hover:text-c-light-gray/75">
+							<p
+								className={clsx(
+									"break-all line-clamp-1 text-lg font-bold transition-colors text-c-dark-blue dark:text-c-light-gray",
+									location.pathname === "/" &&
+										"group-hover:text-c-light-blue dark:group-hover:text-c-light-gray/75"
+								)}>
 								{title}
 							</p>
 							<p

@@ -110,19 +110,21 @@ const FeedbackDetailView = () => {
 	);
 
 	return (
-		<div className="container py-8">
-			<FeedbackDetailsHeader id={params.feedbackId} />
-			<button
-				onClick={handleStartDelete}
-				className="p-2 bg-c-red text-white rounded-lg">
-				Delete
-			</button>
-			{isDeleting && deletingModal}
-			<LabelsGroup data={data} />
-			{content}
-			<CommentsSection data={data} id={params.feedbackId} />
-			<AddComment id={params.feedbackId} />
-		</div>
+		<section className="container py-8">
+			<div className="px-6 md:px-0">
+				<FeedbackDetailsHeader id={params.feedbackId} />
+				<button
+					onClick={handleStartDelete}
+					className="p-2 bg-c-red text-white rounded-lg">
+					Delete
+				</button>
+				{isDeleting && deletingModal}
+				<LabelsGroup data={data} />
+				{content}
+				<CommentsSection data={data} id={params.feedbackId} />
+				<AddComment id={params.feedbackId} />
+			</div>
+		</section>
 	);
 };
 

@@ -18,8 +18,8 @@ const CommentsSection = ({
 		const totalComments = countTotalComments(data[0].comments);
 
 		content = (
-			<div className="mt-4">
-				<div className="flex flex-col px-8 pt-4 pb-12 rounded-lg bg-white">
+			<div className="mt-6 md:mt-4">
+				<div className="flex flex-col p-8 rounded-lg bg-white">
 					<p className="mb-8 text-lg font-bold text-c-dark-blue">{totalComments} Comments</p>
 					{data[0].comments === undefined && (
 						<p className="mb-8 text-center text-c-dark-gray">

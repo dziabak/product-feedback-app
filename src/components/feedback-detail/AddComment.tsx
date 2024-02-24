@@ -20,11 +20,11 @@ const AddComment = ({ id }: { id: string | undefined }) => {
 	} = useAddComment(addNewComment, { id: generateRandomId() }, { id: id });
 
 	return (
-		<div className="mt-4 pb-12">
+		<div className="mt-6 pb-12 md:mt-4">
 			<form
 				id="content"
 				onSubmit={handleSubmit(onSubmit)}
-				className="flex flex-col px-8 py-4 rounded-lg bg-white">
+				className="flex flex-col p-8 rounded-lg bg-white">
 				<p className="mb-8 text-lg font-bold text-c-dark-blue">Add Comment</p>
 				<textarea
 					{...register("content")}
@@ -41,7 +41,7 @@ const AddComment = ({ id }: { id: string | undefined }) => {
 				{errors.content && (
 					<p className="mt-3 text-sm text-c-red">{errors.content.message}</p>
 				)}
-				<div className="flex items-center justify-between py-8">
+				<div className="flex flex-col pt-8 space-y-4 md:flex-row md:items-center md:justify-between md:space-y-0">
 					<p className="text-c-dark-gray">
 						{characterCountBaseValue - currentCharacterCount} characters left
 					</p>

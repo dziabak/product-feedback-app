@@ -9,10 +9,10 @@ const FeedbackDetail = () => {
 	useDocumentTitle("Feedback Details | Feedback Nexus");
 
 	return (
-		<div>
+		<>
 			<Outlet />
 			<FeedbackDetailView />
-		</div>
+		</>
 	);
 };
 

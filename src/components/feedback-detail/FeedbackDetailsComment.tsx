@@ -32,7 +32,7 @@ const FeedbackDetailsComment = ({
 	const [isReplying, toggleIsReplying] = useToggle();
 
 	return (
-		<div className="w-full py-8 border-b last:border-0">
+		<div className="w-full py-8 border-b first-of-type:pt-0 last:border-0 last:pb-0">
 			<div className="flex items-start w-full">
 				<CommentUserInfo
 					image={image}
@@ -45,7 +45,7 @@ const FeedbackDetailsComment = ({
 			{isReplying && (
 				<ReplyForm username={username} postId={postId} commentId={commentId} />
 			)}
-			<div className="ml-14">
+			<div className="ml-6 md:ml-14">
 				{replyData !== undefined &&
 					replyData.map((item) => (
 						<FeedbackDetailsCommentReply

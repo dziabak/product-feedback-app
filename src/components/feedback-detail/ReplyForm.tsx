@@ -37,7 +37,7 @@ const ReplyForm = ({
 			id="content"
 			onSubmit={handleSubmit(onSubmit)}
 			className={clsx(
-				"flex flex-col items-start ml-20 space-y-4 transition-all duration-300 md:flex-row md:space-y-0 md:space-x-4",
+				"flex flex-col items-start space-y-4 transition-all duration-300 md:flex-row md:space-y-0 md:space-x-4 md:ml-20",
 				!isFormOpen && "opacity-0 -mt-48 md:-mt-32",
 				isFormOpen && "opacity-0 mt-8",
 				isOpacityApplied && "opacity-100"
