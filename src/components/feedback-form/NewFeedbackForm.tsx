@@ -15,9 +15,9 @@ import { generateRandomId } from "../../utils/helpers";
 // COMPONENTS
 import FeedbackFormModal from "./ui/FeedbackFormModal";
 import FormHeader from "./ui/FormHeader";
-import FormTitle from "./form-components/FormTitle";
-import FormCategory from "./form-components/FormCategory";
-import FormDescription from "./form-components/FormDescription";
+import FormTitle from "./form-components/inputs/FormTitle";
+import FormCategory from "./form-components/inputs/FormCategory";
+import FormDescription from "./form-components/inputs/FormDescription";
 import LoadingText from "../ui/LoadingText";
 import ErrorBlock from "../ui/ErrorBlock";
 import LinkButton from "../ui/LinkButton";

@@ -1,10 +1,10 @@
 // TYPES
-import { FormField } from "../../../types/types";
+import { FormField } from "../../../../types/types";
 // LIBRARIES
 import clsx from "clsx";
 // COMPONENTS
-import FormSectionWrapper from "../ui/FormSectionWrapper";
-import FormLabel from "./FormLabel";
+import FormSectionWrapper from "../../ui/FormSectionWrapper";
+import FormLabel from "../FormLabel";
 
 const FormTitle = ({ register, errors }: FormField) => {
 	return (
@@ -21,9 +21,10 @@ const FormTitle = ({ register, errors }: FormField) => {
 				id="title"
 				maxLength={50}
 				className={clsx(
-					"py-3 px-6 rounded-md bg-c-light-gray border border-c-light-gray outline-none focus:border-c-light-blue",
+					"py-3 px-6 rounded-md bg-c-light-gray outline-none border border-c-light-gray focus:border-c-light-blue",
+					!errors.title && "caret-c-light-blue",
 					errors.title &&
-						"outline-none border border-c-red focus:border-transparent focus:ring focus:ring-c-red caret-c-red"
+						"outline-none border border-c-red focus:border-c-red caret-c-red"
 				)}
 			/>
 			{errors.title && (

@@ -51,8 +51,9 @@ const ReplyForm = ({
 					placeholder="Type your comment here"
 					className={clsx(
 						"min-h-24 max-h-32 w-full p-6 rounded-md bg-c-light-gray border border-c-light-gray outline-none focus:border-c-light-blue",
+						!errors.content && "caret-c-light-blue",
 						errors.content &&
-							"outline-none border border-c-red focus:border-transparent focus:ring focus:ring-c-red caret-c-red"
+							"outline-none border border-c-red focus:border-c-red caret-c-red"
 					)}></textarea>
 				{errors.content && (
 					<p className="mb-4 text-sm text-c-red">{errors.content.message}</p>

@@ -15,10 +15,10 @@ import {
 // COMPONENTS
 import FeedbackFormModal from "./ui/FeedbackFormModal";
 import FormHeader from "./ui/FormHeader";
-import FormTitle from "./form-components/FormTitle";
-import FormCategory from "./form-components/FormCategory";
-import FormStatus from "./form-components/FormStatus";
-import FormDescription from "./form-components/FormDescription";
+import FormTitle from "./form-components/inputs/FormTitle";
+import FormCategory from "./form-components/inputs/FormCategory";
+import FormStatus from "./form-components/inputs/FormStatus";
+import FormDescription from "./form-components/inputs/FormDescription";
 import LoadingText from "../ui/LoadingText";
 import ErrorBlock from "../ui/ErrorBlock";
 import LinkButton from "../ui/LinkButton";

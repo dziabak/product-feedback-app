@@ -33,9 +33,10 @@ const AddComment = ({ id }: { id: string | undefined }) => {
 					maxLength={characterCountBaseValue}
 					placeholder="Type your comment here"
 					className={clsx(
-						"p-6 rounded-md bg-c-light-gray min-h-24 max-h-32 border border-c-light-gray outline-none focus:border-c-light-blue",
+						"p-6 rounded-md bg-c-light-gray min-h-24 max-h-32 outline-none border border-c-light-gray focus:border-c-light-blue",
+						!errors.content && "caret-c-light-blue",
 						errors.content &&
-							"outline-none border border-c-red focus:border-transparent focus:ring focus:ring-c-red caret-c-red"
+							"outline-none border border-c-red focus:border-c-red caret-c-red"
 					)}
 				/>
 				{errors.content && (
