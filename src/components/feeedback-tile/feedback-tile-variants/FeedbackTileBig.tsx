@@ -77,7 +77,7 @@ const FeedbackTileBig = ({
 						</p>
 					</div>
 				</div>
-				<div className="flex items-center space-x-4">
+				<div className="flex items-center space-x-4 min-w-fit">
 					<img
 						src={commentIcon}
 						alt="Icon of speech bubble representing comments"
