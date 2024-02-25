@@ -3,10 +3,10 @@ import { useState } from "react";
 // TYPES
 import { ProductRequestsData } from "../../../types/types";
 // COMPONENTS
-import SuggestionsContentHeader from "./SuggestionsContentHeader";
+import SuggestionsHeader from "./ui/SuggestionsHeader";
 import SuggestionsGrid from "./SuggestionsGrid";
 
-const SuggestionsContent = ({
+const SuggestionsLayout = ({
 	filteredData,
 }: {
 	filteredData: ProductRequestsData | undefined;
@@ -19,7 +19,7 @@ const SuggestionsContent = ({
 
 	return (
 		<div className="col-span-3 space-y-4">
-			<SuggestionsContentHeader
+			<SuggestionsHeader
 				onDataSorted={handleSortedData}
 				filteredData={filteredData}
 			/>
@@ -28,4 +28,4 @@ const SuggestionsContent = ({
 	);
 };
 
-export default SuggestionsContent;
+export default SuggestionsLayout;

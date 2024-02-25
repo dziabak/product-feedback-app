@@ -3,9 +3,9 @@ import { Fragment, useState } from "react";
 // LIBRARIES
 import { Listbox, Transition } from "@headlessui/react";
 // DATA
-import { sortFormData } from "../../../lib/data";
+import { sortFormData } from "../../../../lib/data";
 // IMAGES
-import checkIcon from "../../../assets/icons/icon-check.svg";
+import checkIcon from "../../../../assets/icons/icon-check.svg";
 
 const SortListbox = ({
 	selected,

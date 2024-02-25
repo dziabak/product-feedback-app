@@ -1,11 +1,11 @@
 // REACT
 import { useEffect, useState } from "react";
 // TYPES
-import { ProductRequestsData } from "../../../types/types";
+import { ProductRequestsData } from "../../../../types/types";
 // COMPONENTS
-import BackgroundFrame from "../../ui/BackgroundFrame";
+import BackgroundFrame from "../../../ui/BackgroundFrame";
 
-const SuggestionsCategoryFilter = ({
+const CategoryFilter = ({
 	data,
 	onDataFiltered,
 }: {
@@ -71,4 +71,4 @@ const SuggestionsCategoryFilter = ({
 	);
 };
 
-export default SuggestionsCategoryFilter;
+export default CategoryFilter;

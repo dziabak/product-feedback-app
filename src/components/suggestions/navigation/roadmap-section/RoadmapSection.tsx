@@ -5,13 +5,13 @@ import { fetchWithoutSuggestionsData } from "../../../../lib/http";
 // HELPERS
 import { getStatusLength } from "../../../../utils/helpers";
 // COMPONENTS
-import SuggestionsRoadmapViewHeader from "./SuggestionsRoadmapViewHeader";
-import SuggestionsRoadmapViewStatus from "./SuggestionsRoadmapViewStatus";
+import RoadmapSectionHeader from "./RoadmapSectionHeader";
+import RoadmapSectionStatus from "./RoadmapSectionStatus";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
 import ErrorBlock from "../../../ui/ErrorBlock";
 import BackgroundFrame from "../../../ui/BackgroundFrame";
 
-const SuggestionsRoadmapView = () => {
+const RoadmapSection = () => {
 	let content!: JSX.Element | JSX.Element[];
 
 	const { data, isFetching, isError } = useQuery({
@@ -44,7 +44,7 @@ const SuggestionsRoadmapView = () => {
 		];
 
 		content = STATUS_DATA.map((item) => (
-			<SuggestionsRoadmapViewStatus
+			<RoadmapSectionStatus
 				key={item.status}
 				status={item.status}
 				value={item.value}
@@ -56,7 +56,7 @@ const SuggestionsRoadmapView = () => {
 		<div className="md:w-1/2 lg:w-full">
 			<BackgroundFrame>
 				<div className="flex flex-col justify-between p-2">
-					<SuggestionsRoadmapViewHeader />
+					<RoadmapSectionHeader />
 					<div className="space-y-1">{content}</div>
 				</div>
 			</BackgroundFrame>
@@ -64,4 +64,4 @@ const SuggestionsRoadmapView = () => {
 	);
 };
 
-export default SuggestionsRoadmapView;
+export default RoadmapSection;

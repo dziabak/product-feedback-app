@@ -6,11 +6,10 @@ import { useToggle, useLockedBody, useMediaQuery } from "usehooks-ts";
 // TYPES
 import { ProductRequestsData } from "../../../types/types";
 // COMPONENTS
-import SuggestionsAppLogo from "./SuggestionsAppLogo";
-import SuggestionsCategoryFilter from "./SuggestionsCategoryFilter";
-import SuggestionsRoadmapView from "./roadmap-view/SuggestionsRoadmapView";
-// import SuggestionsDarkMode from "./SuggestionsDarkMode";
-// import CurrentUserData from "./CurrentUserData";
+import AppHeader from "./app-header/AppHeader";
+import CategoryFilter from "./category-filter/CategoryFilter";
+import RoadmapSection from "./roadmap-section/RoadmapSection";
+// import DarkModeToggle from "./dark-mode/DarkModeToggle";
 
 const SuggestionsNavigation = ({
 	data,
@@ -35,12 +34,11 @@ const SuggestionsNavigation = ({
 
 	return (
 		<nav className="md:flex md:space-x-4 md:mb-12 lg:flex-col lg:space-x-0 lg:space-y-4 lg:mb-0">
-			<SuggestionsAppLogo
+			<AppHeader
 				toggleValue={isMobileNavOpen}
 				toggleFunction={toggleIsMobileNavOpen}
 			/>
-			{/* <CurrentUserData /> */}
-			{/* <SuggestionsDarkMode /> */}
+			{/* <DarkModeToggle /> */}
 			<div
 				className={clsx(
 					!isMobileNavOpen && "hidden md:block",
@@ -61,11 +59,11 @@ const SuggestionsNavigation = ({
 							isAnim && "translate-x-0"
 						)}>
 						<div className="h-screen space-y-6 md:h-auto md:space-y-0 md:flex md:space-x-4 lg:flex-col lg:space-x-0 lg:space-y-4">
-							<SuggestionsCategoryFilter
+							<CategoryFilter
 								data={data}
 								onDataFiltered={handleFilteredData}
 							/>
-							<SuggestionsRoadmapView />
+							<RoadmapSection />
 						</div>
 					</div>
 				</div>

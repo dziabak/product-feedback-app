@@ -2,7 +2,7 @@
 import { ProductRequestsData } from "../../../types/types";
 // COMPONENTS
 import FeedbackTile from "../../feeedback-tile/FeedbackTile";
-import SuggestionsNoFeedbackData from "./SuggestionsNoFeedbackData";
+import NoFeedbackData from "./ui/NoFeedbackData";
 
 const SuggestionsGrid = ({
 	sortedData,
@@ -27,7 +27,7 @@ const SuggestionsGrid = ({
 		));
 
 		if (sortedData.length === 0) {
-			content = <SuggestionsNoFeedbackData />;
+			content = <NoFeedbackData />;
 		}
 	}
 

@@ -1,9 +1,9 @@
 // COMPONENTS
-import LinkButton from "../../ui/LinkButton";
+import LinkButton from "../../../ui/LinkButton";
 // IMAGES
-import image from "../../../assets/suggestions/illustration-empty.svg";
+import image from "../../../../assets/suggestions/illustration-empty.svg";
 
-const SuggestionsNoFeedbackData = () => {
+const NoFeedbackData = () => {
 	return (
 		<div className="flex flex-col items-center p-24 space-y-8 bg-white rounded-lg">
 			<img
@@ -21,9 +21,13 @@ const SuggestionsNoFeedbackData = () => {
 					</p>
 				</div>
 			</div>
-			<LinkButton linkTo="/new-feedback" text="+ Add Feedback" color="magenta" />
+			<LinkButton
+				linkTo="/new-feedback"
+				text="+ Add Feedback"
+				color="magenta"
+			/>
 		</div>
 	);
 };
 
-export default SuggestionsNoFeedbackData;
+export default NoFeedbackData;

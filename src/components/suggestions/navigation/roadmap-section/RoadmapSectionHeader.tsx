@@ -1,7 +1,7 @@
 // REACT
 import { Link } from "react-router-dom";
 
-const SuggestionsRoadmapViewHeader = () => {
+const RoadmapSectionHeader = () => {
 	return (
 		<Link to="/roadmap" className="group flex items-end justify-between mb-4">
 			<p className="text-lg font-bold text-c-dark-blue dark:text-c-light-gray">
@@ -15,4 +15,4 @@ const SuggestionsRoadmapViewHeader = () => {
 	);
 };
 
-export default SuggestionsRoadmapViewHeader;
+export default RoadmapSectionHeader;

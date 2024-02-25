@@ -8,7 +8,7 @@ import { ProductRequestsData } from "../../types/types";
 import { fetchOnlySuggestionsData } from "../../lib/http";
 // COMPONENTS
 import SuggestionsNavigation from "../../components/suggestions/navigation/SuggestionsNavigation";
-import SuggestionsContent from "../../components/suggestions/content/SuggestionsContent";
+import SuggestionsLayout from "./content/SuggestionsLayout";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
 
@@ -46,7 +46,7 @@ const SuggestionsMain = () => {
 					data={data}
 					onDataFiltered={handleFilteredData}
 				/>
-				<SuggestionsContent filteredData={filteredData} />
+				<SuggestionsLayout filteredData={filteredData} />
 			</section>
 		);
 	}

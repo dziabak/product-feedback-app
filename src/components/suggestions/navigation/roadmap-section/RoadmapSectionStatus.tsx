@@ -1,7 +1,7 @@
 // COMPONENTS
 import StatusIndicator from "../../../ui/StatusIndicator";
 
-const SuggestionsRoadmapViewStatus = ({
+const RoadmapSectionStatus = ({
 	status,
 	value,
 }: {
@@ -23,4 +23,4 @@ const SuggestionsRoadmapViewStatus = ({
 	);
 };
 
-export default SuggestionsRoadmapViewStatus;
+export default RoadmapSectionStatus;

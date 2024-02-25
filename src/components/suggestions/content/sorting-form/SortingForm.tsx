@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import {
 	ProductRequestsData,
 	SingleProductRequestsData,
-} from "../../../types/types";
+} from "../../../../types/types";
 // DATA
-import { sortFormData } from "../../../lib/data";
+import { sortFormData } from "../../../../lib/data";
 // HELPERS
-import { countTotalComments } from "../../../utils/helpers";
+import { countTotalComments } from "../../../../utils/helpers";
 // COMPONENTS
 import SortListbox from "./SortListbox";
 

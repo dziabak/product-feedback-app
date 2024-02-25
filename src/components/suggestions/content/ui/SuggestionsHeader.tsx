@@ -1,12 +1,12 @@
 // TYPES
-import { ProductRequestsData } from "../../../types/types";
+import { ProductRequestsData } from "../../../../types/types";
 // COMPONENTS
-import SuggestionsSortingForm from "./SuggestionsSortingForm";
-import LinkButton from "../../ui/LinkButton";
+import SortingForm from "../sorting-form/SortingForm";
+import LinkButton from "../../../ui/LinkButton";
 // IMAGES
-import headerIcon from "../../../assets/suggestions/icon-suggestions.svg";
+import headerIcon from "../../../../assets/suggestions/icon-suggestions.svg";
 
-const SuggestionsContentHeader = ({
+const SuggestionsHeader = ({
 	filteredData,
 	onDataSorted,
 }: {
@@ -42,7 +42,7 @@ const SuggestionsContentHeader = ({
 					<img src={headerIcon} alt="Icon of a lightbulb" className="mr-4" />
 					{headerText}
 				</div>
-				<SuggestionsSortingForm
+				<SortingForm
 					initialData={filteredData}
 					filteredData={filteredData}
 					onDataSorted={handleSortedData}
@@ -57,4 +57,4 @@ const SuggestionsContentHeader = ({
 	);
 };
 
-export default SuggestionsContentHeader;
+export default SuggestionsHeader;

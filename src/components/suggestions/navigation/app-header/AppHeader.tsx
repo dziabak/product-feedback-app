@@ -1,13 +1,13 @@
 // HOOKS
-import useCurrentUserData from "../../../hooks/useCurrentUserData";
+import useCurrentUserData from "../../../../hooks/useCurrentUserData";
 // IMAGES
-import desktopBackground from "../../../assets/suggestions/desktop/background-header.png";
-import tabletBackground from "../../../assets/suggestions/tablet/background-header.png";
-import mobileBackground from "../../../assets/suggestions/mobile/background-header.png";
-import burgerIcon from "../../../assets/icons/mobile/icon-hamburger.svg";
-import closeIcon from "../../../assets/icons/mobile/icon-close.svg";
+import desktopBackground from "../../../../assets/suggestions/desktop/background-header.png";
+import tabletBackground from "../../../../assets/suggestions/tablet/background-header.png";
+import mobileBackground from "../../../../assets/suggestions/mobile/background-header.png";
+import burgerIcon from "../../../../assets/icons/mobile/icon-hamburger.svg";
+import closeIcon from "../../../../assets/icons/mobile/icon-close.svg";
 
-const SuggestionsAppLogo = ({
+const AppHeader = ({
 	toggleValue,
 	toggleFunction,
 }: {
@@ -57,4 +57,4 @@ const SuggestionsAppLogo = ({
 	);
 };
 
-export default SuggestionsAppLogo;
+export default AppHeader;
