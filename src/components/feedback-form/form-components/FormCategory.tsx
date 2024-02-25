@@ -3,7 +3,7 @@ import { Controller, Control } from "react-hook-form";
 // TYPES
 import { TFeedbackFormSchema } from "../../../types/types";
 // COMPONENTS
-import FormSectionWrapper from "./FormSectionWrapper";
+import FormSectionWrapper from "../ui/FormSectionWrapper";
 import FormLabel from "./FormLabel";
 import FormListbox from "./FormListbox";
 

@@ -3,7 +3,7 @@ import { FormField } from "../../../types/types";
 // LIBRARIES
 import clsx from "clsx";
 // COMPONENTS
-import FormSectionWrapper from "./FormSectionWrapper";
+import FormSectionWrapper from "../ui/FormSectionWrapper";
 import FormLabel from "./FormLabel";
 
 const FormTitle = ({ register, errors }: FormField) => {

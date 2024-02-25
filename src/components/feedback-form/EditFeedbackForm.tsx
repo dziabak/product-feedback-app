@@ -13,8 +13,8 @@ import {
 	editFeedback,
 } from "../../lib/http";
 // COMPONENTS
-import FeedbackFormModal from "./FeedbackFormModal";
-import FormHeader from "./form-components/FormHeader";
+import FeedbackFormModal from "./ui/FeedbackFormModal";
+import FormHeader from "./ui/FormHeader";
 import FormTitle from "./form-components/FormTitle";
 import FormCategory from "./form-components/FormCategory";
 import FormStatus from "./form-components/FormStatus";

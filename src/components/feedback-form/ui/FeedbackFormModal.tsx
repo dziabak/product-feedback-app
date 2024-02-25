@@ -4,8 +4,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 //EXTERNAL IMPORTS
 import clsx from "clsx";
 import { useOnClickOutside, useLockedBody } from "usehooks-ts";
-import newFeedbackIcon from "../../assets/icons/icon-new-feedback.svg";
-import editFeedbackIcon from "../../assets/icons/icon-edit-feedback.svg";
+import newFeedbackIcon from "../../../assets/icons/icon-new-feedback.svg";
+import editFeedbackIcon from "../../../assets/icons/icon-edit-feedback.svg";
 
 const FeedbackFormModal = ({
 	children,

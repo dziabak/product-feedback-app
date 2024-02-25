@@ -13,8 +13,8 @@ import useCurrentUserData from "../../hooks/useCurrentUserData";
 // HELPERS
 import { generateRandomId } from "../../utils/helpers";
 // COMPONENTS
-import FeedbackFormModal from "./FeedbackFormModal";
-import FormHeader from "./form-components/FormHeader";
+import FeedbackFormModal from "./ui/FeedbackFormModal";
+import FormHeader from "./ui/FormHeader";
 import FormTitle from "./form-components/FormTitle";
 import FormCategory from "./form-components/FormCategory";
 import FormDescription from "./form-components/FormDescription";
