@@ -7,7 +7,7 @@ import { useOnClickOutside, useLockedBody } from "usehooks-ts";
 import newFeedbackIcon from "../../assets/icons/icon-new-feedback.svg";
 import editFeedbackIcon from "../../assets/icons/icon-edit-feedback.svg";
 
-const FeedbackFormLayout = ({
+const FeedbackFormModal = ({
 	children,
 	isPending,
 }: {
@@ -32,7 +32,7 @@ const FeedbackFormLayout = ({
 	};
 
 	useOnClickOutside(contentRef, handleClickOutside);
-	useLockedBody(isModalOpen, "root")
+	useLockedBody(isModalOpen, "root");
 
 	const location = useLocation();
 	let renderedIcon: string;
@@ -72,4 +72,4 @@ const FeedbackFormLayout = ({
 	);
 };
 
-export default FeedbackFormLayout;
+export default FeedbackFormModal;

@@ -13,7 +13,7 @@ import {
 	editFeedback,
 } from "../../lib/http";
 // COMPONENTS
-import FeedbackFormLayout from "./FeedbackFormLayout";
+import FeedbackFormModal from "./FeedbackFormModal";
 import FormHeader from "./form-components/FormHeader";
 import FormTitle from "./form-components/FormTitle";
 import FormCategory from "./form-components/FormCategory";
@@ -112,7 +112,7 @@ const EditFeedbackForm = () => {
 	});
 
 	return (
-		<FeedbackFormLayout isPending={isPendingEdit}>
+		<FeedbackFormModal isPending={isPendingEdit}>
 			<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 				<FormHeader text={`Editing "${title}"`} />
 				<FormTitle register={register("title")} errors={errors} />
@@ -134,7 +134,7 @@ const EditFeedbackForm = () => {
 					</div>
 				)}
 			</form>
-		</FeedbackFormLayout>
+		</FeedbackFormModal>
 	);
 };
 

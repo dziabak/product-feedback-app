@@ -13,7 +13,7 @@ import useCurrentUserData from "../../hooks/useCurrentUserData";
 // HELPERS
 import { generateRandomId } from "../../utils/helpers";
 // COMPONENTS
-import FeedbackFormLayout from "./FeedbackFormLayout";
+import FeedbackFormModal from "./FeedbackFormModal";
 import FormHeader from "./form-components/FormHeader";
 import FormTitle from "./form-components/FormTitle";
 import FormCategory from "./form-components/FormCategory";
@@ -78,7 +78,7 @@ const NewFeedbackForm = () => {
 	});
 
 	return (
-		<FeedbackFormLayout isPending={isPending}>
+		<FeedbackFormModal isPending={isPending}>
 			<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 				<FormHeader text="Create New Feedback" />
 				<FormTitle register={register("title")} errors={errors} />
@@ -92,12 +92,12 @@ const NewFeedbackForm = () => {
 				{utilityContent}
 				{!isPending && (
 					<div className="flex flex-col justify-end pt-8 space-y-4 md:flex-row md:space-y-0 md:space-x-4">
-						<LinkButton linkTo=".." text="Cancel" color="dark-blue" mobile/>
-						<GenericButton text="Add Feedback" color="magenta" mobile/>
+						<LinkButton linkTo=".." text="Cancel" color="dark-blue" mobile />
+						<GenericButton text="Add Feedback" color="magenta" mobile />
 					</div>
 				)}
 			</form>
-		</FeedbackFormLayout>
+		</FeedbackFormModal>
 	);
 };
 
