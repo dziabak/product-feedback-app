@@ -1,4 +1,4 @@
-const CommentUserInfo = ({
+const CommentData = ({
 	image,
 	name,
 	username,
@@ -40,4 +40,4 @@ const CommentUserInfo = ({
 	);
 };
 
-export default CommentUserInfo;
+export default CommentData;

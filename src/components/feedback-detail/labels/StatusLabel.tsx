@@ -1,7 +1,7 @@
 // TYPES
-import { ProductRequestsData } from "../../types/types";
+import { ProductRequestsData } from "../../../types/types";
 // COMPONENTS
-import StatusIndicator from "../ui/StatusIndicator";
+import StatusIndicator from "../../ui/StatusIndicator";
 
 const StatusLabel = ({ data }: { data: ProductRequestsData | undefined }) => {
 	let content!: JSX.Element;
@@ -10,7 +10,9 @@ const StatusLabel = ({ data }: { data: ProductRequestsData | undefined }) => {
 		content = (
 			<div className="flex items-center">
 				<StatusIndicator status={data[0].status} />
-				<p className="text-sm font-bold capitalize text-c-dark-blue">{data[0].status}</p>
+				<p className="text-sm font-bold capitalize text-c-dark-blue">
+					{data[0].status}
+				</p>
 			</div>
 		);
 	}

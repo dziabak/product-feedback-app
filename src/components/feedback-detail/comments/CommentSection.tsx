@@ -1,11 +1,11 @@
 // TYPES
-import { ProductRequestsData } from "../../types/types";
+import { ProductRequestsData } from "../../../types/types";
 // HELPERS
-import { countTotalComments, generateRandomId } from "../../utils/helpers";
+import { countTotalComments, generateRandomId } from "../../../utils/helpers";
 // COMPONENTS
-import FeedbackDetailsComment from "./FeedbackDetailsComment";
+import CommentComponent from "./CommentComponent";
 
-const CommentsSection = ({
+const CommentSection = ({
 	data,
 	id,
 }: {
@@ -20,7 +20,9 @@ const CommentsSection = ({
 		content = (
 			<div className="mt-6 md:mt-4">
 				<div className="flex flex-col p-8 rounded-lg bg-white">
-					<p className="mb-8 text-lg font-bold text-c-dark-blue">{totalComments} Comments</p>
+					<p className="mb-8 text-lg font-bold text-c-dark-blue">
+						{totalComments} Comments
+					</p>
 					{data[0].comments === undefined && (
 						<p className="mb-8 text-center text-c-dark-gray">
 							Be the first to comment!
@@ -28,7 +30,7 @@ const CommentsSection = ({
 					)}
 					{data[0].comments !== undefined &&
 						data[0].comments.map((item) => (
-							<FeedbackDetailsComment
+							<CommentComponent
 								key={generateRandomId()}
 								content={item.content}
 								image={item.user.image}
@@ -47,4 +49,4 @@ const CommentsSection = ({
 	return <>{content}</>;
 };
 
-export default CommentsSection;
+export default CommentSection;

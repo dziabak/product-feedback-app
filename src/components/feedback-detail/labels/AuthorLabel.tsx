@@ -1,5 +1,5 @@
 // TYPES
-import { ProductRequestsData } from "../../types/types";
+import { ProductRequestsData } from "../../../types/types";
 
 const AuthorLabel = ({ data }: { data: ProductRequestsData | undefined }) => {
 	let content!: JSX.Element;

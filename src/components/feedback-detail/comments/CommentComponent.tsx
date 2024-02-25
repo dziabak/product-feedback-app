@@ -1,13 +1,13 @@
 // LIBRARIES
 import { useToggle } from "usehooks-ts";
 // HELPERS
-import { generateRandomId } from "../../utils/helpers";
+import { generateRandomId } from "../../../utils/helpers";
 // COMPONENTS
-import FeedbackDetailsCommentReply from "./FeedbackDetailsCommentReply";
+import ReplyComponent from "./ReplyComponent";
 import ReplyForm from "./ReplyForm";
-import CommentUserInfo from "./CommentUserInfo";
+import CommentData from "./CommentData";
 
-const FeedbackDetailsComment = ({
+const CommentComponent = ({
 	image,
 	name,
 	username,
@@ -34,7 +34,7 @@ const FeedbackDetailsComment = ({
 	return (
 		<div className="w-full py-8 border-b first-of-type:pt-0 last:border-0 last:pb-0">
 			<div className="flex items-start w-full">
-				<CommentUserInfo
+				<CommentData
 					image={image}
 					name={name}
 					username={username}
@@ -48,7 +48,7 @@ const FeedbackDetailsComment = ({
 			<div className="ml-6 md:ml-14">
 				{replyData !== undefined &&
 					replyData.map((item) => (
-						<FeedbackDetailsCommentReply
+						<ReplyComponent
 							key={generateRandomId()}
 							content={item.content}
 							replyingTo={item.replyingTo}
@@ -64,4 +64,4 @@ const FeedbackDetailsComment = ({
 	);
 };
 
-export default FeedbackDetailsComment;
+export default CommentComponent;

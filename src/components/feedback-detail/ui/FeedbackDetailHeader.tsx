@@ -1,9 +1,9 @@
 // REACT
 import { Link } from "react-router-dom";
 // COMPONENTS
-import LinkButton from "../ui/LinkButton";
+import LinkButton from "../../ui/LinkButton";
 
-const FeedbackDetailsHeader = ({ id }: { id: string | undefined }) => {
+const FeedbackDetailHeader = ({ id }: { id: string | undefined }) => {
 	return (
 		<div className="flex justify-between mb-8">
 			<Link
@@ -36,4 +36,4 @@ const FeedbackDetailsHeader = ({ id }: { id: string | undefined }) => {
 	);
 };
 
-export default FeedbackDetailsHeader;
+export default FeedbackDetailHeader;

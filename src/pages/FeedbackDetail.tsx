@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 // LIBRARIES
 import { useDocumentTitle } from "usehooks-ts";
 // COMPONENTS
-import FeedbackDetailView from "../components/feedback-detail/FeedbackDetailView";
+import FeedbackDetailMain from "../components/feedback-detail/FeedbackDetailMain";
 
 const FeedbackDetail = () => {
 	useDocumentTitle("Feedback Details | Feedback Nexus");
@@ -11,7 +11,7 @@ const FeedbackDetail = () => {
 	return (
 		<>
 			<Outlet />
-			<FeedbackDetailView />
+			<FeedbackDetailMain />
 		</>
 	);
 };

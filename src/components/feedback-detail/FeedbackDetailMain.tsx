@@ -11,14 +11,14 @@ import {
 } from "../../lib/http";
 // COMPONENTS
 import FeedbackTile from "../feeedback-tile/FeedbackTile";
-import FeedbackDetailsHeader from "./FeedbackDetailsHeader";
-import CommentsSection from "./CommentsSection";
-import AddComment from "./AddComment";
+import FeedbackDetailHeader from "./ui/FeedbackDetailHeader";
+import CommentSection from "./comments/CommentSection";
+import AddComment from "./comments/AddComment";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorBlock from "../ui/ErrorBlock";
-import LabelsGroup from "./LabelsGroup";
+import LabelsGroup from "./labels/LabelsGroup";
 
-const FeedbackDetailView = () => {
+const FeedbackDetailMain = () => {
 	const params = useParams();
 	const navigate = useNavigate();
 
@@ -112,7 +112,7 @@ const FeedbackDetailView = () => {
 	return (
 		<section className="container py-8">
 			<div className="px-6 md:px-0">
-				<FeedbackDetailsHeader id={params.feedbackId} />
+				<FeedbackDetailHeader id={params.feedbackId} />
 				<button
 					onClick={handleStartDelete}
 					className="p-2 bg-c-red text-white rounded-lg">
@@ -121,11 +121,11 @@ const FeedbackDetailView = () => {
 				{isDeleting && deletingModal}
 				<LabelsGroup data={data} />
 				{content}
-				<CommentsSection data={data} id={params.feedbackId} />
+				<CommentSection data={data} id={params.feedbackId} />
 				<AddComment id={params.feedbackId} />
 			</div>
 		</section>
 	);
 };
 
-export default FeedbackDetailView;
+export default FeedbackDetailMain;

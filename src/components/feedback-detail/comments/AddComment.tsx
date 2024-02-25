@@ -1,13 +1,13 @@
 // LIBRARIES
 import clsx from "clsx";
 // DATA
-import { addNewComment } from "../../lib/http";
+import { addNewComment } from "../../../lib/http";
 // HOOKS
-import useAddComment from "../../hooks/useAddComment";
+import useAddComment from "../../../hooks/useAddComment";
 // HELPERS
-import { generateRandomId } from "../../utils/helpers";
+import { generateRandomId } from "../../../utils/helpers";
 // COMPONENTS
-import GenericButton from "../ui/GenericButton";
+import GenericButton from "../../ui/GenericButton";
 
 const AddComment = ({ id }: { id: string | undefined }) => {
 	const {

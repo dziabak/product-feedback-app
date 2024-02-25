@@ -2,9 +2,9 @@
 import { useToggle } from "usehooks-ts";
 // COMPONENTS
 import ReplyForm from "./ReplyForm";
-import CommentUserInfo from "./CommentUserInfo";
+import CommentData from "./CommentData";
 
-const FeedbackDetailsCommentReply = ({
+const ReplyComponent = ({
 	image,
 	name,
 	username,
@@ -26,7 +26,7 @@ const FeedbackDetailsCommentReply = ({
 	return (
 		<div>
 			<div className="flex items-start mt-8">
-				<CommentUserInfo
+				<CommentData
 					image={image}
 					name={name}
 					username={username}
@@ -42,4 +42,4 @@ const FeedbackDetailsCommentReply = ({
 	);
 };
 
-export default FeedbackDetailsCommentReply;
+export default ReplyComponent;
