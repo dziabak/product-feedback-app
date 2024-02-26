@@ -1,37 +1,61 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { queryClient, addUpvote } from "../lib/http";
-import { useToggle } from "usehooks-ts";
 import { useMutation } from "@tanstack/react-query";
+import useCurrentUserData from "./useCurrentUserData";
 
-const useAddUpvote = (id: string, upvotes: number) => {
+const useAddUpvote = (
+	id: string,
+	upvotes: number,
+	upvotedBy: string[] | undefined
+) => {
+	const currentUserData = useCurrentUserData();
+
 	const [upvotesCount, setUpvotesCount] = useState(upvotes);
-	const [canAddUpvote, toggleCanAddUpvote] = useToggle(true);
+	const [isUpvotedByCurrentUser, setIsUpvotedByCurrentUser] = useState(false);
+
+	// console.log(upvotedBy?.includes(currentUserData?.username));
+
+	useEffect(() => {
+		if (upvotedBy?.includes(currentUserData?.username)) {
+			setIsUpvotedByCurrentUser(true);
+		}
+	}, [currentUserData]);
 
 	const { mutate } = useMutation({
 		mutationFn: addUpvote,
 		onSuccess: () => {
-			queryClient.invalidateQueries();
+			queryClient.invalidateQueries({
+				refetchType: "all",
+			});
 		},
 	});
 
 	const addUpvoteHandler = () => {
-		if (canAddUpvote) {
-			setUpvotesCount((prevUpvotesCount) => {
-				const newCount = prevUpvotesCount + 1;
-				mutate({ id: id, updatedFeedback: newCount });
-				return newCount;
-			});
-			toggleCanAddUpvote();
-		} else {
+		if (isUpvotedByCurrentUser) {
 			setUpvotesCount((prevUpvotesCount) => {
 				const newCount = prevUpvotesCount - 1;
-				mutate({ id: id, updatedFeedback: newCount });
+				mutate({
+					id: id,
+					updatedFeedback: newCount,
+					username: currentUserData?.username,
+				});
 				return newCount;
 			});
-			toggleCanAddUpvote();
+			setIsUpvotedByCurrentUser(false);
+		} else {
+			setUpvotesCount((prevUpvotesCount) => {
+				const newCount = prevUpvotesCount + 1;
+				mutate({
+					id: id,
+					updatedFeedback: newCount,
+					username: currentUserData?.username,
+				});
+				return newCount;
+			});
+			setIsUpvotedByCurrentUser(true);
 		}
 	};
-	return { addUpvoteHandler, upvotesCount, canAddUpvote };
+	return { addUpvoteHandler, upvotesCount, isUpvotedByCurrentUser };
 };
 
 export default useAddUpvote;

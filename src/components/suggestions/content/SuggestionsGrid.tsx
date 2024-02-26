@@ -22,6 +22,7 @@ const SuggestionsGrid = ({
 				description={feedback.description}
 				title={feedback.title}
 				upvotes={feedback.upvotes}
+				upvotedBy={feedback.upvotedBy}
 				status={feedback.status}
 			/>
 		));

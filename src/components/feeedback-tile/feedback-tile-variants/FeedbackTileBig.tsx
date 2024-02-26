@@ -18,7 +18,7 @@ const FeedbackTileBig = ({
 	comments,
 	addUpvoteHandler,
 	upvotesCount,
-	canAddUpvote,
+	isUpvotedByCurrentUser,
 }: FeedbackTileProps) => {
 	const location = useLocation();
 
@@ -32,7 +32,7 @@ const FeedbackTileBig = ({
 					onClick={addUpvoteHandler}
 					className={clsx(
 						"group flex flex-col items-center w-10 p-3 space-y-2 text-xs font-bold rounded-[10px] transition-colors bg-c-gray text-c-dark-blue hover:bg-c-light-blue/25 dark:text-c-dark-blue dark:hover:bg-c-gray/90",
-						!canAddUpvote &&
+						isUpvotedByCurrentUser &&
 							"bg-c-light-blue text-white hover:text-c-dark-blue hover:bg-c-light-blue/25"
 					)}>
 					<svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +43,7 @@ const FeedbackTileBig = ({
 							fill="none"
 							fillRule="evenodd"
 							className={clsx(
-								!canAddUpvote &&
+								isUpvotedByCurrentUser &&
 									"stroke-white group-hover:stroke-c-light-blue transition-colors"
 							)}
 						/>

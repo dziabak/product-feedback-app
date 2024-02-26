@@ -83,6 +83,7 @@ const FeedbackDetailMain = () => {
 				status={feedback.status}
 				title={feedback.title}
 				upvotes={feedback.upvotes}
+				upvotedBy={feedback.upvotedBy}
 			/>
 		));
 	}

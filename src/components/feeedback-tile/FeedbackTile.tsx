@@ -7,6 +7,7 @@ import { FeedbackTileProps } from "../../types/types";
 
 const FeedbackTile = ({
 	upvotes,
+	upvotedBy,
 	category,
 	title,
 	description,
@@ -18,10 +19,8 @@ const FeedbackTile = ({
 }: FeedbackTileProps) => {
 	let content;
 
-	const { addUpvoteHandler, upvotesCount, canAddUpvote } = useAddUpvote(
-		id,
-		upvotes
-	);
+	const { addUpvoteHandler, upvotesCount, isUpvotedByCurrentUser } =
+		useAddUpvote(id, upvotes, upvotedBy);
 
 	if (small) {
 		content = (
@@ -38,7 +37,7 @@ const FeedbackTile = ({
 					comments={comments}
 					addUpvoteHandler={addUpvoteHandler}
 					upvotesCount={upvotesCount}
-					canAddUpvote={canAddUpvote}
+					isUpvotedByCurrentUser={isUpvotedByCurrentUser}
 				/>
 			</>
 		);
@@ -58,7 +57,7 @@ const FeedbackTile = ({
 						comments={comments}
 						addUpvoteHandler={addUpvoteHandler}
 						upvotesCount={upvotesCount}
-						canAddUpvote={canAddUpvote}
+						isUpvotedByCurrentUser={isUpvotedByCurrentUser}
 					/>
 				</div>
 				<div className="hidden md:block">
@@ -74,7 +73,7 @@ const FeedbackTile = ({
 						comments={comments}
 						addUpvoteHandler={addUpvoteHandler}
 						upvotesCount={upvotesCount}
-						canAddUpvote={canAddUpvote}
+						isUpvotedByCurrentUser={isUpvotedByCurrentUser}
 					/>
 				</div>
 			</>

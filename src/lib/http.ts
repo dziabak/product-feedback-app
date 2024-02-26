@@ -369,17 +369,205 @@ export const addCommentReply = async ({
 	return feedbackComment;
 };
 
+// export const addUpvote = async ({
+// 	id,
+// 	updatedFeedback,
+// }: {
+// 	id: any;
+// 	updatedFeedback: any;
+// }) => {
+// 	// Fetch all feedback data
+// 	const existingDataResponse = await fetch(
+// 		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
+// 		{ method: "GET", headers: { "Content-Type": "application.json" } }
+// 	);
+
+// 	if (!existingDataResponse.ok) {
+// 		throw new Error("Data could not be fetched!");
+// 	}
+
+// 	let allFeedbackData: ProductRequestsData = await existingDataResponse.json();
+
+// 	// Filter out the item with the provided ID
+// 	const updatedFeedbackData = allFeedbackData.filter(
+// 		(feedback) => feedback.id === id
+// 	);
+
+// 	// console.log(updatedFeedbackData[0]);
+// 	// console.log(updatedFeedback);
+
+// 	const currentFeedbackItemIndex = allFeedbackData.indexOf(
+// 		updatedFeedbackData[0]
+// 	);
+// 	const editedFeedback = {
+// 		...updatedFeedbackData[0],
+// 		upvotes: updatedFeedback,
+// 	};
+// 	// console.log(editedFeedback);
+
+// 	// Update the data in Firebase
+// 	const updateResponse = await fetch(
+// 		`https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests/${currentFeedbackItemIndex}.json`,
+// 		{
+// 			method: "PUT",
+// 			body: JSON.stringify(editedFeedback),
+// 			headers: { "Content-Type": "application/json" },
+// 		}
+// 	);
+
+// 	if (!updateResponse.ok) {
+// 		throw new Error("An error occurred while updating the data!");
+// 	}
+
+// 	return updateResponse.json();
+// };
+
+// export const addUpvote = async ({
+//     id,
+//     username,
+//     updatedFeedback,
+// }: {
+//     id: any;
+//     username: string;
+//     updatedFeedback: any;
+// }) => {
+//     // Fetch all feedback data
+//     const existingDataResponse = await fetch(
+//         "https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
+//         { method: "GET", headers: { "Content-Type": "application.json" } }
+//     );
+
+//     if (!existingDataResponse.ok) {
+//         throw new Error("Data could not be fetched!");
+//     }
+
+//     let allFeedbackData: ProductRequestsData = await existingDataResponse.json();
+
+//     // Find the index of the item with the provided ID
+//     const feedbackIndex = allFeedbackData.findIndex((feedback) => feedback.id === id);
+
+//     if (feedbackIndex === -1) {
+//         throw new Error("Feedback item not found!");
+//     }
+
+//     // Check if 'upvotedBy' array exists, if not, create it
+//     if (!allFeedbackData[feedbackIndex].upvotedBy) {
+//         allFeedbackData[feedbackIndex].upvotedBy = [];
+//     }
+
+//     // Check if the username is already in the 'upvotedBy' array
+//     const usernameIndex = allFeedbackData[feedbackIndex].upvotedBy.indexOf(username);
+
+//     // If the username is already in the array, remove it
+//     if (usernameIndex !== -1) {
+//         allFeedbackData[feedbackIndex].upvotedBy.splice(usernameIndex, 1);
+//         // Decrease upvotes count when removing upvote
+//         allFeedbackData[feedbackIndex].upvotes -= 1;
+//     } else {
+//         // If the username is not in the array, add it
+//         allFeedbackData[feedbackIndex].upvotedBy.push(username);
+//         // Increase upvotes count when adding upvote
+//         allFeedbackData[feedbackIndex].upvotes += 1;
+//     }
+
+//     // Update the data in Firebase
+//     const updateResponse = await fetch(
+//         "https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
+//         {
+//             method: "PUT",
+//             body: JSON.stringify(allFeedbackData),
+//             headers: { "Content-Type": "application/json" },
+//         }
+//     );
+
+//     if (!updateResponse.ok) {
+//         throw new Error("An error occurred while updating the data!");
+//     }
+
+//     return updateResponse.json();
+// };
+
+// export const addUpvote = async ({
+// 	id,
+// 	username,
+// 	updatedFeedback,
+// }: {
+// 	id: any;
+// 	username: string;
+// 	updatedFeedback: any;
+// }) => {
+// 	// Fetch all feedback data
+// 	const existingDataResponse = await fetch(
+// 		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
+// 		{ method: "GET", headers: { "Content-Type": "application.json" } }
+// 	);
+
+// 	if (!existingDataResponse.ok) {
+// 		throw new Error("Data could not be fetched!");
+// 	}
+
+// 	let allFeedbackData: ProductRequestsData = await existingDataResponse.json();
+
+// 	// Find the index of the item with the provided ID
+// 	const feedbackIndex = allFeedbackData.findIndex(
+// 		(feedback) => feedback.id === id
+// 	);
+
+// 	if (feedbackIndex === -1) {
+// 		throw new Error("Feedback item not found!");
+// 	}
+
+// 	// Check if 'upvotedBy' array exists, if not, create it
+// 	if (!allFeedbackData[feedbackIndex].upvotedBy) {
+// 		allFeedbackData[feedbackIndex].upvotedBy = [];
+// 	}
+
+// 	// Check if the username is already in the 'upvotedBy' array
+// 	const usernameIndex =
+// 		allFeedbackData[feedbackIndex].upvotedBy.indexOf(username);
+
+// 	// If the username is already in the array, remove it
+// 	if (usernameIndex !== -1) {
+// 		allFeedbackData[feedbackIndex].upvotedBy.splice(usernameIndex, 1);
+// 		// Decrease upvotes count when removing upvote
+// 		allFeedbackData[feedbackIndex].upvotes -= 1;
+// 	} else {
+// 		// If the username is not in the array, add it
+// 		allFeedbackData[feedbackIndex].upvotedBy.push(username);
+// 		// Increase upvotes count when adding upvote
+// 		allFeedbackData[feedbackIndex].upvotes += 1;
+// 	}
+
+// 	// Update the data in Firebase only for the targeted feedback item
+// 	const updateResponse = await fetch(
+// 		`https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests/${feedbackIndex}.json`,
+// 		{
+// 			method: "PUT",
+// 			body: JSON.stringify(allFeedbackData[feedbackIndex]),
+// 			headers: { "Content-Type": "application/json" },
+// 		}
+// 	);
+
+// 	if (!updateResponse.ok) {
+// 		throw new Error("An error occurred while updating the data!");
+// 	}
+
+// 	return updateResponse.json();
+// };
+
 export const addUpvote = async ({
 	id,
 	updatedFeedback,
+	username,
 }: {
 	id: any;
 	updatedFeedback: any;
+	username: string;
 }) => {
 	// Fetch all feedback data
 	const existingDataResponse = await fetch(
 		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
-		{ method: "GET", headers: { "Content-Type": "application.json" } }
+		{ method: "GET", headers: { "Content-Type": "application/json" } }
 	);
 
 	if (!existingDataResponse.ok) {
@@ -388,29 +576,36 @@ export const addUpvote = async ({
 
 	let allFeedbackData: ProductRequestsData = await existingDataResponse.json();
 
-	// Filter out the item with the provided ID
-	const updatedFeedbackData = allFeedbackData.filter(
+	// Find the index of the item with the provided ID
+	const currentIndex = allFeedbackData.findIndex(
 		(feedback) => feedback.id === id
 	);
 
-	// console.log(updatedFeedbackData[0]);
-	// console.log(updatedFeedback);
+	if (currentIndex === -1) {
+		throw new Error("Item with the provided ID not found!");
+	}
 
-	const currentFeedbackItemIndex = allFeedbackData.indexOf(
-		updatedFeedbackData[0]
-	);
-	const editedFeedback = {
-		...updatedFeedbackData[0],
-		upvotes: updatedFeedback,
-	};
-	// console.log(editedFeedback);
+	// If the item with the ID exists
+	const upvotedBy = allFeedbackData[currentIndex]?.upvotedBy || [];
+
+	// If user has already upvoted, remove the upvote
+	if (upvotedBy.includes(username)) {
+		const updatedUpvotedBy = upvotedBy.filter((user) => user !== username);
+		allFeedbackData[currentIndex].upvotedBy = updatedUpvotedBy;
+	} else {
+		// Add user to upvotedBy array
+		allFeedbackData[currentIndex].upvotedBy = [...upvotedBy, username];
+	}
+
+	// Update upvotes count
+	allFeedbackData[currentIndex].upvotes = updatedFeedback;
 
 	// Update the data in Firebase
 	const updateResponse = await fetch(
-		`https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests/${currentFeedbackItemIndex}.json`,
+		`https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests/${currentIndex}.json`,
 		{
 			method: "PUT",
-			body: JSON.stringify(editedFeedback),
+			body: JSON.stringify(allFeedbackData[currentIndex]),
 			headers: { "Content-Type": "application/json" },
 		}
 	);

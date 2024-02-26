@@ -8,6 +8,7 @@ export type FeedbackData = {
 		title: string;
 		category: string;
 		upvotes: number;
+		upvotedBy?: string[];
 		status: string;
 		description: string;
 		author: { image: string; name: string; username: string };
@@ -32,6 +33,7 @@ export type ProductRequestsData = {
 	title: string;
 	category: string;
 	upvotes: number;
+	upvotedBy?: string[];
 	status: string;
 	description: string;
 	author: { image: string; name: string; username: string };
@@ -76,6 +78,7 @@ export type FormField = {
 
 export type FeedbackTileProps = {
 	upvotes: number;
+	upvotedBy?: string[];
 	category: string;
 	title: string;
 	description: string;
@@ -85,6 +88,6 @@ export type FeedbackTileProps = {
 	comments?: Comment[];
 	addUpvoteHandler?: any;
 	upvotesCount?: any;
-	canAddUpvote?: any;
+	isUpvotedByCurrentUser?: any;
 	small?: boolean;
 };
