@@ -20,7 +20,7 @@ const FormListbox = ({
 	const data = listboxData;
 
 	return (
-		<Listbox value={selected} onChange={setSelected}>
+		<Listbox value={selected ?? ""} onChange={setSelected}>
 			<div className="relative">
 				<Listbox.Button className="z-0 relative w-full cursor-default text-left py-3 px-6 rounded-md border outline-none bg-c-light-gray border-c-light-gray focus:border-c-light-blue">
 					<span className="block truncate">{capitalizeString(selected)}</span>

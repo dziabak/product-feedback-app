@@ -1,4 +1,5 @@
 // REACT
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 // LIBRARIES
 import { useQuery, useMutation } from "@tanstack/react-query";
@@ -12,6 +13,8 @@ import {
 	fetchFeedbackItemData,
 	editFeedback,
 } from "../../lib/http";
+// HOOKS
+import useCurrentUserData from "../../hooks/useCurrentUserData";
 // COMPONENTS
 import FeedbackFormModal from "./ui/FeedbackFormModal";
 import FormHeader from "./ui/FormHeader";
@@ -23,12 +26,17 @@ import LoadingText from "../ui/LoadingText";
 import ErrorBlock from "../ui/ErrorBlock";
 import LinkButton from "../ui/LinkButton";
 import GenericButton from "../ui/GenericButton";
+import DeleteFeedbackModal from "./DeleteFeedbackModal";
 
 const EditFeedbackForm = () => {
+	let utilityContent!: JSX.Element;
+
 	const navigate = useNavigate();
 	const params = useParams();
 
-	let utilityContent!: JSX.Element;
+	const currentUserData = useCurrentUserData();
+
+	const [canDelete, setCanDelete] = useState(false);
 
 	const { data, isPending, isError } = useQuery({
 		queryKey: ["feedbackItem", params.feedbackId],
@@ -80,36 +88,48 @@ const EditFeedbackForm = () => {
 		);
 	}
 
-	let defaultValues = {
-		title: "",
-		category: "",
-		status: "",
-		description: "",
-	};
-
 	let title = "";
 
 	if (data) {
 		title = data[0].title;
-
-		defaultValues = {
-			title: data[0].title,
-			category: data[0].category,
-			status: data[0].status,
-			description: data[0].description,
-		};
 	}
+
+	useEffect(() => {
+		if (data && currentUserData) {
+			const authorUsername = data[0].author.username;
+			const currentUserUsername = currentUserData.username;
+
+			setCanDelete(authorUsername === currentUserUsername);
+		}
+	}, [data, currentUserData]);
 
 	const {
 		register,
 		watch,
 		control,
 		handleSubmit,
+		setValue,
 		formState: { errors },
 	} = useForm<TFeedbackFormSchema>({
-		defaultValues: defaultValues,
+		// defaultValues: defaultValues,
 		resolver: zodResolver(feedbackFormSchema),
 	});
+
+	useEffect(() => {
+		if (data) {
+			setValue("title", data[0].title);
+			setValue("category", data[0].category);
+			setValue("status", data[0].status);
+			setValue("description", data[0].description);
+		}
+	}, [data, setValue]);
+
+	const dialogRef = useRef<HTMLDialogElement>(null);
+
+	const handleStartDelete: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+		e.preventDefault();
+		dialogRef.current?.showModal();
+	};
 
 	return (
 		<FeedbackFormModal isPending={isPendingEdit}>
@@ -126,12 +146,27 @@ const EditFeedbackForm = () => {
 				{utilityContent}
 				{!isPendingEdit && (
 					<div className="flex flex-col-reverse pt-8 space-y-4 space-y-reverse md:flex-row md:justify-between md:space-y-0 md:space-x-4">
-						<GenericButton disabled text="Delete" color="red" mobile />
+						{canDelete ? (
+							<GenericButton
+								onClick={handleStartDelete}
+								text="Delete"
+								color="red"
+								mobile
+							/>
+						) : (
+							<GenericButton disabled text="Delete" color="red" mobile />
+						)}
 						<div className="flex flex-col-reverse space-y-4 space-y-reverse md:flex-row md:space-y-0 md:space-x-4">
 							<LinkButton linkTo=".." text="Cancel" color="dark-blue" mobile />
 							<GenericButton text="Save changes" color="magenta" mobile />
 						</div>
 					</div>
+				)}
+				<DeleteFeedbackModal ref={dialogRef} />
+				{!canDelete && (
+					<p className="text-sm text-c-dark-blue">
+						Only author can delete feedback
+					</p>
 				)}
 			</form>
 		</FeedbackFormModal>
