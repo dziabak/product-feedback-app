@@ -13,13 +13,15 @@ const useAddUpvote = (
 	const [upvotesCount, setUpvotesCount] = useState(upvotes);
 	const [isUpvotedByCurrentUser, setIsUpvotedByCurrentUser] = useState(false);
 
-	// console.log(upvotedBy?.includes(currentUserData?.username));
-
 	useEffect(() => {
-		if (upvotedBy?.includes(currentUserData?.username)) {
+		if (
+			upvotedBy &&
+			currentUserData &&
+			upvotedBy.includes(currentUserData.username)
+		) {
 			setIsUpvotedByCurrentUser(true);
 		}
-	}, [currentUserData]);
+	}, [upvotedBy, currentUserData]);
 
 	const { mutate } = useMutation({
 		mutationFn: addUpvote,
@@ -37,7 +39,7 @@ const useAddUpvote = (
 				mutate({
 					id: id,
 					updatedFeedback: newCount,
-					username: currentUserData?.username,
+					username: currentUserData!.username,
 				});
 				return newCount;
 			});
@@ -48,7 +50,7 @@ const useAddUpvote = (
 				mutate({
 					id: id,
 					updatedFeedback: newCount,
-					username: currentUserData?.username,
+					username: currentUserData!.username,
 				});
 				return newCount;
 			});
