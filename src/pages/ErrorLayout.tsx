@@ -9,7 +9,7 @@ import image from "../assets/suggestions/illustration-empty.svg";
 const ErrorLayout = () => {
 	return (
 		<div className="container">
-			<div className="flex flex-col justify-between h-screen bg-c-gray md:p-4">
+			<div className="flex flex-col justify-between h-screen bg-c-gray md:py-8">
 				<div className="p-6 bg-c-dark-blue md:rounded-[10px]">
                     <Link to=".." className="text-xl font-bold text-white md:text-2xl">Feedback Nexus</Link>
 				</div>
