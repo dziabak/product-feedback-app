@@ -26,7 +26,7 @@ const SortListbox = ({
 	return (
 		<Listbox value={selected} onChange={handleSelection}>
 			<div className="relative">
-				<Listbox.Button className="relative w-full cursor-default text-left text-sm pr-4 rounded-md text-c-gray transition-colors border outline-none bg-c-dark-blue border-c-dark-blue focus:border-c-dark-blue group-hover:text-c-gray/75">
+				<Listbox.Button className="relative w-full cursor-default text-left text-sm pr-4 rounded-[10px] text-c-gray transition-colors border outline-none bg-c-dark-blue border-c-dark-blue focus:border-c-dark-blue group-hover:text-c-gray/75">
 					<span className="block truncate capitalize font-bold">
 						{selected}
 					</span>
@@ -48,7 +48,7 @@ const SortListbox = ({
 					leave="transition ease-in duration-100"
 					leaveFrom="opacity-100"
 					leaveTo="opacity-0">
-					<Listbox.Options className="absolute -left-14 mt-4 max-h-60 w-64 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+					<Listbox.Options className="absolute -left-14 mt-4 max-h-60 w-64 overflow-auto rounded-[10px] bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
 						{sortData.map((item, itemIndex) => (
 							<Listbox.Option
 								key={itemIndex}

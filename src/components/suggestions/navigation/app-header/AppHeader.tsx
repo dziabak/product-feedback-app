@@ -24,7 +24,7 @@ const AppHeader = ({
 				<img
 					src={mobileBackground}
 					alt="Gradient background for page header"
-					className="w-full h-full md:rounded-xl md:w-auto"
+					className="w-full h-full md:rounded-[10px] md:w-auto"
 				/>
 			</picture>
 			<div className="absolute bottom-0 left-0 flex flex-row items-center justify-between w-full h-full p-4 md:block md:w-auto md:h-auto">

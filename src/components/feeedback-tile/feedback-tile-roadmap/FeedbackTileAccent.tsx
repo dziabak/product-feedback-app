@@ -6,7 +6,7 @@ const FeedbackTileAccent = ({ status }: { status: string }) => {
 		<>
 			<div
 				className={clsx(
-					"w-full h-2 rounded-tl-lg rounded-tr-lg",
+					"w-full h-2 rounded-tl-[10px] rounded-tr-[10px]",
 					status === "planned" && "bg-c-orange",
 					status === "in-progress" && "bg-c-magenta",
 					status === "live" && "bg-c-aqua"

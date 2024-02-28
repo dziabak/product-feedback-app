@@ -19,7 +19,7 @@ const CommentSection = ({
 
 		content = (
 			<div className="mt-6 md:mt-4">
-				<div className="flex flex-col p-8 rounded-lg bg-white">
+				<div className="flex flex-col p-8 rounded-[10px] bg-white">
 					<p className="mb-8 text-lg font-bold text-c-dark-blue">
 						{totalComments} Comments
 					</p>

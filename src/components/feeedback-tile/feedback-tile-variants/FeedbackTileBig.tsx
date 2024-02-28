@@ -26,7 +26,7 @@ const FeedbackTileBig = ({
 	const totalComments = countTotalComments(comments);
 
 	return (
-		<div className="flex justify-between px-8 py-6 rounded-lg bg-white dark:bg-c-dark-frame">
+		<div className="flex justify-between px-8 py-6 rounded-[10px] bg-white dark:bg-c-dark-frame">
 			<div className="w-min mr-8">
 				<button
 					onClick={addUpvoteHandler}

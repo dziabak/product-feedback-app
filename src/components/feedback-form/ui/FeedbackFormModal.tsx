@@ -56,7 +56,7 @@ const FeedbackFormModal = ({
 				<div
 					ref={contentRef}
 					className={clsx(
-						"relative z-20 w-full p-8 rounded-lg bg-white cursor-default transition-all duration-500 md:w-auto",
+						"relative z-20 w-full p-8 rounded-[10px] bg-white cursor-default transition-all duration-500 md:w-auto",
 						!isModalOpen && "-translate-y-16",
 						isModalOpen && "translate-y-0"
 					)}>

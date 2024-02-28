@@ -36,7 +36,7 @@ const SuggestionsHeader = ({
 	}
 
 	return (
-		<div className="flex items-center justify-between px-6 py-4 bg-c-dark-blue dark:bg-c-dark-header md:rounded-lg">
+		<div className="flex items-center justify-between px-6 py-4 bg-c-dark-blue dark:bg-c-dark-header md:rounded-[10px]">
 			<div className="flex items-center">
 				<div className="hidden md:flex md:items-center">
 					<img src={headerIcon} alt="Icon of a lightbulb" className="mr-4" />

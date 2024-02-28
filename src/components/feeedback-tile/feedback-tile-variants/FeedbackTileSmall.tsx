@@ -39,14 +39,14 @@ const FeedbackTileSmall = ({
 	return (
 		<div
 			className={clsx(
-				"flex flex-col justify-between rounded-lg bg-white",
+				"flex flex-col justify-between rounded-[10px] bg-white",
 				location.pathname === "/roadmap" && "h-72 md:h-80 xl:h-72",
 				location.pathname !== "/roadmap" && "pt-8"
 			)}>
 			<Link
 				to={link}
 				className={clsx(
-					"group rounded-lg bg-white",
+					"group rounded-[10px] bg-white",
 					location.pathname !== "/" &&
 						location.pathname !== "/roadmap" &&
 						"cursor-default"

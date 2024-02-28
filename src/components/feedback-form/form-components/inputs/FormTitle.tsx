@@ -21,7 +21,7 @@ const FormTitle = ({ register, errors }: FormField) => {
 				id="title"
 				maxLength={50}
 				className={clsx(
-					"py-3 px-6 rounded-md bg-c-light-gray outline-none border border-c-light-gray focus:border-c-light-blue",
+					"py-3 px-6 rounded-[10px] bg-c-light-gray outline-none border border-c-light-gray focus:border-c-light-blue",
 					!errors.title && "caret-c-light-blue",
 					errors.title &&
 						"outline-none border border-c-red focus:border-c-red caret-c-red"
