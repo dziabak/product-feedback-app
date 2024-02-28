@@ -47,7 +47,9 @@ const FeedbackTileSmall = ({
 				to={link}
 				className={clsx(
 					"group rounded-lg bg-white",
-					location.pathname !== "/" && "cursor-default"
+					location.pathname !== "/" &&
+						location.pathname !== "/roadmap" &&
+						"cursor-default"
 				)}>
 				{location.pathname === "/roadmap" && (
 					<>
@@ -62,6 +64,8 @@ const FeedbackTileSmall = ({
 								className={clsx(
 									"break-all line-clamp-1 text-lg font-bold transition-colors text-c-dark-blue dark:text-c-light-gray",
 									location.pathname === "/" &&
+										"group-hover:text-c-light-blue dark:group-hover:text-c-light-gray/75",
+									location.pathname === "/roadmap" &&
 										"group-hover:text-c-light-blue dark:group-hover:text-c-light-gray/75"
 								)}>
 								{title}
