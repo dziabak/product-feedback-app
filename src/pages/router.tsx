@@ -1,7 +1,8 @@
-// BUILT-IN IMPORTS
+// REACT
 import { createBrowserRouter } from "react-router-dom";
-// INTERNAL IMPORTS
+// COMPONENTS
 import RootLayout from "./RootLayout";
+import ErrorLayout from "./ErrorLayout";
 import Suggestions from "./Suggestions";
 import FeedbackDetail from "./FeedbackDetail";
 import Roadmap from "./Roadmap";
@@ -12,6 +13,7 @@ export const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <RootLayout />,
+		errorElement: <ErrorLayout />,
 		children: [
 			{
 				path: "/",
