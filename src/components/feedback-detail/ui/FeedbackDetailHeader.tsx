@@ -1,13 +1,22 @@
 // REACT
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 // COMPONENTS
 import LinkButton from "../../ui/LinkButton";
 
 const FeedbackDetailHeader = ({ id }: { id: string | undefined }) => {
+	const location = useLocation();
+
+	let link!: string;
+	if (location.pathname === `/feedback/${id}`) {
+		link = `/feedback/${id}/edit`;
+	} else if (location.pathname === `/roadmap/${id}`) {
+		link = `/roadmap/${id}/edit`;
+	}
+
 	return (
 		<div className="flex justify-between mb-8">
 			<Link
-				to="/"
+				to=".."
 				className="group flex items-center text-sm font-bold text-c-dark-gray">
 				<svg
 					className="mr-3"
@@ -27,11 +36,7 @@ const FeedbackDetailHeader = ({ id }: { id: string | undefined }) => {
 					<span className="absolute bottom-0 left-0 h-[0.1rem] bg-c-dark-gray w-0 transition-all duration-300 group-hover:w-full"></span>
 				</span>
 			</Link>
-			<LinkButton
-				linkTo={`/feedback/${id}/edit`}
-				text="Edit Feedback"
-				color="light-blue"
-			/>
+			<LinkButton linkTo={link} text="Edit Feedback" color="light-blue" />
 		</div>
 	);
 };

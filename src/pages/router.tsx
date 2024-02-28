@@ -28,7 +28,16 @@ export const router = createBrowserRouter([
 			{
 				path: "/roadmap",
 				element: <Roadmap />,
-				children: [{ path: "/roadmap/new-feedback", element: <NewFeedback /> }],
+				children: [
+					{ path: "/roadmap/new-feedback", element: <NewFeedback /> },
+					{
+						path: "/roadmap/:feedbackId",
+						element: <FeedbackDetail />,
+						children: [
+							{ path: "/roadmap/:feedbackId/edit", element: <EditFeedback /> },
+						],
+					},
+				],
 			},
 			// { path: "/new-feedback", element: <NewFeedback /> },
 		],

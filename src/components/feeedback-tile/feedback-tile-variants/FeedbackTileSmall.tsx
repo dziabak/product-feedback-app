@@ -29,6 +29,13 @@ const FeedbackTileSmall = ({
 
 	const location = useLocation();
 
+	let link!: string;
+	if (location.pathname === "/") {
+		link = `/feedback/${id}`;
+	} else if (location.pathname === "/roadmap") {
+		link = `/roadmap/${id}`;
+	}
+
 	return (
 		<div
 			className={clsx(
@@ -37,10 +44,10 @@ const FeedbackTileSmall = ({
 				location.pathname !== "/roadmap" && "pt-8"
 			)}>
 			<Link
-				to={`/feedback/${id}`}
+				to={link}
 				className={clsx(
 					"group rounded-lg bg-white",
-					location.pathname !== "/" || ("/roadmap" && "cursor-default")
+					location.pathname !== "/" && "cursor-default"
 				)}>
 				{location.pathname === "/roadmap" && (
 					<>
@@ -54,9 +61,8 @@ const FeedbackTileSmall = ({
 							<p
 								className={clsx(
 									"break-all line-clamp-1 text-lg font-bold transition-colors text-c-dark-blue dark:text-c-light-gray",
-									location.pathname === "/" ||
-										("/roadmap" &&
-											"group-hover:text-c-light-blue dark:group-hover:text-c-light-gray/75")
+									location.pathname === "/" &&
+										"group-hover:text-c-light-blue dark:group-hover:text-c-light-gray/75"
 								)}>
 								{title}
 							</p>

@@ -51,7 +51,10 @@ const EditFeedbackForm = () => {
 		mutationKey: ["feedbackItem"],
 		mutationFn: editFeedback,
 		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["feedbackItem"] });
+			queryClient.invalidateQueries({
+				// queryKey: ["feedbackItem"],
+				refetchType: "all",
+			});
 			navigate("..");
 		},
 	});
