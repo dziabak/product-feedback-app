@@ -12,16 +12,14 @@ const FormStatus = ({ control }: { control: Control<TFeedbackFormSchema> }) => {
 
 	return (
 		<FormSectionWrapper>
-			<FormLabel
-				htmlFor="status"
-				label="Status"
-				description="Change feedback status"
-			/>
 			<Controller
 				name="status"
 				control={control}
 				render={({ field }) => (
 					<FormListbox
+						label={
+							<FormLabel label="Status" description="Change feedback status" />
+						}
 						listboxData={statusData}
 						selected={field.value}
 						setSelected={field.onChange}

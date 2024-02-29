@@ -3,7 +3,7 @@ const FormLabel = ({
 	label,
 	description,
 }: {
-	htmlFor: string;
+	htmlFor?: string;
 	label: string;
 	description: string;
 }) => {

@@ -12,15 +12,18 @@ const FormListbox = ({
 	selected,
 	setSelected,
 	listboxData,
+	label,
 }: {
 	selected: string | undefined;
 	setSelected: (...event: any[]) => void;
 	listboxData: string[];
+	label: JSX.Element;
 }) => {
 	const data = listboxData;
 
 	return (
 		<Listbox value={selected ?? ""} onChange={setSelected}>
+			<Listbox.Label>{label}</Listbox.Label>
 			<div className="relative">
 				<Listbox.Button className="z-0 relative w-full cursor-default text-left py-3 px-6 rounded-[10px] border outline-none bg-c-light-gray border-c-light-gray focus:border-c-light-blue">
 					<span className="block truncate">{capitalizeString(selected)}</span>

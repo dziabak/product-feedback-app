@@ -16,16 +16,17 @@ const FormCategory = ({
 
 	return (
 		<FormSectionWrapper>
-			<FormLabel
-				htmlFor="category"
-				label="Category"
-				description="Choose a category for your feedback"
-			/>
 			<Controller
 				name="category"
 				control={control}
 				render={({ field }) => (
 					<FormListbox
+						label={
+							<FormLabel
+								label="Category"
+								description="Choose a category for your feedback"
+							/>
+						}
 						listboxData={categoryData}
 						selected={field.value}
 						setSelected={field.onChange}
