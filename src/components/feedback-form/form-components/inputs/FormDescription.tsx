@@ -1,12 +1,16 @@
+// LIBRARIES
+import { UseFormWatch } from "react-hook-form";
 // TYPES
-import { FormField } from "../../../../types/types";
+import { FormField, TFeedbackFormSchema } from "../../../../types/types";
 // LIBRARIES
 import clsx from "clsx";
 // COMPONENTS
 import FormSectionWrapper from "../../ui/FormSectionWrapper";
 import FormLabel from "../FormLabel";
 
-type FormDescriptionProps = FormField & { watch: any };
+type FormDescriptionProps = FormField & {
+	watch: UseFormWatch<TFeedbackFormSchema>;
+};
 
 const FormDescription = ({ register, errors, watch }: FormDescriptionProps) => {
 	const characterCountBaseValue = 500;

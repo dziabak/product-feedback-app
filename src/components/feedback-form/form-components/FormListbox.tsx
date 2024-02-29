@@ -15,7 +15,7 @@ const FormListbox = ({
 	label,
 }: {
 	selected: string | undefined;
-	setSelected: (...event: any[]) => void;
+	setSelected: (...event: string[]) => void;
 	listboxData: string[];
 	label: JSX.Element;
 }) => {

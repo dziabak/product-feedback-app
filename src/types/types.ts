@@ -92,9 +92,9 @@ export type FeedbackTileProps = {
 	status: string;
 	id: string;
 	comments?: Comment[];
-	addUpvoteHandler?: any;
-	upvotesCount?: any;
-	isUpvotedByCurrentUser?: any;
+	addUpvoteHandler?: () => void;
+	upvotesCount?: number;
+	isUpvotedByCurrentUser?: boolean;
 	small?: boolean;
 };
 

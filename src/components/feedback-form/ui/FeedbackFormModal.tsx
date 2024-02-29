@@ -12,7 +12,7 @@ const FeedbackFormModal = ({
 	isPending,
 }: {
 	children: JSX.Element;
-	isPending: any;
+	isPending: boolean;
 }) => {
 	const dialogRef = useRef<HTMLDialogElement>(null);
 	const contentRef = useRef<HTMLDivElement>(null);
