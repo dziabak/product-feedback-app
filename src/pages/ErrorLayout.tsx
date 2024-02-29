@@ -1,8 +1,8 @@
 // REACT
 import { Link } from "react-router-dom";
 // COMPONETS
-import LinkButton from "../components/ui/LinkButton";
-import ErrorBlock from "../components/ui/ErrorBlock";
+import LinkButton from "../components/ui/buttons/LinkButton";
+import ErrorBlock from "../components/ui/errors/ErrorBlock";
 // IMAGES
 import image from "../assets/suggestions/illustration-empty.svg";
 
@@ -11,7 +11,9 @@ const ErrorLayout = () => {
 		<div className="container">
 			<div className="flex flex-col justify-between h-screen bg-c-gray md:py-8">
 				<div className="p-6 bg-c-dark-blue md:rounded-[10px]">
-                    <Link to=".." className="text-xl font-bold text-white md:text-2xl">Feedback Nexus</Link>
+					<Link to=".." className="text-xl font-bold text-white md:text-2xl">
+						Feedback Nexus
+					</Link>
 				</div>
 
 				<div className="flex flex-col justify-center items-center h-full p-8 space-y-8">

@@ -6,8 +6,8 @@ import { fetchWithoutSuggestionsData } from "../../lib/http";
 import RoadmapHeader from "./ui/RoadmapHeader";
 import RoadmapMobileLayout from "./layouts/RoadmapMobileLayout";
 import RoadmapDesktopLayout from "./layouts/RoadmapDesktopLayout";
-import LoadingSpinner from "../ui/LoadingSpinner";
-import ErrorBlock from "../ui/ErrorBlock";
+import LoadingSpinner from "../ui/loading/LoadingSpinner";
+import ErrorBlock from "../ui/errors/ErrorBlock";
 
 const RoadmapMain = () => {
 	let content!: JSX.Element | JSX.Element[];

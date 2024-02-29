@@ -1,7 +1,7 @@
 // TYPES
 import { ProductRequestsData } from "../../../types/types";
 // COMPONENTS
-import StatusIndicator from "../../ui/StatusIndicator";
+import StatusIndicator from "../../ui/components/StatusIndicator";
 
 const StatusLabel = ({ data }: { data: ProductRequestsData | undefined }) => {
 	let content!: JSX.Element;

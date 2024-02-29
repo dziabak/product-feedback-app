@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 // TYPES
 import { ProductRequestsData } from "../../../../types/types";
 // COMPONENTS
-import BackgroundFrame from "../../../ui/BackgroundFrame";
+import BackgroundFrame from "../../../ui/components/BackgroundFrame";
 
 const CategoryFilter = ({
 	data,

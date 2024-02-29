@@ -1,7 +1,7 @@
 // REACT
 import { Link, useLocation } from "react-router-dom";
 // COMPONENTS
-import LinkButton from "../../ui/LinkButton";
+import LinkButton from "../../ui/buttons/LinkButton";
 
 const FeedbackDetailHeader = ({ id }: { id: string | undefined }) => {
 	const location = useLocation();

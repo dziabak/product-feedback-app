@@ -6,7 +6,7 @@ import { useMutation } from "@tanstack/react-query";
 // DATA
 import { queryClient, deleteFeedback } from "../../lib/http";
 // COMPONENTS
-import GenericButton from "../ui/GenericButton";
+import GenericButton from "../ui/buttons/GenericButton";
 
 const DeleteFeedbackModal = forwardRef(
 	(_, ref: ForwardedRef<HTMLDialogElement>) => {

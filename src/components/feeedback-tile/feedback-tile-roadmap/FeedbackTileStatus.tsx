@@ -1,5 +1,5 @@
 // COMPONENTS
-import StatusIndicator from "../../ui/StatusIndicator";
+import StatusIndicator from "../../ui/components/StatusIndicator";
 
 const FeedbackTileStatus = ({ status }: { status: string }) => {
 	return (

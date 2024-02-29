@@ -9,8 +9,8 @@ import { fetchOnlySuggestionsData } from "../../lib/http";
 // COMPONENTS
 import SuggestionsNavigation from "../../components/suggestions/navigation/SuggestionsNavigation";
 import SuggestionsLayout from "./content/SuggestionsLayout";
-import LoadingSpinner from "../ui/LoadingSpinner";
-import ErrorBlock from "../ui/ErrorBlock";
+import LoadingSpinner from "../ui/loading/LoadingSpinner";
+import ErrorBlock from "../ui/errors/ErrorBlock";
 
 const SuggestionsMain = () => {
 	let content;

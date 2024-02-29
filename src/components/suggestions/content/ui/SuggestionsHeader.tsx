@@ -2,7 +2,7 @@
 import { ProductRequestsData } from "../../../../types/types";
 // COMPONENTS
 import SortingForm from "../sorting-form/SortingForm";
-import LinkButton from "../../../ui/LinkButton";
+import LinkButton from "../../../ui/buttons/LinkButton";
 // IMAGES
 import headerIcon from "../../../../assets/suggestions/icon-suggestions.svg";
 

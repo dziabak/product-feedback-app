@@ -7,7 +7,7 @@ import useAddComment from "../../../hooks/useAddComment";
 // HELPERS
 import { generateRandomId } from "../../../utils/helpers";
 // COMPONENTS
-import GenericButton from "../../ui/GenericButton";
+import GenericButton from "../../ui/buttons/GenericButton";
 
 const AddComment = ({ id }: { id: string | undefined }) => {
 	const {

@@ -6,7 +6,7 @@ import { addCommentReply } from "../../../lib/http";
 import useAddComment from "../../../hooks/useAddComment";
 import useReplyFormAnimation from "../../../hooks/useReplyFormAnimation";
 // COMPONENTS
-import GenericButton from "../../ui/GenericButton";
+import GenericButton from "../../ui/buttons/GenericButton";
 
 const ReplyForm = ({
 	username,

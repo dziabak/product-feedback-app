@@ -7,9 +7,9 @@ import { getStatusLength } from "../../../../utils/helpers";
 // COMPONENTS
 import RoadmapSectionHeader from "./RoadmapSectionHeader";
 import RoadmapSectionStatus from "./RoadmapSectionStatus";
-import LoadingSpinner from "../../../ui/LoadingSpinner";
-import ErrorBlock from "../../../ui/ErrorBlock";
-import BackgroundFrame from "../../../ui/BackgroundFrame";
+import LoadingSpinner from "../../../ui/loading/LoadingSpinner";
+import ErrorBlock from "../../../ui/errors/ErrorBlock";
+import BackgroundFrame from "../../../ui/components/BackgroundFrame";
 
 const RoadmapSection = () => {
 	let content!: JSX.Element | JSX.Element[];

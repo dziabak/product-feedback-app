@@ -1,5 +1,5 @@
 // COMPONENTS
-import LinkButton from "../../../ui/LinkButton";
+import LinkButton from "../../../ui/buttons/LinkButton";
 // IMAGES
 import image from "../../../../assets/suggestions/illustration-empty.svg";
 

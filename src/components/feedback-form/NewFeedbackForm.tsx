@@ -18,10 +18,10 @@ import FormHeader from "./ui/FormHeader";
 import FormTitle from "./form-components/inputs/FormTitle";
 import FormCategory from "./form-components/inputs/FormCategory";
 import FormDescription from "./form-components/inputs/FormDescription";
-import LoadingText from "../ui/LoadingText";
-import ErrorBlock from "../ui/ErrorBlock";
-import LinkButton from "../ui/LinkButton";
-import GenericButton from "../ui/GenericButton";
+import LoadingText from "../ui/loading/LoadingText";
+import ErrorBlock from "../ui/errors/ErrorBlock";
+import LinkButton from "../ui/buttons/LinkButton";
+import GenericButton from "../ui/buttons/GenericButton";
 
 const NewFeedbackForm = () => {
 	let utilityContent!: JSX.Element;

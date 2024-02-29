@@ -1,7 +1,7 @@
 // REACT
 import { Link } from "react-router-dom";
 // COMPONENTS
-import LinkButton from "../../ui/LinkButton";
+import LinkButton from "../../ui/buttons/LinkButton";
 
 const RoadmapHeader = () => {
 	return (

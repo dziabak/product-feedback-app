@@ -9,8 +9,8 @@ import FeedbackTile from "../feeedback-tile/FeedbackTile";
 import FeedbackDetailHeader from "./ui/FeedbackDetailHeader";
 import CommentSection from "./comments/CommentSection";
 import AddComment from "./comments/AddComment";
-import LoadingSpinner from "../ui/LoadingSpinner";
-import ErrorBlock from "../ui/ErrorBlock";
+import LoadingSpinner from "../ui/loading/LoadingSpinner";
+import ErrorBlock from "../ui/errors/ErrorBlock";
 import LabelsGroup from "./labels/LabelsGroup";
 
 const FeedbackDetailMain = () => {
