@@ -14,7 +14,7 @@ const ReplyForm = ({
 	commentId,
 }: {
 	username: string;
-	postId: string | undefined;
+	postId: string;
 	commentId: string;
 }) => {
 	const { isFormOpen, isOpacityApplied } = useReplyFormAnimation();

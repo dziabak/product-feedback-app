@@ -9,7 +9,7 @@ import { generateRandomId } from "../../../utils/helpers";
 // COMPONENTS
 import GenericButton from "../../ui/GenericButton";
 
-const AddComment = ({ id }: { id: string | undefined }) => {
+const AddComment = ({ id }: { id: string }) => {
 	const {
 		register,
 		handleSubmit,

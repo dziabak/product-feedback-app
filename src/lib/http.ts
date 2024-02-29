@@ -1,10 +1,15 @@
-// EXTERNAL IMPORTS
+// LIBRARIES
 import { QueryClient } from "@tanstack/react-query";
 // TYPES
 import {
 	FeedbackData,
 	ProductRequestsData,
+	SingleProductRequestsData,
 	CurrentUserData,
+	NewFeedbackData,
+	TFeedbackFormSchema,
+	Comment,
+	Reply,
 } from "../types/types";
 
 export const queryClient = new QueryClient();
@@ -111,7 +116,7 @@ export const fetchFeedbackItemData = async ({
 	return feedbackItemData;
 };
 
-export const createNewFeedback = async (feedbackData: any) => {
+export const createNewFeedback = async (newFeedbackData: NewFeedbackData) => {
 	// Fetch existing data to determine the next index
 	const existingDataResponse = await fetch(
 		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json"
@@ -131,7 +136,7 @@ export const createNewFeedback = async (feedbackData: any) => {
 	// Send data to the constructed URL
 	const response = await fetch(url, {
 		method: "PUT",
-		body: JSON.stringify(feedbackData),
+		body: JSON.stringify(newFeedbackData),
 		headers: { "Content-Type": "application/json" },
 	});
 
@@ -144,7 +149,7 @@ export const createNewFeedback = async (feedbackData: any) => {
 	return feedback;
 };
 
-export const deleteFeedback = async ({ id }: { id: any }) => {
+export const deleteFeedback = async ({ id }: { id: string | undefined }) => {
 	// Fetch all feedback data
 	const existingDataResponse = await fetch(
 		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
@@ -183,8 +188,8 @@ export const editFeedback = async ({
 	id,
 	formData,
 }: {
-	id: any;
-	formData: any;
+	id: string | undefined;
+	formData: TFeedbackFormSchema;
 }) => {
 	// Fetch all feedback data
 	const existingDataResponse = await fetch(
@@ -229,8 +234,8 @@ export const addNewComment = async ({
 	id,
 	comment,
 }: {
-	id: any;
-	comment: any;
+	id: string;
+	comment: Comment;
 }) => {
 	// Fetch all feedback data
 	const existingDataResponse = await fetch(
@@ -252,7 +257,10 @@ export const addNewComment = async ({
 		updatedFeedbackData[0]
 	);
 
-	const addCommentToData = (currentData: any, commentToAdd: any) => {
+	const addCommentToData = (
+		currentData: SingleProductRequestsData,
+		commentToAdd: Comment
+	) => {
 		if (!Array.isArray(currentData.comments)) {
 			currentData.comments = [commentToAdd];
 		} else {
@@ -287,9 +295,9 @@ export const addCommentReply = async ({
 	commentId,
 	comment,
 }: {
-	postId: any;
-	commentId: any;
-	comment: any;
+	postId: string;
+	commentId: string;
+	comment: Reply;
 }) => {
 	// Fetch all feedback data
 	const existingDataResponse = await fetch(
@@ -320,7 +328,11 @@ export const addCommentReply = async ({
 		updatedReplyData[0]
 	);
 
-	const addReplyToData = (mainObject: any, replyToAdd: any) => {
+	const addReplyToData = (
+		mainObject: any,
+		replyToAdd: Reply
+	) => {
+		console.log(replyToAdd);
 		// Check if the replies array exists
 		if (!mainObject.comments || !Array.isArray(mainObject.comments)) {
 			// If not, create the comments array and add the reply to it
@@ -427,8 +439,8 @@ export const addUpvote = async ({
 	updatedFeedback,
 	username,
 }: {
-	id: any;
-	updatedFeedback: any;
+	id: string;
+	updatedFeedback: number;
 	username: string;
 }) => {
 	// Fetch all feedback data

@@ -62,6 +62,12 @@ export type Comment = {
 	}[];
 };
 
+export type Reply = {
+		content: string;
+		replyingTo: string;
+		user: { image: string; name: string; username: string };
+};
+
 export const feedbackFormSchema = z.object({
 	title: z.string().min(1, "This can't be empty!").max(50),
 	category: z.string(),
@@ -90,4 +96,15 @@ export type FeedbackTileProps = {
 	upvotesCount?: any;
 	isUpvotedByCurrentUser?: any;
 	small?: boolean;
+};
+
+export type NewFeedbackData = {
+	id: string;
+	upvotes: number;
+	comments: never[];
+	status: string;
+	author: CurrentUserData | undefined;
+	title: string;
+	category: string;
+	description: string;
 };

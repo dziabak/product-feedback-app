@@ -55,7 +55,7 @@ const NewFeedbackForm = () => {
 	const randomId = generateRandomId();
 
 	const onSubmit = (data: TFeedbackFormSchema) => {
-		const feedbackData = {
+		const newFeedbackData = {
 			...data,
 			id: randomId,
 			upvotes: 0,
@@ -63,7 +63,7 @@ const NewFeedbackForm = () => {
 			status: "suggestion",
 			author: currentUserData,
 		};
-		mutate(feedbackData);
+		mutate(newFeedbackData);
 	};
 
 	const {
