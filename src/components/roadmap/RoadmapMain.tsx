@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 // DATA
 import { fetchWithoutSuggestionsData } from "../../lib/http";
 // COMPONENTS
-import RoadmapHeader from "./content/RoadmapHeader";
+import RoadmapHeader from "./ui/RoadmapHeader";
 import RoadmapMobileLayout from "./layouts/RoadmapMobileLayout";
 import RoadmapDesktopLayout from "./layouts/RoadmapDesktopLayout";
 import LoadingSpinner from "../ui/LoadingSpinner";

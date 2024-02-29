@@ -6,7 +6,7 @@ import { useToggle, useLockedBody, useMediaQuery } from "usehooks-ts";
 // TYPES
 import { ProductRequestsData } from "../../../types/types";
 // COMPONENTS
-import AppHeader from "./app-header/AppHeader";
+import AppLogo from "./app-logo/AppLogo";
 import CategoryFilter from "./category-filter/CategoryFilter";
 import RoadmapSection from "./roadmap-section/RoadmapSection";
 // import DarkModeToggle from "./dark-mode/DarkModeToggle";
@@ -34,7 +34,7 @@ const SuggestionsNavigation = ({
 
 	return (
 		<nav className="md:flex md:space-x-4 md:mb-12 lg:flex-col lg:space-x-0 lg:space-y-4 lg:mb-0">
-			<AppHeader
+			<AppLogo
 				toggleValue={isMobileNavOpen}
 				toggleFunction={toggleIsMobileNavOpen}
 			/>
@@ -59,10 +59,7 @@ const SuggestionsNavigation = ({
 							isAnim && "translate-x-0"
 						)}>
 						<div className="h-screen space-y-6 md:h-auto md:space-y-0 md:flex md:space-x-4 lg:flex-col lg:space-x-0 lg:space-y-4">
-							<CategoryFilter
-								data={data}
-								onDataFiltered={handleFilteredData}
-							/>
+							<CategoryFilter data={data} onDataFiltered={handleFilteredData} />
 							<RoadmapSection />
 						</div>
 					</div>

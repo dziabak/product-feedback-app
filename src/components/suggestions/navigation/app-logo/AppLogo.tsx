@@ -1,5 +1,5 @@
-// HOOKS
-import useCurrentUserData from "../../../../hooks/useCurrentUserData";
+// COMPONENTS
+import CurrentUserData from "./CurrentUserData";
 // IMAGES
 import desktopBackground from "../../../../assets/suggestions/desktop/background-header.png";
 import tabletBackground from "../../../../assets/suggestions/tablet/background-header.png";
@@ -7,14 +7,13 @@ import mobileBackground from "../../../../assets/suggestions/mobile/background-h
 import burgerIcon from "../../../../assets/icons/mobile/icon-hamburger.svg";
 import closeIcon from "../../../../assets/icons/mobile/icon-close.svg";
 
-const AppHeader = ({
+const AppLogo = ({
 	toggleValue,
 	toggleFunction,
 }: {
 	toggleValue: boolean;
 	toggleFunction: () => void;
 }) => {
-	const currentUserData = useCurrentUserData();
 
 	return (
 		<div className="relative md:w-1/3 lg:w-full">
@@ -32,19 +31,8 @@ const AppHeader = ({
 					<h1 className="font-bold text-lg text-white md:text-xl">
 						Feedback Nexus
 					</h1>
-					<div>
-						<p className="hidden text-xs text-white/75 md:block">
-							logged in as:
-						</p>
-						{currentUserData && (
-							<p className="text-sm text-white/75">
-								<span className="font-bold">{currentUserData.name}</span> (
-								{currentUserData.username})
-							</p>
-						)}
-					</div>
+					<CurrentUserData />
 				</div>
-
 				<button className="md:hidden" onClick={toggleFunction}>
 					{!toggleValue ? (
 						<img src={burgerIcon} alt="" />
@@ -57,4 +45,4 @@ const AppHeader = ({
 	);
 };
 
-export default AppHeader;
+export default AppLogo;
