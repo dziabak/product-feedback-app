@@ -16,7 +16,8 @@ import LabelsGroup from "./labels/LabelsGroup";
 const FeedbackDetailMain = () => {
 	const params = useParams();
 
-	let content!: JSX.Element | JSX.Element[];
+	let feedbackTile!: JSX.Element[];
+	let content!: JSX.Element;
 
 	const { data, isFetching, isError } = useQuery({
 		queryKey: ["feedbackItem", params.feedbackId],
@@ -37,7 +38,7 @@ const FeedbackDetailMain = () => {
 	}
 
 	if (data) {
-		content = data.map((feedback) => (
+		feedbackTile = data.map((feedback) => (
 			<FeedbackTile
 				key={feedback.id}
 				id={feedback.id}
@@ -51,19 +52,19 @@ const FeedbackDetailMain = () => {
 				upvotedBy={feedback.upvotedBy}
 			/>
 		));
-	}
 
-	return (
-		<section className="container py-8">
+		content = (
 			<div className="px-6 md:px-0">
 				<FeedbackDetailHeader id={params.feedbackId} />
 				<LabelsGroup data={data} />
-				{content}
+				{feedbackTile}
 				<CommentSection data={data} id={params.feedbackId} />
 				<AddComment id={params.feedbackId} />
 			</div>
-		</section>
-	);
+		);
+	}
+
+	return <section className="container py-8">{content}</section>;
 };
 
 export default FeedbackDetailMain;
