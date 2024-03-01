@@ -7,7 +7,7 @@ import { getStatusLength } from "../../../../utils/helpers";
 // COMPONENTS
 import RoadmapSectionHeader from "./RoadmapSectionHeader";
 import RoadmapSectionStatus from "./RoadmapSectionStatus";
-import LoadingSpinner from "../../../ui/loading/LoadingSpinner";
+import RoadmapSectionLoading from "./RoadmapSectionLoading";
 import ErrorBlock from "../../../ui/errors/ErrorBlock";
 import BackgroundFrame from "../../../ui/components/BackgroundFrame";
 
@@ -20,7 +20,7 @@ const RoadmapSection = () => {
 	});
 
 	if (isFetching) {
-		content = <LoadingSpinner />;
+		content = <RoadmapSectionLoading />;
 	}
 
 	if (isError) {

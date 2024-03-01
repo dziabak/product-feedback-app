@@ -6,8 +6,9 @@ import { fetchWithoutSuggestionsData } from "../../lib/http";
 import RoadmapHeader from "./ui/RoadmapHeader";
 import RoadmapMobileLayout from "./layouts/RoadmapMobileLayout";
 import RoadmapDesktopLayout from "./layouts/RoadmapDesktopLayout";
-import LoadingSpinner from "../ui/loading/LoadingSpinner";
 import ErrorBlock from "../ui/errors/ErrorBlock";
+
+import LoadingDots from "../ui/loading/LoadingDots";
 
 const RoadmapMain = () => {
 	let content!: JSX.Element | JSX.Element[];
@@ -18,43 +19,34 @@ const RoadmapMain = () => {
 	});
 
 	if (isFetching) {
-		content = (
-			<div className="mt-64">
-				<LoadingSpinner />
-			</div>
-		);
+		content = <LoadingDots />;
 	}
 
 	if (isError) {
 		content = (
-			<div className="mt-64">
-				<ErrorBlock
-					errorHeader="We couldn't fetch your data :("
-					errorMessage="Please try again later"
-				/>
-			</div>
+			<ErrorBlock
+				full
+				errorHeader="We couldn't fetch your data"
+				errorMessage="Please try reloading the page"
+			/>
 		);
 	}
 
 	if (data) {
 		content = (
-			<>
+			<div className="md:py-8">
+				<RoadmapHeader />
 				<div className="md:hidden">
 					<RoadmapMobileLayout data={data} />
 				</div>
 				<div className="hidden md:grid grid-cols-3 gap-4">
 					<RoadmapDesktopLayout data={data} />
 				</div>
-			</>
+			</div>
 		);
 	}
 
-	return (
-		<section className="container md:py-8">
-			<RoadmapHeader />
-			{content}
-		</section>
-	);
+	return <section className="container">{content}</section>;
 };
 
 export default RoadmapMain;

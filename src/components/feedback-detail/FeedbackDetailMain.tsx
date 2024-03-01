@@ -9,7 +9,7 @@ import FeedbackTile from "../feeedback-tile/FeedbackTile";
 import FeedbackDetailHeader from "./ui/FeedbackDetailHeader";
 import CommentSection from "./comments/CommentSection";
 import AddComment from "./comments/AddComment";
-import LoadingSpinner from "../ui/loading/LoadingSpinner";
+import LoadingDots from "../ui/loading/LoadingDots";
 import ErrorBlock from "../ui/errors/ErrorBlock";
 import LabelsGroup from "./labels/LabelsGroup";
 
@@ -25,14 +25,15 @@ const FeedbackDetailMain = () => {
 	});
 
 	if (isFetching) {
-		content = <LoadingSpinner />;
+		content = <LoadingDots />;
 	}
 
 	if (isError) {
 		content = (
 			<ErrorBlock
-				errorHeader="There was an error"
-				errorMessage="Please try again later"
+				full
+				errorHeader="We couldn't fetch your data"
+				errorMessage="Please try reloading the page"
 			/>
 		);
 	}
@@ -54,7 +55,7 @@ const FeedbackDetailMain = () => {
 		));
 
 		content = (
-			<div className="px-6 md:px-0">
+			<div className="px-6 py-8 md:px-0">
 				<FeedbackDetailHeader id={params.feedbackId} />
 				<LabelsGroup data={data} />
 				{feedbackTile}
@@ -64,7 +65,7 @@ const FeedbackDetailMain = () => {
 		);
 	}
 
-	return <section className="container py-8">{content}</section>;
+	return <section className="container">{content}</section>;
 };
 
 export default FeedbackDetailMain;

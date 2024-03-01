@@ -9,7 +9,7 @@ import { fetchOnlySuggestionsData } from "../../lib/http";
 // COMPONENTS
 import SuggestionsNavigation from "../../components/suggestions/navigation/SuggestionsNavigation";
 import SuggestionsLayout from "./content/SuggestionsLayout";
-import LoadingSpinner from "../ui/loading/LoadingSpinner";
+import LoadingDots from "../ui/loading/LoadingDots";
 import ErrorBlock from "../ui/errors/ErrorBlock";
 
 const SuggestionsMain = () => {
@@ -27,14 +27,15 @@ const SuggestionsMain = () => {
 	};
 
 	if (isFetching) {
-		content = <LoadingSpinner />;
+		content = <LoadingDots />;
 	}
 
 	if (isError) {
 		content = (
 			<ErrorBlock
-				errorHeader="We couldn't fetch your data :("
-				errorMessage="Please try again later"
+				full
+				errorHeader="We couldn't fetch your data"
+				errorMessage="Please try reloading the page"
 			/>
 		);
 	}
