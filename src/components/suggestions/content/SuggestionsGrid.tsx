@@ -32,7 +32,7 @@ const SuggestionsGrid = ({
 		}
 	}
 
-	return <div className="mx-4 space-y-4 md:mx-0">{content}</div>;
+	return <div className="mt-6 mx-6 space-y-4 md:mx-0">{content}</div>;
 };
 
 export default SuggestionsGrid;

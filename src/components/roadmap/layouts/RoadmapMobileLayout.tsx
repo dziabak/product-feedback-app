@@ -31,7 +31,7 @@ const RoadmapMobileLayout = ({ data }: { data: ProductRequestsData }) => {
 			<div className="flex justify-between border-b-2">
 				<button
 					className={clsx(
-						"w-1/3 py-4 px-0 text-sm font-bold text-black/25 transition-all duration-[50ms] hover:text-black/50 hover:border-b-4",
+						"w-1/3 py-4 px-0 text-sm font-bold tracking-tight text-black/25 transition-all duration-[50ms] hover:text-black/50 hover:border-b-4",
 						status === "planned" &&
 							"text-c-dark-blue border-b-4 border-c-orange"
 					)}
@@ -42,7 +42,7 @@ const RoadmapMobileLayout = ({ data }: { data: ProductRequestsData }) => {
 				</button>
 				<button
 					className={clsx(
-						"w-1/3 py-4 px-0 text-sm font-bold text-black/25 transition-all duration-[50ms] hover:text-black/50 hover:border-b-4",
+						"w-1/3 py-4 px-0 text-sm font-bold tracking-tight text-black/25 transition-all duration-[50ms] hover:text-black/50 hover:border-b-4",
 						status === "in-progress" &&
 							"text-c-dark-blue border-b-4 border-c-magenta"
 					)}
@@ -53,7 +53,7 @@ const RoadmapMobileLayout = ({ data }: { data: ProductRequestsData }) => {
 				</button>
 				<button
 					className={clsx(
-						"w-1/3 py-4 px-0 text-sm font-bold text-black/25 transition-all duration-[50ms] hover:text-black/50 hover:border-b-4",
+						"w-1/3 py-4 px-0 text-sm font-bold tracking-tight text-black/25 transition-all duration-[50ms] hover:text-black/50 hover:border-b-4",
 						status === "live" && "text-c-dark-blue border-b-4 border-c-aqua"
 					)}
 					onClick={() => {
@@ -62,7 +62,7 @@ const RoadmapMobileLayout = ({ data }: { data: ProductRequestsData }) => {
 					Live ({liveLength})
 				</button>
 			</div>
-			<div className="px-8">{content}</div>
+			<div className="px-6">{content}</div>
 		</>
 	);
 };

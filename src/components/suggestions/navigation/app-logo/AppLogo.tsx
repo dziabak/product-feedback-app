@@ -14,7 +14,6 @@ const AppLogo = ({
 	toggleValue: boolean;
 	toggleFunction: () => void;
 }) => {
-
 	return (
 		<div className="relative md:w-1/3 lg:w-full">
 			<picture>
@@ -26,9 +25,9 @@ const AppLogo = ({
 					className="w-full h-full md:rounded-[10px] md:w-auto"
 				/>
 			</picture>
-			<div className="absolute bottom-0 left-0 flex flex-row items-center justify-between w-full h-full p-4 md:block md:w-auto md:h-auto">
-				<div className="space-y-2">
-					<h1 className="font-bold text-lg text-white md:text-xl">
+			<div className="absolute bottom-0 left-0 flex flex-row items-center justify-between w-full h-full p-4 md:block md:w-auto md:h-full">
+				<div className="md:h-full md:flex md:flex-col md:justify-between md:py-2 lg:justify-end lg:py-0 lg:space-y-4">
+					<h1 className="font-bold text-lg text-white md:text-xl md:leading-5">
 						Feedback Nexus
 					</h1>
 					<CurrentUserData />

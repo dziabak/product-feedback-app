@@ -18,7 +18,7 @@ const SuggestionsLayout = ({
 	};
 
 	return (
-		<div className="col-span-3 space-y-4">
+		<div className="col-span-3">
 			<SuggestionsHeader
 				onDataSorted={handleSortedData}
 				filteredData={filteredData}

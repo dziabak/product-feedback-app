@@ -40,7 +40,7 @@ const FeedbackTileSmall = ({
 		<div
 			className={clsx(
 				"flex flex-col justify-between rounded-[10px] bg-white",
-				location.pathname === "/roadmap" && "h-72 md:h-80 xl:h-72",
+				location.pathname === "/roadmap" && "h-72",
 				location.pathname !== "/roadmap" && "pt-8"
 			)}>
 			<Link
@@ -62,17 +62,17 @@ const FeedbackTileSmall = ({
 						<div className="space-y-1">
 							<p
 								className={clsx(
-									"break-all line-clamp-1 text-lg font-bold transition-colors text-c-dark-blue dark:text-c-light-gray",
+									"text-base font-bold transition-colors text-c-dark-blue tracking-tight dark:text-c-light-gray md:text-lg",
 									location.pathname === "/" &&
-										"group-hover:text-c-light-blue dark:group-hover:text-c-light-gray/75",
+										"break-all line-clamp-1 group-hover:text-c-light-blue dark:group-hover:text-c-light-gray/75",
 									location.pathname === "/roadmap" &&
-										"group-hover:text-c-light-blue dark:group-hover:text-c-light-gray/75"
+										"break-all line-clamp-1 group-hover:text-c-light-blue dark:group-hover:text-c-light-gray/75"
 								)}>
 								{title}
 							</p>
 							<p
 								className={clsx(
-									"whitespace-pre-line text-c-dark-gray",
+									"whitespace-pre-line text-c-dark-gray text-sm md:text-lg",
 									location.pathname === "/roadmap" && "line-clamp-2"
 								)}>
 								{description}
@@ -88,7 +88,7 @@ const FeedbackTileSmall = ({
 				<button
 					onClick={addUpvoteHandler}
 					className={clsx(
-						"group flex items-center p-3 space-x-2 text-sm font-bold rounded-[10px] transition-colors bg-c-gray text-c-dark-blue hover:bg-c-light-blue/25 dark:text-c-dark-blue dark:hover:bg-c-gray/90",
+						"group flex items-center px-4 py-2 space-x-2 text-sm font-bold rounded-[10px] transition-colors bg-c-gray text-c-dark-blue hover:bg-c-light-blue/25 dark:text-c-dark-blue dark:hover:bg-c-gray/90",
 						isUpvotedByCurrentUser &&
 							"bg-c-light-blue text-white hover:text-c-dark-blue hover:bg-c-light-blue/25"
 					)}>
@@ -114,9 +114,11 @@ const FeedbackTileSmall = ({
 						alt="Icon of speech bubble representing comments"
 					/>
 					{commentsNumber === undefined ? (
-						<p className="font-bold text-c-dark-blue/50">0</p>
+						<p className="font-bold text-sm text-c-dark-blue/50">0</p>
 					) : (
-						<p className="font-bold text-c-dark-blue">{totalComments}</p>
+						<p className="font-bold text-sm text-c-dark-blue">
+							{totalComments}
+						</p>
 					)}
 				</div>
 			</div>

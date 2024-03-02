@@ -36,7 +36,7 @@ const FormDescription = ({ register, errors, watch }: FormDescriptionProps) => {
 				id="description"
 				maxLength={characterCountBaseValue}
 				className={clsx(
-					"min-h-36 max-h-44 p-6 rounded-[10px] bg-c-light-gray outline-none border border-c-light-gray focus:border-c-light-blue",
+					"min-h-36 max-h-44 p-6 rounded-[10px] text-sm bg-c-light-gray outline-none border border-c-light-gray focus:border-c-light-blue md:text-base",
 					!errors.description && "caret-c-light-blue",
 					errors.description &&
 						"outline-none border border-c-red focus:border-c-red caret-c-red"
@@ -45,7 +45,7 @@ const FormDescription = ({ register, errors, watch }: FormDescriptionProps) => {
 			{errors.description && (
 				<p className="pb-2 text-sm text-c-red">{errors.description.message}</p>
 			)}
-			<p className="text-c-dark-gray">
+			<p className="pt-4 text-sm text-c-dark-gray md:text-base">
 				{characterCountBaseValue - currentCharacterCount} characters left
 			</p>
 		</FormSectionWrapper>

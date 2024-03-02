@@ -6,7 +6,7 @@ const AuthorLabel = ({ data }: { data: ProductRequestsData | undefined }) => {
 
 	if (data) {
 		content = (
-			<p className="text-right text-sm text-c-dark-gray">
+			<p className="text-right text-xs text-c-dark-gray md:text-sm">
 				by{" "}
 				<span className="font-bold text-c-dark-blue">
 					{data[0].author.name}

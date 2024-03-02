@@ -48,12 +48,12 @@ const SortListbox = ({
 					leave="transition ease-in duration-100"
 					leaveFrom="opacity-100"
 					leaveTo="opacity-0">
-					<Listbox.Options className="absolute -left-14 mt-4 max-h-60 w-64 overflow-auto rounded-[10px] bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+					<Listbox.Options className="absolute -left-14 mt-4 max-h-60 w-64 overflow-auto rounded-[10px] bg-white py-1 text-sm shadow-lg ring-1 ring-black/5 focus:outline-none md:text-base">
 						{sortData.map((item, itemIndex) => (
 							<Listbox.Option
 								key={itemIndex}
 								className={({ active }) =>
-									`relative cursor-default select-none py-2 pl-6 border-b text-base last:border-b-0 ${
+									`relative cursor-default select-none py-2 pl-6 border-b text-sm last:border-b-0 md:text-base ${
 										active ? "text-c-magenta" : "text-c-dark-gray"
 									}`
 								}

@@ -148,7 +148,7 @@ const EditFeedbackForm = () => {
 				/>
 				{utilityContent}
 				{!isPendingEdit && (
-					<div className="flex flex-col-reverse pt-8 space-y-4 space-y-reverse md:flex-row md:justify-between md:space-y-0 md:space-x-4">
+					<div className="flex flex-col-reverse pt-4 space-y-4 space-y-reverse md:flex-row md:justify-between md:space-y-0 md:space-x-4 md:pt-8">
 						{canDelete ? (
 							<GenericButton
 								onClick={handleStartDelete}

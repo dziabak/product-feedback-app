@@ -91,7 +91,7 @@ const NewFeedbackForm = () => {
 
 				{utilityContent}
 				{!isPending && (
-					<div className="flex flex-col justify-end pt-8 space-y-4 md:flex-row md:space-y-0 md:space-x-4">
+					<div className="flex flex-col-reverse justify-end pt-4 space-y-4 space-y-reverse md:flex-row md:space-y-0 md:space-x-4">
 						<LinkButton linkTo=".." text="Cancel" color="dark-blue" mobile />
 						<GenericButton text="Add Feedback" color="magenta" mobile />
 					</div>

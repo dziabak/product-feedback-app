@@ -8,8 +8,8 @@ const FormLabel = ({
 	description: string;
 }) => {
 	return (
-		<label htmlFor={htmlFor}>
-			<p className="text-sm font-bold text-c-dark-blue">{label}</p>
+		<label htmlFor={htmlFor} className="mb-1">
+			<p className="text-sm font-bold text-c-dark-blue tracking-tight">{label}</p>
 			<p className="text-sm text-c-dark-gray">
 				{description}
 			</p>

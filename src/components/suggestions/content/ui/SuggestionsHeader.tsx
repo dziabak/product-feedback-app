@@ -22,13 +22,13 @@ const SuggestionsHeader = ({
 	if (filteredData) {
 		if (filteredData.length === 1) {
 			headerText = (
-				<p className="mr-8 pr-1 text-lg font-bold text-white">
+				<p className="mr-8 pr-1 text-lg font-bold text-white tracking-tight">
 					{filteredData.length} Suggestion
 				</p>
 			);
 		} else {
 			headerText = (
-				<p className="mr-8 text-lg font-bold text-white">
+				<p className="mr-8 text-lg font-bold text-white tracking-tight">
 					{filteredData.length} Suggestions
 				</p>
 			);
@@ -36,7 +36,7 @@ const SuggestionsHeader = ({
 	}
 
 	return (
-		<div className="flex items-center justify-between px-6 py-4 bg-c-dark-blue dark:bg-c-dark-header md:rounded-[10px]">
+		<div className="flex items-center justify-between p-4 bg-c-dark-blue dark:bg-c-dark-header md:rounded-[10px]">
 			<div className="flex items-center">
 				<div className="hidden md:flex md:items-center">
 					<img src={headerIcon} alt="Icon of a lightbulb" className="mr-4" />

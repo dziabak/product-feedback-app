@@ -26,7 +26,7 @@ const FormListbox = ({
 			<Listbox.Label>{label}</Listbox.Label>
 			<div className="relative">
 				<Listbox.Button className="z-0 relative w-full cursor-default text-left py-3 px-6 rounded-[10px] border outline-none bg-c-light-gray border-c-light-gray focus:border-c-light-blue">
-					<span className="block truncate">{capitalizeString(selected)}</span>
+					<span className="block truncate text-sm md:text-base">{capitalizeString(selected)}</span>
 					<span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-6">
 						<img src={arrowIcon} alt="Arrow icon" />
 					</span>
@@ -36,12 +36,12 @@ const FormListbox = ({
 					leave="transition ease-in duration-100"
 					leaveFrom="opacity-100"
 					leaveTo="opacity-0">
-					<Listbox.Options className="absolute z-20 mt-4 max-h-60 w-full overflow-auto rounded-[10px] bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+					<Listbox.Options className="absolute z-20 mt-4 max-h-60 w-full overflow-auto rounded-[10px] bg-white py-1 text-sm shadow-lg ring-1 ring-black/5 focus:outline-none md:text-base">
 						{data.map((item, itemIndex) => (
 							<Listbox.Option
 								key={itemIndex}
 								className={({ active }) =>
-									`relative cursor-default select-none py-2 pl-6 border-b text-base last:border-b-0 ${
+									`relative cursor-default select-none py-2 pl-6 border-b text-sm last:border-b-0 md:text-base ${
 										active ? "text-c-magenta" : "text-c-dark-gray"
 									}`
 								}
