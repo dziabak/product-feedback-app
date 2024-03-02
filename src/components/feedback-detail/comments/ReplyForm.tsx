@@ -58,7 +58,7 @@ const ReplyForm = ({
 				{errors.content && (
 					<p className="mb-4 text-sm text-c-red">{errors.content.message}</p>
 				)}
-				<p className="text-c-dark-gray">
+				<p className="text-sm text-c-dark-gray md:text-base">
 					{characterCountBaseValue - currentCharacterCount} characters left
 				</p>
 			</div>
