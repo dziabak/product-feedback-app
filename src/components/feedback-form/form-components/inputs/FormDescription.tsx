@@ -1,9 +1,8 @@
 // LIBRARIES
 import { UseFormWatch } from "react-hook-form";
+import clsx from "clsx";
 // TYPES
 import { FormField, TFeedbackFormSchema } from "../../../../types/types";
-// LIBRARIES
-import clsx from "clsx";
 // COMPONENTS
 import FormSectionWrapper from "../../ui/FormSectionWrapper";
 import FormLabel from "../FormLabel";

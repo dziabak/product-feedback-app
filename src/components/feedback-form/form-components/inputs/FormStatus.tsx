@@ -1,4 +1,4 @@
-// TYPES
+// LIBRARIES
 import { Controller, Control } from "react-hook-form";
 // TYPES
 import { TFeedbackFormSchema } from "../../../../types/types";

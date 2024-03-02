@@ -1,6 +1,6 @@
-// EXTERNAL IMPORTS
+// LIBRARIES
 import { useDarkMode } from "usehooks-ts";
-// INTERNAL IMPORTS
+// COMPONENTS
 import BackgroundFrame from "../../../ui/components/BackgroundFrame";
 
 const DarkModeToggle = () => {

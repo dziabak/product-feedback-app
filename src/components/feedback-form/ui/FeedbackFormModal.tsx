@@ -1,9 +1,10 @@
-//BUILT-IN IMPORTS
+// REACT
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-//EXTERNAL IMPORTS
+// LIBRARIES
 import clsx from "clsx";
 import { useOnClickOutside, useLockedBody } from "usehooks-ts";
+// IMAGES
 import newFeedbackIcon from "../../../assets/icons/icon-new-feedback.svg";
 import editFeedbackIcon from "../../../assets/icons/icon-edit-feedback.svg";
 

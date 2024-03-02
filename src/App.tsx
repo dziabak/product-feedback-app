@@ -1,9 +1,9 @@
-// BUILT-IN IMPORTS
+// REACT
 import { RouterProvider } from "react-router-dom";
-// EXTERNAL IMPORTS
+// LIBRARIES
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-// INTERNAL IMPORTS
+// COMPONENTS
 import { router } from "./pages/router";
 import { queryClient } from "./lib/http";
 

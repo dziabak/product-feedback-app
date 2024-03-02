@@ -1,9 +1,10 @@
+// TYPES
+import { FeedbackTileProps } from "../../types/types";
+// HOOKS
+import useAddUpvote from "../../hooks/useAddUpvote";
+// COMPONENTS
 import FeedbackTileBig from "./feedback-tile-variants/FeedbackTileBig";
 import FeedbackTileSmall from "./feedback-tile-variants/FeedbackTileSmall";
-
-import useAddUpvote from "../../hooks/useAddUpvote";
-
-import { FeedbackTileProps } from "../../types/types";
 
 const FeedbackTile = ({
 	upvotes,
