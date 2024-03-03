@@ -55,7 +55,7 @@ const FeedbackTileSmall = ({
 					"group rounded-[10px] bg-white",
 					location.pathname !== "/" &&
 						location.pathname !== "/roadmap" &&
-						"cursor-default"
+						"pointer-events-none"
 				)}>
 				{isRoadmapRoute && !isDynamicRoadmapRoute && (
 					<>

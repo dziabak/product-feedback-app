@@ -55,7 +55,7 @@ const FeedbackTileBig = ({
 				to={`/feedback/${id}`}
 				className={clsx(
 					"group w-full flex items-center justify-between space-x-4",
-					location.pathname !== "/" && "cursor-default"
+					location.pathname !== "/" && "pointer-events-none"
 				)}>
 				<div className="flex items-start space-x-12 ">
 					<div className="space-y-4">
