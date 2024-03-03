@@ -31,7 +31,9 @@ const CommentData = ({
 						<span className="absolute -bottom-[0.1rem] left-0 h-[0.1rem] bg-c-light-blue w-0 group-hover:w-full transition-all duration-300"></span>
 					</button>
 				</div>
-				<p className="-ml-[60px] text-c-dark-gray text-wrap text-sm md:text-base md:ml-0">
+				<p
+					className="-ml-[60px] text-c-dark-gray text-sm md:text-base md:ml-0"
+					style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
 					{replyingTo && (
 						<span className="font-bold text-c-magenta">@{replyingTo} </span>
 					)}

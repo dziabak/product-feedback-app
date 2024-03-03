@@ -47,7 +47,7 @@ const FeedbackTileSmall = ({
 				location.pathname === "/roadmap" && "h-72",
 				!isRoadmapRoute && "pt-8",
 				isDynamicRoadmapRoute && "pt-8",
-				isRoadmapRoute && !isDynamicRoadmapRoute && "pt-0",
+				isRoadmapRoute && !isDynamicRoadmapRoute && "pt-0"
 			)}>
 			<Link
 				to={link}
@@ -71,7 +71,8 @@ const FeedbackTileSmall = ({
 									"text-base font-bold transition-colors text-c-dark-blue tracking-tight dark:text-c-light-gray md:text-lg",
 									location.pathname === "/" &&
 										"break-all line-clamp-1 group-hover:text-c-light-blue dark:group-hover:text-c-light-gray/75",
-										isRoadmapRoute && !isDynamicRoadmapRoute &&
+									isRoadmapRoute &&
+										!isDynamicRoadmapRoute &&
 										"break-all line-clamp-1 group-hover:text-c-light-blue dark:group-hover:text-c-light-gray/75"
 								)}>
 								{title}
@@ -80,7 +81,8 @@ const FeedbackTileSmall = ({
 								className={clsx(
 									"whitespace-pre-line text-c-dark-gray text-sm md:text-lg",
 									isRoadmapRoute && !isDynamicRoadmapRoute && "line-clamp-2"
-								)}>
+								)}
+								style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
 								{description}
 							</p>
 						</div>
