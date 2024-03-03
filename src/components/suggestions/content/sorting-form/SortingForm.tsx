@@ -74,11 +74,9 @@ const SuggestionsSortingForm = ({
 
 	return (
 		<form className="group flex items-center space-x-2">
-			<label htmlFor="category">
-				<p className="text-sm text-c-gray transition-colors group-hover:text-c-gray/75">
-					Sort by:
-				</p>
-			</label>
+			<p className="text-sm text-c-gray transition-colors group-hover:text-c-gray/75">
+				Sort by:
+			</p>
 			<SortListbox selected={sortingOption} setSelected={handleSortingChange} />
 		</form>
 	);
