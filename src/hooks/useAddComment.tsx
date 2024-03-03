@@ -51,7 +51,11 @@ const useAddComment = (
 
 	if (watch("content") !== undefined) {
 		currentCharacterCount = watch("content").length;
+	} else {
+		currentCharacterCount = 0;
 	}
+
+	let remainingCharacters = characterCountBaseValue - currentCharacterCount;
 
 	return {
 		register,
@@ -59,7 +63,7 @@ const useAddComment = (
 		onSubmit,
 		errors,
 		characterCountBaseValue,
-		currentCharacterCount,
+		remainingCharacters,
 	};
 };
 

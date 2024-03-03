@@ -25,7 +25,7 @@ const ReplyForm = ({
 		onSubmit,
 		errors,
 		characterCountBaseValue,
-		currentCharacterCount,
+		remainingCharacters,
 	} = useAddComment(
 		addCommentReply,
 		{ replyingTo: username },
@@ -59,7 +59,7 @@ const ReplyForm = ({
 					<p className="mb-4 text-sm text-c-red">{errors.content.message}</p>
 				)}
 				<p className="text-sm text-c-dark-gray md:text-base">
-					{characterCountBaseValue - currentCharacterCount} characters left
+					{remainingCharacters} characters left
 				</p>
 			</div>
 			<GenericButton text="Post Reply" color="magenta" mobile />

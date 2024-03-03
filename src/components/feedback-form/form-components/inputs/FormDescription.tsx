@@ -21,6 +21,8 @@ const FormDescription = ({ register, errors, watch }: FormDescriptionProps) => {
 		currentCharacterCount = 0;
 	}
 
+	let remainingCharacters = characterCountBaseValue - currentCharacterCount;
+
 	return (
 		<FormSectionWrapper>
 			<FormLabel
@@ -45,7 +47,7 @@ const FormDescription = ({ register, errors, watch }: FormDescriptionProps) => {
 				<p className="pb-2 text-sm text-c-red">{errors.description.message}</p>
 			)}
 			<p className="pt-4 text-sm text-c-dark-gray md:text-base">
-				{characterCountBaseValue - currentCharacterCount} characters left
+				{remainingCharacters} characters left
 			</p>
 		</FormSectionWrapper>
 	);
