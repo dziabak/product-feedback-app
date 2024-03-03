@@ -13,7 +13,9 @@ const Roadmap = () => {
 	return (
 		<>
 			<Outlet />
+			{/* <RoadmapMain /> */}
 			{location.pathname === "/roadmap" && <RoadmapMain />}
+			{location.pathname === "/roadmap/new-feedback" && <RoadmapMain />}
 		</>
 	);
 };

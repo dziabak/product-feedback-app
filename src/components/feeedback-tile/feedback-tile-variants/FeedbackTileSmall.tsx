@@ -28,6 +28,10 @@ const FeedbackTileSmall = ({
 	const totalComments = countTotalComments(comments);
 
 	const location = useLocation();
+	const isRoadmapRoute = location.pathname.startsWith("/roadmap");
+	const isDynamicRoadmapRoute = location.pathname.match(
+		/^\/roadmap\/[a-zA-Z0-9]+$/
+	);
 
 	let link!: string;
 	if (location.pathname === "/") {
@@ -41,7 +45,9 @@ const FeedbackTileSmall = ({
 			className={clsx(
 				"flex flex-col justify-between rounded-[10px] bg-white",
 				location.pathname === "/roadmap" && "h-72",
-				location.pathname !== "/roadmap" && "pt-8"
+				!isRoadmapRoute && "pt-8",
+				isDynamicRoadmapRoute && "pt-8",
+				isRoadmapRoute && !isDynamicRoadmapRoute && "pt-0",
 			)}>
 			<Link
 				to={link}
@@ -51,7 +57,7 @@ const FeedbackTileSmall = ({
 						location.pathname !== "/roadmap" &&
 						"cursor-default"
 				)}>
-				{location.pathname === "/roadmap" && (
+				{isRoadmapRoute && !isDynamicRoadmapRoute && (
 					<>
 						<FeedbackTileAccent status={status} />
 						<FeedbackTileStatus status={status} />
@@ -65,7 +71,7 @@ const FeedbackTileSmall = ({
 									"text-base font-bold transition-colors text-c-dark-blue tracking-tight dark:text-c-light-gray md:text-lg",
 									location.pathname === "/" &&
 										"break-all line-clamp-1 group-hover:text-c-light-blue dark:group-hover:text-c-light-gray/75",
-									location.pathname === "/roadmap" &&
+										isRoadmapRoute && !isDynamicRoadmapRoute &&
 										"break-all line-clamp-1 group-hover:text-c-light-blue dark:group-hover:text-c-light-gray/75"
 								)}>
 								{title}
@@ -73,7 +79,7 @@ const FeedbackTileSmall = ({
 							<p
 								className={clsx(
 									"whitespace-pre-line text-c-dark-gray text-sm md:text-lg",
-									location.pathname === "/roadmap" && "line-clamp-2"
+									isRoadmapRoute && !isDynamicRoadmapRoute && "line-clamp-2"
 								)}>
 								{description}
 							</p>
