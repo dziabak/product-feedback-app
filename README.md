@@ -20,9 +20,9 @@ This project is a front-end web application developed as a portfolio piece, base
 ### Project features
 
 - **Add, edit, and delete**: Users can post, modify and remove feedback data, all stored in Firebase database.
+- **Comments and replies**: Users can add comments and replies to product feedback requests.
 - **Form validations**: Users receive form validations when attempting to create or edit feedback requests (implemented with React Hook Form and Zod).
 - **Sorting and filtering**: Suggestions can be sorted by most/least upvotes and most/least comments, and filtered by category.
-- **Comments and replies**: Users can add comments and replies to product feedback requests.
 - **Upvoting**: Users can upvote product feedback requests.
 - **Kanban board**: Users can browse submitted feedback in special view based on kanban board layout.
 - **Responsive design**: The app offers optimal layout depending on the device's screen size.
