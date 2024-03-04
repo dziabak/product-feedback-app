@@ -35,7 +35,7 @@ const AddComment = ({ id }: { id: string | undefined }) => {
 					maxLength={characterCountBaseValue}
 					placeholder="Type your comment here"
 					className={clsx(
-						"p-6 rounded-[10px] bg-c-light-gray min-h-24 max-h-32 outline-none border border-c-light-gray focus:border-c-light-blue",
+						"min-h-24 max-h-32 p-6 rounded-[10px] text-sm bg-c-light-gray outline-none border border-c-light-gray focus:border-c-light-blue md:text-base",
 						!errors.content && "caret-c-light-blue",
 						errors.content &&
 							"outline-none border border-c-red focus:border-c-red caret-c-red"

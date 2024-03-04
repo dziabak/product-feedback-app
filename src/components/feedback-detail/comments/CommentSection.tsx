@@ -24,7 +24,7 @@ const CommentSection = ({
 						{totalComments} Comments
 					</p>
 					{data[0].comments === undefined && (
-						<p className="mb-8 text-center text-c-dark-gray">
+						<p className="mb-8 text-sm text-center text-c-dark-gray md:text-base">
 							Be the first to comment!
 						</p>
 					)}
