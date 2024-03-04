@@ -4,7 +4,7 @@
 
 - [Overview](#overview)
   - [Project features](#project-features)
-  - [Links](#links)
+- [Instructions](#instructions)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
@@ -28,9 +28,9 @@ This project is a front-end web application developed as a portfolio piece, base
 - **Responsive design**: The app offers optimal layout depending on the device's screen size.
 - **Hover states and animations**: Interactive elements have hover states and animations which provides better user experience.
 
-## Run instructions
+## Instructions
 
-This project is build and hosted with Netlify. You can access live version using the link down below.
+This project is built and hosted with Netlify. You can access live version using the link down below.
 
 - Live App URL: [Feedback Nexus on Netlify](https://feedback-nexus.netlify.app/)
 
