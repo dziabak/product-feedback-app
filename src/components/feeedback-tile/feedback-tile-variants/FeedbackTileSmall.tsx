@@ -79,7 +79,7 @@ const FeedbackTileSmall = ({
 							</p>
 							<p
 								className={clsx(
-									"whitespace-pre-line text-c-dark-gray text-sm md:text-lg",
+									"text-c-dark-gray text-sm md:text-lg",
 									isRoadmapRoute && !isDynamicRoadmapRoute && "line-clamp-2"
 								)}
 								style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}>

@@ -48,7 +48,7 @@ const FeedbackFormModal = ({
 		<dialog
 			ref={dialogRef}
 			className={clsx(
-				"fixed top-0 left-0 w-full h-full bg-c-dark-blue/0 transition-all duration-300 backdrop:bg-c-dark-blue/50 backdrop:backdrop-blur backdrop:cursor-pointer",
+				"fixed top-0 left-0 w-full bg-c-dark-blue/0 transition-all duration-300 backdrop:bg-c-dark-blue/50 backdrop:backdrop-blur backdrop:cursor-pointer",
 				!isModalOpen && "opacity-0",
 				isModalOpen && "opacity-100",
 				!isPending && "cursor-pointer"
@@ -57,14 +57,14 @@ const FeedbackFormModal = ({
 				<div
 					ref={contentRef}
 					className={clsx(
-						"relative z-20 w-full p-8 rounded-[10px] bg-white cursor-default transition-all duration-500 md:w-auto",
+						"relative z-20 p-8 rounded-[10px] bg-white cursor-default transition-all duration-500 overflow-hidden md:w-[540px]",
 						!isModalOpen && "-translate-y-16",
 						isModalOpen && "translate-y-0"
 					)}>
 					<img
 						src={renderedIcon}
 						alt="Icon for a feedback form"
-						className="hidden absolute top-0 -mt-8 w-14 h-14 md:block"
+						className="hidden absolute top-0 right-0 -m-8 w-32 h-32 opacity-25 md:block"
 					/>
 					{children}
 				</div>

@@ -69,7 +69,7 @@ const FeedbackTileBig = ({
 								{title}
 							</p>
 							<p
-								className="whitespace-pre-line text-c-dark-gray dark:text-c-light-gray"
+								className="text-c-dark-gray dark:text-c-light-gray"
 								style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
 								{description}
 							</p>
