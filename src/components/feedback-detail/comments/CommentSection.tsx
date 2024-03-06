@@ -18,7 +18,7 @@ const CommentSection = ({
 		const totalComments = countTotalComments(data[0].comments);
 
 		content = (
-			<div className="mt-6 md:mt-4">
+			<section className="mt-6 md:mt-4">
 				<div className="flex flex-col p-8 rounded-[10px] bg-white">
 					<p className="mb-8 text-lg font-bold text-c-dark-blue tracking-tight">
 						{totalComments} Comments
@@ -42,7 +42,7 @@ const CommentSection = ({
 							/>
 						))}
 				</div>
-			</div>
+			</section>
 		);
 	}
 

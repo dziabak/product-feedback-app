@@ -20,7 +20,7 @@ const AddComment = ({ id }: { id: string | undefined }) => {
 	} = useAddComment(addNewComment, { id: generateRandomId() }, { id: id });
 
 	return (
-		<div className="mt-6 pb-12 md:mt-4">
+		<section className="mt-6 pb-12 md:mt-4">
 			<form
 				id="content"
 				onSubmit={handleSubmit(onSubmit)}
@@ -51,7 +51,7 @@ const AddComment = ({ id }: { id: string | undefined }) => {
 					<GenericButton text="Post Comment" color="magenta" />
 				</div>
 			</form>
-		</div>
+		</section>
 	);
 };
 

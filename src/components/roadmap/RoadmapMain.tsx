@@ -36,17 +36,17 @@ const RoadmapMain = () => {
 		content = (
 			<div className="md:py-8">
 				<RoadmapHeader />
-				<div className="md:hidden">
+				<section className="md:hidden">
 					<RoadmapMobileLayout data={data} />
-				</div>
-				<div className="hidden md:grid grid-cols-3 gap-4">
+				</section>
+				<section className="hidden md:grid grid-cols-3 gap-4">
 					<RoadmapDesktopLayout data={data} />
-				</div>
+				</section>
 			</div>
 		);
 	}
 
-	return <section className="container">{content}</section>;
+	return <main className="container">{content}</main>;
 };
 
 export default RoadmapMain;

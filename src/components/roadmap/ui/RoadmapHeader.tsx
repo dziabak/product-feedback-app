@@ -5,7 +5,7 @@ import LinkButton from "../../ui/buttons/LinkButton";
 
 const RoadmapHeader = () => {
 	return (
-		<div className="flex justify-between items-center px-8 py-6 bg-c-dark-blue md:rounded-[10px]">
+		<header className="flex justify-between items-center px-8 py-6 bg-c-dark-blue md:rounded-[10px]">
 			<div className="flex flex-col space-y-2">
 				<Link
 					to="/"
@@ -35,7 +35,7 @@ const RoadmapHeader = () => {
 				color="magenta"
 				text="+ Add Feedback"
 			/>
-		</div>
+		</header>
 	);
 };
 

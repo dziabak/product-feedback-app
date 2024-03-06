@@ -42,13 +42,13 @@ const SuggestionsMain = () => {
 
 	if (data) {
 		content = (
-			<section className="container md:py-8 lg:grid lg:grid-cols-4 lg:gap-6">
+			<div className="container md:py-8 lg:grid lg:grid-cols-4 lg:gap-6">
 				<SuggestionsNavigation
 					data={data}
 					onDataFiltered={handleFilteredData}
 				/>
 				<SuggestionsLayout filteredData={filteredData} />
-			</section>
+			</div>
 		);
 	}
 

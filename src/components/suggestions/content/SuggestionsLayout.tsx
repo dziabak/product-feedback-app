@@ -18,13 +18,13 @@ const SuggestionsLayout = ({
 	};
 
 	return (
-		<div className="col-span-3">
+		<main className="col-span-3">
 			<SuggestionsHeader
 				onDataSorted={handleSortedData}
 				filteredData={filteredData}
 			/>
 			<SuggestionsGrid sortedData={sortedData} />
-		</div>
+		</main>
 	);
 };
 

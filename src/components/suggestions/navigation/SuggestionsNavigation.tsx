@@ -33,7 +33,7 @@ const SuggestionsNavigation = ({
 	}, [isMobileNavOpen]);
 
 	return (
-		<nav className="md:flex md:space-x-4 md:mb-12 lg:flex-col lg:space-x-0 lg:space-y-4 lg:mb-0">
+		<header className="md:flex md:space-x-4 md:mb-12 lg:flex-col lg:space-x-0 lg:space-y-4 lg:mb-0">
 			<AppLogo
 				toggleValue={isMobileNavOpen}
 				toggleFunction={toggleIsMobileNavOpen}
@@ -65,7 +65,7 @@ const SuggestionsNavigation = ({
 					</div>
 				</div>
 			</div>
-		</nav>
+		</header>
 	);
 };
 

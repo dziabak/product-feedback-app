@@ -58,14 +58,14 @@ const FeedbackDetailMain = () => {
 			<div className="px-6 py-8 md:px-0">
 				<FeedbackDetailHeader id={params.feedbackId} />
 				<LabelsGroup data={data} />
-				{feedbackTile}
+				<>{feedbackTile}</>
 				<CommentSection data={data} id={params.feedbackId} />
 				<AddComment id={params.feedbackId} />
 			</div>
 		);
 	}
 
-	return <section className="container">{content}</section>;
+	return <main className="container">{content}</main>;
 };
 
 export default FeedbackDetailMain;
