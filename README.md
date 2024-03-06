@@ -4,7 +4,7 @@
 
 - [Overview](#overview)
   - [Project features](#project-features)
-  - [Links](#links)
+- [Instructions](#instructions)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
@@ -20,17 +20,17 @@ This project is a front-end web application developed as a portfolio piece, base
 ### Project features
 
 - **Add, edit, and delete**: Users can post, modify and remove feedback data, all stored in Firebase database.
+- **Comments and replies**: Users can add comments and replies to product feedback requests.
 - **Form validations**: Users receive form validations when attempting to create or edit feedback requests (implemented with React Hook Form and Zod).
 - **Sorting and filtering**: Suggestions can be sorted by most/least upvotes and most/least comments, and filtered by category.
-- **Comments and replies**: Users can add comments and replies to product feedback requests.
 - **Upvoting**: Users can upvote product feedback requests.
 - **Kanban board**: Users can browse submitted feedback in special view based on kanban board layout.
 - **Responsive design**: The app offers optimal layout depending on the device's screen size.
 - **Hover states and animations**: Interactive elements have hover states and animations which provides better user experience.
 
-## Run instructions
+## Instructions
 
-This project is build and hosted with Netlify. You can access live version using the link down below.
+This project is built and hosted with Netlify. You can access live version using the link down below.
 
 - Live App URL: [Feedback Nexus on Netlify](https://feedback-nexus.netlify.app/)
 
