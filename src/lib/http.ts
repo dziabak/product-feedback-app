@@ -328,10 +328,7 @@ export const addCommentReply = async ({
 		updatedReplyData[0]
 	);
 
-	const addReplyToData = (
-		mainObject: any,
-		replyToAdd: Reply
-	) => {
+	const addReplyToData = (mainObject: any, replyToAdd: Reply) => {
 		console.log(replyToAdd);
 		// Check if the replies array exists
 		if (!mainObject.comments || !Array.isArray(mainObject.comments)) {
@@ -380,59 +377,6 @@ export const addCommentReply = async ({
 	const feedbackComment = await response.json();
 	return feedbackComment;
 };
-
-// export const addUpvote = async ({
-// 	id,
-// 	updatedFeedback,
-// }: {
-// 	id: any;
-// 	updatedFeedback: any;
-// }) => {
-// 	// Fetch all feedback data
-// 	const existingDataResponse = await fetch(
-// 		"https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests.json",
-// 		{ method: "GET", headers: { "Content-Type": "application.json" } }
-// 	);
-
-// 	if (!existingDataResponse.ok) {
-// 		throw new Error("Data could not be fetched!");
-// 	}
-
-// 	let allFeedbackData: ProductRequestsData = await existingDataResponse.json();
-
-// 	// Filter out the item with the provided ID
-// 	const updatedFeedbackData = allFeedbackData.filter(
-// 		(feedback) => feedback.id === id
-// 	);
-
-// 	// console.log(updatedFeedbackData[0]);
-// 	// console.log(updatedFeedback);
-
-// 	const currentFeedbackItemIndex = allFeedbackData.indexOf(
-// 		updatedFeedbackData[0]
-// 	);
-// 	const editedFeedback = {
-// 		...updatedFeedbackData[0],
-// 		upvotes: updatedFeedback,
-// 	};
-// 	// console.log(editedFeedback);
-
-// 	// Update the data in Firebase
-// 	const updateResponse = await fetch(
-// 		`https://product-feedback-app-bc088-default-rtdb.europe-west1.firebasedatabase.app/productRequests/${currentFeedbackItemIndex}.json`,
-// 		{
-// 			method: "PUT",
-// 			body: JSON.stringify(editedFeedback),
-// 			headers: { "Content-Type": "application/json" },
-// 		}
-// 	);
-
-// 	if (!updateResponse.ok) {
-// 		throw new Error("An error occurred while updating the data!");
-// 	}
-
-// 	return updateResponse.json();
-// };
 
 export const addUpvote = async ({
 	id,
