@@ -329,7 +329,6 @@ export const addCommentReply = async ({
 	);
 
 	const addReplyToData = (mainObject: any, replyToAdd: Reply) => {
-		console.log(replyToAdd);
 		// Check if the replies array exists
 		if (!mainObject.comments || !Array.isArray(mainObject.comments)) {
 			// If not, create the comments array and add the reply to it
