@@ -65,7 +65,7 @@ npm run dev
 
 - **Using third-party libraries**: This project familiarized me with using third-party libraries and components, ranging from industry-standard libraries like Tanstack Query, React Hook Form and Zod to UI libraries like Headless UI for form components and ts-hooks for useful utilities and quality-of-life improvements. Incorporating these libraries not only refined certain areas of the project but also facilitated overall development.
 
-- **E2E automated testing**: This project allowed me to design, write and implement robust testing suites to verify core features of the plaication, including navigation, displaying, sorting and filtering data, form validation and simulating sending requests with new data.
+- **E2E automated testing in Cypress**: This project allowed me to design, write and implement robust testing suites to verify core features of the plaication, including navigation, displaying, sorting and filtering data, form validation and simulating sending requests with new data.
 
 ### Continued development
 
