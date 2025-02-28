@@ -27,6 +27,7 @@ This project is a front-end web application developed as a portfolio piece, base
 - **Kanban board**: Users can browse submitted feedback in special view based on kanban board layout.
 - **Responsive design**: The app offers optimal layout depending on the device's screen size.
 - **Hover states and animations**: Interactive elements have hover states and animations which provides better user experience.
+- **E2E automated testing**: Test suites designed and programmed in Cypress to test core features.
 
 ## Instructions
 
@@ -52,6 +53,7 @@ npm run dev
 - React Hook Form + Zod
 - Firebase
 - Vite and Netlify (build and deployment)
+- Cypress (E2E automated testing)
 
 ### What I learned
 
@@ -62,6 +64,8 @@ npm run dev
 - **Project structure**: An interesting aspect of the project is that it features different layouts, including a suggestions section resembling messaging boards and a kanban board-style layout. This required me to make certain components reusable while adjusting their structure and rendered data accordingly. This experience taught me how to better organize my components and structure them within the entire application.
 
 - **Using third-party libraries**: This project familiarized me with using third-party libraries and components, ranging from industry-standard libraries like Tanstack Query, React Hook Form and Zod to UI libraries like Headless UI for form components and ts-hooks for useful utilities and quality-of-life improvements. Incorporating these libraries not only refined certain areas of the project but also facilitated overall development.
+
+- **E2E automated testing**: This project allowed me to design, write and implement robust testing suites to verify core features of the plaication, including navigation, displaying, sorting and filtering data, form validation and simulating sending requests with new data.
 
 ### Continued development
 
