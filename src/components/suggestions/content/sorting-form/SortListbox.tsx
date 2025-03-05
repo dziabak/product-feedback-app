@@ -25,7 +25,7 @@ const SortListbox = ({
 
 	return (
 		<Listbox value={selected} onChange={handleSelection}>
-			<div className="relative">
+			<div className="relative flex">
 				<Listbox.Button className="relative w-full cursor-default text-left text-sm pr-4 rounded-[10px] text-c-gray transition-colors border outline-none bg-c-dark-blue border-c-dark-blue focus:border-c-dark-blue group-hover:text-c-gray/75">
 					<span className="block truncate capitalize font-bold">
 						{selected}
