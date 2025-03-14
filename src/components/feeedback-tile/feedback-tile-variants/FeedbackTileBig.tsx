@@ -51,7 +51,7 @@ const FeedbackTileBig = ({
 							)}
 						/>
 					</svg>
-					<p>{upvotesCount}</p>
+					<p data-cy="feedback-upvotes-count">{upvotesCount}</p>
 				</button>
 			</div>
 			<Link

@@ -73,7 +73,7 @@ const SuggestionsSortingForm = ({
 	};
 
 	return (
-		<form className="group flex items-center space-x-2">
+		<form data-cy="sorting-form" className="group flex items-center space-x-2">
 			<p className="text-sm text-c-gray transition-colors group-hover:text-c-gray/75">
 				Sort by:
 			</p>
