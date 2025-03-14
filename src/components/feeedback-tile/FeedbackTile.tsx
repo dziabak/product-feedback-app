@@ -19,7 +19,6 @@ const FeedbackTile = ({
 	id,
 	comments,
 	small,
-	cy,
 }: FeedbackTileProps) => {
 	let content;
 
