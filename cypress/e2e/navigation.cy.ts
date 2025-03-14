@@ -22,20 +22,4 @@ describe("navigation", () => {
 		cy.go("back");
 		cy.location("pathname").should("equal", "/");
 	});
-
-	it("should open new feedback form", () => {
-		cy.visit("/");
-		cy.get('[data-cy="add-feedback-btn"]').click();
-		cy.location("pathname").should("equal", "/new-feedback");
-		cy.get('[data-cy="form-cancel-btn"]').click();
-		cy.get('[data-cy="form-dialog"]').should("not.exist");
-		cy.location("pathname").should("equal", "/");
-		cy.get('[data-cy="add-feedback-btn"]').click();
-		cy.get('[data-cy="form-dialog"]').click({ force: true }); // get data-cy
-		cy.get('[data-cy="form-dialog"]').should("not.exist");
-		cy.location("pathname").should("equal", "/");
-		cy.get('[data-cy="add-feedback-btn"]').click();
-		cy.go("back");
-		cy.location("pathname").should("equal", "/");
-	});
 });

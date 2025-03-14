@@ -32,6 +32,7 @@ const FormDescription = ({ register, errors, watch }: FormDescriptionProps) => {
 					etc."
 			/>
 			<textarea
+				data-cy="feedback-form-description-input"
 				{...register}
 				name="description"
 				id="description"

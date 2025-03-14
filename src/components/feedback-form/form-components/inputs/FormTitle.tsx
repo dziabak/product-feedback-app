@@ -15,6 +15,7 @@ const FormTitle = ({ register, errors }: FormField) => {
 				description="Add a short, descriptive headline"
 			/>
 			<input
+				data-cy="feedback-form-title-input"
 				{...register}
 				type="text"
 				name="title"
