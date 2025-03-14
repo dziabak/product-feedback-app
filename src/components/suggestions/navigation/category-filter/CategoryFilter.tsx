@@ -55,6 +55,7 @@ const CategoryFilter = ({
 			<BackgroundFrame>
 				{["all", ...CATEGORY_DATA].map((item) => (
 					<button
+						data-cy={`${item}-filter-btn`}
 						onClick={filterHandler}
 						key={item}
 						className={`px-4 py-2 m-2 text-sm font-semibold transition-colors rounded-[10px] ${

@@ -1,3 +1,5 @@
+/// <reference types="Cypress" />
+
 describe("navigation", () => {
 	it("should open roadmap", () => {
 		cy.visit("/");

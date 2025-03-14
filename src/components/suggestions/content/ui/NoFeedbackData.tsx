@@ -5,7 +5,9 @@ import image from "../../../../assets/suggestions/illustration-empty.svg";
 
 const NoFeedbackData = () => {
 	return (
-		<div className="flex flex-col items-center px-6 py-16 space-y-12 bg-white rounded-[10px] md:px-24 md:py-24 2xl:px-48">
+		<div
+		data-cy="no-feedback-element"
+		className="flex flex-col items-center px-6 py-16 space-y-12 bg-white rounded-[10px] md:px-24 md:py-24 2xl:px-48">
 			<img
 				src={image}
 				alt="Icon of a person looking through a magnifying glass"
