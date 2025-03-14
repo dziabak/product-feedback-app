@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const RoadmapSectionHeader = () => {
 	return (
-		<Link to="/roadmap" className="group flex items-center justify-between mb-4">
+		<Link data-cy="roadmap-link" to="/roadmap" className="group flex items-center justify-between mb-4">
 			<p className="text-lg font-bold text-c-dark-blue dark:text-c-light-gray">
 				Roadmap
 			</p>

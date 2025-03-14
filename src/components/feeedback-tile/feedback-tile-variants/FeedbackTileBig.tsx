@@ -19,6 +19,7 @@ const FeedbackTileBig = ({
 	addUpvoteHandler,
 	upvotesCount,
 	isUpvotedByCurrentUser,
+	cy,
 }: FeedbackTileProps) => {
 	const location = useLocation();
 
@@ -26,7 +27,9 @@ const FeedbackTileBig = ({
 	const totalComments = countTotalComments(comments);
 
 	return (
-		<div className="flex justify-between px-8 py-6 rounded-[10px] bg-white dark:bg-c-dark-frame">
+		<div
+			data-cy={cy}
+			className="flex justify-between px-8 py-6 rounded-[10px] bg-white dark:bg-c-dark-frame">
 			<div className="w-min mr-8">
 				<button
 					onClick={addUpvoteHandler}

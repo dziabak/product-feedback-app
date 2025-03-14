@@ -16,6 +16,7 @@ const FeedbackDetailHeader = ({ id }: { id: string | undefined }) => {
 	return (
 		<div className="flex justify-between mb-8">
 			<Link
+				data-cy={"feedback-detail-back-btn"}
 				to=".."
 				className="group flex items-center text-sm font-bold text-c-dark-gray">
 				<svg

@@ -46,6 +46,7 @@ const FeedbackFormModal = ({
 
 	return (
 		<dialog
+			data-cy={"form-dialog"}
 			ref={dialogRef}
 			className={clsx(
 				"fixed top-0 left-0 w-full bg-c-dark-blue/0 transition-all duration-300 backdrop:bg-c-dark-blue/50 backdrop:backdrop-blur backdrop:cursor-pointer no-scrollbar",

@@ -8,14 +8,17 @@ const LinkButton = ({
 	text,
 	color,
 	mobile,
+	cy,
 }: {
 	linkTo: string;
 	text: string;
 	color: "magenta" | "light-blue" | "dark-blue" | "red";
 	mobile?: boolean;
+	cy?: string;
 }) => {
 	return (
 		<Link
+			data-cy={cy}
 			to={linkTo}
 			className={clsx(
 				`px-4 py-3 text-sm text-center font-bold whitespace-nowrap transition-colors rounded-[10px] border border-transparent text-white md:px-6`,

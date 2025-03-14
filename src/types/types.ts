@@ -63,9 +63,9 @@ export type Comment = {
 };
 
 export type Reply = {
-		content: string;
-		replyingTo: string;
-		user: { image: string; name: string; username: string };
+	content: string;
+	replyingTo: string;
+	user: { image: string; name: string; username: string };
 };
 
 export const feedbackFormSchema = z.object({
@@ -96,6 +96,7 @@ export type FeedbackTileProps = {
 	upvotesCount?: number;
 	isUpvotedByCurrentUser?: boolean;
 	small?: boolean;
+	cy?: string;
 };
 
 export type NewFeedbackData = {

@@ -7,16 +7,19 @@ type GenericButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	text: string;
 	color: "magenta" | "light-blue" | "dark-blue" | "red";
 	mobile?: boolean;
+	cy?: string;
 };
 
 const GenericButton = ({
 	text,
 	color,
 	mobile,
+	cy,
 	...props
 }: GenericButtonProps) => {
 	return (
 		<button
+			data-cy={cy}
 			{...props}
 			className={clsx(
 				`px-4 py-3 text-sm text-center font-bold whitespace-nowrap transition-colors rounded-[10px] border border-transparent text-white md:px-6 disabled:bg-c-dark-gray`,

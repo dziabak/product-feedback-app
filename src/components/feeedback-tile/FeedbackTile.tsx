@@ -1,3 +1,5 @@
+// LIBRARIES
+import { useMediaQuery } from "usehooks-ts";
 // TYPES
 import { FeedbackTileProps } from "../../types/types";
 // HOOKS
@@ -17,11 +19,14 @@ const FeedbackTile = ({
 	id,
 	comments,
 	small,
+	cy,
 }: FeedbackTileProps) => {
 	let content;
 
 	const { addUpvoteHandler, upvotesCount, isUpvotedByCurrentUser } =
 		useAddUpvote(id, upvotes, upvotedBy);
+
+	const mobile = useMediaQuery("(max-width: 768px)");
 
 	if (small) {
 		content = (
@@ -39,13 +44,14 @@ const FeedbackTile = ({
 					addUpvoteHandler={addUpvoteHandler}
 					upvotesCount={upvotesCount}
 					isUpvotedByCurrentUser={isUpvotedByCurrentUser}
+					cy={"feedback-tile"}
 				/>
 			</>
 		);
 	} else {
-		content = (
-			<>
-				<div className="md:hidden">
+		if (mobile) {
+			content = (
+				<>
 					<FeedbackTileSmall
 						key={id}
 						id={id}
@@ -59,9 +65,13 @@ const FeedbackTile = ({
 						addUpvoteHandler={addUpvoteHandler}
 						upvotesCount={upvotesCount}
 						isUpvotedByCurrentUser={isUpvotedByCurrentUser}
+						cy={"feedback-tile"}
 					/>
-				</div>
-				<div className="hidden md:block">
+				</>
+			);
+		} else {
+			content = (
+				<>
 					<FeedbackTileBig
 						key={id}
 						id={id}
@@ -75,10 +85,47 @@ const FeedbackTile = ({
 						addUpvoteHandler={addUpvoteHandler}
 						upvotesCount={upvotesCount}
 						isUpvotedByCurrentUser={isUpvotedByCurrentUser}
+						cy={"feedback-tile"}
 					/>
-				</div>
-			</>
-		);
+				</>
+			);
+		}
+		// content = (
+		// 	<>
+		// 		<div className="md:hidden">
+		// 			<FeedbackTileSmall
+		// 				key={id}
+		// 				id={id}
+		// 				upvotes={upvotes}
+		// 				category={category}
+		// 				title={title}
+		// 				description={description}
+		// 				commentsNumber={commentsNumber}
+		// 				status={status}
+		// 				comments={comments}
+		// 				addUpvoteHandler={addUpvoteHandler}
+		// 				upvotesCount={upvotesCount}
+		// 				isUpvotedByCurrentUser={isUpvotedByCurrentUser}
+		// 			/>
+		// 		</div>
+		// 		<div className="hidden md:block">
+		// 			<FeedbackTileBig
+		// 				key={id}
+		// 				id={id}
+		// 				upvotes={upvotes}
+		// 				category={category}
+		// 				title={title}
+		// 				description={description}
+		// 				commentsNumber={commentsNumber}
+		// 				status={status}
+		// 				comments={comments}
+		// 				addUpvoteHandler={addUpvoteHandler}
+		// 				upvotesCount={upvotesCount}
+		// 				isUpvotedByCurrentUser={isUpvotedByCurrentUser}
+		// 			/>
+		// 		</div>
+		// 	</>
+		// );
 	}
 
 	return <>{content}</>;

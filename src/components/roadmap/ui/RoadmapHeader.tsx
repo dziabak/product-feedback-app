@@ -8,6 +8,7 @@ const RoadmapHeader = () => {
 		<header className="flex justify-between items-center px-8 py-6 bg-c-dark-blue md:rounded-[10px]">
 			<div className="flex flex-col space-y-2">
 				<Link
+					data-cy={'roadmap-back-btn'}
 					to="/"
 					className="group flex items-center text-sm font-bold text-white">
 					<svg

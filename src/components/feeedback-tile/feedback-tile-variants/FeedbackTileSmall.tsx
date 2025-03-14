@@ -23,6 +23,7 @@ const FeedbackTileSmall = ({
 	addUpvoteHandler,
 	upvotesCount,
 	isUpvotedByCurrentUser,
+	cy
 }: FeedbackTileProps) => {
 	const categoryCapitalized = capitalizeString(category);
 	const totalComments = countTotalComments(comments);
@@ -42,6 +43,7 @@ const FeedbackTileSmall = ({
 
 	return (
 		<div
+			data-cy={cy}
 			className={clsx(
 				"flex flex-col justify-between rounded-[10px] bg-white",
 				location.pathname === "/roadmap" && "h-72",

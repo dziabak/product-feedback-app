@@ -52,6 +52,7 @@ const SuggestionsHeader = ({
 				linkTo="/new-feedback"
 				color="magenta"
 				text="+ Add Feedback"
+				cy="add-feedback-btn"
 			/>
 		</div>
 	);
