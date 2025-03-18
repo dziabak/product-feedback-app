@@ -10,7 +10,9 @@ const StatusLabel = ({ data }: { data: ProductRequestsData | undefined }) => {
 		content = (
 			<div className="flex items-center">
 				<StatusIndicator status={data[0].status} />
-				<p className="text-xs font-bold capitalize text-c-dark-blue  md:text-sm">
+				<p
+					data-cy={`feedback-status-${data[0].status}`}
+					className="text-xs font-bold capitalize text-c-dark-blue  md:text-sm">
 					{data[0].status}
 				</p>
 			</div>

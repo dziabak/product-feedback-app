@@ -64,6 +64,7 @@ const DeleteFeedbackModal = forwardRef(
 							mobile
 						/>
 						<GenericButton
+						cy="delete-action-btn"
 							onClick={handleDeleteFeedback}
 							color="red"
 							text="Delete"

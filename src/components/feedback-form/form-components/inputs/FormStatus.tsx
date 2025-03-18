@@ -17,6 +17,8 @@ const FormStatus = ({ control }: { control: Control<TFeedbackFormSchema> }) => {
 				control={control}
 				render={({ field }) => (
 					<FormListbox
+						cy="feedback-form-status-list"
+						type="status"
 						label={
 							<FormLabel label="Status" description="Change feedback status" />
 						}

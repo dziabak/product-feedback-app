@@ -151,6 +151,7 @@ const EditFeedbackForm = () => {
 					<div className="flex flex-col-reverse pt-4 space-y-4 space-y-reverse md:flex-row md:justify-between md:space-y-0 md:space-x-4 md:pt-8">
 						{canDelete ? (
 							<GenericButton
+							cy="delete-feedback-btn"
 								onClick={handleStartDelete}
 								text="Delete"
 								color="red"
@@ -161,7 +162,12 @@ const EditFeedbackForm = () => {
 						)}
 						<div className="flex flex-col-reverse space-y-4 space-y-reverse md:flex-row md:space-y-0 md:space-x-4">
 							<LinkButton linkTo=".." text="Cancel" color="dark-blue" mobile />
-							<GenericButton text="Save changes" color="magenta" mobile />
+							<GenericButton
+								cy="edit-action-btn"
+								text="Save changes"
+								color="magenta"
+								mobile
+							/>
 						</div>
 					</div>
 				)}

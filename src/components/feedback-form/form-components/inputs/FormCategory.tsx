@@ -21,6 +21,8 @@ const FormCategory = ({
 				control={control}
 				render={({ field }) => (
 					<FormListbox
+						cy="feedback-form-category-list"
+						type="category"
 						label={
 							<FormLabel
 								label="Category"

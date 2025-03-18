@@ -29,7 +29,9 @@ const FormTitle = ({ register, errors }: FormField) => {
 				)}
 			/>
 			{errors.title && (
-				<p className="text-sm text-c-red">{errors.title.message}</p>
+				<p data-cy="feedback-form-error-title" className="text-sm text-c-red">
+					{errors.title.message}
+				</p>
 			)}
 		</FormSectionWrapper>
 	);

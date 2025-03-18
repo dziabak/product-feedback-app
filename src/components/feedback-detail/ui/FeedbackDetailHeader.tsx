@@ -37,7 +37,12 @@ const FeedbackDetailHeader = ({ id }: { id: string | undefined }) => {
 					<span className="absolute bottom-0 left-0 h-[0.1rem] bg-c-dark-gray w-0 transition-all duration-300 group-hover:w-full"></span>
 				</span>
 			</Link>
-			<LinkButton linkTo={link} text="Edit Feedback" color="light-blue" />
+			<LinkButton
+				cy="edit-feedback-btn"
+				linkTo={link}
+				text="Edit Feedback"
+				color="light-blue"
+			/>
 		</div>
 	);
 };

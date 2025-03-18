@@ -45,7 +45,11 @@ const FormDescription = ({ register, errors, watch }: FormDescriptionProps) => {
 				)}
 			/>
 			{errors.description && (
-				<p className="pb-2 text-sm text-c-red">{errors.description.message}</p>
+				<p
+					data-cy="feedback-form-error-description"
+					className="pb-2 text-sm text-c-red">
+					{errors.description.message}
+				</p>
 			)}
 			<p className="pt-4 text-sm text-c-dark-gray md:text-base">
 				{remainingCharacters} characters left
