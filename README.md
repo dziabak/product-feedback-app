@@ -52,7 +52,7 @@ npm run dev
 - TanStack Query
 - React Hook Form + Zod
 - Firebase
-- - Cypress (E2E automated testing)
+- Cypress (E2E automated testing)
 - Vite and Netlify (build and deployment)
 
 ### What I learned
